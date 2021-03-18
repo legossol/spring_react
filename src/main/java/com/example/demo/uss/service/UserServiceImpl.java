@@ -11,15 +11,14 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.cmm.service.AbstractService;
 import com.example.demo.uss.domain.User;
+import com.example.demo.uss.domain.UserDto;
 import com.example.demo.uss.repository.UserRepository;
 import com.example.demo.uss.repository.UserRepositoryImpl;
 
 @Service 
-public class UserServiceImpl extends AbstractService<User> implements UserService{
+public class UserServiceImpl extends AbstractService<User> implements UserService {
 	@Autowired UserRepository repo;
-	void test() {
-		
-	}
+	
 	@Override
 	public long count() {
 		return repo.count();
@@ -53,10 +52,15 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 		// TODO Auto-generated method stub
 		return null;
 	}
+	// UserDetailsService 의 메소드
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		UserDto user = repo.findByUsername(username);
+		if (user == null) {
+            throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
+        } else {
+            return user;
+        }
 	}
 	
 	
