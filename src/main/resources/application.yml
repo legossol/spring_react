@@ -12,4 +12,5 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
-      
+  jwt:
+    Secret: jwtSecret

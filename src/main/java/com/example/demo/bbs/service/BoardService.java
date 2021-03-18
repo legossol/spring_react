@@ -3,7 +3,6 @@ package com.example.demo.bbs.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.criterion.Example;
 
 import com.example.demo.bbs.domain.Board;
 

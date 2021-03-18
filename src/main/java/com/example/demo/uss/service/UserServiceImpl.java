@@ -6,14 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.cmm.service.AbstractService;
 import com.example.demo.uss.domain.User;
 import com.example.demo.uss.domain.UserDto;
 import com.example.demo.uss.repository.UserRepository;
-import com.example.demo.uss.repository.UserRepositoryImpl;
 
 @Service 
 public class UserServiceImpl extends AbstractService<User> implements UserService {
@@ -61,6 +59,10 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         } else {
             return user;
         }
+	}
+	@Override
+	public UserDto login(String username, String password) {
+		return repo.login(username, password);
 	}
 	
 	

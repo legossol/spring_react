@@ -2,8 +2,6 @@ package com.example.demo.sec.domain;
 
 import java.io.Serializable;
 import java.security.Principal;
-import java.util.Collection;
-
 public interface Authentication extends Principal, Serializable{
 	// 현재 사용자의 권한 목록을 가져옴
   //   Collection<? extends GrantedAuthority> getAuthorities();

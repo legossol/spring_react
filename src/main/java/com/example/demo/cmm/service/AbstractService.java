@@ -3,7 +3,6 @@ package com.example.demo.cmm.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.uss.domain.User;
 
 public abstract class AbstractService<T> {
 	public abstract long count();
