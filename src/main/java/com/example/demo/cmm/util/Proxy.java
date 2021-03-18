@@ -30,4 +30,14 @@ public class Proxy{
 	public BiFunction<File,String, File> mkFile = File::new;
 	public Supplier<User> newUser = User::new;
 
+	public static Function<Double,Double> absNum = Math::abs;
+    public static Function<Double,Double> ceiNum = Math::ceil;
+    public static Function<Double,Double> floNum = Math::floor;
+    public static BiFunction<Integer,Integer,Integer> bigOne = Math::max; 
+    public static BiFunction<Integer,Integer,Integer> smOne = Math::min;
+    public static Supplier<Double> ranOne = Math::random;
+    public static Function<Double,Double> cloOne = Math::rint;
+    public static Function<Double,Long> loOne = Math::round;
+
+
 }
