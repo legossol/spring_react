@@ -21,6 +21,7 @@ public class AuthController  extends Proxy{
 	
 	@GetMapping("/insertMany")
 	public String insertMany() {
+		print.accept("=====진입======");
 		
 		
 		return "100";
