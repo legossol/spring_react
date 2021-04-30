@@ -44,7 +44,7 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
             news.setAddress(elements.get(i).attr("href"));
             news.setCategory(crawler.getCategory());
             newslist.add(news);
-            repository.save(news);
+            // repository.save(news);
         }
         return newslist;
     }

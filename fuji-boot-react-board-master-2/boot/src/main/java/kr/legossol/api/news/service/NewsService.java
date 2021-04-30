@@ -14,8 +14,9 @@ import java.util.Optional;
 
 public interface NewsService {
     List<News> newsFindAll();
+    //List<HomeNews> homeNewsFindAll();
     void crawlingHome();
     List<News> saveAll(Crawler crawler) throws IOException;
-    Page<News> retrieve(final Pageable pageable);
+    Page<News> findAll(final Pageable pageable);
     void optionalInit(String newsNo);
 }
