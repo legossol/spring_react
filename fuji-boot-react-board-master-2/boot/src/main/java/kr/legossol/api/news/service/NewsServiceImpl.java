@@ -93,7 +93,7 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
         
     }
     @Override
-    public Page<News> retrieve(
+    public Page<News> findAll(
             org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable pageable) {
         // TODO Auto-generated method stub
         return null;
