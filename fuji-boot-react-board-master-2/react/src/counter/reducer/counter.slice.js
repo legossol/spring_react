@@ -4,7 +4,7 @@ const counterSlice = createSlice({
     name: 'counterSlice',
     initialState: {number: 0},
     reducers: {
-       increase(state, action){
+        increase(state, action){//앞에 function이 생략된 형태
             console.log('increase :: '+JSON.stringify(state.number))
             return {number: state.number + action.payload}},
         decrease(state, action){

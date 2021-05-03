@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import 'common/style/Common.css'
@@ -23,8 +24,8 @@ const Navi = () => {
                     <li><Link to="/board/seoul-cctv">CCTV</Link></li>
                     <li><Link to="/counter/counter">Counter</Link></li>
                     <li><Link to="/counter/redux-counter">ReduxCounter</Link></li>
-                    <li><Link to="/counter/counter-slice">CounterSlice</Link></li>
-                    <li><Link to="/todos/app">Todo</Link></li>
+                    <li><Link to="/counter/RTKcounter">RTKcounter</Link></li>
+                    <li><Link to="/todo/todo-app">Todo</Link></li>
                 </ul>
                 </div>
             </div>
