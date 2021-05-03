@@ -84,7 +84,7 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
     }
     @Override
     public List<News> newsFindAll() {
-        // TODO Auto-generated method stub
+        //  
         return null;
     }
     @Override
