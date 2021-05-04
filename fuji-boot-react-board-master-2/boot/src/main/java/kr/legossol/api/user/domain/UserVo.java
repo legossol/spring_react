@@ -16,8 +16,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Builder;
+import lombok.Data;
 
-@Entity @Table(name="users")
+@Data @Table(name="users")
 public class UserVo {
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)Long userId;

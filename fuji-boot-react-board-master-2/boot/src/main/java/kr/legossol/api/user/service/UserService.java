@@ -1,8 +1,11 @@
 package kr.legossol.api.user.service;
 
+import kr.legossol.api.user.domain.UserDto;
+
 public interface UserService {
 
-    static Object signup() {
-        return null;
-    }
+   String signup(UserDto user);
+   String signin(UserDto user);
+     
+    
 }
