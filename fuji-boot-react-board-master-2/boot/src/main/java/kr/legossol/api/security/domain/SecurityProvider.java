@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 @RequiredArgsConstructor
-public class SecurityPrivider implements AuthenticationProvider{
+public class SecurityProvider implements AuthenticationProvider{
     @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 

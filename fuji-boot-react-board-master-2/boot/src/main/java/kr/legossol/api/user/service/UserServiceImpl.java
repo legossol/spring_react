@@ -1,17 +1,27 @@
 package kr.legossol.api.user.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.security.sasl.AuthenticationException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import kr.legossol.api.security.domain.SecurityProvider;
+import org.springframework.stereotype.Service;
 
+import kr.legossol.api.security.domain.SecurityProvider;
+import kr.legossol.api.security.exception.SecurityRuntimeException;
 import jdk.internal.org.jline.utils.Log;
+import kr.legossol.api.user.domain.Role;
 import kr.legossol.api.user.domain.UserDto;
 import kr.legossol.api.user.domain.UserVo;
 import kr.legossol.api.user.repository.UserRepository;
-
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
+@RequiredArgsConstructor
+@Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -22,6 +32,9 @@ public class UserServiceImpl implements UserService{
     public String signup(UserDto user) {
         if(!userRepository.existsByUsername(user.getUsername())){
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            List<Role> list = new ArrayList<>();
+            list.add(Role.USER);
+            user.setRoles(list);
             userRepository.save(user);
             return provider.createToken(user.getUsername(), user.getRoles());
         }else{
@@ -31,16 +44,17 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public String signin(UserDto user) {
+    public UserDto signin(UserDto user) {
         try{
-            UserVo logineduser = userRepository.signin(user.getUsername(), user.getPassword());
-            String token = providder.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRoles())
-            Log.info(":::::::ISSUED TOKEN :::::::,token");
-
-        }catch(AuthenticationException e){
-            throw new SecurityRuntimeException("UInvalidd Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
+            UserVo loginedUser = userRepository.signin(user.getUsername(), user.getPassword());
+            UserDto userDto = modelMapper.map(user,UserDto.class);
+            String token = provider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRoles());
+            log.info(" :::::::::: ISSUED TOKEN :::::::::: ",token);
+            userDto.setToken(token);
+            return userDto;
+        }catch (Exception e){
+            throw new SecurityRuntimeException("Invalid Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
         }
-        
     }
 
 }

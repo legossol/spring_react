@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import kr.legossol.api.security.domain.SecurityProvider;
+
 @Configuration 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 

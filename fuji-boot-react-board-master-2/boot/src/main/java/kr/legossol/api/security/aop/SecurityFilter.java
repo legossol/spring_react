@@ -11,7 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import kr.legossol.api.security.domain.SecurityPrivider;
+import kr.legossol.api.security.domain.SecurityProvider;
 import kr.legossol.api.security.exception.SecurityRuntimeException;
 import lombok.RequiredArgsConstructor;
 

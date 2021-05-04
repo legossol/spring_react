@@ -29,4 +29,7 @@ public class UserDto {
     private String phone;
     @ApiModelProperty(position = 8)
     private List<Role> roles;
+    @ApiModelProperty(position = 9)
+    private String token;
+
 }
