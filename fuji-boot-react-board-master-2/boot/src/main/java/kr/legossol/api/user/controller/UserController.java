@@ -1,18 +1,18 @@
 package kr.legossol.api.user.controller;
 
+import io.swagger.annotations.*;
+import kr.legossol.api.news.domain.News;
+import kr.legossol.api.user.domain.UserDto;
+import kr.legossol.api.user.domain.UserVo;
+import kr.legossol.api.user.service.UserServiceImpl;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import io.swagger.annotations.*;
-import kr.legossol.api.user.domain.UserDto;
-import kr.legossol.api.user.domain.UserVo;
-import kr.legossol.api.user.service.UserService;
-import kr.legossol.api.user.service.UserServiceImpl;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 
 @Log
 @Api(tags="users") @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class UserController {
     @ApiResponses(value={@ApiResponse(code=400, message="Something went wrong"),
             @ApiResponse(code=403, message="Access Denied"),
             @ApiResponse(code=422, message="Username is already in use")})
-    public ResponseEntity<Long> signup(@ApiParam("Signup User") @RequestBody UserDto user){
+    public ResponseEntity<String> signup(@ApiParam("Signup User") @RequestBody UserDto user){
         return ResponseEntity.ok(userService.signup(modelMapper.map(user, UserVo.class)));
     }
     @PostMapping("/signin")
@@ -35,7 +35,7 @@ public class UserController {
     @ApiResponses(value={@ApiResponse(code=400, message="Something went wrong"),
             @ApiResponse(code=403, message="Access Denied"),
             @ApiResponse(code=422, message="Username is already in use")})
-    public ResponseEntity<Long> signin(@ApiParam("Signup User") @RequestBody UserDto user){
+    public ResponseEntity<UserDto> signin(@ApiParam("Signup User") @RequestBody UserDto user){
         return ResponseEntity.ok(userService.signin(modelMapper.map(user, UserVo.class)));
     }
     @GetMapping("")

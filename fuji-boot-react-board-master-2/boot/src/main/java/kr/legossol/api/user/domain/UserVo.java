@@ -21,7 +21,7 @@ import lombok.Data;
 @Data @Table(name="users")
 public class UserVo {
     @Id
-    @GeneratedValue (strategy=GenerationType.IDENTITY)Long userId;
+    @GeneratedValue (strategy=GenerationType.IDENTITY)private Long userId;
     @Column(name = "username")private String username;
     @Size(min=8, message = "Minimum password Length : 8 Characters") private String password;
     @Column(name = "email")private String email;
@@ -35,20 +35,5 @@ public class UserVo {
 
     @ElementCollection(fetch = FetchType.EAGER)
     List<Role> roles;
-
-    @Builder
-    public UserVo(Long userId, String username, String password, String userName, String age,String email, String birthday,String gender, String phone,Long userno,LocalDateTime date){
-        super();
-		this.username = username;
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.birthday = birthday;
-		this.gender = gender;
-		this.age = age;
-		this.phone = phone;
-		this.userId = userId;
-		this.date = date;
-    }
 
 }

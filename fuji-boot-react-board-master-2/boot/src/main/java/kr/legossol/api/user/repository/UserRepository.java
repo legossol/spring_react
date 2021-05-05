@@ -10,5 +10,5 @@ public interface UserRepository extends JpaRepository<UserVo, Long>{
     boolean existsByUsername(String username);
     UserVo findByUsername(String username);
     @Query("sselect u from Uservo where u.username = :username and u.password = :password")
-    UserVo Signin(@Param("username")String username ,@Param("password")String password);
+    UserVo signin(@Param("username")String username ,@Param("password")String password);
 }

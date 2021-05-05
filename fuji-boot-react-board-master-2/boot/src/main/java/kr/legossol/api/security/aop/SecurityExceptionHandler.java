@@ -1,17 +1,19 @@
 package kr.legossol.api.security.aop;
 
 
-import org.apache.http.HttpStatus;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties.Build;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-
 import kr.legossol.api.security.domain.Messenger;
 import kr.legossol.api.security.exception.ErrorCode;
 import kr.legossol.api.security.exception.LoginRuntimeException;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.nio.file.AccessDeniedException;
 
 @Slf4j
 @ControllerAdvice
