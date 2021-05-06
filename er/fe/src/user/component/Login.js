@@ -8,6 +8,10 @@ const Login = () =>{
       <div className="container">
       <h1>사용자 로그인</h1>
       <hr/>
+      <label>ID : </label>
+        <input></input>
+      <label>PW : </label>
+        <input></input>
   </div>
        
     )
