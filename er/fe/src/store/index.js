@@ -7,7 +7,8 @@ import {
   import logger from "redux-logger";
   import counterSlice from 'counter/reducer/counter.slice'
   import todos from 'todo/reducer/todo.reducer'
-  const rootReducer = combineReducers({counterSlice, todos})
+  import users from 'user/reducer/user.reducer'
+  const rootReducer = combineReducers({counterSlice, todos, users})
   export default configureStore({
     rootReducer,
     middleware: [...getDefaultMiddleware(), logger],
