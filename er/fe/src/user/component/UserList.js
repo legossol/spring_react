@@ -17,10 +17,7 @@ const UserList = () => {
                         <th>유저 이름</th>
                     </tr>
                 </thead>
-                
-                
             </table>
-
         </div>
   </>)
 };
