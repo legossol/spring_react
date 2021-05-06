@@ -18,3 +18,4 @@ public class SecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFil
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 }
+

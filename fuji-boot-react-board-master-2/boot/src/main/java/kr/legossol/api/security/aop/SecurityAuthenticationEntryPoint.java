@@ -12,13 +12,11 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
-public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoint{
-    private final HandlerExceptionResolver HandlerExceptionResolver;
+public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoint {
+    private final HandlerExceptionResolver handlerExceptionResolver;
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response,
-            AuthenticationException authException) throws IOException, ServletException {
-        HandlerExceptionResolver.resolveException(request, response, null, authException);
-        
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        handlerExceptionResolver.resolveException(request, response, null, authException);
     }
-    
 }
+

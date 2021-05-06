@@ -21,7 +21,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = provider.resolveToken(request);
         try{
-            if(token != null && provider.validadteToken(token)){
+            if(token != null && provider.validateToken(token)){
                 Authentication auth = provider.getAuthentication(token);
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }

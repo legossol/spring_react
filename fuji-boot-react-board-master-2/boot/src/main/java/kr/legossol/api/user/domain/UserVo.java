@@ -21,19 +21,12 @@ import lombok.Data;
 @Data @Table(name="users")
 public class UserVo {
     @Id
-    @GeneratedValue (strategy=GenerationType.IDENTITY)private Long userId;
-    @Column(name = "username")private String username;
-    @Size(min=8, message = "Minimum password Length : 8 Characters") private String password;
-    @Column(name = "email")private String email;
-	@Column(name = "user_name")private String userName;	
-	@Column(name = "age")private String age;
-	@Column(name = "birthday")private String birthday;	
-	@Column(name = "gender")private String gender;	
-	@CreationTimestamp
-    @Column(name = "date")private LocalDateTime date;
-    @Column(name = "phone")private String phone;
-
+    @GeneratedValue(strategy=GenerationType.IDENTITY)private Long userId;
+    @Column(unique = true, nullable = false) private String username;
+    @Size(min=8, message = "Minimum Password Length: 8 characters") private String password;
+    @Column(unique = true, nullable = false) private String email;
+    @Column(unique = true, nullable = false) private String name;
     @ElementCollection(fetch = FetchType.EAGER)
     List<Role> roles;
-
 }
+

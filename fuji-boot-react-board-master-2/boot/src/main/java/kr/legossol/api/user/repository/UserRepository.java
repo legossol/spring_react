@@ -9,6 +9,6 @@ import kr.legossol.api.user.domain.UserVo;
 public interface UserRepository extends JpaRepository<UserVo, Long>{
     boolean existsByUsername(String username);
     UserVo findByUsername(String username);
-    @Query("sselect u from Uservo where u.username = :username and u.password = :password")
+    @Query("select u from UserVo where u.username = :username and u.password = :password")
     UserVo signin(@Param("username")String username ,@Param("password")String password);
 }

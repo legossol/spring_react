@@ -10,16 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @RequiredArgsConstructor
-public class SecurityAccessDeniedHandler implements AccessDeniedHandler{
+public class SecurityAccessDeniedHandler implements AccessDeniedHandler {
     private final HandlerExceptionResolver handlerExceptionResolver;
-
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response,
-            AccessDeniedException accessDeniedException) throws IOException, ServletException {
-                handlerExceptionResolver.resolveException(request, response, null, accessDeniedException);
-        
-        
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+        handlerExceptionResolver.resolveException(request, response, null, accessDeniedException);
     }
-    
-    
 }

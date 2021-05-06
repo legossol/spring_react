@@ -26,26 +26,28 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 @RequiredArgsConstructor @Component
-public class SecurityProvider implements AuthenticationProvider{
+public class SecurityProvider implements AuthenticationProvider {
+
     @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 
     @Value("${security.jwt.token.expire-length:3600000}")
-    private long validityInMilliseconds = 3600000;//1h
+    private long validityInMilliseconds = 3600000; // 1h
 
     private final UserDetailsServiceImpl service;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        
         return null;
     }
 
     @Override
-    public boolean supports(Class<?> authentication) {return false;}
-    
+    public boolean supports(Class<?> authentication) {
+        return false;
+    }
+
     @PostConstruct
-    protected void init(){
+    protected  void init(){
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
     public String createToken(String username, List<Role> roles){
@@ -56,7 +58,13 @@ public class SecurityProvider implements AuthenticationProvider{
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
-        return Jwts.builder().setClaims(claims).setIssuedAt(now).setExpiration(validity).signWith(SignatureAlgorithm.HS256, secretKey).compact();
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(validity)
+                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .compact();
+
     }
     public Authentication getAuthentication(String token){
         UserDetails userDetails = service.loadUserByUsername(getUsername(token));
@@ -68,17 +76,23 @@ public class SecurityProvider implements AuthenticationProvider{
     }
     public String resolveToken(HttpServletRequest req){
         String bearerToken = req.getHeader("Authorization");
-        if(bearerToken != null && bearerToken.startsWith("Bearer")){
+        if(bearerToken != null && bearerToken.startsWith("Bearer ")){
             return bearerToken.substring(7);
         }
         return null;
     }
-    public boolean validadteToken(String token) throws Exception{
+    public boolean validateToken(String token) throws Exception{
         try{
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
-        }catch(JwtException | IllegalArgumentException e){
+        }catch (JwtException | IllegalArgumentException e){
             throw new Exception();
         }
     }
+
+
 }
+
+
+
+

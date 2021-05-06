@@ -14,22 +14,16 @@ public class UserDto {
     @ApiModelProperty(position = 0)
     private String username;
     @ApiModelProperty(position = 1)
-    private String password;
-    @ApiModelProperty(position = 2)
     private String email;
+    @ApiModelProperty(position = 2)
+    private String password;
     @ApiModelProperty(position = 3)
-    private String userName;	
+    private String name;
     @ApiModelProperty(position = 4)
-    private String age;
-    @ApiModelProperty(position = 5)
-    private String birthday;	
-    @ApiModelProperty(position = 6)
-    private String gender;	
-    @ApiModelProperty(position = 7)
-    private String phone;
-    @ApiModelProperty(position = 8)
-    private List<Role> roles;
-    @ApiModelProperty(position = 9)
     private String token;
+    @ApiModelProperty(position = 5)
+    private List<Role> roles;
+
+
 
 }
