@@ -1,18 +1,28 @@
 import axios from 'axios'
+import { userAPI } from '../service/user.service'
+import {createAsyncThunk, createSlice, isFulfilled} from '@reduxjs/toolkit'
 
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
-
-export const getuserList = createAsyncThunk("GET_USERS", async() =>{
-    const response = await axios.get("http://localhost:8080/users")
+export const getUserList = createAsyncThunk(
+    "useres/findAll",
+    async() =>{
+    const response = await getList()
     return response.data
 })
+const isRejectedAction = action => (action.type.endsWith('rejected'))//round brace걸면 return자도으로 됨
 
 const userSlice = createSlice({
     name: 'users',
     initialState:[],
-    reducers:{
-
+    reducers:{},
+    extraReducers:(builder) => {
+        builder
+        .addCase(getUserList,fulfilled, (state, {payload}) =>{
+            alert(`3 리덕스 내부 회원 목록 조회 성공${payload}`)
+            return[...payload]
+        })
+        .addMatcher(isRejectedAction, () =>{})
+        .addDefaultCase((state, action) =>{})
     }
 })
 

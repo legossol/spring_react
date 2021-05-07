@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 
 
 
-const rootReducer = combineReducers({counterSlice, todoReducer})
+const rootReducer = combineReducers({counterSlice, todoReducer, userReducer})
 // const store = createStore(rootReducer) 바닐라 리덕스
 const store = configureStore({reducer:rootReducer}, applyMiddleware(thunk))
 
