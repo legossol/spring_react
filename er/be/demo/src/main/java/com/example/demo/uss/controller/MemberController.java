@@ -44,7 +44,7 @@ public class MemberController {
 
     @PostMapping("/signup")
     @ApiOperation(value = "${MemberController.signup}")
-    @ApiResponses(value = { @ApiResponse(code = 400, message = "Something went wrong"),
+    @ApiResponses(valuße = { @ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access Denied"),
             @ApiResponse(code = 422, message = "Username is already in use") })
     public ResponseEntity<String> signup(@ApiParam("Signup Member") @RequestBody MemberDto member) {
