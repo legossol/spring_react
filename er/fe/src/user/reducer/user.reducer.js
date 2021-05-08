@@ -1,15 +1,25 @@
 import axios from 'axios'
-import { userAPI } from '../service/user.service'
+import {UserService} from 'user/index'
 import {createAsyncThunk, createSlice, isFulfilled} from '@reduxjs/toolkit'
 
 
 export const getUserList = createAsyncThunk(
-    "useres/findAll",
+    
+    "users/findAll",
     async() =>{
-    const response = await getList()
+    const response = await UserService.findAll()
     return response.data
 })
-const isRejectedAction = action => (action.type.endsWith('rejected'))//round brace걸면 return자도으로 됨
+export const registerUser = createAsyncThunk(
+    "users/signup",
+    async() =>{
+        const response = await UserService.signup()
+        return response.data
+    }
+)
+
+const isRejectedAction = action => 
+(action.type.endsWith('rejected'))//round brace걸면 return자동으로 됨
 
 const userSlice = createSlice({
     name: 'users',
@@ -17,7 +27,7 @@ const userSlice = createSlice({
     reducers:{},
     extraReducers:(builder) => {
         builder
-        .addCase(getUserList,fulfilled, (state, {payload}) =>{
+        .addCase(getUserList.fulfilled, (state, {payload}) =>{
             alert(`3 리덕스 내부 회원 목록 조회 성공${payload}`)
             return[...payload]
         })

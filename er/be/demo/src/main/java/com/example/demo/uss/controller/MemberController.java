@@ -70,7 +70,7 @@ public class MemberController {
         return ResponseEntity.ok(null);
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/findAll")
     public ResponseEntity<List<MemberDto>> all(@RequestBody MemberDto member) {
         log.info("로그인 안한 사용자도 접근 가능");
         return ResponseEntity.ok(null);

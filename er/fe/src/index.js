@@ -7,13 +7,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import store from "store/index"
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 
 
 
-const rootReducer = combineReducers({counterSlice, todoReducer, userReducer})
+// const rootReducer = combineReducers({counterSlice, todoReducer, userReducer})
 // const store = createStore(rootReducer) 바닐라 리덕스
-const store = configureStore({reducer:rootReducer}, applyMiddleware(thunk))
+// const store = configureStore({reducer:rootReducer}, applyMiddleware())
 
 ReactDOM.render(
   <Provider store={store}>
