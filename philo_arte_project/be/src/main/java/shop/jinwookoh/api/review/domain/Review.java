@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Table(name = "reviews")
 public class Review {
-    //유저 이미지(대표 이미지), 아이디, 날짜, 리플, 좋아요
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
