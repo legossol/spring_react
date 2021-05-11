@@ -1,25 +1,13 @@
 package com.example.demo.its.service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import com.example.demo.cmm.service.AbstractService;
-import com.example.demo.cmm.util.Path;
-import com.example.demo.its.domain.ItemFile;
 import com.example.demo.its.domain.SaleItem;
-import com.example.demo.its.repository.FileRepository;
 import com.example.demo.its.repository.SaleItemRepository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;

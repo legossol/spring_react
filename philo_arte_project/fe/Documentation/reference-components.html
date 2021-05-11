@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Anno - Digital Agency React Template</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="assets/css/night-owl.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" href="assets/css/master.css" media="all" />
+    <link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen" />
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.scrollTo.js"></script>
+    <script src="assets/js/jquery.easing.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        document.createElement("section");
+        var duration = "500",
+            easing = "swing";
+    </script>
+    <script src="assets/js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>
+                        Anno Digital Agency<br />
+                        React Template
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <a href="#overview" class="btn btn-light-outline btn-lg">
+            <ion-icon class="icon" name="arrow-down-outline"></ion-icon>
+            Documentation
+            <ion-icon class="icon" name="arrow-down-outline"></ion-icon>
+        </a>
+    </header>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="collapse show d-md-flex pt-2 pl-0" id="sidebar">
+                    <ul class="nav flex-column flex-nowrap overflow-hidden">
+                        <li class="nav-item">
+                            <a class="nav-link text-truncate" href="index.html"><i class="fa fa-home"></i>
+                                <span class="d-none d-sm-inline">Overview</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-truncate" href="files-code-structure.html#main-content"><i
+                                    class="fa fa-home"></i>
+                                <span class="d-none d-sm-inline">Files & Code Structure</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-truncate" href="#submenu1" data-toggle="collapse"
+                                data-target="#submenu1"><i class="fa fa-table"></i>
+                                <span class="d-none d-sm-inline">Components</span></a>
+                            <div class="collapse show" id="submenu1" aria-expanded="false">
+                                <ul class="flex-column pl-2 nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link py-0"
+                                            href="structure-components.html#main-content"><span>Structure</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-0" href="usage-components.html#main-content"><span>Usage</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-0"
+                                            href="specials-components.html#main-content"><span>Specials</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-0 active"
+                                            href="reference-components.html#main-content"><span>Reference</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-truncate" href="pages.html#main-content"><i class="fa fa-bar-chart"></i>
+                                <span class="d-none d-sm-inline">Pages</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-truncate" href="sources-credits.html#main-content"
+                              ><i class="fa fa-download"></i>
+                              <span class="d-none d-sm-inline">Sources & Credits</span></a
+                            >
+                          </li>
+                    </ul>
+                </div>
+                <div class="info">
+                    <table>
+                        <tr>
+                            <td>DEVELOPED: </td>
+                            <td><span></span>27.07.2020</span></td>
+                        </tr>
+                        <tr>
+                            <td>LATEST UPDATE: </td>
+                            <td><span></span>27.07.2020</span></td>
+                        </tr>
+                        <tr>
+                            <td>AUTHOR: </td>
+                            <td><span></span>Mocuta Sorin</span></td>
+                        </tr>
+                        <tr>
+                            <td>EMAIL: </td>
+                            <td><span><a href="mailto:mocutasorin@gmail.com"
+                                        class="default-color">mocutasorin@gmail.com</a></span></td>
+                        </tr>
+                    </table>
+                    <h4 class="default-color">Hey!</h4>
+                    <p>Thank you very much for purchasing our theme! If you have any
+                        questions that aren't covered in this documentation, please feel
+                        free to <a class="default-color" href="mailto:mocutasorin@gmail.com">email us</a>.</p>
+                </div>
+            </div>
+            <div class="col-md-8 content" id="main-content">
+                <div class="row">
+                    <div class="col-md-12" id="overview">
+                        <h2>Components reference</h2>
+                        <p>The list represent the main components and their props from Anno theme:</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Name</th>
+                                <th>Prop</th>
+                                <th>Type</th>
+                                <th>Note</th>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td colspan="6" class="default-bg white-color"><strong>About components</strong></td>
+                            </tr>
+                            <td rowspan="6"><strong>AboutOne</strong></td>
+                            <td colspan="4" class="component-description"></td>
+                            <tr>
+                                <td>tagline</td>
+                                <td><i>string</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>backfont</td>
+                                <td><i>string</i></td>
+                                <td><i>Default: "Partners"</i></td>
+                            </tr>
+                            <tr>
+                                <td>image</td>
+                                <td><i>source image</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>dashColor</td>
+                                <td><i>string</i></td>
+                                <td><i>Default: "default" - Option: "dark"</i></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td rowspan="6"><strong>AboutTwo</strong></td>
+                                <td colspan="4" class="component-description"></td>
+                            <tr>
+                                <td>title</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>text</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>children</td>
+                                <td><i>component/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td><i>array of objects</i></td>
+                                <td><strong>Required.</strong><i>Array for skillbar section.</i> Check array of objects
+                                    structure in <span class="folder-name">data/Skills/skills-data.json</span></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td rowspan="10"><strong>AboutThree</strong></td>
+                                <td colspan="4" class="component-description"></td>
+                            </tr>
+                            <tr>
+                                <td>tagline</td>
+                                <td><i>string</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>backfont</td>
+                                <td><i>string</i></td>
+                                <td><i>Default: "Partners"</i></td>
+                            </tr>
+                            <tr>
+                                <td>children</td>
+                                <td><i>component/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>textBtn</td>
+                                <td><i>string</i></td>
+                                <td>Default: "Read More"</td>
+                            </tr>
+                            <tr>
+                                <td>pathBtn</td>
+                                <td><i>string/url</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>image</td>
+                                <td><i>source image</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>video</td>
+                                <td><i>string url</i></td>
+                                <td><i></i></td>
+                            </tr>
+                            <tr>
+                                <td>classes</td>
+                                <td><i>string</i></td>
+                                <td><i></i></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td rowspan="6"><strong>AboutFour</strong></td>
+                                <td colspan="4" class="component-description"></td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>text</td>
+                                <td><i>string/html</i></td>
+                                <td><i></i></td>
+                            </tr>
+                            <tr>
+                                <td>textBtn</td>
+                                <td><i>string</i></td>
+                                <td>Default: "Read More"</td>
+                            </tr>
+                            <tr>
+                                <td>pathBtn</td>
+                                <td><i>string/url</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>image</td>
+                                <td><i>source image</i></td>
+                                <td></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td rowspan="6"><strong>AboutFive</strong></td>
+                                <td colspan="4" class="component-description"></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td><i>array of objects</i></td>
+                                <td><strong>Required.</strong><i>Array for skillbar section.</i> Check array of objects
+                                    structure in <span class="folder-name">data/Skills/skills-data.json</span></td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>backfont</td>
+                                <td><i>string</i></td>
+                                <td><i>Default: "About"</i></td>
+                            </tr>
+                            <tr>
+                                <td>text</td>
+                                <td><i>string/html</i></td>
+                                <td><i></i></td>
+                            </tr>
+                            <tr>
+                                <td>children</td>
+                                <td><i>component/html</i></td>
+                                <td></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td colspan="6" class="default-bg white-color"><strong>Blog components</strong></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3"><strong>BlogSection</strong></td>
+                                <td colspan="4" class="component-description">Shows in a grid latest posts.</td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td><i>Array of objects</i></td>
+                                <td><strong>Required.</strong> Check array of objects structure in <span
+                                        class="folder-name">data/Blog/blog-data.json</span></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td rowspan="5"><strong>BlogCarousel</strong></td>
+                                <td colspan="4" class="component-description">A carousel section who diplays blog posts.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>tagline</td>
+                                <td><i>string</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td><i>string/html</i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>backfont</td>
+                                <td><i>string</i></td>
+                                <td><i>Default: "Blogs"</i></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td><i>Array of objects</i></td>
+                                <td><strong>Required.</strong> Check array of objects structure in <span
+                                        class="folder-name">data/Blog/blog-data.json</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <tr>
+                                    <td colspan="6" class="default-bg white-color"><strong>Clients components</strong></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="4"><strong>ClientsCarousel</strong></td>
+                                    <td colspan="4" class="component-description">Shows in a carousel clients logos.</td>
+                                </tr>
+                                <tr>
+                                    <td>data</td>
+                                    <td><i>Array of objects</i></td>
+                                    <td><strong>Required.</strong> Check array of objects structure in <span
+                                            class="folder-name">data/Clients/clients-data.json</span></td>
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td><i>string</i></td>
+                                    <td><i>Default: "boxed" - Option: "wide"</i></td>
+                                </tr>
+                                <tr>
+                                    <td>classes</td>
+                                    <td><i>string</i></td>
+                                    <td><i></i></td>
+                                </tr>
+                            </tr>
+                            <tr>
+                                <tr>
+                                    <td rowspan="3"><strong>ClientsGrid</strong></td>
+                                    <td colspan="4" class="component-description">Shows in a grid clients logos.</td>
+                                </tr>
+                                <tr>
+                                    <td>data</td>
+                                    <td><i>Array of objects</i></td>
+                                    <td><strong>Required.</strong> Check array of objects structure in <span
+                                            class="folder-name">data/Clients/clients-data.json</span></td>
+                                </tr>
+                                <tr>
+                                    <td>classes</td>
+                                    <td><i>string</i></td>
+                                    <td><i></i></td>
+                                </tr>
+                            </tr>
+                            </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="4" class="default-bg white-color"><strong>Contact components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6"><strong>ContactOne</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Contact"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="4"><strong>ContactTwo</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6"><strong>ContactThree</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="7"><strong>ContactFour</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Contact"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>dash</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Option: "hide"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5"><strong>ContactFive</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Contact"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="2"><strong>ContactSix</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="3"><strong>ContactFive</strong></td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Send Message"</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Countdown components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>CountdownOne</strong><br />
+                                            <strong>CountdownTwo</strong><br />
+                                            <strong>CountdownThree</strong><br />
+                                            <strong>CountdownFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description">Countdown components use "react-countdown" pack.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Countdown"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Counters components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>CountersOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description">Counters components use "react-countup" pack.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Counters/counters-data.json</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>type</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Option: "dark"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>CountersTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description">Counters components use "react-countup" pack.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Counters/counters-data.json</span></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>CountersThree</strong><br />
+                                            <strong>CountersFour</strong><br />
+                                            <strong>CountersFive</strong><br />
+                                            <strong>CountersSix</strong><br />
+                                        </td>
+                                        <td colspan="4" class="component-description">Counters components use "react-countup" pack.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Counters/counters-data.json</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Counters"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Footer components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>FooterOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>bg</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td>
+                                            <strong>FooterTwo</strong><br />
+                                            <strong>FooterThree</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description">No props.</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Header components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>HeaderOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Navbar</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>type</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Option: "wide"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>border</td>
+                                        <td><i>boolean</i></td>
+                                        <td><i>Default: false - Option: true</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="3">
+                                            <strong>HeaderTwo</strong><br />
+                                            <strong>HeaderSocial</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Navbar</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>type</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Option: "wide"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>PageTitle components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">
+                                            <strong>PageTitleOne</strong><br />
+                                            <strong>PageTitleTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>ParallaxSection components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>ParallaxOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Anno"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="7">
+                                            <strong>ParallaxTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Read More"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pathBtn</td>
+                                        <td><i>string/url</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>typeBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "btn-lg btn-dark btn-square"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Portfolio components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="10">
+                                            <strong>PortfolioOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Counters"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Portfolio</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>filter</td>
+                                        <td><i>boolean</i></td>
+                                        <td><i>Default: false</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>categories</td>
+                                        <td><i>array of strings</i></td>
+                                        <td><i>e.g. ["Design", "Identity", "Marketing"]</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>dash</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Options: "hide"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>dashColor</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: default - Options: "dark"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="3">
+                                            <strong>PortfolioTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Portfolio</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>PortfolioBoxedSpaceThree</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Portfolio</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>filter</td>
+                                        <td><i>boolean</i></td>
+                                        <td><i>Default: false</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>categories</td>
+                                        <td><i>array of strings</i></td>
+                                        <td><i>e.g. ["Design", "Identity", "Marketing"]</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>PortfolioBoxedSpaceFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Works"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Portfolio</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>filter</td>
+                                        <td><i>boolean</i></td>
+                                        <td><i>Default: false</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>categories</td>
+                                        <td><i>array of strings</i></td>
+                                        <td><i>e.g. ["Design", "Identity", "Marketing"]</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>PortfolioCarousel</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Portfolio</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="8">
+                                            <strong>PortfolioBoxedSpaceFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Works"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Portfolio</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>filter</td>
+                                        <td><i>boolean</i></td>
+                                        <td><i>Default: false</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>categories</td>
+                                        <td><i>array of strings</i></td>
+                                        <td><i>e.g. ["Design", "Identity", "Marketing"]</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Presentation components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>PresentationOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Read More"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pathBtn</td>
+                                        <td><i>string/url</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>PresentationTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Read More"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pathBtn</td>
+                                        <td><i>string/url</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Anno"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Pricings components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="8">
+                                            <strong>PricingsOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Plans"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Pricings</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>titleAlign</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: center - Options: "left"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>dashColor</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: default - Option: "dark"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>PricingsTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Pricing"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Pricings</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Process components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>ProcessOne</strong><br />
+                                            <strong>ProcessFive</strong><br />
+                                            <strong>ProcessSix</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Process</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>ProcessTwo</strong><br />
+                                            <strong>ProcessThree</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Process</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Steps"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>ProcessFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Process</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Steps"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>bg</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Skillbar components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>SkillbarSection</strong><br />
+                                            <strong>SkillbarRingSection</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Skills</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Tabs components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">
+                                            <strong>TabsOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Tabs</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>TabsTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Tabs</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Team components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>TeamOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Team"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Team</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>bg</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>TeamTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Team"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Team</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>TeamThree</strong><br />
+                                            <strong>TeamFive</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Team"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Team</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>TeamFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Team</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="3">
+                                            <strong>TeamSix</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Team</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>Testimonials components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>TestimonialsOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Client"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Testimonials</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>items</td>
+                                        <td><i>number/string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>TestimonialsTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Clients"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Testimonials</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>type</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Options: "dark"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>TestimonialsThree</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Testimonials</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>TestimonialsFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Client"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Testimonials</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dash</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: none - Options: "dark"</i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>TestimonialsFive</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Testimonials</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>WhatWeDo components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="8">
+                                            <strong>WhatWeDoOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>classes</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Digital"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Read More"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td colspan="6" class="default-bg white-color"><strong>WhatWeOffer components</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>WhatWeOfferOne</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>WhatWeOfferTwo</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Design"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>video</td>
+                                        <td><i>string url</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <strong>WhatWeOfferThree</strong><br />
+                                            <strong>WhatWeOfferNine</strong><br />
+                                            <strong>WhatWeOfferTwelve</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Services</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>WhatWeOfferFour</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Services"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Services</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>WhatWeOfferFive</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Services"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Services</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="8">
+                                            <strong>WhatWeOfferSix</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Services"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>textBtn</td>
+                                        <td><i>string</i></td>
+                                        <td>Default: "Read More"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pathBtn</td>
+                                        <td><i>string/url</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Services</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <strong>WhatWeOfferSeven</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="6">
+                                            <strong>WhatWeOfferEight</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>video</td>
+                                        <td><i>string url</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>children</td>
+                                        <td><i>component/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <strong>WhatWeOfferTen</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Services"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Services</span> folder</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <tr>
+                                        <td rowspan="9">
+                                            <strong>WhatWeOfferEleven</strong>
+                                        </td>
+                                        <td colspan="4" class="component-description"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>tagline</td>
+                                        <td><i>string</i></td>
+                                        <td><i></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>text</td>
+                                        <td><i>string/html</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backfont</td>
+                                        <td><i>string</i></td>
+                                        <td><i>Default: "Skills"</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>data</td>
+                                        <td><i>Array of objects</i></td>
+                                        <td><strong>Required.</strong> Check array of objects structure in <span
+                                                class="folder-name">data/Services</span> folder</td>
+                                    </tr>
+                                    <tr>
+                                        <td>textImg</td>
+                                        <td><i>string</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>image</td>
+                                        <td><i>source image</i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>imageAlt</td>
+                                        <td><i>string/html</i></td>
+                                        <td>Default: textImg value</td>
+                                    </tr>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div>&copy; Mocuta Sorin 2020</div>
+                <div>&nbsp;Follow me: <a href="https://themeforest.net/user/mocuta_sorin/portfolio" target="_blank"><img
+                            src="./assets/images/themeforest-logo.png" alt="themeforest-account" /></a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+</body>
+
+</html>

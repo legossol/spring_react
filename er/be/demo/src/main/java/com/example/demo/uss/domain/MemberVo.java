@@ -2,6 +2,7 @@ package com.example.demo.uss.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,5 +51,13 @@ public class MemberVo {
     // 즉시 실행 와이? 접속하자마자 권한을 부여해줘야 하기 때문에
     @ElementCollection(fetch = FetchType.EAGER)
     List<Role> roles;
+
+	public Optional<MemberVo> orElseThrow(Object object) {
+		return null;
+	}
+
+	public MemberVo get() {
+		return null;
+	}
 
 }

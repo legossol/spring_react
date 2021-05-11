@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Anno - Digital Agency React Template</title>
+
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="assets/css/night-owl.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" href="assets/css/master.css" media="all" />
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.scrollTo.js"></script>
+    <script src="assets/js/jquery.easing.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+      document.createElement("section");
+      var duration = "500",
+        easing = "swing";
+    </script>
+    <script src="assets/js/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1>
+              Anno Digital Agency<br />
+              React Template
+            </h1>
+          </div>
+        </div>
+      </div>
+      <a href="#overview" class="btn btn-light-outline btn-lg">
+        <ion-icon class="icon" name="arrow-down-outline"></ion-icon>
+        Documentation
+        <ion-icon class="icon" name="arrow-down-outline"></ion-icon>
+      </a>
+    </header>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="collapse show d-md-flex pt-2 pl-0" id="sidebar">
+            <ul class="nav flex-column flex-nowrap overflow-hidden">
+              <li class="nav-item">
+                <a class="nav-link text-truncate" href="index.html"
+                  ><i class="fa fa-home"></i>
+                  <span class="d-none d-sm-inline">Overview</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-truncate" href="files-code-structure.html#main-content"
+                  ><i class="fa fa-home"></i>
+                  <span class="d-none d-sm-inline">Files & Code Structure</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-truncate"
+                  href="#submenu1"
+                  data-toggle="collapse"
+                  data-target="#submenu1"
+                  ><i class="fa fa-table"></i>
+                  <span class="d-none d-sm-inline">Components</span></a
+                >
+                <div class="collapse show" id="submenu1" aria-expanded="false">
+                  <ul class="flex-column pl-2 nav">
+                    <li class="nav-item">
+                      <a class="nav-link py-0 active" href="structure-components.html#main-content"><span>Structure</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link py-0" href="usage-components.html#main-content"><span>Usage</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link py-0" href="specials-components.html#main-content"><span>Specials</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-truncate" href="pages.html#main-content"
+                  ><i class="fa fa-bar-chart"></i>
+                  <span class="d-none d-sm-inline">Pages</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-truncate" href="sources-credits.html#main-content"
+                  ><i class="fa fa-download"></i>
+                  <span class="d-none d-sm-inline">Sources & Credits</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="info">
+            <table>
+              <tr>
+                <td>DEVELOPED: </td>
+                <td><span></span>27.07.2020</span></td>
+              </tr>
+              <tr>
+                <td>LATEST UPDATE: </td>
+                <td><span></span>27.07.2020</span></td>
+              </tr>
+              <tr>
+                <td>AUTHOR: </td>
+                <td><span></span>Mocuta Sorin</span></td>
+              </tr>
+              <tr>
+                <td>EMAIL: </td>
+                <td><span><a href="mailto:mocutasorin@gmail.com" class="default-color">mocutasorin@gmail.com</a></span></td>
+              </tr>
+            </table>
+            <h4 class="default-color">Hey!</h4>
+            <p>Thank you very much for purchasing our theme! If you have any
+            questions that aren't covered in this documentation, please feel
+            free to <a class="default-color" href="mailto:mocutasorin@gmail.com">email us</a>.</p>
+          </div>
+        </div>
+        <div class="col-md-8 content" id="main-content">
+          <div class="row">
+            <div class="col-md-12" id="overview">
+              <h2>Components structure</h2>
+              <p>
+                For Anno was developed about 100+ components. Every section of a page is a component and have its custom props and functionality. The components are reusable and can be customized as well. One of them needs a special approach when they are implemented. They are mentioned in Specials section. 
+              </p>
+              <p>All components are located in <u>component</u> folder. All files are well structured, contains clean code and description where necessary. <a href="reference-components.html">Here </a> you cand find all props and details of main components.</p>
+              <p>Based on their folder names the components are:</p>
+              <ul>
+                <li>
+                  - About [6 files]
+                </li>
+                <li>- Blog [5 files]</li>
+                <li>- Carousel [2 files]</li>
+                <li>- Contact [7 files]</li>
+                <li>- Countdown [4 files]</li>
+                <li>- Counters [7 files]</li>
+                <li>- Footer [3 files]</li>
+                <li>- Gallery [2 files]</li>
+                <li>- Header [12 files]</li>
+                <li>- HeroSlider [12 files]</li>
+                <li>- Maintenance [1 file]</li>
+                <li>- Map [3 files]</li>
+                <li>- PageTitle [2 files]</li>
+                <li>- ParallaxSection [2 files]</li>
+                <li>- Portfolio [9 files]</li>
+                <li>- Presentation [4 files]</li>
+                <li>- Pricings [3 files]</li>
+                <li>- Process [6 files]</li>
+                <li>- Sidebar [1 file]</li>
+                <li>- Skillbar [4 files]</li>
+                <li>- Tabs [2 files]</li>
+                <li>- Team [8 files]</li>
+                <li>- Testimonials [6 files]</li>
+                <li>- WhatWeDo [1 file]</li>
+                <li>- WhatWeOffer [12 files]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div>&copy; Mocuta Sorin 2020</div>
+          <div>&nbsp;Follow me: <a href="https://themeforest.net/user/mocuta_sorin/portfolio" target="_blank"><img src="./assets/images/themeforest-logo.png" alt="themeforest-account" /></a></div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/highlight.pack.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+  </body>
+</html>

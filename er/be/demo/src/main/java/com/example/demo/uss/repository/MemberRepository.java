@@ -1,6 +1,7 @@
 package com.example.demo.uss.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.uss.domain.MemberVo;
 import com.example.demo.uss.domain.MemberVo;
@@ -19,7 +20,7 @@ interface MemberCustomRepository {
 @Repository
 public interface MemberRepository extends JpaRepository<MemberVo, Long>, MemberCustomRepository {
     boolean existsByUsername(String username);
-
+    // Optional<MemberVo> findbyUsername(String username);
     MemberVo findByUsername(String username);
 
 }

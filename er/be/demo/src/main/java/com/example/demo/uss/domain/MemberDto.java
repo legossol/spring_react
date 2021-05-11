@@ -25,12 +25,5 @@ public class MemberDto {
     @ApiModelProperty(position = 5)
     private List<Role> roles;
 
-    // private Boolean isActive;
-    // private String address;
-    // private String birthday;
-    // private String phoneNo;
-    // private String gender;
-    // private Date createAt;
-    // private Date updateAt;
 
 }

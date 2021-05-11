@@ -1,61 +1,49 @@
-import axios from 'axios';
-import React, { useState, useCallback} from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import {Link} from 'react-router-dom';
+import { useCallback, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { signup} from '../reducer/user.reducer'
 import 'user/style/SignUp.css';
+
 const SignUp = () => {
-    const users = useSelector(state => {
-        console.log("state: " + JSON.stringify(state))
-        return state.users
+    const dispatch = useDispatch();
+
+    const [user, setUser] = useState({
+        username : "",
+        password : "",
+        name: "",
+        email: ""
     });
-    const registerUser = {id : '', password:'', email: '', name: ''}
-    const [user, setUser] = useState(registerUser)
-    const {id, password, email, name} = user
-    const handleChange = useCallback(e =>{
-        const {name, value} = e.target;
-        setUser({...user,
-        [name]: value
-    },[user])
-    })
-    const handleSubmit = useCallback( e => {
+    const onCreate = e =>{
         e.preventDefault();
-        if(user.id &&user.password &&user.email &&user.name){
-            axios.post('http://localhost:8080/users/signup',{id,password,email,name})
-            .then(res =>{
-                alert("회원등록 되었습니다", res)
-                window.location = '/users/list'
-            })
-            .catch(err => console.log(err))}
-            else{
-                alert("모든 항목을 장성해주세요")
-            }
-    },[id,password,email,name])
-    
-    // const dispatch = useDispatch();
-    // useEffect(() =>{
-    //     alert(`signup. useEffect`)
-    //     dispatch(getUserList());
-    // },[]);
-    
+        if(user){
+            const newUser = { username: user.username, password: user.password, name: user.name, email: user.email };
+            dispatch(signup(newUser));
+            setUser("");
+        }else{
+            console.log("모든항목을 작성하세요")
+        }
+    }
     
 
-    return (
-        <>
-        <div className="container">
-        <h1>사용자 등록</h1>
-        <hr/>
-        <form onSubmit={handleSubmit} method={"post"}></form>
-        <label>ID : </label>
-        <input type="text" name="ID" value={id} onChange={handleSubmit}></input>
-        <label>PW : </label>
-        <input type="text" name="password" value={password} onChange={handleSubmit}></input>
-        <label>EMAIL : </label>
-        <input type="text" name="password" value={email} onChange={handleSubmit}></input>
-        <label>NAME : </label>
-        <input type="text" name="password" value={name} onChange={handleSubmit}></input>
 
-        <button type="submit" onClick={()=>handleChange}>Sign UP</button>
-    </div>
-        </>
-    );
-};
+    return ( <>
+        <form onSubmit={onCreate} action=''>
+            
+            <label>아이디</label>
+            <input className="u-full-width" type="text" name="username" value={user.username} onChange={e => setUser(e.target.value)} />
+            <label>비밀번호</label>
+            <input className="u-full-width" type="password" name="password" value={user.password} onChange={e => setUser(e.target.value)} />
+            <label>이름</label>
+            <input className="u-full-width" type="text" name="uname" value={user.uname} onChange={e => setUser(e.target.value)} />
+            <label>이메일</label>
+            <input className="u-full-width" type="email" name="email" value={user.email} onChange={e => setUser(e.target.value)} />  
+            <button type='submit'>회원가입</button>
+            <Link to={'/'}><button>취소</button></Link>
+            
+
+        </form>
+    </> );
+}
+ 
 export default SignUp;

@@ -1,10 +1,12 @@
 package com.example.demo.uss.service;
 
+import java.security.Provider;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.Pattern.Flag;
 
 import com.example.demo.cmm.service.AbstractService;
 import com.example.demo.security.doamin.SecurityProvider;
@@ -55,13 +57,14 @@ public class MemberServiceImpl implements MemberService {
     public MemberDto signin(MemberVo member) {
         // TODO Auto-generated method stub
         try {
-
-            MemberVo loginedMember = repo.signin(member.getUsername(), member.getPassword());
+            
             MemberDto memberDto = modelMapper.map(member, MemberDto.class);
-            String token = securityProvider.createToken(member.getUsername(),
-                    repo.findByUsername(member.getUsername()).getRoles());
-            log.info(":::::::::::::::ISSUED TOKEN::::::::::::::::", token);
-            memberDto.setToken(token);
+            memberDto.setToken(
+                passwordEncoder.matches(member.getPassword(), repo.findByUsername(member.getUsername()).get().getPassword())
+                    ?
+                    securityProvider.createToken(member.getUsername(), repo.findByUsername(member.getUsername()).get().getRoles())
+                    : "WRONG_PASSWORD"
+            );
             return memberDto;
         } catch (AuthenticationException e) {
             throw new SecurityRuntimeException("Invalid Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);

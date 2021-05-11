@@ -4,19 +4,27 @@ import {createAsyncThunk, createSlice, isFulfilled} from '@reduxjs/toolkit'
 
 
 export const getUserList = createAsyncThunk(
-    
-    "users/findAll",
-    async() =>{
+    "users/findAll", 
+    async () => {
     const response = await UserService.findAll()
     return response.data
-})
-export const registerUser = createAsyncThunk(
+  })
+  export const signup = createAsyncThunk(
     "users/signup",
-    async() =>{
-        const response = await UserService.signup()
-        return response.data
+    async (user) =>{
+      alert(`2 user : ` + JSON.stringify(user))
+      const response = await UserService.signup(user)
+      return response.data
     }
-)
+  )
+  export const signin = createAsyncThunk(
+    "users/signin",
+    async (user) =>{
+      alert(`5 user.signin : ` + JSON.stringify(user))
+      const response = await UserService.signin(user)
+      return response.data
+    }
+  )
 
 const isRejectedAction = action => 
 (action.type.endsWith('rejected'))//round brace걸면 return자동으로 됨

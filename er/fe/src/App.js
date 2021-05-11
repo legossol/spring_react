@@ -18,7 +18,7 @@ const App = () => {
       <Route exact path='/board/seoul-cctv' component={ SeoulCCTV } />
       <Route exact path='/counter/counter' component={ Counter } />
       <Route exact path='/counter/redux-counter' component={ CounterContainer } />
-      <Route exact path='/users/login' component={Login} />
+      <Route exact path='/users/signin' component={Login} />
       <Route exact path='/users/signup' component={SignUp} />
       <Route exact path='/users/list' component={UserList} />
       <Route exact path='/users/detail' component={UserDetail} />
