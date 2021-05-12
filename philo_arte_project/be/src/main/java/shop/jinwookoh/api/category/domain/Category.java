@@ -1,4 +1,7 @@
 package shop.jinwookoh.api.category.domain;
+
+import javax.persistence.*;
+
 @Entity
 public class Category {
     @Id
