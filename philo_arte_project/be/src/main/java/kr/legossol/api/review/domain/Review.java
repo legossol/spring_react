@@ -38,13 +38,18 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewId;
-    @Column(name = "parent_item") //리뷰를 달 게시글 번호(부모글)
-    private int parentItem;
-
-    @Column(name = "parent_review") //대댓글 댓글의 부모글
+    @Column(name = "parent_item") 
+    private String parentItem;
+    
+    // private int depth;
+    // private int bundleId;
+    // private int bundleOrder;
+    // private 
+    
+    @Column(name = "parent_review")
     private String parentReview;
 
-    @Column(name = "writer")    //creatorId
+    @Column(name = "writer")    
     private String writer;
     @Column(name = "content")
     private String content;
@@ -62,6 +67,7 @@ public class Review {
     @Column(name = "like_check")
     private int likeCheck;
     //foreign key 유저 번호, 보드 번호
+
 	public void setTitle(String text) {
 	}
 	public void setAddress(String attr) {
@@ -69,12 +75,6 @@ public class Review {
 	public void setCategory(String category) {
 	}
     
-    // @ManyToOne
-    // private Artist artist;  //댓글 or 대댓글 작성자, 좋아요 연결
-    // @ManyToOne
-    // private Supporter supporter; //댓글 or 대댓글 작성자, 좋아요 연결
-    // @ManyToOne
-    // private Item item;  // 댓글이 있을 아이템 연결
     
     
 }
