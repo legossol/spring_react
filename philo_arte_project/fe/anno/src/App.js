@@ -31,6 +31,10 @@ import PortfolioPage from "./pages/inner/PortfolioPage";
 import PricingsPage from "./pages/inner/PricingsPage";
 import TestimonialsPage from "./pages/inner/TestimonialsPage";
 
+import ItemList from "./webapp/item/component/ItemList";
+import ItemDetail from "./webapp/item/component/ItemDetail"
+import ItemUpdate from "./webapp/item/component/ItemUpdate"
+import ItemRegister from "./webapp/item/component/ItemRegister"
 function App() {
   return (
     <Router basename="/">
@@ -38,6 +42,26 @@ function App() {
         <ScrollToTop>
           <Switch>
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Demo} />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/category/item/list`}
+              component={ItemList}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/category/item/detail`}
+              component={ItemDetail}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/category/item/update`}
+              component={ItemUpdate}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/category/item/register`}
+              component={ItemRegister}
+            />
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/home-main`}
