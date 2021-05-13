@@ -3,9 +3,12 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://wlsdnr4675.cwjff3qij1v0.ap-northeast-2.rds.amazonaws.com/wlsdnr4675?useSSLd=false&characterEncoding=UTF-8&serverTimezone=UTC
-    username: wlsdnr4675
-    password: wlsdnr4675
+    # url: jdbc:mysql://legossol.crrrqqjyomfc.ap-northeast-2.rds.amazonaws.com:3306/legossol?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    # username: admin
+    # password: legossol
+    url: jdbc:mysql://localhost:3306/campaign?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 5959@Ssol
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
