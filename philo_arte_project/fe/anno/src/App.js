@@ -44,22 +44,22 @@ function App() {
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Demo} />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/category/item/list`}
+              path={`${process.env.PUBLIC_URL}/item/list`}
               component={ItemList}
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/category/item/detail`}
+              path={`${process.env.PUBLIC_URL}item/detail`}
               component={ItemDetail}
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/category/item/update`}
+              path={`${process.env.PUBLIC_URL}/item/update`}
               component={ItemUpdate}
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/category/item/register`}
+              path={`${process.env.PUBLIC_URL}/item/register`}
               component={ItemRegister}
             />
             <Route
