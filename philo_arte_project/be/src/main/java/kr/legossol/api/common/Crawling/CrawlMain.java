@@ -35,7 +35,7 @@ public class CrawlMain {
         options.addArguments("headless");
         WebDriver driver = new ChromeDriver(options);
         // String url = "https://www.wadiz.kr/web/campaign/detail/110574";
-        String url = "https://www.wadiz.kr/web/campaign/detail/qa/108794";
+        String url = "https://m.pann.nate.com/talk/reply/view?pann_id=359703838&currMenu=today&stndDt=20210514&vPage=1&gb=d&order=N&rankingType=total";
         driver.get(url);
         try {
             Thread.sleep(1000);
@@ -50,10 +50,12 @@ public class CrawlMain {
         List<cralSomething> list = new ArrayList<>();
         // List<WebElement> el3 = driver.findElements(By.cssSelector(".page-container"));
         // List<WebElement> t = driver.findElements(By.cssSelector(".campaign-summary"));
-        List<WebElement> c = driver.findElements(By.cssSelector(".CommentTextContent_contentBox__5dJa1"));
+        List<WebElement> c = driver.findElements(By.cssSelector("dl .userText"));
         // List<WebElement> m = driver.findElements(By.cssSelector(".total-amount"));
-        // List<WebElement> w = driver.findElements(By.cssSelector(".CommentUserInfo_name__2GoPA a"));
+        // List<WebElement> w = driver.findElements(By.cssSelector("dl dt span"));
         // List<WebElement> v = driver.findElements(By.cssSelector(".total-supporter"));
+        // List<WebElement> like = driver.findElements(By.cssSelector("dd div button span"));
+        // List<WebElement> dislike = driver.findElements(By.cssSelector("dd div button span"));
         try{
             // BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath),"UTF-8"));
             DataOutputStream fw = new DataOutputStream(new FileOutputStream(filePath, true));
@@ -61,24 +63,27 @@ public class CrawlMain {
                 cralSomething thing = new cralSomething();
                 // thing.setTitle(t.get(i).getText());
                 // thing.setGoalPrice(m.get(i).getText());
+                
+                // thing.setContent(w.get(i).getText());
                 thing.setContent(c.get(i).getText());
-                // thing.setWriter(w.get(i).getText());
+                // thing.setLikeCnt(w.get(i).getText());
+                // thing.setDislikeCnt(dislike.get(i).getText());
                 // thing.setViewCnt(v.get(i).getText());
 
                 // System.out.println(thing.getTitle());
                 // System.out.println(thing.getGoalPrice());
+                // System.out.println(thing.getWriter());
                 System.out.println(thing.getContent());
+                // System.out.println(thing.getWriter());
                 // System.out.println(thing.getWriter());
                 // System.out.println(thing.getViewCnt());
                 list.add(thing);
             }
-            if(list.isEmpty()){
+            if (list.isEmpty()) {
                 System.out.println("크롤링 된 값이 없습니다. !");
-            }else{
-                for(cralSomething f : list){
-                    byte[] arr = f.toString().getBytes("UTF-8");
-                    fw.write(arr);
-                    System.out.println("------------------------------");
+            } else {
+                for (cralSomething a : list) {
+                    fw.writeUTF(a.toString() + "\n");
                 }
             }
             fw.flush();
@@ -120,6 +125,26 @@ class Crawlers {
         private Date regDate;
         private Date editDate;
         private int likeCnt;
+        public int getLikeCnt() {
+            return likeCnt;
+        }
+
+
+        public void setLikeCnt(int likeCnt) {
+            this.likeCnt = likeCnt;
+        }
+
+
+        public int getDislikeCnt() {
+            return dislikeCnt;
+        }
+
+
+        public void setDislikeCnt(int dislikeCnt) {
+            this.dislikeCnt = dislikeCnt;
+        }
+
+
         private int dislikeCnt;
         private int likeCheck;
         
@@ -153,9 +178,9 @@ class Crawlers {
 
         @Override
         public String toString(){
-            return " \n 댓글 번호 : "+ reviewId + " , 댓글 부모 글 번호: "+parentItem + ", 댓글 부모 번호 : "
+            return " \n [댓글 번호 : "+ reviewId + " , 댓글 부모 글 번호: "+parentItem + ", 댓글 부모 번호 : "
             +parentReview+", 댓글쓴이 : "+writer+", 댓글 내용 : "+content+", 등록일 : "+ regDate +", 수정일 : "
-            +editDate + ",좋아요 수 :" + likeCnt +", 싫어요 수 :"+dislikeCnt+", 좋아요 체크 :\n";
+            +editDate + ",좋아요 수 :" + likeCnt +", 싫어요 수 :"+dislikeCnt+", 좋아요 체크 :" + likeCheck+"\n";
         }
 }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Icofont from "react-icofont";
-
+import {Link} from 'react-router-dom'
 const TabsTwo = ({ data }) => (
   <Tabs className="icon-tabs">
     <div className="row">
@@ -25,15 +25,15 @@ const TabsTwo = ({ data }) => (
                 <h3 className="font-700">{tab.title}</h3>
                 <p>{tab.text}</p>
                 <p className="mt-50">
-                  <a
-                    href="!#"
+                  <Link to="http://localhost:3000/category/item/list"
+                   
                     className="btn btn-md btn-color btn-animate btn-circle"
                   >
                     <span>
                       Buy Template
                       <Icofont icon="arrow-right" className="tr-icon" />
                     </span>
-                  </a>
+                  </Link>
                 </p>
               </div>
             </TabPanel>

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import kr.legossol.api.review.domain.Review;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long>{
-    // public Review findbyreviewId(String reviewId);
+    
     
 }

@@ -23,10 +23,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import kr.legossol.api.artist.domain.Artist;
-import kr.legossol.api.common.domain.Crawler;
-import kr.legossol.api.item.domain.Item;
-import kr.legossol.api.supporter.domain.Supporter;
 
 @Entity
 @ToString
@@ -39,15 +35,10 @@ public class Review {
     @Column(name = "review_id")
     private Long reviewId;
     @Column(name = "parent_item") 
-    private String parentItem;
-    
-    // private int depth;
-    // private int bundleId;
-    // private int bundleOrder;
-    // private 
+    private int parentItem;
     
     @Column(name = "parent_review")
-    private String parentReview;
+    private int parentReview;
 
     @Column(name = "writer")    
     private String writer;
@@ -60,12 +51,12 @@ public class Review {
     @Column(name = "edit_date")
     private Date editDate;
 
-    @Column(name = "like_Cnt")
+    @Column(name = "like_cnt")
     private int likeCnt;
-    @Column(name = "dislike_Cnt")
+    @Column(name = "dislike_cnt")
     private int dislikeCnt;
     @Column(name = "like_check")
-    private int likeCheck;
+    private boolean likeCheck;
     //foreign key 유저 번호, 보드 번호
 
 	public void setTitle(String text) {
@@ -76,5 +67,10 @@ public class Review {
 	}
     
     
+    
+    // private int depth;
+    // private int bundleId;
+    // private int bundleOrder;
+    // private 
     
 }

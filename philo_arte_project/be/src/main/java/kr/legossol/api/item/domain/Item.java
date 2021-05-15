@@ -39,13 +39,12 @@ public class Item {
     @Column(name = "edit_date")
     private Date editDate;
 
-    @Column(name = "like_Cnt")  //좋아요숫자
+    @Column(name = "like_cnt")  //좋아요숫자
     private int likeCnt;
-    @Column(name = "dislike_Cnt")
+    @Column(name = "dislike_cnt")
     private int dislikeCnt;
     @Column(name = "like_check")
-    private int likeCheck;
-
+    private boolean likeCheck;
     // @ManyToOne
     // private Artist artist;  //글작성자, 좋아요 연결
 

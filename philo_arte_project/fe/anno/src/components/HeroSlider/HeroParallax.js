@@ -96,7 +96,7 @@ const HeroParallax = () => (
                 fontFamily: "'Cardo', serif",
               }}
             >
-              How about something really fancy?
+              예비 예술가를 만드는데 함께하세요
             </div>
 
             <div
@@ -128,7 +128,7 @@ const HeroParallax = () => (
                 fontWeight: "800",
               }}
             >
-              Anno Parallax
+              Philo Arte Funding
             </div>
           </li>
         </ul>
