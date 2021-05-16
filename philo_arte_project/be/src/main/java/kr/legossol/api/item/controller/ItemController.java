@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequiredArgsConstructor
 @Api(tags = "item")
 @RequestMapping("/item")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class ItemController {
     private final ItemServiceImpl service;
 

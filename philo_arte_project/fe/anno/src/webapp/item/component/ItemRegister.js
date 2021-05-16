@@ -8,7 +8,6 @@ const ItemRegister = () =>{
 
     const [item, setNewItem] = useState({
         title : "",
-        writer : "",
         content : "",
         goalPrice : ""
     })
