@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {getItemList} from '../reducer/item.reducer'
+import {getItemList, deleteItem} from '../reducer/item.reducer'
 
 const ItemList = () =>{
   const items = useSelector(state =>{
@@ -12,11 +12,11 @@ const ItemList = () =>{
   useEffect(()=>{
     dispatch(getItemList())
   },[])
-    return (
+    return ( 
         <>
         <div className="container">
         <h1>아 이 템 리 스 트</h1>
-        <table style={{border:10}}>
+        <table style={{border:30}} >
           <thead>
             <tr>
                 <th>itemId</th>
@@ -48,6 +48,8 @@ const ItemList = () =>{
                   <td>{item.likeCnt}</td>
                   <td>{item.dislikeCnt}</td>
                   <td>{item.likeCheck}</td>
+                  <Link to={`/list/${item.itemId}`}><button>글 자세히 보기</button></Link>
+                  <button onClick={()=>dispatch(deleteItem())}>삭제하기</button>
                 </tr>
               )
             })}
@@ -57,8 +59,8 @@ const ItemList = () =>{
           </table>
           <Link to={"/item/register"}>
                 <button>펀딩 등록하기</button>
-            </Link>
-            <button>삭제하기</button>
+          </Link>
+           
           </div>
  
         

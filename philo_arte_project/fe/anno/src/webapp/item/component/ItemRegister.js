@@ -1,45 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState,useCallback } from 'react';
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import { itemRegister } from '../reducer/item.reducer';
+import { saveItem } from '../reducer/item.reducer';
 const ItemRegister = () =>{
 
     const dispatch = useDispatch()
 
-    const [item, setItem] = useState({
+    const [item, setNewItem] = useState({
         title : "",
         writer : "",
         content : "",
         goalPrice : ""
     })
-    const onCreate = e =>{
-        e.preventDefault();
-        if(item){
-            const newItem = { title: item.title, writer: item.writer, content: item.content, goalPrice: item.goalPrice}
-            dispatch(itemRegister(newItem))
-            setItem("")
-        }else{
-            console.log("등록 완료 전")
-        }
-    }
+    const handleSubmit = useCallback(e =>{
+        const {newItem, value} = e.target
+        setNewItem({
+            ...item,
+            [newItem]: value
+        })
+    },[item])
     return(
         <>
         <h1>아 이 템 등 록 하 기</h1>
-        <form onSubmit={onCreate}>
+        <form onSubmit={handleSubmit}>
             
             <label>title</label>
-            <input type="text" name="title" value={item.title} onChange={e => setItem(e.target.value)}/>
+            <input type="text" name="title" value={item.title} onChange={handleSubmit}/>
             <label>writer</label>
-            <input type="text" name="writer" value={item.writer} onChange={e => setItem(e.target.value)}/>
+            <input type="text" name="writer" value={item.writer} onChange={handleSubmit}/>
             <label>content</label>
-            <input type="text" name="content" value={item.content} onChange={e => setItem(e.target.value)}/>
+            <input type="text" name="content" value={item.content} onChange={handleSubmit}/>
             <label>목표금액</label>
-            <input type="text" name="goalPrice" value={item.goalPrice} onChange={e => setItem(e.target.value)}/>
-            <Link to={'/item/list'}><button type='submit'>등록</button></Link>
-            <Link to={'/item/list'}><button>취소</button></Link>
-            
-
+            <input type="text" name="goalPrice" value={item.goalPrice} onChange={handleSubmit}/>
+            <hr/>
         </form>
+        <Link to={'/item/list'}><button type="submit" onClick={()=>dispatch(saveItem(item))}>등록</button></Link>
+        <Link to={'/item/list'}><button>취소</button></Link>
         </>
     )
 }
