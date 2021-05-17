@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/master.css";
+
+import "./webapp/assets/css/master.css";
 import { Provider } from "react-redux";
 import store from "./webapp/store";
 import { BrowserRouter } from "react-router-dom";

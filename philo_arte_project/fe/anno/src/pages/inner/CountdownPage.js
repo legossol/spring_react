@@ -1,8 +1,8 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/home-business-navbar.json";
+import dataNavbar from "../../webapp/data/Navbar/home-business-navbar.json";
 // Images
-import imgTitle from "../../assets/images/title-bg/title-bg-3.jpg";
+import imgTitle from "../../webapp/assets/images/title-bg/title-bg-3.jpg";
 // Components
 import HeaderOne from "../../webapp/common/Header/HeaderOne";
 import PageTitleOne from "../../webapp/common/PageTitle/PageTitleOne";

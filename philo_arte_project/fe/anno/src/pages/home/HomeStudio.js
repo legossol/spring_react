@@ -1,16 +1,16 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/main-navbar-data.json";
-import dataServices from "../../data/Services/services-studio-data.json";
-import dataProcess from "../../data/Process/process-studio-data.json";
-import dataPortfolio from "../../data/Portfolio/masonry-portfolio-data.json";
-import dataCounters from "../../data/Counters/counters-data.json";
-import dataTeam from "../../data/Team/team-sm-data.json";
-import dataPricings from "../../data/Pricings/pricings-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/main-navbar-data.json";
+import dataServices from "../../webapp/data/Services/services-studio-data.json";
+import dataProcess from "../../webapp/data/Process/process-studio-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/masonry-portfolio-data.json";
+import dataCounters from "../../webapp/data/Counters/counters-data.json";
+import dataTeam from "../../webapp/data/Team/team-sm-data.json";
+import dataPricings from "../../webapp/data/Pricings/pricings-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgFooter from "../../assets/images/background/stars-bg.png";
-import imgAbout from "../../assets/images/bg-left-img-2.jpg";
+import imgFooter from "../../webapp/assets/images/background/stars-bg.png";
+import imgAbout from "../../webapp/assets/images/bg-left-img-2.jpg";
 // Components
 import HeaderTwo from "../../webapp/common/Header/HeaderTwo";
 import FooterOne from "../../webapp/common/Footer/FooterOne";

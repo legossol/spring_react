@@ -1,18 +1,18 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/home-business-navbar.json";
-import dataSlider from "../../data/Slider/home-business-data.json";
-import dataServices from "../../data/Services/services-business.json";
-import dataProcess from "../../data/Process/process-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataPortfolio from "../../data/Portfolio/main-portfolio-data.json";
-import dataBlog from "../../data/Blog/blog-data.json";
-import dataTeam from "../../data/Team/team-sm-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/home-business-navbar.json";
+import dataSlider from "../../webapp/data/Slider/home-business-data.json";
+import dataServices from "../../webapp/data/Services/services-business.json";
+import dataProcess from "../../webapp/data/Process/process-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/main-portfolio-data.json";
+import dataBlog from "../../webapp/data/Blog/blog-data.json";
+import dataTeam from "../../webapp/data/Team/team-sm-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
-import imgAbout from "../../assets/images/bg-left-img-2.jpg";
-import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
+import imgWhatWeDo from "../../webapp/assets/images/bg-right-img.jpg";
+import imgAbout from "../../webapp/assets/images/bg-left-img-2.jpg";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg-2.jpg";
 // Components
 import HeaderOne from "../../webapp/common/Header/HeaderOne";
 import FooterTwo from "../../webapp/common/Footer/FooterTwo";

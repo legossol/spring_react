@@ -1,18 +1,18 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/main-navbar-data.json";
-import dataServices from "../../data/Services/services-imagebg-data.json";
-import dataPortfolio from "../../data/Portfolio/masonry-portfolio-data.json";
-import dataCounters from "../../data/Counters/counters-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataTeam from "../../data/Team/team-data.json";
-import dataPricings from "../../data/Pricings/pricings-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/main-navbar-data.json";
+import dataServices from "../../webapp/data/Services/services-imagebg-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/masonry-portfolio-data.json";
+import dataCounters from "../../webapp/data/Counters/counters-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataTeam from "../../webapp/data/Team/team-data.json";
+import dataPricings from "../../webapp/data/Pricings/pricings-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgHero from "../../assets/images/slides/home-bg-18.jpg";
-import imgAbout from "../../assets/images/bg-left-img.jpg";
-import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
-import imgParallax from "../../assets/images/background/parallax-bg.jpg";
+import imgHero from "../../webapp/assets/images/slides/home-bg-18.jpg";
+import imgAbout from "../../webapp/assets/images/bg-left-img.jpg";
+import imgWhatWeDo from "../../webapp/assets/images/bg-right-img.jpg";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg.jpg";
 // Components
 import HeaderOne from "../../webapp/common/Header/HeaderOne";
 import HeroHomeImageBg from "../../webapp/common/HeroSlider/HeroHomeImageBg";

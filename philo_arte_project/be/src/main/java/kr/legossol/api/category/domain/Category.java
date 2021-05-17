@@ -11,9 +11,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private long categoryId;
-    @Column
-    private String name;
-    @ManyToOne
-    @JoinColumn(name = "resume_id")
-    private Resume resume;
+
+    @Column(name = "category_name")
+    private String categoryName;
 }

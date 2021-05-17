@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {getItemDetail,deleteItem} from '../reducer/item.reducer'
 import {Link} from 'react-router-dom'
-const ItemDetail = (e) =>{
+const ItemDetail = () =>{
     const items = useSelector(state =>{
-        console.log("state : " + JSON.stringify(state.items))
+        console.log("item detail state : " + JSON.stringify(state.items))
         return state.items
       })
       const dispatch = useDispatch()
@@ -48,8 +48,7 @@ const ItemDetail = (e) =>{
                       <td>{item.likeCnt}</td>
                       <td>{item.dislikeCnt}</td>
                       <td>{item.likeCheck}</td>
-                      <Link to ={"/item/update"}><button>수정하기</button></Link>
-                      <button onClick={()=>dispatch(deleteItem(item.itemId))}>삭제하기</button>
+                      
                     </tr>
                   )
                 })}
@@ -57,9 +56,9 @@ const ItemDetail = (e) =>{
             
                 
               </table>
-              <Link to={"/item/register"}>
-                    <button>펀딩 등록하기</button>
-              </Link>
+              <Link to ={"/item/update"}><button>수정하기 페이지로 가기</button></Link>
+                      <button onClick={()=>dispatch(deleteItem(items.itemId))}>삭제하기</button>
+            
                
               </div>
      

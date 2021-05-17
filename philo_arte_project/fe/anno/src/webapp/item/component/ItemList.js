@@ -50,7 +50,7 @@ const ItemList = () =>{
                   <td>{item.likeCnt}</td>
                   <td>{item.dislikeCnt}</td>
                   <td>{item.likeCheck}</td>
-                  <button onAbort={()=>dispatch(getItemDetail(item.itemId))}>상세보기</button>
+                  <Link to={`/item/detail`}><button onClick={()=>dispatch(getItemDetail(item.itemId))}>상세보기</button></Link>
                   <button onClick={()=>dispatch(updateItem(item.itemId))}>수정하기</button>
                   <button onClick={()=>dispatch(deleteItem(item.itemId))}>삭제하기</button>
                 </tr>

@@ -1,22 +1,22 @@
 import React from "react";
 // CSS
 import "./../../../node_modules/react-rev-slider/src/rs-plugin/css/settings.css";
-import "./../../assets/css/revolution/settings.css";
-import "./../../assets/css/revolution/layers.css";
-import "./../../assets/css/revolution/navigation.css";
+import "./../../webapp/assets/css/revolution/settings.css";
+import "./../../webapp/assets/css/revolution/layers.css";
+import "./../../webapp/assets/css/revolution/navigation.css";
 // DATA Files
-import dataNavbar from "../../data/Navbar/home-marketing-navbar.json";
-import dataTabs from "../../data/Tabs/tabs-data.json";
-import dataPortfolio from "../../data/Portfolio/masonry-portfolio-data.json";
-import dataProcess from "../../data/Process/process-marketing-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
-import dataTeam from "../../data/Team/team-data.json";
-import dataBlog from "../../data/Blog/blog-data.json";
+import dataNavbar from "../../webapp/data/Navbar/home-marketing-navbar.json";
+import dataTabs from "../../webapp/data/Tabs/tabs-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/masonry-portfolio-data.json";
+import dataProcess from "../../webapp/data/Process/process-marketing-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
+import dataTeam from "../../webapp/data/Team/team-data.json";
+import dataBlog from "../../webapp/data/Blog/blog-data.json";
 // Images
-import imageVideo from "../../assets/images/video-mockup.png";
-import imageAbout from "../../assets/images/bg-left-img-2.jpg";
-import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
+import imageVideo from "../../webapp/assets/images/video-mockup.png";
+import imageAbout from "../../webapp/assets/images/bg-left-img-2.jpg";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg-2.jpg";
 // Components
 import HeaderOne from "../../webapp/common/Header/HeaderOne";
 import HeroMarketing from "../../webapp/common/HeroSlider/HeroMarketing";

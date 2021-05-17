@@ -16,6 +16,7 @@ const itemRegister = (register) =>{
 }
 
 const showDetail =(itemNo)=>{
+    console.log(`디테일보기 서비스 아이템 넘버 : ${itemNo}`)
     return axios.get(`http://localhost:8080/item/list/${itemNo}`)
 }
 

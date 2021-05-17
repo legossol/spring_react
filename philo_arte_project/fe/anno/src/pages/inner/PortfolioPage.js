@@ -1,10 +1,10 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/home-business-navbar.json";
-import dataPortfolio from "../../data/Portfolio/main-portfolio-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/home-business-navbar.json";
+import dataPortfolio from "../../webapp/data/Portfolio/main-portfolio-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgTitle from "../../assets/images/title-bg/title-bg-5.jpg";
+import imgTitle from "../../webapp/assets/images/title-bg/title-bg-5.jpg";
 // Components
 import HeaderSocial from "../../webapp/common/Header/HeaderSocial";
 import PageTitleOne from "../../webapp/common/PageTitle/PageTitleOne";

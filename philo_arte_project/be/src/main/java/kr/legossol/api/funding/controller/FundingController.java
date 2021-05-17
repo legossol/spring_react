@@ -1,11 +1,11 @@
-package kr.legossol.api.item.controller;
+package kr.legossol.api.funding.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
-import kr.legossol.api.item.domain.Item;
-import kr.legossol.api.item.service.ItemServiceImpl;
+import kr.legossol.api.funding.domain.Funding;
+import kr.legossol.api.funding.service.FundingServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -24,38 +24,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "item")
-@RequestMapping("/item")
+@Api(tags = "funding")
+@RequestMapping("/funding")
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
-public class ItemController {
-    private final ItemServiceImpl service;
+public class FundingController {
+    private final FundingServiceImpl service;
 
     @GetMapping("/list")
-    public ResponseEntity<List<Item>> list(){
+    public ResponseEntity<List<Funding>> list(){
         System.out.println("아이템리스트 진입");
         return ResponseEntity.ok(service.findAll());
     }
-    @GetMapping("/list/{itemNo}")
-    public ResponseEntity<Item> getOneItem(@PathVariable("itemNo") Long itemNo){
-        Optional<Item> it = service.findById(itemNo);
+    @GetMapping("/list/{fundingNo}")
+    public ResponseEntity<Funding> getOneFunding(@PathVariable("fundingNo") Long fundingId){
+        Optional<Funding> it = service.findById(fundingId);
         return ResponseEntity.ok(it.get());
     }
     @PostMapping("/register")
-    public ResponseEntity<String> save(@RequestBody Item item){
+    public ResponseEntity<String> save(@RequestBody Funding funding){
         System.out.println("아이템 등록진입");
-        service.save(item);
+        service.save(funding);
         return ResponseEntity.ok("등록을 성공했습니다.");
     }
-    @PutMapping("/{itemNo}")
-    public ResponseEntity<Item> updateItem(@PathVariable("itemNo") Long itemNo, @RequestBody Item item){
-    System.out.println("아이템수정 진입" + itemNo);
+    @PutMapping("/{fundingNo}")
+    public ResponseEntity<Funding> updateFunding(@PathVariable("fundingNo") Long fundingId, @RequestBody Funding funding){
+    System.out.println("아이템수정 진입" + fundingId);
     
-    service.updateItem(itemNo,item);
-    return ResponseEntity.ok(item);
+    service.updateFunding(fundingId,funding);
+    return ResponseEntity.ok(funding);
     }   
-    @DeleteMapping("/{itemNo}")
-    public ResponseEntity<String> deleteItem(@PathVariable("itemNo")Long itemNo){
-        service.deleteById(itemNo);
+    @DeleteMapping("/{fundingNo}")
+    public ResponseEntity<String> deleteFunding(@PathVariable("fundingNo")Long fundingId){
+        service.deleteById(fundingId);
         return ResponseEntity.ok("삭제 성공");
     }
    

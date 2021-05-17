@@ -31,9 +31,9 @@ public class CrawlerServiceImpl implements CrawlerService {
         // "div.item_mainnews>div.cont_thumb>strong.tit_thumb>a"
         for (int i = 0; i < elements.size(); i++) {
             Review review = new Review();
-            review.setTitle(elements.get(i).text());
-            review.setAddress(elements.get(i).attr("href"));
-            review.setCategory(crawler.getCategory());
+            // review.setTitle(elements.get(i).text());
+            // review.setAddress(elements.get(i).attr("href"));
+            // review.setCategory(crawler.getCategory());
         }
         // return repository.count() > 0L ? 1L : 0L;
         return null;

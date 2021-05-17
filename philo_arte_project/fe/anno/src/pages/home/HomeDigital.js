@@ -1,21 +1,21 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/parallax-digital-navbar-data.json";
-import dataServices from "../../data/Services/services-data.json";
-import dataSkills from "../../data/Skills/skills-data.json";
-import dataCounters from "../../data/Counters/counters-data.json";
-import dataPortfolio from "../../data/Portfolio/main-portfolio-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
-import dataBlog from "../../data/Blog/blog-data.json";
+import dataNavbar from "../../webapp/data/Navbar/parallax-digital-navbar-data.json";
+import dataServices from "../../webapp/data/Services/services-data.json";
+import dataSkills from "../../webapp/data/Skills/skills-data.json";
+import dataCounters from "../../webapp/data/Counters/counters-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/main-portfolio-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
+import dataBlog from "../../webapp/data/Blog/blog-data.json";
 // Images
-import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg-2.jpg";
 // Components
 import HeaderSocial from "../../webapp/common/Header/HeaderSocial";
 import HomeDigitalSlider from "../../webapp/item/component/showing/HomeDigitalSlider";
 import FooterOne from "../../webapp/common/Footer/FooterOne";
 import WhatWeOfferThree from "../../webapp/common/WhatWeOffer/WhatWeOfferThree";
-import PresentationOne from "../../components/Presentation/PresentationOne";
+import PresentationOne from "../../webapp/common/Presentation/PresentationOne";
 import AboutTwo from "../../webapp/common/About/AboutTwo";
 import CounterRowOne from "../../webapp/common/Counters/CounterRowOne";
 import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";

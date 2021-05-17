@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {ItemService} from '../index'
-import itemService from '../service/item.service'
 
 
 export const getItemList = createAsyncThunk(
@@ -14,16 +13,17 @@ export const saveItem = createAsyncThunk(
     "item/register",
     async (newItem) =>{
         const response = await ItemService.itemRegister(newItem)
-        alert("등록이 될까? 리듀서" + newItem)
         console.log(newItem)
         
         return response.data
     }
 )
 export const getItemDetail = createAsyncThunk(
-    "item/itemDetail",
+    "item/Detail",
     async(itemNo)=>{
         const response = await ItemService.showDetail(itemNo)
+        console.log("export const 의 itemNo"+ itemNo)
+        console.log("export const 의 response"+ response)
         return response.data 
     }
 )
@@ -38,7 +38,7 @@ export const updateItem = createAsyncThunk(
 export const deleteItem = createAsyncThunk(
     "item/deleteById",
     async(id)=>{
-        const ressponse = await itemService.deleteItem(id)
+        const ressponse = await ItemService.deleteItem(id)
         return ressponse.data
     }
 )
@@ -55,7 +55,9 @@ const itemSlice = createSlice({
             return [...payload]
         })
         .addCase(getItemDetail.fulfilled,(state,{payload})=>{
-            return state.map(((item)=>item.id ==payload.id))
+            console.log("디테일에드 케이스" + state +"payloda :"+[...payload])
+            return [...payload]
+            // state.map((item) => item.id !== payload.id)
         })
         .addCase(updateItem.fulfilled,(state,{payload})=>{
             return state.map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
@@ -67,9 +69,6 @@ const itemSlice = createSlice({
             alert(`delete : ${payload}`)
             return state.filter((item) => item.id !== payload.id)
         })
-        // .addCase(updateItem.fulfilled,(state,{payload})=>{
-        //     return [...payload]
-        // })
         .addMatcher(isRejectAction,() =>{})
         .addDefaultCase((state, payload)=>{})
     },

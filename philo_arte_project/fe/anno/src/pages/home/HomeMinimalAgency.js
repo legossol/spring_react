@@ -1,19 +1,19 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/minimal-agency-navbar-data.json";
-import dataSlider from "../../data/Slider/minimal-agency-slider.json";
-import dataServices from "../../data/Services/services-minimal-data.json";
-import dataCounters from "../../data/Counters/counters-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataPortfolio from "../../data/Portfolio/main-portfolio-data.json";
-import dataProcess from "../../data/Process/process-data.json";
-import dataPricings from "../../data/Pricings/pricings-data.json";
-import dataTeam from "../../data/Team/team-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/minimal-agency-navbar-data.json";
+import dataSlider from "../../webapp/data/Slider/minimal-agency-slider.json";
+import dataServices from "../../webapp/data/Services/services-minimal-data.json";
+import dataCounters from "../../webapp/data/Counters/counters-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/main-portfolio-data.json";
+import dataProcess from "../../webapp/data/Process/process-data.json";
+import dataPricings from "../../webapp/data/Pricings/pricings-data.json";
+import dataTeam from "../../webapp/data/Team/team-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgOffer from "../../assets/images/mockup-2.png";
-import imgParallax from "../../assets/images/background/parallax-bg.jpg";
-import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
+import imgOffer from "../../webapp/assets/images/mockup-2.png";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg.jpg";
+import imgWhatWeDo from "../../webapp/assets/images/bg-right-img.jpg";
 // Components
 import HeroMinimalAgency from "../../webapp/common/HeroSlider/HeroMinimalAgency";
 import HeaderOne from "../../webapp/common/Header/HeaderOne";

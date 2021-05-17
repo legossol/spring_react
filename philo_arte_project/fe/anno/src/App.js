@@ -38,15 +38,17 @@ import ItemRegister from "./webapp/item/component/ItemRegister"
 import ItemHome from "./webapp/item/component/ItemHome"
 
 // import {ItemList,ItemDetail,ItemRegister,ItemUpdate} "./webapp/item/index"
-
+          // <Route exact path={`/`} component={HomeVideoBg}/>
+          // <Route exact path="/item/list" component={ItemList}/>
+          // <Route exact path="/item/detail" component={ItemDetail}/>
+          // <Route exact path="/item/update" component={ItemUpdate}/>
+          // <Route exact path="/item/register" component={ItemRegister}/>
 function App() {
   return (
     <Router basename="/">
       <ScrollIntoView>
         <ScrollToTop>
           <Switch>
-          
-
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Demo} />
             <Route
               exact
@@ -60,7 +62,7 @@ function App() {
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}item/detail`}
+              path={`${process.env.PUBLIC_URL}/item/detail`}
               component={ItemDetail}
             />
             <Route

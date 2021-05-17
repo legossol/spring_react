@@ -1,8 +1,8 @@
 import React from "react";
 // Images
-import imgParallax from "../assets/images/background/parallax-bg-2.jpg";
-import dataDemo from "../data/Demo/demo-data.json";
-import imgHero from "../assets/images/slides/home-bg-17.jpg";
+import imgParallax from "../webapp/assets/images/background/parallax-bg-2.jpg";
+import dataDemo from "../webapp/data/Demo/demo-data.json";
+import imgHero from "../webapp/assets/images/slides/home-bg-17.jpg";
 import FooterTwo from "../webapp/common/Footer/FooterTwo";
 import ParallaxTwo from "../webapp/common/ParallaxSection/ParallaxTwo";
 
@@ -54,7 +54,7 @@ const Demo = () => (
               <div className="product">
                 <div className="product-wrap border-dark-15 border-radius-10 box-shadow">
                   <img
-                    src={require("../assets/images/" + item.image)}
+                    src={require("../webapp/assets/images/" + item.image)}
                     className="img-responsive"
                     alt="demo12"
                   />
@@ -102,7 +102,7 @@ const Demo = () => (
               <div className="product">
                 <div className="product-wrap border-black-15 border-radius-10 box-shadow">
                   <img
-                    src={require("../assets/images/" + item.image)}
+                    src={require("../webapp/assets/images/" + item.image)}
                     className="img-responsive"
                     alt="demo21"
                   />

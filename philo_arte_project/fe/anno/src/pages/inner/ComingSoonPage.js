@@ -1,5 +1,5 @@
 import React from "react";
-import imgBg from "../../assets/images/background/comingsoon-bg.jpg";
+import imgBg from "../../webapp/assets/images/background/comingsoon-bg.jpg";
 import LoadScript from "../../helpers/LoadScript";
 import Icofont from "react-icofont";
 

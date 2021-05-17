@@ -75,9 +75,9 @@ class ApiApplicationTests {
             BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath),"euc-kr"));
             for (int i = 0; i < replyList.size(); i++) {
                 Review review = new Review();
-                review.setTitle(replyList.get(i).getText());
-                review.setAddress(replyList.get(i).getAttribute("href"));
-                review.setCategory(crawler.getCategory());
+                // review.setTitle(replyList.get(i).getText());
+                // review.setAddress(replyList.get(i).getAttribute("href"));
+                // review.setCategory(crawler.getCategory());
                 System.out.println(review.toString());
                 list.add(review);
             }

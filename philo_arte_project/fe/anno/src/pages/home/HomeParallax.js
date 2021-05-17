@@ -1,22 +1,22 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/parallax-digital-navbar-data.json";
-import dataTabs from "../../data/Tabs/tabs-data.json";
-import dataRings from "../../data/Skills/skills-ring-data.json";
-import dataPortfolio from "../../data/Portfolio/main-portfolio-data.json";
-import dataSkills from "../../data/Skills/skills-data.json";
-import dataCounter from "../../data/Counters/counters-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
-import dataBlog from "../../data/Blog/blog-data.json";
+import dataNavbar from "../../webapp/data/Navbar/parallax-digital-navbar-data.json";
+import dataTabs from "../../webapp/data/Tabs/tabs-data.json";
+import dataRings from "../../webapp/data/Skills/skills-ring-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/main-portfolio-data.json";
+import dataSkills from "../../webapp/data/Skills/skills-data.json";
+import dataCounter from "../../webapp/data/Counters/counters-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
+import dataBlog from "../../webapp/data/Blog/blog-data.json";
 // Images
-import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg-2.jpg";
 // Components
 import HeaderSocial from "../../webapp/common/Header/HeaderSocial";
 import HeroParallax from "../../webapp/common/HeroSlider/HeroParallax";
 import WhatWeOfferNine from "../../webapp/common/WhatWeOffer/WhatWeOfferNine";
 import TabsOne from "../../webapp/common/Tabs/TabsOne";
-import PresentationTwo from "../../components/Presentation/PresentationTwo";
+import PresentationTwo from "../../webapp/common/Presentation/PresentationTwo";
 import SkillBarRingSection from "../../webapp/common/Skillbar/SkillBarRingSection";
 import PortfolioBoxedSpaceFour from "../../webapp/common/Portfolio/PortfolioBoxedSpaceFour";
 import AboutFive from "../../webapp/common/About/AboutFive";

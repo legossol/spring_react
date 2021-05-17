@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,6 +20,8 @@ import javax.persistence.TemporalType;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import kr.legossol.api.art.domain.Art;
+import kr.legossol.api.artist.domain.Artist;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,43 +37,21 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewId;
-    @Column(name = "parent_item") 
-    private int parentItem;
-    
-    @Column(name = "parent_review")
-    private int parentReview;
-
-    @Column(name = "writer")    
-    private String writer;
     @Column(name = "content")
     private String content;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "reg_date")
-    private Date regDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "edit_date")
-    private Date editDate;
+    @Column(name = "comment")
+    private String comment;
 
-    @Column(name = "like_cnt")
-    private int likeCnt;
-    @Column(name = "dislike_cnt")
-    private int dislikeCnt;
-    @Column(name = "like_check")
-    private boolean likeCheck;
-    //foreign key 유저 번호, 보드 번호
+    // @ManyToOne
+    // @JoinColumn(name = "funding_id")
+    // private Funding funding;
 
-	public void setTitle(String text) {
-	}
-	public void setAddress(String attr) {
-	}
-	public void setCategory(String category) {
-	}
-    
-    
-    
-    // private int depth;
-    // private int bundleId;
-    // private int bundleOrder;
-    // private 
+    @ManyToOne
+    @JoinColumn(name = "artist_id")
+    private Artist artist;
+
+    @ManyToOne
+    @JoinColumn(name = "art_id")
+    private Art art;
     
 }

@@ -25,7 +25,7 @@ public class CrawlMain {
     public static void main(String[] args) throws IOException {
 //        String url = "http://www.yes24.com/24/Category/Display/001001003022";
 //        String cssQuery = ".clearfix";
-        String filePath = "/Users/haesoljang/filestore/item2.csv";
+        String filePath = "/Users/haesoljang/filestore/dummyFundingItem.csv";
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/haesoljang/filestore/chromedriver");
         } catch (Exception e) {
@@ -35,7 +35,8 @@ public class CrawlMain {
         options.addArguments("headless");
         WebDriver driver = new ChromeDriver(options);
         // String url = "https://www.wadiz.kr/web/campaign/detail/110574";
-        String url = "https://m.pann.nate.com/talk/reply/view?pann_id=359703838&currMenu=today&stndDt=20210514&vPage=1&gb=d&order=N&rankingType=total";
+        // String url = "https://www.ycrowdy.com/r/powerman";
+        String url = "https://www.ycrowdy.com/r/deukki";
         driver.get(url);
         try {
             Thread.sleep(1000);
@@ -49,34 +50,39 @@ public class CrawlMain {
         // Service service = new Service();
         List<cralSomething> list = new ArrayList<>();
         // List<WebElement> el3 = driver.findElements(By.cssSelector(".page-container"));
-        // List<WebElement> t = driver.findElements(By.cssSelector(".campaign-summary"));
-        List<WebElement> c = driver.findElements(By.cssSelector("dl .userText"));
-        // List<WebElement> m = driver.findElements(By.cssSelector(".total-amount"));
-        // List<WebElement> w = driver.findElements(By.cssSelector("dl dt span"));
-        // List<WebElement> v = driver.findElements(By.cssSelector(".total-supporter"));
+        List<WebElement> t = driver.findElements(By.cssSelector("#reward-detail > div > div:nth-child(1) > div > div > div.col-sm-8 > div"));
+        
+        // List<WebElement> c = driver.findElements(By.cssSelector("#reward-detail > div > div.mt40.xs-mt20.mb100 > div > div > div.mce-content-body > div > p:nth-child(22)"));
+        List<WebElement> c = driver.findElements(By.cssSelector("#reward-detail > div > div.mt40.xs-mt20.mb100 > div > div > div.mce-content-body > div > p:nth-child(3)"));
+        
+        List<WebElement> g = driver.findElements(By.cssSelector("#reward-detail > div > div:nth-child(1) > div > div > div:nth-child(2) > div.col-sm-4.mb30.xs-mt25.xs-mb20.pl45.pr15.xs-pl15.xs-pr15 > div.reward-info-box > div.reward-info-amount"));
+        
+        
+        List<WebElement> v = driver.findElements(By.cssSelector("#list_category > div > div > a:nth-child(3) > span > em"));
+        List<WebElement> h = driver.findElements(By.cssSelector("#list_category > div > div > a:nth-child(3) > span > em"));
         // List<WebElement> like = driver.findElements(By.cssSelector("dd div button span"));
         // List<WebElement> dislike = driver.findElements(By.cssSelector("dd div button span"));
         try{
             // BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath),"UTF-8"));
-            DataOutputStream fw = new DataOutputStream(new FileOutputStream(filePath, true));
-            for (int i = 0; i < c.size(); i++) {
+            DataOutputStream fw = new DataOutputStream(new FileOutputStream(filePath,true));
+            for (int i = 0; i < t.size(); i++) {
                 cralSomething thing = new cralSomething();
-                // thing.setTitle(t.get(i).getText());
-                // thing.setGoalPrice(m.get(i).getText());
-                
-                // thing.setContent(w.get(i).getText());
+                thing.setTitle(t.get(i).getText());
                 thing.setContent(c.get(i).getText());
-                // thing.setLikeCnt(w.get(i).getText());
-                // thing.setDislikeCnt(dislike.get(i).getText());
-                // thing.setViewCnt(v.get(i).getText());
+                thing.setGoalPrice(g.get(i).getText());
+                thing.setViewCnt(v.get(i).getText());
+                thing.setHashtag(h.get(i).getText());
 
-                // System.out.println(thing.getTitle());
+                // thing.setDislikeCnt(dislike.get(i).getText());
+                
+
+                System.out.println(thing.getTitle());
                 // System.out.println(thing.getGoalPrice());
                 // System.out.println(thing.getWriter());
                 System.out.println(thing.getContent());
-                // System.out.println(thing.getWriter());
-                // System.out.println(thing.getWriter());
-                // System.out.println(thing.getViewCnt());
+                System.out.println(thing.getGoalPrice());
+                System.out.println(thing.getHashtag());
+                System.out.println(thing.getViewCnt());
                 list.add(thing);
             }
             if (list.isEmpty()) {
@@ -117,70 +123,47 @@ class Crawlers {
     }
     public static class cralSomething{
         
-        private Long reviewId;
-        private String parentItem;
-        private String parentReview;
-        private String writer;
-        private String content;
-        private Date regDate;
-        private Date editDate;
-        private int likeCnt;
-        public int getLikeCnt() {
-            return likeCnt;
-        }
-
-
-        public void setLikeCnt(int likeCnt) {
-            this.likeCnt = likeCnt;
-        }
-
-
-        public int getDislikeCnt() {
-            return dislikeCnt;
-        }
-
-
-        public void setDislikeCnt(int dislikeCnt) {
-            this.dislikeCnt = dislikeCnt;
-        }
-
-
-        private int dislikeCnt;
-        private int likeCheck;
         
-        public String getWriter() {
-            return writer;
+        public String getTitle() {
+            return title;
         }
-
-
-        public void setWriter(String writer) {
-            this.writer = writer;
+        public void setTitle(String title) {
+            this.title = title;
         }
-
-
         public String getContent() {
             return content;
         }
-
-
         public void setContent(String content) {
             this.content = content;
         }
-
-
-        // @Override
-        // public String toString() {
-        //     return "cralSomething [content=" + content + ", dislikeCnt=" + dislikeCnt + ", editDate=" + editDate
-        //             + ", likeCheck=" + likeCheck + ", likeCnt=" + likeCnt + ", parentItem=" + parentItem
-        //             + ", parentReview=" + parentReview + ", regDate=" + regDate + ", reviewId=" + reviewId + ", writer="
-        //             + writer + "]";
-        // }
-
-        @Override
-        public String toString(){
-            return " \n [댓글 번호 : "+ reviewId + " , 댓글 부모 글 번호: "+parentItem + ", 댓글 부모 번호 : "
-            +parentReview+", 댓글쓴이 : "+writer+", 댓글 내용 : "+content+", 등록일 : "+ regDate +", 수정일 : "
-            +editDate + ",좋아요 수 :" + likeCnt +", 싫어요 수 :"+dislikeCnt+", 좋아요 체크 :" + likeCheck+"\n";
+        public String getHashtag() {
+            return hashtag;
         }
+        public void setHashtag(String hashtag) {
+            this.hashtag = hashtag;
+        }
+        private String title;     
+        @Override
+        public String toString() {
+            return "\n [content=" + content + ", goalPrice=" + goalPrice + ", hashtag=" + hashtag
+                    + ", title=" + title + ", viewCnt=" + viewCnt + "] \n";
+        }
+        private String content;
+        private String goalPrice;
+        public String getGoalPrice() {
+            return goalPrice;
+        }
+        public String getViewCnt() {
+            return viewCnt;
+        }
+        public void setGoalPrice(String goalPrice) {
+            this.goalPrice = goalPrice;
+        }
+        public void setViewCnt(String viewCnt) {
+            this.viewCnt = viewCnt;
+        }
+        private String viewCnt;
+        private String hashtag;
+       
 }
 }

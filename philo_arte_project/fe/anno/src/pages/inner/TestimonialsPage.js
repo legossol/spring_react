@@ -1,9 +1,9 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/home-business-navbar.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
+import dataNavbar from "../../webapp/data/Navbar/home-business-navbar.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
 // Images
-import imgTitle from "../../assets/images/title-bg/title-bg-1.jpg";
+import imgTitle from "../../webapp/assets/images/title-bg/title-bg-1.jpg";
 // Components
 import HeaderOne from "../../webapp/common/Header/HeaderOne";
 import PageTitleTwo from "../../webapp/common/PageTitle/PageTitleTwo";

@@ -1,17 +1,17 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/main-navbar-data.json";
-import dataCounters from "../../data/Counters/counters-data.json";
-import dataPortfolio from "../../data/Portfolio/main-portfolio-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataTeam from "../../data/Team/team-data.json";
-import dataPricings from "../../data/Pricings/pricings-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/main-navbar-data.json";
+import dataCounters from "../../webapp/data/Counters/counters-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/main-portfolio-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataTeam from "../../webapp/data/Team/team-data.json";
+import dataPricings from "../../webapp/data/Pricings/pricings-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgWhatOffer from "../../assets/images/iMac-screen.png";
-import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
-import imgAbout from "../../assets/images/bg-left-img.jpg";
-import imgParallax from "../../assets/images/background/parallax-bg.jpg";
+import imgWhatOffer from "../../webapp/assets/images/iMac-screen.png";
+import imgWhatWeDo from "../../webapp/assets/images/bg-right-img.jpg";
+import imgAbout from "../../webapp/assets/images/bg-left-img.jpg";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg.jpg";
 // Components
 import FooterOne from "../../webapp/common/Footer/FooterOne";
 import HeaderOne from "../../webapp/common/Header/HeaderOne";

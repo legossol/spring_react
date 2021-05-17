@@ -1,16 +1,16 @@
 import React from "react";
 // DATA Files
-import dataNavbar from "../../data/Navbar/creative-agency-navbar.json";
-import dataTabs from "../../data/Tabs/tabs-data.json";
-import dataPortfolio from "../../data/Portfolio/masonry-portfolio-data.json";
-import dataProcess from "../../data/Process/process-data.json";
-import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
-import dataTeam from "../../data/Team/team-data.json";
-import dataPricings from "../../data/Pricings/pricings-data.json";
-import dataClients from "../../data/Clients/clients-data.json";
+import dataNavbar from "../../webapp/data/Navbar/creative-agency-navbar.json";
+import dataTabs from "../../webapp/data/Tabs/tabs-data.json";
+import dataPortfolio from "../../webapp/data/Portfolio/masonry-portfolio-data.json";
+import dataProcess from "../../webapp/data/Process/process-data.json";
+import dataTestimonials from "../../webapp/data/Testimonials/testimonials-data.json";
+import dataTeam from "../../webapp/data/Team/team-data.json";
+import dataPricings from "../../webapp/data/Pricings/pricings-data.json";
+import dataClients from "../../webapp/data/Clients/clients-data.json";
 // Images
-import imgOffer from "../../assets/images/video-mockup.png";
-import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
+import imgOffer from "../../webapp/assets/images/video-mockup.png";
+import imgParallax from "../../webapp/assets/images/background/parallax-bg-2.jpg";
 // Components
 import HeaderTwo from "../../webapp/common/Header/HeaderTwo";
 import FooterOne from "../../webapp/common/Footer/FooterOne";
