@@ -18,6 +18,7 @@ const itemRegister = (register) =>{
 const showDetail =(itemNo)=>{
     return axios.get(`http://localhost:8080/item/list/${itemNo}`)
 }
+
 const itemUpdate = id =>{
     // e.preventDefault()
     const  up = window.confirm("정보를 수정하시겠습니까?")

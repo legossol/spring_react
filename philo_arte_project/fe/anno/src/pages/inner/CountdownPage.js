@@ -4,13 +4,13 @@ import dataNavbar from "../../data/Navbar/home-business-navbar.json";
 // Images
 import imgTitle from "../../assets/images/title-bg/title-bg-3.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import PageTitleOne from "../../components/PageTitle/PageTitleOne";
-import CountdownOne from "../../components/Countdown/CountdownOne";
-import CountdownTwo from "../../components/Countdown/CountdownTwo";
-import CountdownThree from "../../components/Countdown/CountdownThree";
-import CountdownFour from "../../components/Countdown/CountdownFour";
-import FooterTwo from "../../components/Footer/FooterTwo";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import PageTitleOne from "../../webapp/common/PageTitle/PageTitleOne";
+import CountdownOne from "../../webapp/common/Countdown/CountdownOne";
+import CountdownTwo from "../../webapp/common/Countdown/CountdownTwo";
+import CountdownThree from "../../webapp/common/Countdown/CountdownThree";
+import CountdownFour from "../../webapp/common/Countdown/CountdownFour";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
 
 const CountdownPage = () => (
   <>

@@ -1,6 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
-import LoadScript from "../../helpers/LoadScript";
+import LoadScript from "../../../helpers/LoadScript";
 import PortfolioTwoItem from "./PortfolioTwoItem";
 
 const PortfolioTwo = ({ title, data }) => {

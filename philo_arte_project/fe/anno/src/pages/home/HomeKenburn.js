@@ -12,20 +12,20 @@ import dataClients from "../../data/Clients/clients-data.json";
 import imgAbout from "../../assets/images/bg-left-img.jpg";
 import imgParallax from "../../assets/images/background/parallax-bg.jpg";
 // Components
-import HeaderThree from "../../components/Header/HeaderThree";
-import WhatWeOfferTwelve from "../../components/WhatWeOffer/WhatWeOfferTwelve";
-import AboutOne from "../../components/About/AboutOne";
-import CountersOne from "../../components/Counters/CountersOne";
-import PortfolioCarousel from "../../components/Portfolio/PortfolioCarousel";
-import TeamOne from "../../components/Team/TeamOne";
-import TestimonialsFour from "../../components/Testimonials/TestimonialsFour";
-import ParallaxOne from "../../components/ParallaxSection/ParallaxOne";
-import PricingsOne from "../../components/Pricings/PricingsOne";
-import ContactOne from "../../components/Contact/ContactOne";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import FooterOne from "../../components/Footer/FooterOne";
-import HeroKenburn from "../../components/HeroSlider/HeroKenburn";
-import Loader from "../../components/Loader/Loader";
+import HeaderThree from "../../webapp/common/Header/HeaderThree";
+import WhatWeOfferTwelve from "../../webapp/common/WhatWeOffer/WhatWeOfferTwelve";
+import AboutOne from "../../webapp/common/About/AboutOne";
+import CountersOne from "../../webapp/common/Counters/CountersOne";
+import PortfolioCarousel from "../../webapp/common/Portfolio/PortfolioCarousel";
+import TeamOne from "../../webapp/common/Team/TeamOne";
+import TestimonialsFour from "../../webapp/common/Testimonials/TestimonialsFour";
+import ParallaxOne from "../../webapp/common/ParallaxSection/ParallaxOne";
+import PricingsOne from "../../webapp/common/Pricings/PricingsOne";
+import ContactOne from "../../webapp/common/Contact/ContactOne";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import HeroKenburn from "../../webapp/common/HeroSlider/HeroKenburn";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeKenburn = () => (
   <Loader>

@@ -5,10 +5,10 @@ import dataBlog from "../../data/Blog/blog-data.json";
 // Images
 import imgTitle from "../../assets/images/title-bg/title-bg-2.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import PageTitleOne from "../../components/PageTitle/PageTitleOne";
-import BlogContent from "../../components/Blog/BlogContent";
-import FooterTwo from "../../components/Footer/FooterTwo";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import PageTitleOne from "../../webapp/common/PageTitle/PageTitleOne";
+import BlogContent from "../../webapp/common/Blog/BlogContent";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
 
 const BlogDetailsPage = () => (
   <>

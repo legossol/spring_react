@@ -12,20 +12,20 @@ import dataClients from "../../data/Clients/clients-data.json";
 import imgOffer from "../../assets/images/video-mockup.png";
 import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
 // Components
-import HeaderTwo from "../../components/Header/HeaderTwo";
-import FooterOne from "../../components/Footer/FooterOne";
-import HeroCreativeAgency from "../../components/HeroSlider/HeroCreativeAgency";
-import WhatWeOfferTwo from "../../components/WhatWeOffer/WhatWeOfferTwo";
-import TabsOne from "../../components/Tabs/TabsOne";
-import PortfolioTwo from "../../components/Portfolio/PortfolioTwo";
-import ProcessOne from "../../components/Process/ProcessOne";
-import TestimonialsTwo from "../../components/Testimonials/TestimonialsTwo";
-import TeamTwo from "../../components/Team/TeamTwo";
-import ParallaxTwo from "../../components/ParallaxSection/ParallaxTwo";
-import PricingsOne from "../../components/Pricings/PricingsOne";
-import ContactTwo from "../../components/Contact/ContactTwo";
-import ClientsGrid from "../../components/Carousel/ClientsGrid";
-import Loader from "../../components/Loader/Loader";
+import HeaderTwo from "../../webapp/common/Header/HeaderTwo";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import HeroCreativeAgency from "../../webapp/common/HeroSlider/HeroCreativeAgency";
+import WhatWeOfferTwo from "../../webapp/common/WhatWeOffer/WhatWeOfferTwo";
+import TabsOne from "../../webapp/common/Tabs/TabsOne";
+import PortfolioTwo from "../../webapp/common/Portfolio/PortfolioTwo";
+import ProcessOne from "../../webapp/common/Process/ProcessOne";
+import TestimonialsTwo from "../../webapp/common/Testimonials/TestimonialsTwo";
+import TeamTwo from "../../webapp/common/Team/TeamTwo";
+import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";
+import PricingsOne from "../../webapp/common/Pricings/PricingsOne";
+import ContactTwo from "../../webapp/common/Contact/ContactTwo";
+import ClientsGrid from "../../webapp/common/Carousel/ClientsGrid";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeCreativeAgency = () => (
   <Loader>

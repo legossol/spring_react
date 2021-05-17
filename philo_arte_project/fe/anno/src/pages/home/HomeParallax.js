@@ -12,23 +12,23 @@ import dataBlog from "../../data/Blog/blog-data.json";
 // Images
 import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
 // Components
-import HeaderSocial from "../../components/Header/HeaderSocial";
-import HeroParallax from "../../components/HeroSlider/HeroParallax";
-import WhatWeOfferNine from "../../components/WhatWeOffer/WhatWeOfferNine";
-import TabsOne from "../../components/Tabs/TabsOne";
+import HeaderSocial from "../../webapp/common/Header/HeaderSocial";
+import HeroParallax from "../../webapp/common/HeroSlider/HeroParallax";
+import WhatWeOfferNine from "../../webapp/common/WhatWeOffer/WhatWeOfferNine";
+import TabsOne from "../../webapp/common/Tabs/TabsOne";
 import PresentationTwo from "../../components/Presentation/PresentationTwo";
-import SkillBarRingSection from "../../components/Skillbar/SkillBarRingSection";
-import PortfolioBoxedSpaceFour from "../../components/Portfolio/PortfolioBoxedSpaceFour";
-import AboutFive from "../../components/About/AboutFive";
-import CounterRowOne from "../../components/Counters/CounterRowOne";
-import ParallaxTwo from "../../components/ParallaxSection/ParallaxTwo";
-import TestimonialsThree from "../../components/Testimonials/TestimonialsThree";
-import ClientsGrid from "../../components/Carousel/ClientsGrid";
-import BlogSection from "../../components/Blog/BlogSection";
-import ContactSeven from "../../components/Contact/ContactSeven";
-import MapSection from "../../components/Map/MapSection";
-import FooterThree from "../../components/Footer/FooterThree";
-import Loader from "../../components/Loader/Loader";
+import SkillBarRingSection from "../../webapp/common/Skillbar/SkillBarRingSection";
+import PortfolioBoxedSpaceFour from "../../webapp/common/Portfolio/PortfolioBoxedSpaceFour";
+import AboutFive from "../../webapp/common/About/AboutFive";
+import CounterRowOne from "../../webapp/common/Counters/CounterRowOne";
+import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";
+import TestimonialsThree from "../../webapp/common/Testimonials/TestimonialsThree";
+import ClientsGrid from "../../webapp/common/Carousel/ClientsGrid";
+import BlogSection from "../../webapp/common/Blog/BlogSection";
+import ContactSeven from "../../webapp/common/Contact/ContactSeven";
+import MapSection from "../../webapp/common/Map/MapSection";
+import FooterThree from "../../webapp/common/Footer/FooterThree";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeParallax = () => (
   <Loader>

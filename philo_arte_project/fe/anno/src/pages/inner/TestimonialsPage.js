@@ -5,11 +5,11 @@ import dataTestimonials from "../../data/Testimonials/testimonials-data.json";
 // Images
 import imgTitle from "../../assets/images/title-bg/title-bg-1.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import PageTitleTwo from "../../components/PageTitle/PageTitleTwo";
-import TestimonialsTwo from "../../components/Testimonials/TestimonialsTwo";
-import TestimonialsOne from "../../components/Testimonials/TestimonialsOne";
-import FooterTwo from "../../components/Footer/FooterTwo";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import PageTitleTwo from "../../webapp/common/PageTitle/PageTitleTwo";
+import TestimonialsTwo from "../../webapp/common/Testimonials/TestimonialsTwo";
+import TestimonialsOne from "../../webapp/common/Testimonials/TestimonialsOne";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
 
 const TestimonialsPage = () => (
   <>

@@ -18,21 +18,21 @@ import imageVideo from "../../assets/images/video-mockup.png";
 import imageAbout from "../../assets/images/bg-left-img-2.jpg";
 import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import HeroMarketing from "../../components/HeroSlider/HeroMarketing";
-import TabsTwo from "../../components/Tabs/TabsTwo";
-import WhatWeOfferEight from "../../components/WhatWeOffer/WhatWeOfferEight";
-import ProcessSix from "../../components/Process/ProcessSix";
-import AboutFour from "../../components/About/AboutFour";
-import TestimonialsFive from "../../components/Testimonials/TestimonialsFive";
-import ClientsGrid from "../../components/Carousel/ClientsGrid";
-import TeamSix from "../../components/Team/TeamSix";
-import ParallaxTwo from "../../components/ParallaxSection/ParallaxTwo";
-import BlogSectionTwo from "../../components/Blog/BlogSectionTwo";
-import ContactSix from "../../components/Contact/ContactSix";
-import FooterOne from "../../components/Footer/FooterOne";
-import PortfolioWideMasonry from "../../components/Portfolio/PortfolioWideMasonry";
-import Loader from "../../components/Loader/Loader";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import HeroMarketing from "../../webapp/common/HeroSlider/HeroMarketing";
+import TabsTwo from "../../webapp/common/Tabs/TabsTwo";
+import WhatWeOfferEight from "../../webapp/common/WhatWeOffer/WhatWeOfferEight";
+import ProcessSix from "../../webapp/common/Process/ProcessSix";
+import AboutFour from "../../webapp/common/About/AboutFour";
+import TestimonialsFive from "../../webapp/common/Testimonials/TestimonialsFive";
+import ClientsGrid from "../../webapp/common/Carousel/ClientsGrid";
+import TeamSix from "../../webapp/common/Team/TeamSix";
+import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";
+import BlogSectionTwo from "../../webapp/common/Blog/BlogSectionTwo";
+import ContactSix from "../../webapp/common/Contact/ContactSix";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import PortfolioWideMasonry from "../../webapp/common/Portfolio/PortfolioWideMasonry";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeMarketing = () => (
   <Loader>

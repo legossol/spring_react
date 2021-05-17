@@ -13,20 +13,20 @@ import imgWhatWeOffer from "../../assets/images/agency-img.jpg";
 import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
 import imgParallax from "../../assets/images/background/parallax-bg.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import HeroHomeVideo from "../../components/HeroSlider/HeroHomeVideo";
-import WhatWeOfferEleven from "../../components/WhatWeOffer/WhatWeOfferEleven";
-import WhatWeDoOne from "../../components/WhatWeDo/WhatWeDoOne";
-import PortfolioOne from "../../components/Portfolio/PortfolioOne";
-import TestimonialsOne from "../../components/Testimonials/TestimonialsOne";
-import TeamOne from "../../components/Team/TeamOne";
-import ParallaxOne from "../../components/ParallaxSection/ParallaxOne";
-import PricingsOne from "../../components/Pricings/PricingsOne";
-import ContactOne from "../../components/Contact/ContactOne";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import FooterOne from "../../components/Footer/FooterOne";
-import CountersOne from "../../components/Counters/CountersOne";
-import Loader from "../../components/Loader/Loader";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import HeroHomeVideo from "../../webapp/common/HeroSlider/HeroHomeVideo";
+import WhatWeOfferEleven from "../../webapp/common/WhatWeOffer/WhatWeOfferEleven";
+import WhatWeDoOne from "../../webapp/common/WhatWeDo/WhatWeDoOne";
+import PortfolioOne from "../../webapp/common/Portfolio/PortfolioOne";
+import TestimonialsOne from "../../webapp/common/Testimonials/TestimonialsOne";
+import TeamOne from "../../webapp/common/Team/TeamOne";
+import ParallaxOne from "../../webapp/common/ParallaxSection/ParallaxOne";
+import PricingsOne from "../../webapp/common/Pricings/PricingsOne";
+import ContactOne from "../../webapp/common/Contact/ContactOne";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import CountersOne from "../../webapp/common/Counters/CountersOne";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeVideoBg = () => (
   <Loader>

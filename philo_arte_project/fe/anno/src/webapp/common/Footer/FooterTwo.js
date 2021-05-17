@@ -1,5 +1,5 @@
 import React from "react";
-import LoadScript from "../../helpers/LoadScript";
+import LoadScript from "../../../helpers/LoadScript";
 import logo from "../../assets/images/logo-footer.png";
 import Icofont from "react-icofont";
 

@@ -5,10 +5,10 @@ import dataPricings from "../../data/Pricings/pricings-data.json";
 // Images
 import imgTitle from "../../assets/images/title-bg/title-bg-4.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import PageTitleTwo from "../../components/PageTitle/PageTitleTwo";
-import PricingsRowOne from "../../components/Pricings/PricingsRowOne";
-import FooterTwo from "../../components/Footer/FooterTwo";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import PageTitleTwo from "../../webapp/common/PageTitle/PageTitleTwo";
+import PricingsRowOne from "../../webapp/common/Pricings/PricingsRowOne";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
 
 const PricingsPage = () => (
   <>

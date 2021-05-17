@@ -6,11 +6,11 @@ import dataClients from "../../data/Clients/clients-data.json";
 // Images
 import imgTitle from "../../assets/images/title-bg/title-bg-5.jpg";
 // Components
-import HeaderSocial from "../../components/Header/HeaderSocial";
-import PageTitleOne from "../../components/PageTitle/PageTitleOne";
-import PortfolioOne from "../../components/Portfolio/PortfolioOne";
-import FooterTwo from "../../components/Footer/FooterTwo";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
+import HeaderSocial from "../../webapp/common/Header/HeaderSocial";
+import PageTitleOne from "../../webapp/common/PageTitle/PageTitleOne";
+import PortfolioOne from "../../webapp/common/Portfolio/PortfolioOne";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
 
 const PortfolioPage = () => (
   <>

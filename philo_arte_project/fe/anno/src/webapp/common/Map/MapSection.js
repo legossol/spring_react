@@ -1,6 +1,6 @@
 import React from "react";
 import dataStyle from "../../data/Maps/style-3-map.json";
-import Map from "../Map/Map";
+import Map from "./Map";
 
 const MapSection = () => (
   <section className="transition-none pt-0 pb-0">

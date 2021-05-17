@@ -12,20 +12,20 @@ import imgOffer from "../../assets/images/mockup.png";
 import imgAbout from "../../assets/images/bg-left-img-2.jpg";
 import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
 // Components
-import HeaderTwo from "../../components/Header/HeaderTwo";
-import HeroStartup from "../../components/HeroSlider/HeroStartup";
-import FooterOne from "../../components/Footer/FooterOne";
-import WhatWeOfferSeven from "../../components/WhatWeOffer/WhatWeOfferSeven";
-import AboutThree from "../../components/About/AboutThree";
-import ProcessFive from "../../components/Process/ProcessFive";
-import PortfolioCarousel from "../../components/Portfolio/PortfolioCarousel";
-import TeamFive from "../../components/Team/TeamFive";
-import TestimonialsOne from "../../components/Testimonials/TestimonialsOne";
-import ParallaxTwo from "../../components/ParallaxSection/ParallaxTwo";
-import PricingsOne from "../../components/Pricings/PricingsOne";
-import ContactFive from "../../components/Contact/ContactFive";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import Loader from "../../components/Loader/Loader";
+import HeaderTwo from "../../webapp/common/Header/HeaderTwo";
+import HeroStartup from "../../webapp/common/HeroSlider/HeroStartup";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import WhatWeOfferSeven from "../../webapp/common/WhatWeOffer/WhatWeOfferSeven";
+import AboutThree from "../../webapp/common/About/AboutThree";
+import ProcessFive from "../../webapp/common/Process/ProcessFive";
+import PortfolioCarousel from "../../webapp/common/Portfolio/PortfolioCarousel";
+import TeamFive from "../../webapp/common/Team/TeamFive";
+import TestimonialsOne from "../../webapp/common/Testimonials/TestimonialsOne";
+import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";
+import PricingsOne from "../../webapp/common/Pricings/PricingsOne";
+import ContactFive from "../../webapp/common/Contact/ContactFive";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeStartup = () => (
   <Loader>

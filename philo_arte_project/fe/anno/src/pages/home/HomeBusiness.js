@@ -14,21 +14,21 @@ import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
 import imgAbout from "../../assets/images/bg-left-img-2.jpg";
 import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import FooterTwo from "../../components/Footer/FooterTwo";
-import HeroBusinessSlider from "../../components/HeroSlider/HeroBusinessSlider";
-import WhatWeOfferFive from "../../components/WhatWeOffer/WhatWeOfferFive";
-import WhatWeDoOne from "../../components/WhatWeDo/WhatWeDoOne";
-import AboutThree from "../../components/About/AboutThree";
-import ProcessThree from "../../components/Process/ProcessThree";
-import TestimonialsOne from "../../components/Testimonials/TestimonialsOne";
-import ParallaxTwo from "../../components/ParallaxSection/ParallaxTwo";
-import PortfolioOne from "../../components/Portfolio/PortfolioOne";
-import BlogCarousel from "../../components/Blog/BlogCarousel";
-import TeamThree from "../../components/Team/TeamThree";
-import ContactOne from "../../components/Contact/ContactOne";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import Loader from "../../components/Loader/Loader";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
+import HeroBusinessSlider from "../../webapp/common/HeroSlider/HeroBusinessSlider";
+import WhatWeOfferFive from "../../webapp/common/WhatWeOffer/WhatWeOfferFive";
+import WhatWeDoOne from "../../webapp/common/WhatWeDo/WhatWeDoOne";
+import AboutThree from "../../webapp/common/About/AboutThree";
+import ProcessThree from "../../webapp/common/Process/ProcessThree";
+import TestimonialsOne from "../../webapp/common/Testimonials/TestimonialsOne";
+import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";
+import PortfolioOne from "../../webapp/common/Portfolio/PortfolioOne";
+import BlogCarousel from "../../webapp/common/Blog/BlogCarousel";
+import TeamThree from "../../webapp/common/Team/TeamThree";
+import ContactOne from "../../webapp/common/Contact/ContactOne";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeBusiness = () => (
   <Loader>

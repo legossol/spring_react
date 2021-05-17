@@ -15,21 +15,21 @@ import imgOffer from "../../assets/images/mockup-2.png";
 import imgParallax from "../../assets/images/background/parallax-bg.jpg";
 import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
 // Components
-import HeroMinimalAgency from "../../components/HeroSlider/HeroMinimalAgency";
-import HeaderOne from "../../components/Header/HeaderOne";
-import WhatWeOfferFour from "../../components/WhatWeOffer/WhatWeOfferFour";
-import CountersOne from "../../components/Counters/CountersOne";
-import TestimonialsFour from "../../components/Testimonials/TestimonialsFour";
-import ParallaxOne from "../../components/ParallaxSection/ParallaxOne";
-import PortfolioOne from "../../components/Portfolio/PortfolioOne";
-import ProcessTwo from "../../components/Process/ProcessTwo";
-import WhatWeDoOne from "../../components/WhatWeDo/WhatWeDoOne";
-import PricingsOne from "../../components/Pricings/PricingsOne";
-import TeamOne from "../../components/Team/TeamOne";
-import ContactOne from "../../components/Contact/ContactOne";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import FooterTwo from "../../components/Footer/FooterTwo";
-import Loader from "../../components/Loader/Loader";
+import HeroMinimalAgency from "../../webapp/common/HeroSlider/HeroMinimalAgency";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import WhatWeOfferFour from "../../webapp/common/WhatWeOffer/WhatWeOfferFour";
+import CountersOne from "../../webapp/common/Counters/CountersOne";
+import TestimonialsFour from "../../webapp/common/Testimonials/TestimonialsFour";
+import ParallaxOne from "../../webapp/common/ParallaxSection/ParallaxOne";
+import PortfolioOne from "../../webapp/common/Portfolio/PortfolioOne";
+import ProcessTwo from "../../webapp/common/Process/ProcessTwo";
+import WhatWeDoOne from "../../webapp/common/WhatWeDo/WhatWeDoOne";
+import PricingsOne from "../../webapp/common/Pricings/PricingsOne";
+import TeamOne from "../../webapp/common/Team/TeamOne";
+import ContactOne from "../../webapp/common/Contact/ContactOne";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeMinimalAgency = () => (
   <Loader>

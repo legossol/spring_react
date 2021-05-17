@@ -12,19 +12,19 @@ import dataClients from "../../data/Clients/clients-data.json";
 import imgFooter from "../../assets/images/background/stars-bg.png";
 import imgAbout from "../../assets/images/bg-left-img-2.jpg";
 // Components
-import HeaderTwo from "../../components/Header/HeaderTwo";
-import FooterOne from "../../components/Footer/FooterOne";
-import HeroStudio from "../../components/HeroSlider/HeroStudio";
-import WhatWeOfferSix from "../../components/WhatWeOffer/WhatWeOfferSix";
-import ProcessFour from "../../components/Process/ProcessFour";
-import PortfolioWideMasonry from "../../components/Portfolio/PortfolioWideMasonry";
-import CountersTwo from "../../components/Counters/CountersTwo";
-import AboutThree from "../../components/About/AboutThree";
-import TeamFour from "../../components/Team/TeamFour";
-import PricingsTwo from "../../components/Pricings/PricingsTwo";
-import ContactFour from "../../components/Contact/ContactFour";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import Loader from "../../components/Loader/Loader";
+import HeaderTwo from "../../webapp/common/Header/HeaderTwo";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import HeroStudio from "../../webapp/common/HeroSlider/HeroStudio";
+import WhatWeOfferSix from "../../webapp/common/WhatWeOffer/WhatWeOfferSix";
+import ProcessFour from "../../webapp/common/Process/ProcessFour";
+import PortfolioWideMasonry from "../../webapp/common/Portfolio/PortfolioWideMasonry";
+import CountersTwo from "../../webapp/common/Counters/CountersTwo";
+import AboutThree from "../../webapp/common/About/AboutThree";
+import TeamFour from "../../webapp/common/Team/TeamFour";
+import PricingsTwo from "../../webapp/common/Pricings/PricingsTwo";
+import ContactFour from "../../webapp/common/Contact/ContactFour";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeStudio = () => (
   <Loader>

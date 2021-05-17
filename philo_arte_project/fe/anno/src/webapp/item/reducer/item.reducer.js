@@ -21,7 +21,7 @@ export const saveItem = createAsyncThunk(
     }
 )
 export const getItemDetail = createAsyncThunk(
-    "item/list",
+    "item/itemDetail",
     async(itemNo)=>{
         const response = await ItemService.showDetail(itemNo)
         return response.data 
@@ -42,15 +42,6 @@ export const deleteItem = createAsyncThunk(
         return ressponse.data
     }
 )
-// export const deleteItem = createAsyncThunk('item/deleteById', async (itemNo) =>{
-//         const response = await ItemService.deleteItem(`http://localhost:8000/item/${itemNo}`)
-//         return itemNo
-//     }
-// )
-// export const deleteList = createAsyncThunk("DELETE_TODO", async (listId) => {
-//     const response = await axios.delete(`http://localhost:8000/list/${listId}`);
-//     return listId;
-//   });
 const isRejectAction=action=>
      (action.type.endsWith('rejected'))
 
@@ -64,16 +55,13 @@ const itemSlice = createSlice({
             return [...payload]
         })
         .addCase(getItemDetail.fulfilled,(state,{payload})=>{
-            return state =payload
+            return state.map(((item)=>item.id ==payload.id))
         })
-        // .addCase(showItemDetail.fulfilled,(state,{payload})=>{
-        //     return[...payload]
-        // })
         .addCase(updateItem.fulfilled,(state,{payload})=>{
             return state.map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
         })
         .addCase(saveItem.fulfilled,(state,{payload})=>{
-            return [...state,...payload]
+            return state.push(...payload)
         })
         .addCase(deleteItem.fulfilled,(state,{payload})=>{
             alert(`delete : ${payload}`)
@@ -88,3 +76,6 @@ const itemSlice = createSlice({
 })
 const {reducer} = itemSlice
 export default reducer 
+
+// const item = state.find(item => item.itemNo == payload)
+//             return item ? payload : item.itemNo;

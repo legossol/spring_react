@@ -6,13 +6,13 @@ import dataCountersTwo from "../../data/Counters/counters-two-data.json";
 // Images
 import imgTitle from "../../assets/images/title-bg/title-bg-1.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import PageTitleOne from "../../components/PageTitle/PageTitleOne";
-import CountersThree from "../../components/Counters/CountersThree";
-import CountersFour from "../../components/Counters/CountersFour";
-import CountersFive from "../../components/Counters/CountersFive";
-import CountersSix from "../../components/Counters/CountersSix";
-import FooterTwo from "../../components/Footer/FooterTwo";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import PageTitleOne from "../../webapp/common/PageTitle/PageTitleOne";
+import CountersThree from "../../webapp/common/Counters/CountersThree";
+import CountersFour from "../../webapp/common/Counters/CountersFour";
+import CountersFive from "../../webapp/common/Counters/CountersFive";
+import CountersSix from "../../webapp/common/Counters/CountersSix";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
 
 const CountersPage = () => (
   <>

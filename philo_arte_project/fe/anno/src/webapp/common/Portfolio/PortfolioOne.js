@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import PortfolioItem from "./PortfolioItem";
 import PortfolioFilter from "./PortfolioFilter";
-import LoadScript from "../../helpers/LoadScript";
+import LoadScript from "../../../helpers/LoadScript";
 
 const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, classes, dash, dashColor }) => {
   LoadScript("js/portfolio/portfolio-grid.js");

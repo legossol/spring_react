@@ -14,21 +14,21 @@ import imgAbout from "../../assets/images/bg-left-img.jpg";
 import imgWhatWeDo from "../../assets/images/bg-right-img.jpg";
 import imgParallax from "../../assets/images/background/parallax-bg.jpg";
 // Components
-import HeaderOne from "../../components/Header/HeaderOne";
-import HeroHomeImageBg from "../../components/HeroSlider/HeroHomeImageBg";
-import WhatWeOfferTen from "../../components/WhatWeOffer/WhatWeOfferTen";
-import CountersOne from "../../components/Counters/CountersOne";
-import AboutSix from "../../components/About/AboutSix";
-import WhatWeDoOne from "../../components/WhatWeDo/WhatWeDoOne";
-import TestimonialsOne from "../../components/Testimonials/TestimonialsOne";
-import TeamOne from "../../components/Team/TeamOne";
-import ParallaxOne from "../../components/ParallaxSection/ParallaxOne";
-import PricingsOne from "../../components/Pricings/PricingsOne";
-import ContactOne from "../../components/Contact/ContactOne";
-import ClientsCarousel from "../../components/Carousel/ClientsCarousel";
-import FooterTwo from "../../components/Footer/FooterTwo";
-import PortfolioWideMasonry from "../../components/Portfolio/PortfolioWideMasonry";
-import Loader from "../../components/Loader/Loader";
+import HeaderOne from "../../webapp/common/Header/HeaderOne";
+import HeroHomeImageBg from "../../webapp/common/HeroSlider/HeroHomeImageBg";
+import WhatWeOfferTen from "../../webapp/common/WhatWeOffer/WhatWeOfferTen";
+import CountersOne from "../../webapp/common/Counters/CountersOne";
+import AboutSix from "../../webapp/common/About/AboutSix";
+import WhatWeDoOne from "../../webapp/common/WhatWeDo/WhatWeDoOne";
+import TestimonialsOne from "../../webapp/common/Testimonials/TestimonialsOne";
+import TeamOne from "../../webapp/common/Team/TeamOne";
+import ParallaxOne from "../../webapp/common/ParallaxSection/ParallaxOne";
+import PricingsOne from "../../webapp/common/Pricings/PricingsOne";
+import ContactOne from "../../webapp/common/Contact/ContactOne";
+import ClientsCarousel from "../../webapp/common/Carousel/ClientsCarousel";
+import FooterTwo from "../../webapp/common/Footer/FooterTwo";
+import PortfolioWideMasonry from "../../webapp/common/Portfolio/PortfolioWideMasonry";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeImageBg = () => (
   <Loader>

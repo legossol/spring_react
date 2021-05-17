@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {getItemList, deleteItem,showItemDetail,updateItem} from '../reducer/item.reducer'
+import {getItemList, deleteItem,getItemDetail,updateItem} from '../reducer/item.reducer'
 
 const ItemList = () =>{
   const items = useSelector(state =>{
@@ -12,9 +12,10 @@ const ItemList = () =>{
   useEffect(()=>{
     dispatch(getItemList())
   },[])
-  const  grapIdgoUpdate = id =>{}
+  
     return ( 
         <>
+        
         <div className="container">
         <h1>아 이 템 리 스 트</h1>
         <table style={{border:30}} >
@@ -49,6 +50,7 @@ const ItemList = () =>{
                   <td>{item.likeCnt}</td>
                   <td>{item.dislikeCnt}</td>
                   <td>{item.likeCheck}</td>
+                  <button onAbort={()=>dispatch(getItemDetail(item.itemId))}>상세보기</button>
                   <button onClick={()=>dispatch(updateItem(item.itemId))}>수정하기</button>
                   <button onClick={()=>dispatch(deleteItem(item.itemId))}>삭제하기</button>
                 </tr>

@@ -1,7 +1,7 @@
 import React from "react";
-import img1 from "../../assets/images/slides/home-bg-9.jpg"
-import img2 from "../../assets/images/slides/home-bg-10.jpg"
-import img3 from "../../assets/images/slides/home-bg-11.jpg"
+import img1 from "../../../assets/images/slides/home-bg-9.jpg"
+import img2 from "../../../assets/images/slides/home-bg-10.jpg"
+import img3 from "../../../assets/images/slides/home-bg-11.jpg"
 
 const HomeDigitalSlider = () => (
   <section className="remove-padding transition-none" id="home">
@@ -91,8 +91,8 @@ const HomeDigitalSlider = () => (
                   fontWeight: "700",
                 }}
               >
-                Anno is Graphic <br /> Design
-                <span className="text-bottom-line">Studio</span>
+                가장 핫한 펀딩에 <br /> 함께
+                <span className="text-bottom-line">하세요</span>
               </div>
 
               <div
@@ -119,9 +119,9 @@ const HomeDigitalSlider = () => (
                   fontWeight: "400",
                 }}
               >
-                Graphic design is the process of visual communication
-                <br /> and problem-solving through the useof typography,
-                <br /> photography, and illustration
+                Philo-Arte에서 제공하는 펀딩 서비스와 함께
+                <br /> 대학생들의 참신한 아이디어에 동참하여주세요
+                <br /> (Philo-Arte의 펀딩은 투기or투자의 용도가 아님을 밝힘니다)
               </div>
 
               <div
@@ -147,7 +147,7 @@ const HomeDigitalSlider = () => (
                   className="btn btn-lg btn-light btn-circle"
                   style={{ padding: "20px 38px" }}
                 >
-                  Explore More
+                  더 많은 프로젝트 보기
                 </a>
               </div>
 
@@ -174,7 +174,7 @@ const HomeDigitalSlider = () => (
                   className="btn btn-lg btn-light-outline btn-circle"
                   style={{ padding: "20px 38px" }}
                 >
-                  Buy Now
+                  펀딩 하기
                 </a>
               </div>
             </div>
@@ -247,9 +247,9 @@ const HomeDigitalSlider = () => (
                   fontWeight: "700",
                 }}
               >
-                We Design & Build
-                <br /> Digital
-                <span className="text-bottom-line">Products</span>
+                Collaboration 프로젝트 펀딩
+                <br /> 한양대
+                <span className="text-bottom-line">&성균관대</span>
               </div>
 
               <div
@@ -276,9 +276,9 @@ const HomeDigitalSlider = () => (
                   fontWeight: "400",
                 }}
               >
-                Digital Product Definition A Single Source of Truth A Digital
-                <br /> Product Definition is an integrated system of record
-                <br /> with the most relevant
+                한양대생(강감찬)님 & 성균관대(정약용)님이 함께 진행하는 
+                <br /> 새로운 도전을
+                <br /> 함께 하세요
               </div>
 
               <div
@@ -304,7 +304,7 @@ const HomeDigitalSlider = () => (
                   className="btn btn-lg btn-light btn-circle"
                   style={{ padding: "20px 38px" }}
                 >
-                  Explore More
+                  더 많은 펀딩 보기
                 </a>
               </div>
 
@@ -331,7 +331,7 @@ const HomeDigitalSlider = () => (
                   className="btn btn-lg btn-light-outline btn-circle"
                   style={{ padding: "20px 38px" }}
                 >
-                  Buy Now
+                  펀딩 하기
                 </a>
               </div>
             </div>

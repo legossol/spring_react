@@ -1,6 +1,6 @@
 import React from "react";
 import imgGalaxy from "../../assets/images/background/galaxy.jpg";
-import LoadScript from "../../helpers/LoadScript";
+import LoadScript from "../../../helpers/LoadScript";
 
 const Maintenance404 = () => {
   LoadScript("js/revolution/js/revolution.addon.particles.min.js?ver=1.0.3");

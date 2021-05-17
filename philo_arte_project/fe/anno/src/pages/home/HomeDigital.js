@@ -11,20 +11,20 @@ import dataBlog from "../../data/Blog/blog-data.json";
 // Images
 import imgParallax from "../../assets/images/background/parallax-bg-2.jpg";
 // Components
-import HeaderSocial from "../../components/Header/HeaderSocial";
-import HomeDigitalSlider from "../../components/HeroSlider/HomeDigitalSlider";
-import FooterOne from "../../components/Footer/FooterOne";
-import WhatWeOfferThree from "../../components/WhatWeOffer/WhatWeOfferThree";
+import HeaderSocial from "../../webapp/common/Header/HeaderSocial";
+import HomeDigitalSlider from "../../webapp/item/component/showing/HomeDigitalSlider";
+import FooterOne from "../../webapp/common/Footer/FooterOne";
+import WhatWeOfferThree from "../../webapp/common/WhatWeOffer/WhatWeOfferThree";
 import PresentationOne from "../../components/Presentation/PresentationOne";
-import AboutTwo from "../../components/About/AboutTwo";
-import CounterRowOne from "../../components/Counters/CounterRowOne";
-import ParallaxTwo from "../../components/ParallaxSection/ParallaxTwo";
-import PortfolioBoxedSpaceThree from "../../components/Portfolio/PortfolioBoxedSpaceThree";
-import TestimonialsThree from "../../components/Testimonials/TestimonialsThree";
-import ClientsGrid from "../../components/Carousel/ClientsGrid";
-import BlogSection from "../../components/Blog/BlogSection";
-import ContactThree from "../../components/Contact/ContactThree";
-import Loader from "../../components/Loader/Loader";
+import AboutTwo from "../../webapp/common/About/AboutTwo";
+import CounterRowOne from "../../webapp/common/Counters/CounterRowOne";
+import ParallaxTwo from "../../webapp/common/ParallaxSection/ParallaxTwo";
+import PortfolioBoxedSpaceThree from "../../webapp/common/Portfolio/PortfolioBoxedSpaceThree";
+import TestimonialsThree from "../../webapp/common/Testimonials/TestimonialsThree";
+import ClientsGrid from "../../webapp/common/Carousel/ClientsGrid";
+import BlogSection from "../../webapp/common/Blog/BlogSection";
+import ContactThree from "../../webapp/common/Contact/ContactThree";
+import Loader from "../../webapp/common/Loader/Loader";
 
 const HomeDigital = () => (
   <Loader>

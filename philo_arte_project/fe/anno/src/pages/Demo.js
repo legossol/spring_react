@@ -3,8 +3,8 @@ import React from "react";
 import imgParallax from "../assets/images/background/parallax-bg-2.jpg";
 import dataDemo from "../data/Demo/demo-data.json";
 import imgHero from "../assets/images/slides/home-bg-17.jpg";
-import FooterTwo from "../components/Footer/FooterTwo";
-import ParallaxTwo from "../components/ParallaxSection/ParallaxTwo";
+import FooterTwo from "../webapp/common/Footer/FooterTwo";
+import ParallaxTwo from "../webapp/common/ParallaxSection/ParallaxTwo";
 
 const Demo = () => (
   <>

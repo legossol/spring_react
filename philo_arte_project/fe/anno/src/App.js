@@ -35,13 +35,24 @@ import ItemList from "./webapp/item/component/ItemList";
 import ItemDetail from "./webapp/item/component/ItemDetail"
 import ItemUpdate from "./webapp/item/component/ItemUpdate"
 import ItemRegister from "./webapp/item/component/ItemRegister"
+import ItemHome from "./webapp/item/component/ItemHome"
+
+// import {ItemList,ItemDetail,ItemRegister,ItemUpdate} "./webapp/item/index"
+
 function App() {
   return (
     <Router basename="/">
       <ScrollIntoView>
         <ScrollToTop>
           <Switch>
+          
+
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Demo} />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/item/home`}
+              component={ItemHome}
+            />
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/item/list`}
