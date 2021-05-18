@@ -8,4 +8,5 @@ public interface FundingService {
     // public Optional<Funding> updateFunding(Long fundingno,Funding funding);
     // public Funding updateWith(Funding newFunding);
     public void updateFunding(Long fundingId,Funding funding);
+    public Optional<Funding> findById(Long id);
 }

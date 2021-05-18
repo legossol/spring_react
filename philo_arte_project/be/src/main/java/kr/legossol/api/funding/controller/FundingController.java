@@ -35,8 +35,8 @@ public class FundingController {
         System.out.println("아이템리스트 진입");
         return ResponseEntity.ok(service.findAll());
     }
-    @GetMapping("/list/{fundingNo}")
-    public ResponseEntity<Funding> getOneFunding(@PathVariable("fundingNo") Long fundingId){
+    @GetMapping("/list/{fundingId}")
+    public ResponseEntity<Funding> getOneFunding(@PathVariable("fundingId") Long fundingId){
         Optional<Funding> it = service.findById(fundingId);
         return ResponseEntity.ok(it.get());
     }
@@ -46,15 +46,15 @@ public class FundingController {
         service.save(funding);
         return ResponseEntity.ok("등록을 성공했습니다.");
     }
-    @PutMapping("/{fundingNo}")
-    public ResponseEntity<Funding> updateFunding(@PathVariable("fundingNo") Long fundingId, @RequestBody Funding funding){
+    @PutMapping("/{fundingId}")
+    public ResponseEntity<Funding> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody Funding funding){
     System.out.println("아이템수정 진입" + fundingId);
     
     service.updateFunding(fundingId,funding);
     return ResponseEntity.ok(funding);
     }   
-    @DeleteMapping("/{fundingNo}")
-    public ResponseEntity<String> deleteFunding(@PathVariable("fundingNo")Long fundingId){
+    @DeleteMapping("/{fundingId}")
+    public ResponseEntity<String> deleteFunding(@PathVariable("fundingId")Long fundingId){
         service.deleteById(fundingId);
         return ResponseEntity.ok("삭제 성공");
     }

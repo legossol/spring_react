@@ -12,6 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 import kr.legossol.api.artist.domain.Artist;
 import kr.legossol.api.common.domain.BaseEntity;
+import kr.legossol.api.common.util.ModelMapperUtils;
 @Entity
 @Getter
 @Setter
@@ -37,4 +38,8 @@ public class Funding extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "artist_id")
     private Artist artist;
+    public static Funding of(FundingDto fundingDto){
+        Funding funding = ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
+        return funding;
+    }
 }

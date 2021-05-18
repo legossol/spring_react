@@ -22,7 +22,7 @@ export const getFundingDetail = createAsyncThunk(
     "funding/Detail",
     async(fundingNo)=>{
         const response = await FundingService.showDetail(fundingNo)
-        console.log("export const 의 fundingNo"+ fundingNo)
+        console.log("export const 의 fundingNo :"+ fundingNo)
         console.log("export const 의 response"+ response)
         return response.data 
     }
@@ -56,11 +56,13 @@ const fundingSlice = createSlice({
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{
             console.log("디테일에드 케이스" + state +"payloda :"+[...payload])
-            return [...payload]
-            // state.map((funding) => funding.id !== payload.id)
+            return state.find(funding => funding.id === payload.id)
+            
         })
         .addCase(updateFunding.fulfilled,(state,{payload})=>{
-            return state.map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
+            return state.find(funding => funding.id == payload)
+            // map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
+            
         })
         .addCase(saveFunding.fulfilled,(state,{payload})=>{
             return state.push(...payload)

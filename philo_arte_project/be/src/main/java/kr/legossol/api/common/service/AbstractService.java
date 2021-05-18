@@ -5,9 +5,7 @@ import java.util.Optional;
 
 public abstract class AbstractService<T> {
 
-    public abstract Long save(T t);
-
-    public abstract Optional<T> findById(long id);
+    public abstract String save(T t);
 
     public abstract List<T> findAll();
 
@@ -15,7 +13,7 @@ public abstract class AbstractService<T> {
 
     public abstract Optional<T> getOne(long id);
 
-    public abstract Long delete(T t);
+    public abstract String delete(T t);
 
     public abstract void deleteAll();
 

@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.legossol.api.common.service.AbstractService;
 import kr.legossol.api.funding.domain.Funding;
+import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.repository.FundingRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -17,15 +19,14 @@ public class FundingServiceImpl extends AbstractService<Funding> implements Fund
     private final FundingRepository repository;
 
     @Override
-    public Long save(Funding t) {
+    @Transactional
+    public String save(Funding t) {
         // TODO Auto-generated method stub
-        return (repository.save(t) != null) ? 1L : 0L;
+        return (repository.save(t) != null) ? "Success" : "Failed";
     }
-
     @Override
-    public Optional<Funding> findById(long id) {
-        
-        return repository.findById(id);
+    public Optional<Funding> findById(Long id){
+        return Optional.ofNullable(repository.getOne(id));
     }
 
     @Override
@@ -47,9 +48,9 @@ public class FundingServiceImpl extends AbstractService<Funding> implements Fund
     }
 
     @Override
-    public Long delete(Funding funding) {
+    public String delete(Funding funding) {
         repository.delete(funding);
-        return (findById(funding.getFundingId()).orElse(null)==null) ? 1L: 0L;
+        return (findById(funding.getFundingId()).orElse(null)==null) ? "삭제성공": "삭제실패";
     }
 
     @Override
