@@ -1,10 +1,10 @@
-import React from 'react'
+// import React from 'react'
 
-const FileHome =() =>{
-    return(
-        <>
+// const FileHome =() =>{
+//     return(
+//         <>
         
-        </>
-    )
-}
-export default FileHome
+//         </>
+//     )
+// }
+// export default FileHome
