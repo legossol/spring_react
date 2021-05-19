@@ -21,8 +21,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,21 +41,29 @@ import lombok.extern.log4j.Log4j2;
 class ApiApplicationTests {
     @Autowired
     private FundingRepository repo;
-
+    
     @Test
-    public void testSave(){
-        FundingDto dto = new FundingDto();
-        dto.setTitle("새로운 저장");
-        dto.setContent("새로운 내용저장");
-        dto.setGoalPrice(3000);
-        dto.setHashtag("묵화");
-
-        Funding fund = ModelMapperUtils.getModelMapper().map(dto, Funding.class);
-        assertEquals(dto.getTitle(),fund.getTitle() );
-        assertEquals(dto.getContent(),fund.getContent() );
-        assertEquals(dto.getGoalPrice(),fund.getGoalPrice() );
-        assertEquals(dto.getHashtag(),fund.getHashtag() );
+    public void testFindAllFundingByPage(){
+        Sort sort = new Sort(Sort.Direction.DESC, "status");
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Funding> funding = FundingDto.testFindAll(pageable);
+        
     }
+    @Test
+    @Transactional
+    @Commit
+    public void testSave(){
+        
+       Funding f = Funding.builder()
+       .title("새로운 제목 추가")
+       .content("새로운 내용의 추가")
+       .goalPrice(100000)
+       .hashtag("hash")
+       .build();
+       repo.save(f);
+       
+    }
+    
 	// @Test
 	// void contextLoads() {
 		

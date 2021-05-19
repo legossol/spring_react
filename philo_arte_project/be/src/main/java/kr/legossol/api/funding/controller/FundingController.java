@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import kr.legossol.api.funding.domain.Funding;
+import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.service.FundingServiceImpl;
 import lombok.RequiredArgsConstructor;
 
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/funding")
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class FundingController {
-    // private final FundingServiceImpl service;
+    private final FundingServiceImpl service;
 
     // @GetMapping("/list")
     // public ResponseEntity<List<Funding>> list(){
@@ -36,16 +37,16 @@ public class FundingController {
     //     return ResponseEntity.ok(service.findAll());
     // }
     // @GetMapping("/list/{fundingId}")
-    // public ResponseEntity<Funding> getOneFunding(@PathVariable("fundingId") Long fundingId){
-    //     Optional<Funding> it = service.findById(fundingId);
+    // public ResponseEntity<FundingDto> getOneFunding(@PathVariable("fundingId") Long fundingId){
+    //     Optional<FundingDto> it = service.findById(fundingId);
     //     return ResponseEntity.ok(it.get());
-    // }
-    // @PostMapping("/register")
-    // public ResponseEntity<String> save(@RequestBody Funding funding){
-    //     System.out.println("아이템 등록진입");
-    //     service.save(funding);
-    //     return ResponseEntity.ok("등록을 성공했습니다.");
-    // }
+    // // }
+    @PostMapping("/register")
+    public ResponseEntity<String> save(@RequestBody FundingDto dto){
+        System.out.println("아이템 등록진입");
+        service.save(dto);
+        return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
+    }
     // @PutMapping("/{fundingId}")
     // public ResponseEntity<Funding> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody Funding funding){
     // System.out.println("아이템수정 진입" + fundingId);

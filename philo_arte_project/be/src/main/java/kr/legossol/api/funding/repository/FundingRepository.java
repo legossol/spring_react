@@ -17,15 +17,15 @@ import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 @Repository
 public interface FundingRepository extends JpaRepository<Funding,Long>{
-
+    
     // @Query("SELECT f FROM Funding f JOIN f.artist a WHERE a.artistId =:artistId ")
     // List<Funding> findFundingsByArtistId(Long id);
-    // @Query("SELECT f FROM Funding f ORDER BY f.fundingId desc")
-    // List<Funding> getAllFundings();
 
-    // @Query("SELECT F FROM Funding f WHERE f.writer = :writer ORDER BY f.fundingId ")
+
+    // @Query("SELECT f FROM Funding f WHERE f.writer = :writer ORDER BY f.fundingId ")
     // List<Funding> findFundings(String writer,Sort sort);
-
+    // @Query("SELECT f FROM Funding f ORDER BY f.fundingId")
+    // List<Funding> findAllFundings();
     // @Query(value = "SELECT * FROM Funding ORDER BY id", countQuery = "SELECT count(*) FROM Funding")
     // Page<Funding> findAllFundingsWithPage(Pageable  pageable);
 
@@ -41,4 +41,7 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     
     // @Query("INSERT INTO Fundings VALUES (title, content, goalPrice, hashtag")
     // int makeOne(String title,String content, String goalprice, String hashtag);
+    // @Query("INSERT INTO FUNDINGS VALUES (title,content,goalPrice,hashtag")
+    // int saveFunding(FundingDto dto);
+    
 }

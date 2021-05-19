@@ -3,6 +3,8 @@ package kr.legossol.api.funding.domain;
 
 import javax.persistence.*;
 
+import org.springframework.data.domain.Page;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +18,7 @@ import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.common.util.ModelMapperUtils;
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "fundings")
@@ -40,17 +43,13 @@ public class Funding extends BaseEntity {
     @JoinColumn(name = "artist_id")
     private Artist artist;
     
-    @Builder
-    public Funding(String title, String content, Number goalPrice, String hashtag) {
-        this.title = title;
-        this.content = content;
-        this.goalPrice = goalPrice;
-        this.hashtag = hashtag;
-    }
     
     public static Funding of(FundingDto fundingDto){
-        Funding funding = ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
-        return funding;
+        return ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
     }
-    
+    // Dto -> Entity(Page)
+    public static Page<Funding> of(Page<FundingDto> sourcePage){
+        return sourcePage.map(Funding::of);
+    }
+  
 }
