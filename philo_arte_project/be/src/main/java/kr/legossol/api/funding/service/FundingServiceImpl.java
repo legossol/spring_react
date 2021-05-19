@@ -14,25 +14,32 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class FundingServiceImpl extends AbstractService<Funding> implements FundingService{
+public class FundingServiceImpl extends AbstractService<FundingDto> implements FundingService{
 
     private final FundingRepository repository;
 
     @Override
-    @Transactional
-    public String save(Funding t) {
+    public void updateFunding(Long fundingId, Funding funding) {
         // TODO Auto-generated method stub
-        return (repository.save(t) != null) ? "Success" : "Failed";
-    }
-    @Override
-    public Optional<Funding> findById(Long id){
-        return Optional.ofNullable(repository.getOne(id));
+        
     }
 
     @Override
-    public List<Funding> findAll() {
+    public Optional<Funding> findById(Long id) {
         // TODO Auto-generated method stub
-        return repository.findAll();
+        return null;
+    }
+
+    @Override
+    public String save(FundingDto t) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<FundingDto> findAll() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
@@ -42,15 +49,15 @@ public class FundingServiceImpl extends AbstractService<Funding> implements Fund
     }
 
     @Override
-    public Optional<Funding> getOne(long id) {
+    public Optional<FundingDto> getOne(long id) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public String delete(Funding funding) {
-        repository.delete(funding);
-        return (findById(funding.getFundingId()).orElse(null)==null) ? "삭제성공": "삭제실패";
+    public String delete(FundingDto t) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
@@ -66,20 +73,14 @@ public class FundingServiceImpl extends AbstractService<Funding> implements Fund
     }
 
     @Override
-    public void deleteById(long fundingNo) {
-        repository.deleteById(fundingNo);
+    public void deleteById(long id) {
+        // TODO Auto-generated method stub
         
     }
 
-    @Override
-    public void updateFunding(Long fundingId, Funding funding) {
-        Funding i = repository.findById(fundingId).get();
-        i.setTitle(funding.getTitle());
-        i.setContent(funding.getContent());
-        i.setGoalPrice(funding.getGoalPrice());
-        repository.save(i);
+    // 
 
-    }
+  
     
     // @Override
     // public Optional<Funding> updateFunding(Long fundingNo, Funding newFunding){
@@ -90,5 +91,6 @@ public class FundingServiceImpl extends AbstractService<Funding> implements Fund
     //         });
     //     }
     // }
+    
     
 }

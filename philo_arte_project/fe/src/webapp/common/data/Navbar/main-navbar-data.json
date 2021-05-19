@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "Philo-Arte",
+    "path": "#home",
+    "subMenu": [
+      
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Crowd Funding",
+    "path": "/funding/funding-home"
+  },
+  {
+    "id": 3,
+    "title": "Resume",
+    "path": "/resume/home"
+  },
+  {
+    "id": 4,
+    "title": "Item",
+    "path": "/item/item-list"
+  },
+  {
+    "id": 5,
+    "title": "Arts",
+    "path": "/work/work-list"
+  },
+  {
+    "id": 6,
+    "title": "Login",
+    "path": "#contact"
+  },
+  {
+    "id": 7,
+    "title": "SignUp",
+    "path": "#contact"
+  }
+]

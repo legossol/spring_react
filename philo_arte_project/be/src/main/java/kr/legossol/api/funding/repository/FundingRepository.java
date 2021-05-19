@@ -1,10 +1,44 @@
 package kr.legossol.api.funding.repository;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import kr.legossol.api.funding.domain.Funding;
+import kr.legossol.api.funding.domain.FundingDto;
 @Repository
 public interface FundingRepository extends JpaRepository<Funding,Long>{
+
+    // @Query("SELECT f FROM Funding f JOIN f.artist a WHERE a.artistId =:artistId ")
+    // List<Funding> findFundingsByArtistId(Long id);
+    // @Query("SELECT f FROM Funding f ORDER BY f.fundingId desc")
+    // List<Funding> getAllFundings();
+
+    // @Query("SELECT F FROM Funding f WHERE f.writer = :writer ORDER BY f.fundingId ")
+    // List<Funding> findFundings(String writer,Sort sort);
+
+    // @Query(value = "SELECT * FROM Funding ORDER BY id", countQuery = "SELECT count(*) FROM Funding")
+    // Page<Funding> findAllFundingsWithPage(Pageable  pageable);
+
+    // @Query("SELECT f FROM Funding f WHERE f.fundingId = :fundingId")
+    // Optional<Funding> findByFundingId(long id);
+
+    // @Modifying
+    // @Query("UPDATE Funding f SET f.title = :title ")
+    // int updateById(@Param("") String title);
+
+    // @Query("SELECT F.title FROM Funding f WHERE f.title = :title")
+    // Page<Funding> findAllFundingTitleWithPage(Pageable pageable);
     
+    // @Query("INSERT INTO Fundings VALUES (title, content, goalPrice, hashtag")
+    // int makeOne(String title,String content, String goalprice, String hashtag);
 }
