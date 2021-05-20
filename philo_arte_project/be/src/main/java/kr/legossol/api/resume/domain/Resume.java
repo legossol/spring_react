@@ -4,7 +4,9 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+
 import kr.legossol.api.artist.domain.Artist;
+import kr.legossol.api.category.domain.Category;
 
 
 @Entity
@@ -13,26 +15,23 @@ public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "resume_id")
-    private long resumeId;
+    private Long resumeId;
     @Column(name = "title")
     private String title;
+    @Column(name = "self_introduce")
+    private String selfIntroduce;
     @Column(name = "detail")
     private String detail;
-    @Column(name = "coworker")
-    private String coworker;
-    @Column(name = "main_pic")
-    private String mainPic;
-    @Column(name = "main_pic_title")
-    private String mainPicTitle;
-    @Column(name = "main_pic_date")
-    private Date mainPicDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    // public static Resume of(ResumeDto resumeDto) {
-    //     Resume resume = ModelMapperUtils.getModelMapper().map(resumeDto, Resume.class);
-    //     return resume;
-    // }
+    public void changeTitle(String title) {
+        this.title = title;
+    }
+
 }

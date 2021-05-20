@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,9 @@ import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 @Repository
 public interface FundingRepository extends JpaRepository<Funding,Long>{
+    // @EntityGraph(attributePaths = {"artist"}, type = EntityGraph.EntityGraphType.FETCH)
+    // @Query("SELECT f FROM funding f join m.artist a WHERE a.artistId=:artistId")
+    // List<Funding> resultAllListByArtistId = 
     
     // @Query("SELECT f FROM Funding f JOIN f.artist a WHERE a.artistId =:artistId ")
     // List<Funding> findFundingsByArtistId(Long id);
@@ -26,7 +30,7 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     // List<Funding> findFundings(String writer,Sort sort);
 
     @Query("SELECT f FROM Funding f ORDER BY f.fundingId ")
-    List<FundingDto> getAllFundings();
+    List<Funding> getAllFundings();
 
     // @Query(value = "SELECT * FROM Funding ORDER BY id", countQuery = "SELECT count(*) FROM Funding")
     // Page<Funding> findAllFundingsWithPage(Pageable  pageable);

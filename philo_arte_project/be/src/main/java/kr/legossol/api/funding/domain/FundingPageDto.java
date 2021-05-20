@@ -1,6 +1,4 @@
-package kr.legossol.api.testreact.dto;
-
-
+package kr.legossol.api.funding.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,15 +9,14 @@ import org.springframework.data.domain.Sort;
 @Builder
 @AllArgsConstructor
 @Data
-public class PageRequestDTO {
-
+public class FundingPageDto {
     private int page;
     private int size;
     private String type;
     private String keyword;
 
 
-    public PageRequestDTO(){
+    public FundingPageDto(){
         this.page = 1;
         this.size = 10;
     }

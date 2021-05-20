@@ -1,32 +1,31 @@
 package kr.legossol.api.artist.domain;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.List;
+
+@EntityListeners(value = { AuditingEntityListener.class })
 @Entity
 @Table(name = "artists")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "artist_id")
-    private Long artistId;
+    private long artistId;
     @Column(unique = true, nullable = false)
     private String username;
-    @Size(min = 8, message = "Minimum Passsword Length: 8 characters")
+    @Size(min = 8, message = "Minimum Password Length: 8 characters")
     private String password;
     @Column(unique = true, nullable = false)
     private String name;
@@ -41,7 +40,7 @@ public class Artist {
     @Column(name = "department")
     private String department;
 
-    // @ElementCollection(fetch = FetchType.EAGER)
-    // List<Role> roles;
+    @ElementCollection(fetch = FetchType.EAGER)
+    List<Role> roles;
 
 }

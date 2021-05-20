@@ -1,21 +1,37 @@
 package kr.legossol.api.funding.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import com.amazonaws.services.codestarconnections.model.ResourceNotFoundException;
 
+import org.modelmapper.TypeMap;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.legossol.api.common.service.AbstractService;
 import kr.legossol.api.common.util.ModelMapperUtils;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
+import kr.legossol.api.funding.domain.FundingFile;
+import kr.legossol.api.funding.domain.FundingFileDto;
+import kr.legossol.api.funding.repository.FundingFileRepository;
 import kr.legossol.api.funding.repository.FundingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 
 @Service
 @Log4j2
@@ -23,11 +39,7 @@ import lombok.extern.log4j.Log4j2;
 public class FundingServiceImpl extends AbstractService<FundingDto> implements FundingService{
 
     private final FundingRepository repository;
-
-    @Override
-    public Optional<Funding> findById(Long id) {
-       return null;
-    }
+    private final FundingFileRepository frepo;
 
     @Override
     public List<FundingDto> findAll() {
@@ -48,9 +60,11 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
     }
 
     @Override
-    public String delete(FundingDto t) {
-        // TODO Auto-generated method stub
-        return null;
+    public String delete(FundingDto postDto) {
+        Funding funding = Funding.of(postDto);
+        repository.delete(funding);
+
+        return (repository.findById(funding.getFundingId()) == null) ? "Delete Success" : "Delete Failed";
     }
 
     @Override
@@ -67,8 +81,8 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
 
     @Override
     public void deleteById(long id) {
-        // TODO Auto-generated method stub
-        
+
+        repository.deleteById(id);
     }
 
     @Override
@@ -85,43 +99,14 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         Funding toEntityRequest = Funding.of(requestDto);
         toEntityRequest.saveRequest(requestDto);
         return (repository.save(toEntityRequest)!= null) ? "success" : "Fail";
-
-        // //repo에 인자로 넘겨주기 dto to entity
-        // Funding postRequest = Funding.of(requestDto);
-        // //db에 저장
-        // Funding funding = repository.save(postRequest);
-        // System.out.println(funding + " dto :" + requestDto);
-        // log.info(requestDto+"funding :" + funding);
-        // //성공 혹은 실패를 메시지와 함께 entity->dto로 보냄
-        // return (FundingDto.toDto(funding)!=null)?"saved":"unsaved";
-        // (repository.save(funding)!=null)?"saved":"unsaved";
-        
     }
     
 
-    @Override
-    public void updateFunding(Long fundingId, FundingDto fundingDto) {
-        // Funding postRequest = Funding.of(fundingDto);
-
-        // Funding f = repository.findById(fundingId)
-        // .orElseThrow(()->new ResourceNotFoundException("Id is not found"));
-        // Funding funding = 
-        // assert
-        return ;
-
-    }
     @Transactional
     @Override
-    public List<Funding> getAllFundings(FundingDto dto) {
-        Funding toEntityFunding = Funding.of(dto);
-        Funding funding = toEntityFunding.builder()
-                        .title(dto.getTitle())
-                        .content(dto.getContent())
-                        .goalPrice(dto.getGoalPrice())
-                        .hashtag(dto.getHashtag())
-                        .build();
+    public List<Funding> getAllFundings() {
                         
-        return repository.findAllFundings();
+        return repository.getAllFundings();
     }
     
     @Override
@@ -131,17 +116,59 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         return dto;
     }
 
-  
-    
-    // @Override
-    // public Optional<Funding> updateFunding(Long fundingNo, Funding newFunding){
-    //     return repository.findById(fundingNo)
-    //         .map(oldFunding ->{
-    //             Funding updating = oldFunding.updateWith(newFunding);
-    //             return repository.save(updating);
-    //         });
-    //     }
-    // }
-    
-    
+    @Override
+    public Optional<Funding> findById(Long id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public String detailRegister(FundingFileDto fundingFileDto) {
+        FundingFile fundingFile = FundingFile.of(fundingFileDto);
+        fundingFile.saveFileTitle(fundingFileDto);
+        return (frepo.save(fundingFile) != null) ? "FileTitle save Success" : "FileTitle save Failed";
+    }
+    @Value("${shop.legossol.upload.path}")
+    private String uploadPath;
+
+    @Transactional
+    @Override
+    public ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles) {
+        ArrayList<FundingFileDto> resultDtoList = new ArrayList<>();
+        for (MultipartFile uploadFile : uploadFiles) {
+
+            String ofname = uploadFile.getOriginalFilename();
+            int idx = ofname.lastIndexOf(".");
+            String ofheader = ofname.substring(0, idx);
+            String ext = ofname.substring(idx);
+            String uuid = UUID.randomUUID().toString();
+            StringBuilder sb = new StringBuilder();
+            sb.append(uploadPath).append(ofheader).append("_").append(uuid).append(ext);
+            String saveName = sb.toString();
+            log.info("file upload name : " + saveName);
+            Path savePath = Paths.get(saveName);
+            try {
+                uploadFile.transferTo(savePath);
+                String thumbnailSaveName = uploadPath + "s_" + uuid + ofname;
+                Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
+                Thumbnails.of(new File(saveName)).scale(1)
+                        .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(uploadPath + "watermark.png")), 0.5f)
+                        .toFile(new File(uploadPath + "w_" + uuid + ofname));
+                FundingFileDto fundingFileDto = FundingFileDto.builder().uuid(uuid).fname(saveName).build();
+                resultDtoList.add(fundingFileDto);
+            }
+
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return resultDtoList;
+    }
+
+    @Override
+    public String deleteFile(Long fundingFileId) {
+        frepo.deleteById(fundingFileId);
+        return (frepo.findById(fundingFileId) == null) ? "Delete Success" : "Delete Failed";
+    }
+
 }

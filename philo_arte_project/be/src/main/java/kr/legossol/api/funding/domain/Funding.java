@@ -1,6 +1,8 @@
 package kr.legossol.api.funding.domain;
 
 
+import java.util.ArrayList;
+
 import javax.persistence.*;
 
 import com.amazonaws.services.codecommit.model.transform.FileContentAndSourceFileSpecifiedExceptionUnmarshaller;
@@ -16,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import kr.legossol.api.artist.domain.Artist;
+import kr.legossol.api.category.domain.Category;
 import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.common.util.ModelMapperUtils;
 @Entity
@@ -35,17 +38,18 @@ public class Funding extends BaseEntity {
     @Column(name = "content")
     private String content;
     @Column(name = "goal_price")
-    private Number goalPrice;
+    private long goalPrice;
     @Column(name = "view_cnt")
     private int viewCnt;
     @Column(name = "hashtag")
     private String hashtag;
+    
 
     public Funding(FundingDto dto) {
         this.title = dto.getTitle();
     }
 
-    @ManyToOne
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 

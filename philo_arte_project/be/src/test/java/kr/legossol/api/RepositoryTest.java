@@ -53,6 +53,10 @@ public class RepositoryTest {
         });
     }
     @Test
+    void updateFunding(){
+        
+    }
+    @Test
     void findFundings(){
         Funding f = repo.findById(1L).orElse(null);
         System.out.println(f);

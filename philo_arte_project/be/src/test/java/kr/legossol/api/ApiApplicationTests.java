@@ -27,6 +27,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import kr.legossol.api.common.domain.Crawler;
 import kr.legossol.api.common.util.ModelMapperUtils;
@@ -39,84 +40,6 @@ import lombok.extern.log4j.Log4j2;
 @SpringBootTest
 @Log4j2
 class ApiApplicationTests {
-    @Autowired
-    private FundingRepository repo;
-    
-    @Test
-    public void testFindAllFundingByPage(){
-        Sort sort = new Sort(Sort.Direction.DESC, "status");
-        Pageable pageable = PageRequest.of(0, 10);
-        Page<Funding> funding = FundingDto.testFindAll(pageable);
-        
-    }
-    @Test
-    @Transactional
-    @Commit
-    public void testSave(){
-        
-       Funding f = Funding.builder()
-       .title("새로운 제목 추가")
-       .content("새로운 내용의 추가")
-       .goalPrice(100000)
-       .hashtag("hash")
-       .build();
-       repo.save(f);
-       
-    }
-    
-	// @Test
-	// void contextLoads() {
-		
-    // }
-
-    // @Test
-    // public void testCreate(){
-    //     FundingDto fundingDto = new FundingDto();
-    //     fundingDto.setTitle("새로운 저장");
-    //     fundingDto.setContent("새로운 내용저장");
-    //     fundingDto.setGoalPrice(3000);
-    //     fundingDto.setHashtag("묵화");
-
-    //     Funding funding = ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
-    //     funding.getTitle();
-    //     funding.getContent();
-    //     funding.getGoalPrice();
-    //     funding.getHashtag();
-
-    //     repo.save(funding);
-
-    // }
-    // @Test//파인드올
-    // public void testFindAll() {
-    //    List<Funding> result = repo.getAllFundings();
-    //    for(Funding funding: result){
-    //        System.out.println(funding+" : " + funding.getTitle());
-    //        log.info(result);
-    //    }
-        
-    // }
-   
-    // @Test
-    // @Transactional
-    // public void testUpdate(){
-    //     Optional<Funding> result = repo.findByFundingId(8);
-        
-    //     FundingDto fundingDto = new FundingDto();
-    //     fundingDto.setTitle("바뀐제목");
-    //     fundingDto.setContent("내용은  이것으로 바뀌었지");
-    //     fundingDto.setGoalPrice(1923929);
-    //     fundingDto.setHashtag("hashtag");
-        
-        // Funding funding = ModelMapper.map(fundingDto, Funding.class);
-        // assertEquals(fundingDto.getTitle(), funding.getTitle());
-        // assertEquals(fundingDto.getContent(), funding.getContent());
-        // assertEquals(fundingDto.getGoalPrice(), funding.getGoalPrice());
-        // assertEquals(fundingDto.getHashtag(), funding.getHashtag());
-
-
-        
-    }
-
 	// @Test
     // public void testURL() throws Exception{
 
@@ -196,21 +119,21 @@ class ApiApplicationTests {
 
 
 	
-// 	@Test
-//  	public void testExportAllRecords() throws InterruptedException {
-// 		 WebDriver driver;
-// 	driver.get("https://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=102&oid=018&aid=0004928141");
-// 	int noOfEntries = getNumberOfEntries();
-// 	System.out.println("Total number of entries are :- "+noOfEntries);
+	// @Test
+ 	// public void testExportAllRecords() throws InterruptedException {
+	// 	 WebDriver driver;
+	// driver.get("https://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=102&oid=018&aid=0004928141");
+	// int noOfEntries = getNumberOfEntries();
+	// System.out.println("Total number of entries are :- "+noOfEntries);
 	
-// 	WebElement elementCSV = driver.findElement(By.xpath(".//*[@id='ToolTables_example_1']/span[contains(text(),'CSV')]"));
-// 	elementCSV.click();
+	// WebElement elementCSV = driver.findElement(By.xpath(".//*[@id='ToolTables_example_1']/span[contains(text(),'CSV')]"));
+	// elementCSV.click();
 	
-// 	File file = getLatestFilefromDir("/Users/haesoljang/filestore");
-// 	String csvFileName = file.getName();
-// 	System.out.println("CSV File Downloaded is :- "+csvFileName);
+	// File file = getLatestFilefromDir("/Users/haesoljang/filestore");
+	// String csvFileName = file.getName();
+	// System.out.println("CSV File Downloaded is :- "+csvFileName);
 	
-// 	System.out.println("Verifying number of entries with number of entries in csv");
-// 	Assert.assertEquals(noOfEntries, getRecordsCountInCSV(downloadPath,csvFileName));
-//  }
+	// System.out.println("Verifying number of entries with number of entries in csv");
+	// Assert.assertEquals(noOfEntries, getRecordsCountInCSV(downloadPath,csvFileName));
+ }
 	

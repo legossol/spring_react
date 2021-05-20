@@ -1,23 +1,25 @@
 package kr.legossol.api.funding.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
+import kr.legossol.api.funding.domain.FundingFile;
+import kr.legossol.api.funding.domain.FundingFileDto;
 
 public interface FundingService {
-    // public Optional<Funding> updateFunding(Long fundingno,Funding funding);
-    // public Funding updateWith(Funding newFunding);
-    Funding updateFunding(Long fundingId,FundingDto fundingDto);
-    public Optional<Funding> findById(Long id);
+   
     public Page<FundingDto> findFundingPaging(Integer page, String title);
-    
-    List<Funding> getAllFundings(FundingDto dto);
+    public Optional<Funding> findById(Long id);
+    List<Funding> getAllFundings();
     default Funding dtoToEntity(FundingDto dto){
         Funding funding = Funding.builder()
+                        .fundingId(dto.getFundingId())
                         .title(dto.getTitle())
                         .content(dto.getContent())
                         .goalPrice(dto.getGoalPrice())
@@ -26,5 +28,14 @@ public interface FundingService {
                         return funding;
     }
     FundingDto getFundingById(long id);
+
+    //============fileservice below==============
+
+ 
+    String detailRegister(FundingFileDto fundingFileDto);
+
+    ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles);
+
+    String deleteFile(Long fundingFileId);
 
 }
