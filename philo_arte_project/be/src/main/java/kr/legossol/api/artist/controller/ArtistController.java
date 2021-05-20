@@ -1,3 +1,5 @@
+package kr.legossol.api.artist.controller;
+
 import kr.legossol.api.artist.domain.Artist;
 import kr.legossol.api.artist.domain.ArtistDto;
 import kr.legossol.api.artist.service.ArtistServiceImpl;

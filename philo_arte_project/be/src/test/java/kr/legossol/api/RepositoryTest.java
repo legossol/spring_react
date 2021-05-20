@@ -22,49 +22,59 @@ public class RepositoryTest {
     @Autowired
     private FundingRepository repo;
 
-    @Test
-    void testSave(){
-        Funding f = Funding.builder()
-        .viewCnt(6)
-       .title("새로운 제목 추가")
-       .content("새로운 내용의 추가")
-       .goalPrice(100000)
-       .hashtag("hash")
-       .build();
-       repo.save(f);
-    }
-    @Test
-    void testFindAllaboutFunding(){
-        List<Funding> result = repo.getAllFundings();
-       for(Funding funding: result){
-           System.out.println(funding);
-           log.info(result);
-    }
-    }
-    @Transactional
-    @Test
-    @Commit
-    public void testFindAllpage() {
-        Pageable pageable = PageRequest.of(0, 10);
-        repo.findAllFundingTitleWithPage(pageable).get().forEach(funding->{
-            log.info(funding);
-            System.out.println(funding.getTitle());
-            log.info("-----------------");
-        });
-    }
-    @Test
-    void updateFunding(){
+    // @Test
+    // void testSave(){
+    //     Funding f = Funding.builder()
+    //     .viewCnt(6)
+    //    .title("새로운 제목 추가")
+    //    .content("새로운 내용의 추가")
+    //    .goalPrice(100000)
+    //    .hashtag("hash")
+    //    .build();
+    //    repo.save(f);
+    // }
+    // @Test
+    // void testFindAllaboutFunding(){
+    //     List<Funding> result = repo.getAllFundings();
+    //    for(Funding funding: result){
+    //        System.out.println(funding);
+    //        log.info(result);
+    // }
+    // }
+    // @Transactional
+    // @Test
+    // @Commit
+    // public void testFindAllpage() {
+    //     Pageable pageable = PageRequest.of(0, 10);
+    //     repo.findAllFundingTitleWithPage(pageable).get().forEach(funding->{
+    //         log.info(funding);
+    //         System.out.println(funding.getTitle());
+    //         log.info("-----------------");
+    //     });
+    // }
+    // @Test
+    // void updateFunding(){
         
-    }
+    // }
+    // @Test
+    // void findFundings(){
+    //     Funding f = repo.findById(1L).orElse(null);
+    //     System.out.println(f);
+    //     log.info("info :----------", f);
+    // }
+    // @Test 
+    // void deleteFunding(){
+    //     Funding funding = repo.findById(91L).orElseThrow(IllegalArgumentException::new);
+    //     repo.delete(funding);
+    // }
+
     @Test
-    void findFundings(){
-        Funding f = repo.findById(1L).orElse(null);
-        System.out.println(f);
-        log.info("info :----------", f);
-    }
-    @Test 
-    void deleteFunding(){
-        Funding funding = repo.findById(91L).orElseThrow(IllegalArgumentException::new);
-        repo.delete(funding);
+    void findAllByHashtag(){
+        List<Funding> result = repo.findAllByHashtag("핸드백");
+        System.out.println("resulte >>>>>>>>>>>>>>>>>>>"+result);
+        log.info("info:::::::::::::::::::",result);
+
+
+
     }
 }

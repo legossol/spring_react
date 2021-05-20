@@ -70,10 +70,10 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         return repository.count();
     }
 
-    @Override
-    public Optional<Artist> getOne(Long id) {
-        return Optional.empty();
-    }
+    // @Override
+    // public Optional<Artist> getOne(Long id) {
+    //     return Optional.empty();
+    // }
 
     @Override
     public String delete(Artist artist) {
@@ -81,10 +81,10 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         return (repository.findById(artist.getArtistId()).orElse(null) == null) ? "Delete Succes" : "Delete Failed";
     }
 
-    @Override
-    public Boolean existsById(Long id) {
-        return repository.existsById(id);
-    }
+    // @Override
+    // public Boolean existsById(Long id) {
+    //     return repository.existsById(id);
+    // }
 
     @Override
     public String save(Artist artist) {
@@ -107,10 +107,28 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
 
     }
 
+    // @Override
+    // public Artist findById(Long id) {
+    //     // TODO Auto-generated method stub
+    //     return null;
+    // }
+
     @Override
-    public Artist findById(Long id) {
+    public Optional<Artist> getOne(long id) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public Boolean existsById(long id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void deleteById(long id) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

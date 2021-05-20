@@ -19,8 +19,11 @@ import kr.legossol.api.funding.domain.FundingDto;
 @Repository
 public interface FundingRepository extends JpaRepository<Funding,Long>{
     // @EntityGraph(attributePaths = {"artist"}, type = EntityGraph.EntityGraphType.FETCH)
-    // @Query("SELECT f FROM funding f join m.artist a WHERE a.artistId=:artistId")
-    // List<Funding> resultAllListByArtistId = 
+    // @Query("SELECT f FROM Funding f join m.artist a WHERE a.artistId=:artistId")
+    // List<Funding> resultAllListByArtistId();
+
+    @Query("SELECT f FROM Funding f WHERE f.hashtag = :hashtag")
+    List<Funding> findAllByHashtag(String name);
     
     // @Query("SELECT f FROM Funding f JOIN f.artist a WHERE a.artistId =:artistId ")
     // List<Funding> findFundingsByArtistId(Long id);
@@ -29,8 +32,8 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     // @Query("SELECT f FROM Funding f WHERE f.writer = :writer ORDER BY f.fundingId ")
     // List<Funding> findFundings(String writer,Sort sort);
 
-    @Query("SELECT f FROM Funding f ORDER BY f.fundingId ")
-    List<Funding> getAllFundings();
+    // @Query("SELECT f FROM Funding f ORDER BY f.fundingId ")
+    // List<Funding> getAllFundings();
 
     // @Query(value = "SELECT * FROM Funding ORDER BY id", countQuery = "SELECT count(*) FROM Funding")
     // Page<Funding> findAllFundingsWithPage(Pageable  pageable);
@@ -42,8 +45,8 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     // @Query("UPDATE Funding f SET f.title = :title ")
     // int updateById(@Param("") String title);
 
-    @Query("SELECT f.title FROM Funding f ORDER BY f.fundingId desc")
-    Page<Funding> findAllFundingTitleWithPage(Pageable pageable);
+    // @Query("SELECT f.title FROM Funding f ORDER BY f.fundingId desc")
+    // Page<Funding> findAllFundingTitleWithPage(Pageable pageable);
     
     // @Query("INSERT INTO Fundings VALUES (title, content, goalPrice, hashtag")
     // int makeOne(String title,String content, String goalprice, String hashtag);
