@@ -68,16 +68,7 @@ class ApiApplicationTests {
 	// void contextLoads() {
 		
     // }
-    // @Test
-    // @Commit
-    // public void testFindAllpage() {
-    //     Pageable pageable = PageRequest.of(0, 10);
-    //     repo.getAllarticle(pageable).get().forEach(funding->{
-    //         log.info(funding);
-    //         log.info(funding.getTitle);
-    //         log.info("-----------------");
-    //     })
-    // }
+
     // @Test
     // public void testCreate(){
     //     FundingDto fundingDto = new FundingDto();
@@ -104,13 +95,7 @@ class ApiApplicationTests {
     //    }
         
     // }
-    // @Test //파인드바이앙디
-    // public void testFindbyid(){
-    //     Optional<Funding> result = repo.findByFundingId(8);
-       
-    //     System.out.println(result);
-    //     log.info(result);
-    // }
+   
     // @Test
     // @Transactional
     // public void testUpdate(){

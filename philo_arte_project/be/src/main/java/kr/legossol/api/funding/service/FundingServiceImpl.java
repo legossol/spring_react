@@ -3,6 +3,8 @@ package kr.legossol.api.funding.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.amazonaws.services.codestarconnections.model.ResourceNotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,20 +25,13 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
     private final FundingRepository repository;
 
     @Override
-    public void updateFunding(Long fundingId, Funding funding) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public Optional<Funding> findById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+       return null;
     }
 
     @Override
     public List<FundingDto> findAll() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
@@ -48,7 +43,7 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
 
     @Override
     public Optional<FundingDto> getOne(long id) {
-        // TODO Auto-generated method stub
+        // Funding postRequest = Funding.of(fundingDto)
         return null;
     }
 
@@ -87,19 +82,54 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
     @Override
     @Transactional
     public String save(FundingDto requestDto) {
-        //repo에 인자로 넘겨주기 dto to entity
-        Funding postRequest = Funding.of(requestDto);
-        //db에 저장
-        Funding funding = repository.save(postRequest);
-        System.out.println(funding + " dto :" + requestDto);
-        log.info(requestDto+"funding :" + funding);
-        //성공 혹은 실패를 메시지와 함께 entity->dto로 보냄
-        return (FundingDto.toDto(funding)!=null)?"saved":"unsaved";
+        Funding toEntityRequest = Funding.of(requestDto);
+        toEntityRequest.saveRequest(requestDto);
+        return (repository.save(toEntityRequest)!= null) ? "success" : "Fail";
+
+        // //repo에 인자로 넘겨주기 dto to entity
+        // Funding postRequest = Funding.of(requestDto);
+        // //db에 저장
+        // Funding funding = repository.save(postRequest);
+        // System.out.println(funding + " dto :" + requestDto);
+        // log.info(requestDto+"funding :" + funding);
+        // //성공 혹은 실패를 메시지와 함께 entity->dto로 보냄
+        // return (FundingDto.toDto(funding)!=null)?"saved":"unsaved";
         // (repository.save(funding)!=null)?"saved":"unsaved";
         
     }
-      
-    // 
+    
+
+    @Override
+    public void updateFunding(Long fundingId, FundingDto fundingDto) {
+        // Funding postRequest = Funding.of(fundingDto);
+
+        // Funding f = repository.findById(fundingId)
+        // .orElseThrow(()->new ResourceNotFoundException("Id is not found"));
+        // Funding funding = 
+        // assert
+        return ;
+
+    }
+    @Transactional
+    @Override
+    public List<Funding> getAllFundings(FundingDto dto) {
+        Funding toEntityFunding = Funding.of(dto);
+        Funding funding = toEntityFunding.builder()
+                        .title(dto.getTitle())
+                        .content(dto.getContent())
+                        .goalPrice(dto.getGoalPrice())
+                        .hashtag(dto.getHashtag())
+                        .build();
+                        
+        return repository.findAllFundings();
+    }
+    
+    @Override
+    public FundingDto getFundingById(long id) {
+        Funding funding = repository.findById(id).orElseThrow(IllegalArgumentException::new);
+        FundingDto dto = FundingDto.toDto(funding);
+        return dto;
+    }
 
   
     

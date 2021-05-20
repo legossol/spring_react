@@ -3,6 +3,8 @@ package kr.legossol.api.funding.domain;
 
 import javax.persistence.*;
 
+import com.amazonaws.services.codecommit.model.transform.FileContentAndSourceFileSpecifiedExceptionUnmarshaller;
+
 import org.springframework.data.domain.Page;
 
 import lombok.AllArgsConstructor;
@@ -18,9 +20,9 @@ import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.common.util.ModelMapperUtils;
 @Entity
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "fundings")
 public class Funding extends BaseEntity {
     
@@ -39,11 +41,16 @@ public class Funding extends BaseEntity {
     @Column(name = "hashtag")
     private String hashtag;
 
+    public Funding(FundingDto dto) {
+        this.title = dto.getTitle();
+    }
+
     @ManyToOne
     @JoinColumn(name = "artist_id")
     private Artist artist;
+
     
-    
+  
     public static Funding of(FundingDto fundingDto){
         return ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
     }
@@ -51,5 +58,10 @@ public class Funding extends BaseEntity {
     public static Page<Funding> of(Page<FundingDto> sourcePage){
         return sourcePage.map(Funding::of);
     }
-  
+    public void saveRequest(FundingDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.goalPrice = requestDto.getGoalPrice();
+        this.hashtag = requestDto.getHashtag();
+    }
 }

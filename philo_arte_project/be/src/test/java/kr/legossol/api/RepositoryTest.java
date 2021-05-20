@@ -2,9 +2,14 @@ package kr.legossol.api;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.annotation.Commit;
 
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
@@ -30,10 +35,32 @@ public class RepositoryTest {
     }
     @Test
     void testFindAllaboutFunding(){
-        List<Funding> result = repo.findAllFundings();
+        List<Funding> result = repo.getAllFundings();
        for(Funding funding: result){
            System.out.println(funding);
            log.info(result);
     }
+    }
+    @Transactional
+    @Test
+    @Commit
+    public void testFindAllpage() {
+        Pageable pageable = PageRequest.of(0, 10);
+        repo.findAllFundingTitleWithPage(pageable).get().forEach(funding->{
+            log.info(funding);
+            System.out.println(funding.getTitle());
+            log.info("-----------------");
+        });
+    }
+    @Test
+    void findFundings(){
+        Funding f = repo.findById(1L).orElse(null);
+        System.out.println(f);
+        log.info("info :----------", f);
+    }
+    @Test 
+    void deleteFunding(){
+        Funding funding = repo.findById(91L).orElseThrow(IllegalArgumentException::new);
+        repo.delete(funding);
     }
 }

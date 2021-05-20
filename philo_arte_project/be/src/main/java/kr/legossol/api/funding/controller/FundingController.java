@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import kr.legossol.api.common.util.ModelMapperUtils;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.service.FundingServiceImpl;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,19 +34,22 @@ public class FundingController {
     private final FundingServiceImpl service;
 
     // @GetMapping("/list")
-    // public ResponseEntity<List<Funding>> list(){
+    // public ResponseEntity<List<FundingDto>> list(){
     //     System.out.println("아이템리스트 진입");
-    //     return ResponseEntity.ok(service.findAll());
+    //     return ResponseEntity.ok(service.findAll().stream()
+    //     .map(funding -> ModelMapperUtils.getModelMapper().map(funding, FundingDto.class)).collect(Collectors.toList()));
     // }
     // @GetMapping("/list/{fundingId}")
-    // public ResponseEntity<FundingDto> getOneFunding(@PathVariable("fundingId") Long fundingId){
+    // public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
+    //    Funding funding = service.getOne(fundingId);
+
     //     Optional<FundingDto> it = service.findById(fundingId);
     //     return ResponseEntity.ok(it.get());
     // // }
     @PostMapping("/register")
     public ResponseEntity<String> save(@RequestBody FundingDto dto){
         System.out.println("아이템 등록진입");
-        service.save(dto);
+        
         return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
     }
     // @PutMapping("/{fundingId}")

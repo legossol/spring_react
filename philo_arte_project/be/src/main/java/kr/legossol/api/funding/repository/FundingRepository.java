@@ -24,8 +24,10 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
 
     // @Query("SELECT f FROM Funding f WHERE f.writer = :writer ORDER BY f.fundingId ")
     // List<Funding> findFundings(String writer,Sort sort);
-    // @Query("SELECT f FROM Funding f ORDER BY f.fundingId")
-    // List<Funding> findAllFundings();
+
+    @Query("SELECT f FROM Funding f ORDER BY f.fundingId ")
+    List<FundingDto> getAllFundings();
+
     // @Query(value = "SELECT * FROM Funding ORDER BY id", countQuery = "SELECT count(*) FROM Funding")
     // Page<Funding> findAllFundingsWithPage(Pageable  pageable);
 
@@ -36,8 +38,8 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     // @Query("UPDATE Funding f SET f.title = :title ")
     // int updateById(@Param("") String title);
 
-    // @Query("SELECT F.title FROM Funding f WHERE f.title = :title")
-    // Page<Funding> findAllFundingTitleWithPage(Pageable pageable);
+    @Query("SELECT f.title FROM Funding f ORDER BY f.fundingId desc")
+    Page<Funding> findAllFundingTitleWithPage(Pageable pageable);
     
     // @Query("INSERT INTO Fundings VALUES (title, content, goalPrice, hashtag")
     // int makeOne(String title,String content, String goalprice, String hashtag);
