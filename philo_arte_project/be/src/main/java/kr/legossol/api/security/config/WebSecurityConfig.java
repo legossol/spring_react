@@ -49,7 +49,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/artists/delete/{artistId}").permitAll()
                 .antMatchers("/artists/update/{artistId}").permitAll()
                 .antMatchers("/artists/fetchOne/{artistId}").permitAll()
-                .antMatchers("/funding/**/**").permitAll()
+                .antMatchers("/funding/list").permitAll()
+                .antMatchers("/funding/list/{fundingId}").permitAll()
+                .antMatchers("/funding/edit/{fundingId}").permitAll()
+                .antMatchers("/funding/{fundingId}").permitAll()
+                // .antMatchers("/funding/").permitAll()
                 .anyRequest().authenticated();
 
 //                .and()

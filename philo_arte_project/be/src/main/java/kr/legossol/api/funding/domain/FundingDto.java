@@ -28,6 +28,7 @@ public class FundingDto {
     private String title;     
     private String content;
     private Long goalPrice;
+    private Long artistId;
     private int viewCnt;
     private String hashtag;
     private int page;

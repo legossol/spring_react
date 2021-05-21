@@ -22,25 +22,34 @@ public class RepositoryTest {
     @Autowired
     private FundingRepository repo;
 
-    // @Test
-    // void testSave(){
-    //     Funding f = Funding.builder()
-    //     .viewCnt(6)
-    //    .title("새로운 제목 추가")
-    //    .content("새로운 내용의 추가")
-    //    .goalPrice(100000)
-    //    .hashtag("hash")
-    //    .build();
-    //    repo.save(f);
-    // }
+    @Test
+    @Commit
+    @Transactional
+    void testFindFundingByArtist(){
+        List<Funding> result = repo.searchAllListByArtistId(55L);
+        System.out.println("result::::::::::"+result);
+        log.info("log좀 보자:::::::::::::::", result);
+    }
+    @Test@Commit@Transactional
+    void testFindFundingByArtistId(){
+        List<Funding> result = repo.searchFundingByArtistId(10L);
+        System.out.println("result::::::::::"+result);
+        log.info("log좀 보자:::::::::::::::", result);
+    }
+    @Test@Commit@Transactional
+    void testSearchByTitle(){
+        List<Funding> result = repo.searchFundingsByTitle("기부");
+        System.out.println("result::::::::::"+result);
+        log.info("log좀 보자:::::::::::::::", result);
+    }
+    
+
     // @Test
     // void testFindAllaboutFunding(){
     //     List<Funding> result = repo.getAllFundings();
     //    for(Funding funding: result){
-    //        System.out.println(funding);
-    //        log.info(result);
-    // }
-    // }
+    //        System.out.println("getallfunding:::::::" + funding);
+    //        log.info(result);}}
     // @Transactional
     // @Test
     // @Commit
@@ -68,13 +77,36 @@ public class RepositoryTest {
     //     repo.delete(funding);
     // }
 
-    @Test
-    void findAllByHashtag(){
-        List<Funding> result = repo.findAllByHashtag("핸드백");
-        System.out.println("resulte >>>>>>>>>>>>>>>>>>>"+result);
-        log.info("info:::::::::::::::::::",result);
+    // @Test
+    // void findAllByHashtag(){
+    //     List<Funding> result = repo.findAllByHashtag();
+    //     System.out.println("resulte >>>>>>>>>>>>>>>>>>>"+result);
+    //     log.info("info:::::::::::::::::::",result);
+
+    // @Test
+    // public void findAllUsingHashtag(){
+    //     Pageable page = PageRequest(0,1);
+    //     repo.findAllUsingHashtag(pageable).get().forEach(funding->{
+    //         log.info(funding);
+    //         System.out.println(funding.getTitle());
+    //     })
+    // }
+        // @Transactional
+        // @Commit
+        // @Test
+        // public void testGetAllFundingInPage(){
+        //     Pageable pageable = getPageable(0,1);
+        //     repo.getAllFundingInPage(pageable).get().forEach(funding->{
+        //        System.out.println("test Result ::::" +funding.getTitle()); 
+        //     });
+        // }
+
+        // private Pageable getPageable(int stPage, int LastPage) {
+        //     return PageRequest.of(stPage, LastPage);
+        // }
+
+    
 
 
-
-    }
+    // }
 }

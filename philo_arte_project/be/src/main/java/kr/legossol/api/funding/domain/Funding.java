@@ -40,7 +40,7 @@ public class Funding extends BaseEntity {
     @Column(name = "goal_price")
     private long goalPrice;
     @Column(name = "view_cnt")
-    private int viewCnt;
+    private long viewCnt;
     @Column(name = "hashtag")
     private String hashtag;
     

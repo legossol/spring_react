@@ -10,10 +10,10 @@ const FundingRegister = () =>{
     const [funding, setNewFunding] = useState({
         title : "",
         content : "",
-        
         goalPrice : "",
-        hashtag : "",
         viewCnt:"",
+        hashtag : "",
+        artistId:""
     })
     const handleSubmit = useCallback(e =>{
         const {name, value} = e.target
@@ -37,11 +37,13 @@ const FundingRegister = () =>{
             <input type="text"style={{color:'black'}} name="content" value={funding.content} onChange={handleSubmit}/>
             <hr/>
             <label>목표금액</label>
-            <input type="text"style={{color:'black'}} name="goalPrice" value={funding.goalPrice} onChange={handleSubmit}/>
+            <input type="number"style={{color:'black'}} name="goalPrice" value={funding.goalPrice} onChange={handleSubmit}/>
             <label>해쉬태그</label>
             <input type="text" style={{color:'black'}}name="hashtag" value={funding.hashtag} onChange={handleSubmit}/>
             <label>viewCnt</label>
-            <input type="text"style={{color:'black'}} name="viewCnt" value={funding.viewCnt} onChange={handleSubmit}/>
+            <input type="number"style={{color:'black'}} name="viewCnt" value={funding.viewCnt} onChange={handleSubmit}/>
+            <label>artistId</label>
+            <input type="number"style={{color:'black'}} name="artistId" value={funding.artistId} onChange={handleSubmit}/>
             <hr/>
         </form>
         <Link to={'/funding/funding-register'}><button type="submit" onClick={()=>dispatch(saveFunding(funding))}>등록</button></Link>

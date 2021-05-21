@@ -16,6 +16,7 @@ import com.amazonaws.services.codestarconnections.model.ResourceNotFoundExceptio
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -170,5 +171,12 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         frepo.deleteById(fundingFileId);
         return (frepo.findById(fundingFileId) == null) ? "Delete Success" : "Delete Failed";
     }
+
+
+    // @Override
+    // public Page<Funding> getFundingPageList(Pageable pageable) {
+        
+    //     return repository.getAllFundingInPage(pageable);
+    // }
 
 }
