@@ -47,7 +47,7 @@ public class FundingFileController {
             System.out.println("file" + file);
             if (file.getContentType().startsWith("image") == false) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-            }
+            } 
         }
 
         return ResponseEntity.ok(service.registerFile(files));

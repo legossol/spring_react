@@ -2,6 +2,7 @@ package kr.legossol.api.funding.domain;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -58,10 +59,14 @@ public class Funding extends BaseEntity {
     public static Funding of(FundingDto fundingDto){
         return ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
     }
+    public static Funding toDto(List<FundingDto> fundingDtos) {
+        return ModelMapperUtils.getModelMapper().map(fundingDtos, Funding.class);
+    }
     // Dto -> Entity(Page)
     public static Page<Funding> of(Page<FundingDto> sourcePage){
         return sourcePage.map(Funding::of);
     }
+
     public void saveRequest(FundingDto requestDto) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();

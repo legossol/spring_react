@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,11 +25,15 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     List<Funding> getAllFundings();
     //글제목 검색 찾기
     @Query("SELECT f FROM Funding f WHERE f.title LIKE %:title%")
-    List<Funding> searchFundingsByTitle(@Param("title") String title);
-
-    // @Query("SELECT f FROM Funding f WHERE f.writer = :writer ORDER BY f.fundingId ")
-    // List<Funding> findFundings(String writer,Sort sort);
-
+    List<Funding> searchFundingsByTitle(@Param("title") String titleWord);
+    //글내용 검색 찾기
+    @Query("SELECT f FROM Funding f WHERE f.content LIKE %:index%")
+    List<Funding> searchFundingByContent(@Param("index") String contentWord);
+    //
+    @Query("SELECT f FROM Funding f WHERE f.hashtag LIKE %:hashtag%")
+    List<Funding> searchFundingByHashtag(@Param("hashtag") String hashtagName);
+    
+    
     // @Modifying
     // @Query("UPDATE Funding f SET f.title = :title ")
     // int updateById(@Param("") String title);
@@ -44,8 +49,14 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
 
     
     /*=======================================page===================================================*/
-    // @Query("SELECT f FROM Funding f WHERE f.title ORDER BY f.fundingId DESC")
-    // Page<Funding> getAllFundingInPage(Pageable pageable);
-    // @Query("SELECT f FROM Funding f WHERE f.hashtag = '음식' ORDER BY f.fundingId DESC")
-    // Page<Funding> findAllUsingHashtag(Pageable pageable);
+    //페이징 리스트
+    @Query(value = "SELECT f FROM Funding f ORDER BY f.fundingId desc LIMIT 5",nativeQuery = true)
+    Page<Funding> getAllPaging(Pageable pageable);
+    
+    @Query("SELECT f FROM Funding f WHERE f.title LIKE %:title%")
+    Page<Funding> searchAllByTitle(@Param("title")String title, Pageable pageable);
+    
+
+ 
+
 }

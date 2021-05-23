@@ -15,7 +15,6 @@ import kr.legossol.api.funding.domain.FundingFileDto;
 
 public interface FundingService {
    
-    public Page<FundingDto> findFundingPaging(Integer page, String title);
     public Optional<Funding> findById(Long id);
     List<Funding> getAllFundings();
     default Funding dtoToEntity(FundingDto dto){
@@ -32,11 +31,20 @@ public interface FundingService {
     // public Page<Funding> getFundingPageList(Pageable pageable);
     //============fileservice below==============
 
- 
+
     String detailRegister(FundingFileDto fundingFileDto);
 
     ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles);
 
     String deleteFile(Long fundingFileId);
 
+    public Page<FundingDto> findFundingPaging(Integer page, String title);
+
+    List<FundingDto> searchPost(String keyword);
+
+    Page<FundingDto> getAllPaging(Pageable pageable);
+
+    Page<FundingDto> findPageByTitle(String title, Pageable pageable);
+
+    List<FundingDto> getListPage(int page);
 }

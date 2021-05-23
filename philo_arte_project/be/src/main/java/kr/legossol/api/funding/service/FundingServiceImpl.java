@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
@@ -16,7 +17,9 @@ import com.amazonaws.services.codestarconnections.model.ResourceNotFoundExceptio
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +47,7 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
 
     @Override
     public List<FundingDto> findAll() {
-        
+
         return null;
     }
 
@@ -86,12 +89,7 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         repository.deleteById(id);
     }
 
-    @Override
-    public Page<FundingDto> findFundingPaging(Integer page, String title) {
-        
-        return findFundingPaging(page, title).map(
-            funding -> ModelMapperUtils.getModelMapper().map(funding,FundingDto.class));
-    }
+    
 
 
     @Override
@@ -171,12 +169,38 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         frepo.deleteById(fundingFileId);
         return (frepo.findById(fundingFileId) == null) ? "Delete Success" : "Delete Failed";
     }
-
-
-    // @Override
-    // public Page<Funding> getFundingPageList(Pageable pageable) {
+    /**===========================about page=========================*/
+    
+    @Override
+    public Page<FundingDto> findFundingPaging(Integer page, String title) {
         
-    //     return repository.getAllFundingInPage(pageable);
-    // }
+        return findFundingPaging(page, title).map(
+            funding -> ModelMapperUtils.getModelMapper().map(funding,FundingDto.class));
+    }
 
+    @Override
+    public List<FundingDto> searchPost(String keyword) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Page<FundingDto> getAllPaging(Pageable pageable) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Page<FundingDto> findPageByTitle(String title, Pageable pageable) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<FundingDto> getListPage(int page) {
+        return repository.getAllPaging(PageRequest.of(page, 6, Direction.DESC))
+                        .stream().map(Funding -> ModelMapperUtils.getModelMapper()
+                        .map(Funding, FundingDto.class)).collect(Collectors.toList());
+    }
+    
 }
