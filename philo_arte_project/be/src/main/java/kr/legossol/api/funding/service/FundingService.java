@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,13 +44,16 @@ public interface FundingService {
     //============Pagingservice Below==============
     //page당 6개씩 불러오기(확정)but query문 moddate순 정렬 문제
     List<FundingDto> getListAllpage(Pageable pageable);
-
-    List<FundingDto> searchPost(Pageable pageable, String keyword);
-
-    public Page<FundingDto> findFundingPaging(Integer page, String title);
-
+    //slice page list
+    Page<FundingDto> searchInPage(String title,String content, Pageable pageable);
+    List<FundingDto> searchPost(Pageable pageable,String content, String keyword);// (list와 page중 어떤 타입으로 쓰는게 좋은가?)
+    Page<FundingDto> searchTitleAndContent(Pageable pageable, String title);
+    //============searching below==============
+    // List<FundingDto> listAll(String searchOption, String keyword);
+    // int countArticle(String searchOption, String keyword);
     
 
-    Page<FundingDto> findPageByTitle(String title, Pageable pageable);
+
+    
    
 }

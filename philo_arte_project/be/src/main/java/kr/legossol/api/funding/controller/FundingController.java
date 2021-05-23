@@ -1,6 +1,7 @@
 package kr.legossol.api.funding.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -49,9 +50,18 @@ public class FundingController {
             
         return ResponseEntity.ok(service.getListAllpage(pageable));
     }
-    @GetMapping("/listpage/{keyword}")
-    public ResponseEntity<List<FundingDto>> findKeyListOnPage(String keyword,Pageable pageable){
-        return ResponseEntity.ok(service.searchPost(pageable, keyword));
+    @GetMapping("/listpage/searchlist")//리스트 방식 서치
+    public ResponseEntity<List<FundingDto>> findKeyListOnPage(@RequestParam("title") String keyword,@RequestParam("content")String content,Pageable pageable){
+        return ResponseEntity.ok(service.searchPost(pageable, keyword, content));
+    }
+
+    @GetMapping("/listpage/searchpage")// 페이지 방식 서치
+    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("title") String title,@RequestParam("content") String content, Pageable pageable){
+        return ResponseEntity.ok(service.searchInPage(title, content, pageable));
+    }
+    @GetMapping("/listpage/searchsum")// 페이지 방식 서치
+    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("keyword") String keyword, Pageable pageable){
+        return ResponseEntity.ok(service.searchTitleAndContent(pageable, keyword));
     }
 
     @GetMapping("/list/{fundingId}")

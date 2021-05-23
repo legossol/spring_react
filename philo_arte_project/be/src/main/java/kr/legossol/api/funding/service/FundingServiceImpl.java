@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
@@ -172,42 +173,36 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         return (frepo.findById(fundingFileId) == null) ? "Delete Success" : "Delete Failed";
     }
     /**===========================about page=========================*/
-    
-    @Override
-    public Page<FundingDto> findFundingPaging(Integer page, String title) {
-        
-        return findFundingPaging(page, title).map(
-            funding -> ModelMapperUtils.getModelMapper().map(funding,FundingDto.class));
-    }
-
-    
-    @Override
+    @Override //확정 list
     public List<FundingDto> getListAllpage(Pageable pageable) {
-        
-        pageable = PageRequest.of(1, 6);
+        // pageable = PageRequest.of(, 6);
         return repository.findAll(pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
         .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
 
+    @Override//비확정 search
+    public Page<FundingDto> searchInPage(String title, String content, Pageable pageable) {
+        // pageable = PageRequest.of(1, 6);
+        return  FundingDto.toDtoPage(repository.searchIndex(title, content, pageable)); 
+    }
+
     @Override
-    public List<FundingDto> searchPost(Pageable pageable, String keyword) {
-        pageable = PageRequest.of(1, 6);
-    
-        return repository.searchAllByTitle(keyword, pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
+    public List<FundingDto> searchPost(Pageable pageable, String content, String keyword) {
+        // pageable = PageRequest.of(1, 6);
+        
+        return repository.searchIndex(keyword, content,  pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
         .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
-
+    //키워드 한방으로 제목+내용 검색
     @Override
-    public Page<FundingDto> findPageByTitle(String title, Pageable pageable) {
-        // TODO Auto-generated method stub
-        return null;
+    public Page<FundingDto> searchTitleAndContent(Pageable pageable, String title) {
+        // pageable = PageRequest.of(1, 6);
+        Page<Funding> find = repository.searchIndex(title, title, pageable);
+
+        Page<FundingDto> result = FundingDto.toDtoPage(find);
+
+        return result;
     }
-
-
-    // @Override
-    // public List<FundingDto> getListPage(int page) {
-    //     // TODO Auto-generated method stub
-    //     return null;
     
-    
+
 }

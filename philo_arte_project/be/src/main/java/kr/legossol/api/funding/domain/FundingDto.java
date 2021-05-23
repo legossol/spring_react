@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Component;
 
 import kr.legossol.api.common.util.ModelMapperUtils;
@@ -45,13 +47,9 @@ public class FundingDto {
         return sourcePage.map(FundingDto::toDto);
     }
 
-    public static FundingDto toDto(List<Funding> funding) {
-        return ModelMapperUtils.getModelMapper().map(funding, FundingDto.class);
-    }
     public static FundingDto toDtoList(List<Funding> sendIt) {
         return  ModelMapperUtils.getModelMapper().map(sendIt, FundingDto.class);
     }
-    
 
     
 }

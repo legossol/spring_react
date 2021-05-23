@@ -73,5 +73,17 @@ public class RepositoryTest {
                         // .stream().map(Funding -> ModelMapperUtils.getModelMapper()
                         // .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
+    @Test@Commit@Transactional
+    void search(){
+        String findkeyword = "당신";
+        Pageable pageable = PageRequest.of(0, 4);
+        List<Funding> posst = repo.searchIndexList(findkeyword, pageable);
+
+        Funding f1 = (Funding) posst.get(0);
+        Funding f2 = (Funding) posst.get(1);
+
+        System.out.println(posst);
+
+    }
 }
             
