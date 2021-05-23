@@ -194,7 +194,7 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
     //키워드 한방으로 제목+내용 검색
-    @Override
+    @Override //확정
     public Page<FundingDto> searchTitleAndContent(Pageable pageable, String title) {
         // pageable = PageRequest.of(1, 6);
         Page<Funding> find = repository.searchIndex(title, title, pageable);
