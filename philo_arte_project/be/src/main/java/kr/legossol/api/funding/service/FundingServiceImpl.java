@@ -14,11 +14,13 @@ import javax.imageio.ImageIO;
 
 import com.amazonaws.services.codestarconnections.model.ResourceNotFoundException;
 
+import org.joda.time.DateTime;
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -178,16 +180,21 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
             funding -> ModelMapperUtils.getModelMapper().map(funding,FundingDto.class));
     }
 
+    
     @Override
-    public List<FundingDto> searchPost(String keyword) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<FundingDto> getListAllpage(Pageable pageable) {
+        
+        pageable = PageRequest.of(1, 6);
+        return repository.findAll(pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
+        .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
 
     @Override
-    public Page<FundingDto> getAllPaging(Pageable pageable) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<FundingDto> searchPost(Pageable pageable, String keyword) {
+        pageable = PageRequest.of(1, 6);
+    
+        return repository.searchAllByTitle(keyword, pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
+        .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -196,11 +203,11 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         return null;
     }
 
-    @Override
-    public List<FundingDto> getListPage(int page) {
-        return repository.getAllPaging(PageRequest.of(page, 6, Direction.DESC))
-                        .stream().map(Funding -> ModelMapperUtils.getModelMapper()
-                        .map(Funding, FundingDto.class)).collect(Collectors.toList());
-    }
+
+    // @Override
+    // public List<FundingDto> getListPage(int page) {
+    //     // TODO Auto-generated method stub
+    //     return null;
+    
     
 }

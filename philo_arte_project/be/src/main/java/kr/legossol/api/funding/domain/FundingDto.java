@@ -2,6 +2,8 @@ package kr.legossol.api.funding.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -47,7 +49,7 @@ public class FundingDto {
         return ModelMapperUtils.getModelMapper().map(funding, FundingDto.class);
     }
     public static FundingDto toDtoList(List<Funding> sendIt) {
-        return  ModelMapperUtils.getModelMapper().map(sendIt, FundingDto.class)
+        return  ModelMapperUtils.getModelMapper().map(sendIt, FundingDto.class);
     }
     
 

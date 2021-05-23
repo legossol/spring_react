@@ -12,6 +12,8 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+import com.amazonaws.Response;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,11 +44,15 @@ public class FundingController {
         System.out.println("아이템리스트 진입");
         return ResponseEntity.ok(service.getAllFundings());
     }
-    // @GetMapping("/listpage")
-    // public ResponseEntity<Page<FundingDto>> listPage(@PageableDefault Pageable pageable){
+    @GetMapping("/listpage")
+    public ResponseEntity<List<FundingDto>> listPage(Pageable pageable){
             
-    //     return ResponseEntity.ok(service.getAllPaging(pageable));
-    // }
+        return ResponseEntity.ok(service.getListAllpage(pageable));
+    }
+    @GetMapping("/listpage/{keyword}")
+    public ResponseEntity<List<FundingDto>> findKeyListOnPage(String keyword,Pageable pageable){
+        return ResponseEntity.ok(service.searchPost(pageable, keyword));
+    }
 
     @GetMapping("/list/{fundingId}")
     public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
