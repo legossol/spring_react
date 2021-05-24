@@ -17,8 +17,7 @@ import kr.legossol.api.funding.domain.FundingFile;
 import kr.legossol.api.funding.domain.FundingFileDto;
 
 public interface FundingService {
-   
-    public Optional<Funding> findById(Long id);
+    String save(FundingDto requestDto);
     List<Funding> getAllFundings();
     default Funding dtoToEntity(FundingDto dto){
         Funding funding = Funding.builder()
@@ -32,26 +31,32 @@ public interface FundingService {
     }
 
     FundingDto getFundingById(long id);
-    
-    //============fileservice below==============
-    // String totalSave(FundingDto dto, List<MultipartFile> uploadFiles);
 
-    String detailRegister(FundingFileDto fundingFileDto);
+    String delete(FundingDto postDto);
+    void deleteById(long id);
+    //============fileservice below==============
+    String totalSave(FundingDto dto);
+
+
+    List<FundingFileDto> getFileByFundingId(Long id);
+
+    default FundingFile dtoToEntityResumeFile(FundingFileDto dto) {
+
+        FundingFile fundingFile = FundingFile.builder().uuid(dto.getUuid()).fname(dto.getFname())
+                .build();
+        return fundingFile;
+    }
 
     ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles);
 
     String deleteFile(Long fundingFileId);
 
     //============Pagingservice Below==============
-    //page당 6개씩 불러오기(확정)but query문 moddate순 정렬 문제
     List<FundingDto> getListAllpage(Pageable pageable);
-    //slice page list
+   
     Page<FundingDto> searchInPage(String title,String content, Pageable pageable);
-    List<FundingDto> searchPost(Pageable pageable,String content, String keyword);// (list와 page중 어떤 타입으로 쓰는게 좋은가?)
+   
     Page<FundingDto> searchTitleAndContent(Pageable pageable, String keyword);
-    //============searching below==============
-    // List<FundingDto> listAll(String searchOption, String keyword);
-    // int countArticle(String searchOption, String keyword);
     
 
 

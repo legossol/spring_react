@@ -4,8 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import kr.legossol.api.common.util.ModelMapperUtils;
 
+@ToString(exclude = "funding")
 @Entity
 @Getter
 @Builder
@@ -22,23 +25,14 @@ public class FundingFile {
     private String uuid;
     @Column(name = "fname")
     private String fname;
-    @Column(name="file_title")
-    private String fileTitle;
-    @Column(name = "dup")
-    private boolean dup;
 
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "funding_id")
     private Funding funding;
 
     public void confirmFunding(Funding funding){
         this.funding = funding;
     }
-    public void saveFileTitle(FundingFileDto fundingFileDto){
-        this.fileTitle = fundingFileDto.getFileTitle();
-    }
-
-    public static FundingFile of(FundingFileDto fundingFileDto){
-        return ModelMapperUtils.getModelMapper().map(fundingFileDto, FundingFile.class);
-    }
-    
+ 
 }

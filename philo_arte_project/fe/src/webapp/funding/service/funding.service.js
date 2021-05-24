@@ -56,5 +56,8 @@ const deleteFunding = (id) =>{
         alert("삭제과정에서 에러 발생" +err)
     })}
 }
+const searchSomething = (index)=>{
+    return axios.get("http://localhost:8080/funding/list/search")
+}
 
-export default {findAll, fundingRegister,showDetail,deleteFunding,fundingUpdate}
+export default {findAll, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething}

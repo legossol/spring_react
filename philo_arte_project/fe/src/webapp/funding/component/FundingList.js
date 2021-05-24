@@ -57,9 +57,9 @@ const FundingList = () =>{
               )
             })}
           </tbody>
-        
-            
           </table>
+          <input type="text" placeholder="검색어 입력"></input>
+          <button>검색하기</button>
           <Link to={"/funding/register"}>
                 <button>펀딩 등록하기</button>
           </Link>

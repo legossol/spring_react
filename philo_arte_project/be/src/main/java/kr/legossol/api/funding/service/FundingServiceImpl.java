@@ -43,28 +43,29 @@ import net.coobird.thumbnailator.geometry.Positions;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class FundingServiceImpl extends AbstractService<FundingDto> implements FundingService{
+public class FundingServiceImpl implements FundingService{
 
     private final FundingRepository repository;
     private final FundingFileRepository frepo;
 
+    @Transactional
     @Override
-    public List<FundingDto> findAll() {
+    public String totalSave(FundingDto dto) {
+        Funding totalPost = Funding.of(dto);
+        totalPost.saveRequest(dto);
+        ArrayList<FundingFileDto> files =  dto.getFundingFiles();
+        if(!files.isEmpty()){
+            files.forEach(fundingFiledtos -> {
+                FundingFile f = dtoToEntityResumeFile(fundingFiledtos);
+                f.confirmFunding(totalPost);
+                frepo.save(f);
+             });
+        }
+        
+        return (repository.save(totalPost)!= null) ? "success" : "Fail";
 
-        return null;
     }
 
-    @Override
-    public Long count() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Optional<FundingDto> getOne(long id) {
-        // Funding postRequest = Funding.of(fundingDto)
-        return null;
-    }
 
     @Override
     public String delete(FundingDto postDto) {
@@ -72,18 +73,6 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         repository.delete(funding);
 
         return (repository.findById(funding.getFundingId()) == null) ? "Delete Success" : "Delete Failed";
-    }
-
-    @Override
-    public void deleteAll() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public Boolean existsById(long id) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
@@ -100,7 +89,17 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
     public String save(FundingDto requestDto) {
         Funding toEntityRequest = Funding.of(requestDto);
         toEntityRequest.saveRequest(requestDto);
+        ArrayList<FundingFileDto> files =  requestDto.getFundingFiles();
+        if(!files.isEmpty()){
+            files.forEach(fundingFiledtos -> {
+                FundingFile f = dtoToEntityResumeFile(fundingFiledtos);
+                frepo.save(f);
+             });
+        }
+        
         return (repository.save(toEntityRequest)!= null) ? "success" : "Fail";
+
+        
     }
 
     
@@ -119,18 +118,6 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         return dto;
     }
 
-    @Override
-    public Optional<Funding> findById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    @Override
-    public String detailRegister(FundingFileDto fundingFileDto) {
-        FundingFile fundingFile = FundingFile.of(fundingFileDto);
-        fundingFile.saveFileTitle(fundingFileDto);
-        return (frepo.save(fundingFile) != null) ? "FileTitle save Success" : "FileTitle save Failed";
-    }
-    
     @Value("${shop.legossol.upload.path}")
     private String uploadPath;
 
@@ -141,12 +128,14 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         for (MultipartFile uploadFile : uploadFiles) {
 
             String ofname = uploadFile.getOriginalFilename();
+
             int idx = ofname.lastIndexOf(".");
             String ofheader = ofname.substring(0, idx);
             String ext = ofname.substring(idx);
             String uuid = UUID.randomUUID().toString();
             StringBuilder sb = new StringBuilder();
-            sb.append(uploadPath).append(ofheader).append("_").append(uuid).append(ext);
+
+            sb.append(uploadPath).append(File.separator).append(uuid).append("_").append(ofheader).append(ext);
             String saveName = sb.toString();
             log.info("file upload name : " + saveName);
             Path savePath = Paths.get(saveName);
@@ -154,9 +143,9 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
                 uploadFile.transferTo(savePath);
                 String thumbnailSaveName = uploadPath + "s_" + uuid + ofname;
                 Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
-                Thumbnails.of(new File(saveName)).scale(1)
-                        .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(uploadPath + "watermark.png")), 0.5f)
-                        .toFile(new File(uploadPath + "w_" + uuid + ofname));
+                // Thumbnails.of(new File(saveName)).scale(1)
+            //             .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(uploadPath +File.separator+uuid+"_"+"watermark.png")), 0.5f)
+            //             .toFile(new File(uploadPath + "w_" + uuid + ofname));
                 FundingFileDto fundingFileDto = FundingFileDto.builder().uuid(uuid).fname(saveName).build();
                 resultDtoList.add(fundingFileDto);
             }
@@ -169,10 +158,19 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         return resultDtoList;
     }
 
+   
+    @Override
+    public List<FundingFileDto> getFileByFundingId(Long id) {
+        // List<Funding> getOneFunding = repository.getOneFunding(id);
+        List<FundingFile> getFile = frepo.getFileByFundingId(id);
+        List<FundingFileDto> dto = FundingFileDto.filetoDto(getFile);
+        return dto;
+    }
+
     @Override
     public String deleteFile(Long fundingFileId) {
-        frepo.deleteById(fundingFileId);
-        return (frepo.findById(fundingFileId) == null) ? "Delete Success" : "Delete Failed";
+        repository.deleteById(fundingFileId);
+        return (frepo.findById(fundingFileId) != null) ? "Delete Success" : "Delete Failed";
     }
     /**===========================about page=========================*/
     @Override //확정 list
@@ -192,28 +190,17 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
  
          return result;
      }
-    //++++===================이 사이는 사용 안함+==========================
-    @Override//비확정 search
-    public Page<FundingDto> searchInPage(String title, String content, Pageable pageable) {
-        // pageable = PageRequest.of(1, 6);
-        return  FundingDto.toDtoPage(repository.searchIndex(title, content, pageable)); 
-    }
+
 
     @Override
-    public List<FundingDto> searchPost(Pageable pageable, String content, String keyword) {
-        // pageable = PageRequest.of(1, 6);
-        
-        return repository.searchIndex(keyword, content,  pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
-        .map(Funding, FundingDto.class)).collect(Collectors.toList());
+    public Page<FundingDto> searchInPage(String title, String content, Pageable pageable) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
- 
+
+
 
    
-
-     //++++===================이 사이는 사용 안함+==========================
-
-   
-    
 
 }

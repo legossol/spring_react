@@ -47,26 +47,7 @@ public class FundingController {
         System.out.println("아이템리스트 진입");
         return ResponseEntity.ok(service.getAllFundings());
     }
-    @GetMapping("/listpage")
-    public ResponseEntity<List<FundingDto>> listPage(@PageableDefault(size = 6) Pageable pageable){
-           
-        return ResponseEntity.ok(service.getListAllpage(pageable));
-    }
-    @GetMapping("/listpage/searchlist")//리스트 방식 서치
-    public ResponseEntity<List<FundingDto>> findKeyListOnPage(@RequestParam("title") String keyword,@RequestParam("content")String content,Pageable pageable){
-        
-        return ResponseEntity.ok(service.searchPost(pageable, keyword, content));
-    }
-
-    @GetMapping("/listpage/searchpage")// 페이지 방식 서치
-    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("title") String title,@RequestParam("content") String content, Pageable pageable){
-        
-        return ResponseEntity.ok(service.searchInPage(title, content, pageable));
-    }
-    @GetMapping("/listpage/searchsum")// 페이지 방식 서치
-    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("keyword") String keyword, Pageable pageable){
-        return ResponseEntity.ok(service.searchTitleAndContent(pageable, keyword));
-    }
+   
 
     @GetMapping("/list/{fundingId}")
     public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
@@ -80,9 +61,16 @@ public class FundingController {
         
         return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
     }
+
+    @PostMapping("/totalregister")
+    public ResponseEntity<String> totalsave(@RequestBody FundingDto dto){
+        System.out.println("아이템 등록진입");
+        
+        return ResponseEntity.ok("등록을 성공했습니다."+service.totalSave(dto));
+    }
     @PutMapping("/edit/{fundingId}")
     public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto){
-    if(service.findById(fundingId).isEmpty()){
+    if(service.getFundingById(fundingId) == null){
         log.info("해당 글이 조회되지 않습니다.");
         ResponseEntity.badRequest().build();
     }
@@ -95,6 +83,22 @@ public class FundingController {
         return ResponseEntity.ok("식제 성공");
     }
 
+    /**===========================페이지 서치======================== */
+    @GetMapping("/listpage")
+    public ResponseEntity<List<FundingDto>> listPage(@PageableDefault(size = 6) Pageable pageable){
+           
+        return ResponseEntity.ok(service.getListAllpage(pageable));
+    }
+
+    @GetMapping("/listpage/searchpage")// 페이지 방식 서치
+    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("title") String title,@RequestParam("content") String content, Pageable pageable){
+        
+        return ResponseEntity.ok(service.searchInPage(title, content, pageable));
+    }
+    @GetMapping("/listpage/searchsum")// 페이지 방식 서치
+    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("keyword") String keyword, Pageable pageable){
+        return ResponseEntity.ok(service.searchTitleAndContent(pageable, keyword));
+    }
     
 }
 

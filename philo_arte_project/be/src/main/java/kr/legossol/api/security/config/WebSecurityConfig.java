@@ -53,7 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/funding/list/{fundingId}").permitAll()
                 .antMatchers("/funding/edit/{fundingId}").permitAll()
                 .antMatchers("/funding/{fundingId}").permitAll()
-                .antMatchers("/funding/*/**").permitAll()
+                .antMatchers("/funding/**/**").permitAll()
+                .antMatchers("/funding_file/**/**").permitAll()
                 .anyRequest().authenticated();
 
 //                .and()

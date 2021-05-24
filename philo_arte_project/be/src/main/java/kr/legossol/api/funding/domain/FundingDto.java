@@ -29,15 +29,7 @@ public class FundingDto {
     private Long artistId;
     private int viewCnt;
     private String hashtag;
-
-    // private int page;
-    // private int recordsPerPage;
-    // private int size;
-    // private String type;
-    // private String keyword;
-
-    private ArrayList<FundingFileDto> pictures;
-
+    
     // Entity -> Dto
     public static FundingDto toDto(Funding funding){
         return ModelMapperUtils.getModelMapper().map(funding, FundingDto.class);
@@ -50,6 +42,6 @@ public class FundingDto {
     public static FundingDto toDtoList(List<Funding> sendIt) {
         return  ModelMapperUtils.getModelMapper().map(sendIt, FundingDto.class);
     }
-
+    private ArrayList<FundingFileDto> fundingFiles;
     
 }

@@ -1,4 +1,8 @@
 package kr.legossol.api.funding.domain;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import kr.legossol.api.common.util.ModelMapperUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,8 +19,15 @@ public class FundingFileDto {
 
     private String fname;
     
-    private String fileTitle;
+    private String path;
+    private Funding funding;
 
-    private boolean first;
 
+    public static List<FundingFileDto> filetoDto(List<FundingFile> fundingFile){
+        
+        return  fundingFile.stream()
+        .map(p->ModelMapperUtils.getModelMapper()
+        .map(p, FundingFileDto.class))
+        .collect(Collectors.toList());
+    }
 }

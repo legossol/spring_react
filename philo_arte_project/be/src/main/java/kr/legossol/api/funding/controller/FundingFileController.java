@@ -35,19 +35,15 @@ import lombok.extern.log4j.Log4j2;
 public class FundingFileController {
     private final FundingServiceImpl service;
 
-    @PostMapping("/detail_register")
-    public ResponseEntity<String> detailRegister(@RequestBody FundingFileDto FundingFileDto) {
-        return ResponseEntity.ok(service.detailRegister(FundingFileDto));
-    }
     @PostMapping("/upload_file")
     public ResponseEntity<List<FundingFileDto>> uploadFile(List<MultipartFile> files) {
         System.out.println("file on uploading----" + files.toString());
 
         for (MultipartFile file : files) {
             System.out.println("file" + file);
-            if (file.getContentType().startsWith("image") == false) {
+            if (!file.getContentType().startsWith("image")) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-            } 
+            }
         }
 
         return ResponseEntity.ok(service.registerFile(files));
@@ -56,6 +52,10 @@ public class FundingFileController {
     @Value("${shop.legossol.upload.path}")
     private String uploadPath;
 
+    @GetMapping("/{fundingId}")
+    public ResponseEntity<List<FundingFileDto>> findFile(@PathVariable("fundingId")Long id){
+        return ResponseEntity.ok(service.getFileByFundingId(id));
+    }
     @GetMapping("/display/{fileName}")
     public ResponseEntity<byte[]> getFile(@PathVariable("fileName") String fileName) {
         ResponseEntity<byte[]> result = null;
@@ -79,8 +79,8 @@ public class FundingFileController {
     }
 
     @DeleteMapping(value = "/delete_file/{fundingFileId}")
-    public ResponseEntity<String> deleteFile(@PathVariable("fundingFileId") Long resumeFileId) {
+    public ResponseEntity<String> deleteFile(@PathVariable("fundingFileId") Long id) {
 
-        return ResponseEntity.ok(service.deleteFile(resumeFileId));
+        return ResponseEntity.ok(service.deleteFile(id));
     }
 }

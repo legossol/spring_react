@@ -28,7 +28,7 @@ security:
 shop:
   legossol:
     upload:
-      path: /Users/haesoljang/filestore
+      path: /Users/haesoljang/filestore/fileUploadTest
 UserController:
   signup: Creates user and returns its JWT token
   signin: Authenticates user and returns its JWT token
