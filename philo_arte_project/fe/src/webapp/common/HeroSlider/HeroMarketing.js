@@ -1,7 +1,7 @@
 import React from "react";
-import imgBg1 from "../../assets/images/slides/home-bg-12.jpg";
-import imgBg2 from "../../assets/images/slides/home-bg-13.jpg";
-import imgBg3 from "../../assets/images/slides/home-bg-14.jpg";
+import imgBg1 from "webapp/images/background/career.jpg";
+import imgBg2 from "webapp/images/slides/home-bg-13.jpg";
+import imgBg3 from "webapp/images/slides/home-bg-14.jpg";
 
 const HeroMarketing = () => (
   <section className="remove-padding transition-none">
@@ -110,7 +110,7 @@ const HeroMarketing = () => (
                 borderWidth: "0px",
               }}
             >
-              Anno Studio
+              Philo Arte 펀딩
             </div>
 
             <div
@@ -170,7 +170,7 @@ const HeroMarketing = () => (
                 borderWidth: "0px",
               }}
             >
-              Dedicated. Inspired. Passionate.
+              젊은 예술가들에게 기회를 주세요.
             </div>
 
             <div
@@ -211,7 +211,7 @@ const HeroMarketing = () => (
                 cursor: "pointer",
               }}
             >
-              ABOUT US
+              모든 펀딩
             </div>
 
             <div
@@ -284,7 +284,7 @@ const HeroMarketing = () => (
                 cursor: "pointer",
               }}
             >
-              CONTACT
+              자세히 보기
             </div>
           </li>
           <li

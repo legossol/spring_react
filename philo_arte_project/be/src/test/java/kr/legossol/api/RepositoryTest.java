@@ -18,7 +18,6 @@ import org.springframework.test.annotation.Commit;
 import javassist.runtime.Desc;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
-import kr.legossol.api.funding.domain.FundingPageDto;
 import kr.legossol.api.funding.repository.FundingRepository;
 import lombok.extern.log4j.Log4j2;
 
@@ -65,25 +64,6 @@ public class RepositoryTest {
     }
 
     /*======================================bined with page========================================*/
-    @Test@Commit@Transactional
-    void testpaging(int page){
-        Page<Funding> f = repo.getAllPaging(PageRequest.of(1, 6, Direction.DESC));
-        System.out.println(f);
-        
-                        // .stream().map(Funding -> ModelMapperUtils.getModelMapper()
-                        // .map(Funding, FundingDto.class)).collect(Collectors.toList());
-    }
-    @Test@Commit@Transactional
-    void search(){
-        String findkeyword = "당신";
-        Pageable pageable = PageRequest.of(0, 4);
-        List<Funding> posst = repo.searchIndexList(findkeyword, pageable);
-
-        Funding f1 = (Funding) posst.get(0);
-        Funding f2 = (Funding) posst.get(1);
-
-        System.out.println(posst);
-
-    }
+   
 }
             

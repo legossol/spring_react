@@ -50,17 +50,18 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     
     /*=======================================page===================================================*/
     //페이징 리스트
-    @Query(value = "SELECT f FROM Funding f ORDER BY f.fundingId desc LIMIT 5",nativeQuery = true)
-    Page<Funding> getAllPaging(Pageable pageable);
+    @Query("SELECT f FROM Funding f ORDER BY f.fundingId desc")
+    Page<Funding> getRecent(Pageable pageable);
     //slice 형태 리스트
 
-    @Query(value = "SELECT f FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content%",
+    @Query(value = "SELECT f FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content% ORDER BY f.fundingId desc",
            countQuery =  "SELECT COUNT(f.fundingId) FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content%")
     Page<Funding> searchIndex(@Param("title")String title,@Param("content") String content, Pageable pageable);
     
     @Query(value = "SELECT f FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content%",
     countQuery =  "SELECT COUNT(f.fundingId) FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content%")
     List<Funding> searchIndexList(@Param("title")String title,@Param("content") String content, Pageable pageable);
+
 
     // @Query(value = "SELECT f FROM Funding f WHERE f.title LIKE %:title%")
     // List<Funding> searchIndexList(@Param("title")String title,Pageable pageable);

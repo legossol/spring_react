@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import LoadScript from "webapp/common/helpers/LoadScript";
 
-import PortfolioFilter from "webapp/common/Portfolio/PortfolioFilter";
+import PortfolioFilter from "webapp/common/Portfolio/PortfolioFilter";  
 const PortfolioBoxedSpaceThree = ({ title, data, filter, categories }) => {
   LoadScript("js/portfolio/portfolio-grid.js");
 
@@ -39,7 +39,7 @@ const PortfolioBoxedSpaceThree = ({ title, data, filter, categories }) => {
                   <div className="portfolio-item">
                     <a href="!#">
                       <img
-                        src={require("../../../images/portfolio" +
+                        src={require("webapp/images/portfolio/" +
                           item.image)}
                         alt=""
                       />

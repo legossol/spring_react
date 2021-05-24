@@ -102,6 +102,7 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         toEntityRequest.saveRequest(requestDto);
         return (repository.save(toEntityRequest)!= null) ? "success" : "Fail";
     }
+
     
 
     @Transactional
@@ -129,6 +130,7 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         fundingFile.saveFileTitle(fundingFileDto);
         return (frepo.save(fundingFile) != null) ? "FileTitle save Success" : "FileTitle save Failed";
     }
+    
     @Value("${shop.legossol.upload.path}")
     private String uploadPath;
 
@@ -175,11 +177,22 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
     /**===========================about page=========================*/
     @Override //확정 list
     public List<FundingDto> getListAllpage(Pageable pageable) {
-        // pageable = PageRequest.of(, 6);
-        return repository.findAll(pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
+        
+        return repository.getRecent(pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
         .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
 
+     //키워드 한방으로 제목+내용 검색
+     @Override //확정
+     public Page<FundingDto> searchTitleAndContent(Pageable pageable, String keyword) {
+         // pageable = PageRequest.of(1, 6);
+         Page<Funding> find = repository.searchIndex(keyword, keyword, pageable);
+ 
+         Page<FundingDto> result = FundingDto.toDtoPage(find);
+ 
+         return result;
+     }
+    //++++===================이 사이는 사용 안함+==========================
     @Override//비확정 search
     public Page<FundingDto> searchInPage(String title, String content, Pageable pageable) {
         // pageable = PageRequest.of(1, 6);
@@ -193,16 +206,14 @@ public class FundingServiceImpl extends AbstractService<FundingDto> implements F
         return repository.searchIndex(keyword, content,  pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
         .map(Funding, FundingDto.class)).collect(Collectors.toList());
     }
-    //키워드 한방으로 제목+내용 검색
-    @Override //확정
-    public Page<FundingDto> searchTitleAndContent(Pageable pageable, String title) {
-        // pageable = PageRequest.of(1, 6);
-        Page<Funding> find = repository.searchIndex(title, title, pageable);
 
-        Page<FundingDto> result = FundingDto.toDtoPage(find);
+ 
 
-        return result;
-    }
+   
+
+     //++++===================이 사이는 사용 안함+==========================
+
+   
     
 
 }

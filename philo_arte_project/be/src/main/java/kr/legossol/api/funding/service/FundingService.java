@@ -30,10 +30,11 @@ public interface FundingService {
                         .build();
                         return funding;
     }
+
     FundingDto getFundingById(long id);
     
     //============fileservice below==============
-   
+    // String totalSave(FundingDto dto, List<MultipartFile> uploadFiles);
 
     String detailRegister(FundingFileDto fundingFileDto);
 
@@ -47,7 +48,7 @@ public interface FundingService {
     //slice page list
     Page<FundingDto> searchInPage(String title,String content, Pageable pageable);
     List<FundingDto> searchPost(Pageable pageable,String content, String keyword);// (list와 page중 어떤 타입으로 쓰는게 좋은가?)
-    Page<FundingDto> searchTitleAndContent(Pageable pageable, String title);
+    Page<FundingDto> searchTitleAndContent(Pageable pageable, String keyword);
     //============searching below==============
     // List<FundingDto> listAll(String searchOption, String keyword);
     // int countArticle(String searchOption, String keyword);

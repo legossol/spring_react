@@ -1,6 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
-import img from "../../assets/images/background/parallax-bg.png";
+import img from "webapp/images/background/parallax_bg.png";
 
 const PresentationOne = ({ title, text, textBtn, pathBtn }) => (
   <section

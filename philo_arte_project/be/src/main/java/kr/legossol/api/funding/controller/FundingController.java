@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.service.FundingServiceImpl;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,17 +48,19 @@ public class FundingController {
         return ResponseEntity.ok(service.getAllFundings());
     }
     @GetMapping("/listpage")
-    public ResponseEntity<List<FundingDto>> listPage(Pageable pageable){
-            
+    public ResponseEntity<List<FundingDto>> listPage(@PageableDefault(size = 6) Pageable pageable){
+           
         return ResponseEntity.ok(service.getListAllpage(pageable));
     }
     @GetMapping("/listpage/searchlist")//리스트 방식 서치
     public ResponseEntity<List<FundingDto>> findKeyListOnPage(@RequestParam("title") String keyword,@RequestParam("content")String content,Pageable pageable){
+        
         return ResponseEntity.ok(service.searchPost(pageable, keyword, content));
     }
 
     @GetMapping("/listpage/searchpage")// 페이지 방식 서치
     public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("title") String title,@RequestParam("content") String content, Pageable pageable){
+        
         return ResponseEntity.ok(service.searchInPage(title, content, pageable));
     }
     @GetMapping("/listpage/searchsum")// 페이지 방식 서치
@@ -90,6 +94,7 @@ public class FundingController {
         service.deleteById(fundingId);
         return ResponseEntity.ok("식제 성공");
     }
+
     
 }
 
