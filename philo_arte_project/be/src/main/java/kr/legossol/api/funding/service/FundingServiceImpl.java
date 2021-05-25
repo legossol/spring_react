@@ -145,9 +145,6 @@ public class FundingServiceImpl implements FundingService{
             Function<Funding, FundingDto> fn = (entity -> pageentityToDto(entity));
         return new FundingPageDto<>(result,fn);
     }
-   
-
-
     @Override
     public FundingPageDto<FundingDto, Funding> getPageById(PageRequestDto requestDto, Long id) {
         return new FundingPageDto<>(repository.getPageById(

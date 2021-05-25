@@ -1,6 +1,4 @@
-package kr.legossol.api.resume.domain;
-
-import java.util.Date;
+package kr.legossol.api.resume.domain
 
 import javax.persistence.*;
 

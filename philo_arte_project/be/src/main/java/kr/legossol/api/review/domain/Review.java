@@ -1,11 +1,4 @@
 package kr.legossol.api.review.domain;
-
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,13 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
+import javax.persistence.Table
 import kr.legossol.api.art.domain.Art;
 import kr.legossol.api.artist.domain.Artist;
 import lombok.Builder;

@@ -1,14 +1,10 @@
 package kr.legossol.api.art.domain;
 
-import java.util.List;
-
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 import kr.legossol.api.artist.domain.Artist;
 import kr.legossol.api.category.domain.Category;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "arts")

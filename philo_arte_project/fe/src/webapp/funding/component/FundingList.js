@@ -10,6 +10,7 @@ const FundingList = () =>{
   })
   const dispatch = useDispatch()
   useEffect(()=>{
+    alert("리스트를 불러 옵니다.")
     dispatch(getFundingList())
   },[])
   

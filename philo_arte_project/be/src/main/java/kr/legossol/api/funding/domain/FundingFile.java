@@ -5,9 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import kr.legossol.api.common.util.ModelMapperUtils;
-
 @ToString(exclude = "funding")
 @Entity
 @Getter

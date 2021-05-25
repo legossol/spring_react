@@ -1,25 +1,16 @@
 package kr.legossol.api.funding.domain;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-
-import com.amazonaws.services.codecommit.model.transform.FileContentAndSourceFileSpecifiedExceptionUnmarshaller;
 
 import org.springframework.data.domain.Page;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import kr.legossol.api.artist.domain.Artist;
-import kr.legossol.api.category.domain.Category;
 import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.common.util.ModelMapperUtils;
 @Entity

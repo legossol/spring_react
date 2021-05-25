@@ -3,11 +3,7 @@ package kr.legossol.api.funding.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Component;
 
 import kr.legossol.api.common.util.ModelMapperUtils;
