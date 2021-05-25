@@ -5,7 +5,7 @@ import {FundingService} from '../index'
 export const getFundingList = createAsyncThunk(
     "funding/list",
     async() =>{
-        const response = await FundingService.findAll()
+        const response = await FundingService.getList()
         return response.data
     }
 )
@@ -23,7 +23,7 @@ export const getFundingDetail = createAsyncThunk(
     async(fundingNo)=>{
         const response = await FundingService.showDetail(fundingNo)
         console.log("export const 의 fundingNo :"+ fundingNo)
-        console.log("export const 의 response"+ response)
+        console.log("export const 의 response"+ response)   
         return response.data 
     }
 )

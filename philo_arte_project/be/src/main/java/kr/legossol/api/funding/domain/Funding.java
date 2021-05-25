@@ -50,12 +50,11 @@ public class Funding extends BaseEntity {
         this.title = dto.getTitle();
     }
 
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne(fetch =FetchType.LAZY,optional = false)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
-    
-  
+
     public static Funding of(FundingDto fundingDto){
         return ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
     }

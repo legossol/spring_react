@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
 
-const findAll=() =>{
+const getList=() =>{
     return axios.get("http://localhost:8080/funding/list")
 }
 const fundingRegister = (register) =>{
@@ -15,9 +15,9 @@ const fundingRegister = (register) =>{
     })
 }
 
-const showDetail =(fundingNo)=>{
-    console.log(`디테일보기 서비스 아이템 넘버 : ${fundingNo}`)
-    return axios.get(`http://localhost:8080/funding/list/${fundingNo}`)
+const showDetail =(fundingId)=>{
+    console.log(`디테일보기 서비스 아이템 넘버 : ${fundingId}`)
+    return axios.get(`http://localhost:8080/funding/list/${fundingId}`)
 }
 
 const fundingUpdate = id =>{
@@ -60,4 +60,4 @@ const searchSomething = (index)=>{
     return axios.get("http://localhost:8080/funding/list/search")
 }
 
-export default {findAll, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething}
+export default {getList, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething}

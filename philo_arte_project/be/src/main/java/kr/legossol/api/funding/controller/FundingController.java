@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
-import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.service.FundingServiceImpl;
@@ -13,19 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
-
-import com.amazonaws.Response;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,30 +31,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class FundingController {
     private final FundingServiceImpl service;
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Funding>> list(){
-        System.out.println("아이템리스트 진입");
-        return ResponseEntity.ok(service.getAllFundings());
-    }
-   
-
-    @GetMapping("/list/{fundingId}")
+    @GetMapping("/{fundingId}")
     public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
-       
         return ResponseEntity.ok(service.getFundingById(fundingId));
     }
 
     @PostMapping("/register")
     public ResponseEntity<String> save(@RequestBody FundingDto dto){
-        System.out.println("아이템 등록진입");
-        
         return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
     }
 
     @PostMapping("/totalregister")
     public ResponseEntity<String> totalsave(@RequestBody FundingDto dto){
-        System.out.println("아이템 등록진입");
-        
         return ResponseEntity.ok("등록을 성공했습니다."+service.totalSave(dto));
     }
     @PutMapping("/edit/{fundingId}")
@@ -78,27 +55,8 @@ public class FundingController {
     }   
     @DeleteMapping("/{fundingId}")
     public ResponseEntity<String> deleteFunding(@PathVariable("fundingId")Long fundingId, @RequestBody FundingDto fundingdto){
-        
         service.deleteById(fundingId);
         return ResponseEntity.ok("식제 성공");
     }
-
-    /**===========================페이지 서치======================== */
-    @GetMapping("/listpage")
-    public ResponseEntity<List<FundingDto>> listPage(@PageableDefault(size = 6) Pageable pageable){
-           
-        return ResponseEntity.ok(service.getListAllpage(pageable));
-    }
-
-    @GetMapping("/listpage/searchpage")// 페이지 방식 서치
-    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("title") String title,@RequestParam("content") String content, Pageable pageable){
-        
-        return ResponseEntity.ok(service.searchInPage(title, content, pageable));
-    }
-    @GetMapping("/listpage/searchsum")// 페이지 방식 서치
-    public ResponseEntity<Page<FundingDto>> searchTCInPage(@RequestParam("keyword") String keyword, Pageable pageable){
-        return ResponseEntity.ok(service.searchTitleAndContent(pageable, keyword));
-    }
-    
 }
 

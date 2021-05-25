@@ -6,40 +6,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
-
-import javax.imageio.ImageIO;
-
-import com.amazonaws.services.codestarconnections.model.ResourceNotFoundException;
-
-import org.joda.time.DateTime;
-import org.modelmapper.TypeMap;
+import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.legossol.api.common.service.AbstractService;
-import kr.legossol.api.common.util.ModelMapperUtils;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.domain.FundingFile;
 import kr.legossol.api.funding.domain.FundingFileDto;
+import kr.legossol.api.funding.domain.FundingPageDto;
+import kr.legossol.api.funding.domain.PageRequestDto;
 import kr.legossol.api.funding.repository.FundingFileRepository;
 import kr.legossol.api.funding.repository.FundingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Positions;
-
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -61,28 +48,21 @@ public class FundingServiceImpl implements FundingService{
                 frepo.save(f);
              });
         }
-        
         return (repository.save(totalPost)!= null) ? "success" : "Fail";
-
     }
 
 
     @Override
     public String delete(FundingDto postDto) {
-        Funding funding = Funding.of(postDto);
-        repository.delete(funding);
-
-        return (repository.findById(funding.getFundingId()) == null) ? "Delete Success" : "Delete Failed";
+        repository.delete(Funding.of(postDto));
+        return (repository.findById(Funding.of(postDto).getFundingId()) == null)
+                 ? "Delete Success" : "Delete Failed";
     }
 
     @Override
     public void deleteById(long id) {
-
         repository.deleteById(id);
     }
-
-    
-
 
     @Override
     @Transactional
@@ -96,21 +76,15 @@ public class FundingServiceImpl implements FundingService{
                 frepo.save(f);
              });
         }
-        
-        return (repository.save(toEntityRequest)!= null) ? "success" : "Fail";
-
-        
+        return (repository.save(toEntityRequest)!= null) ? "success" : "Fail"; 
     }
-
-    
 
     @Transactional
     @Override
-    public List<Funding> getAllFundings() {
-                        
+    public List<Funding> getAllFundings() {         
         return repository.getAllFundings();
     }
-    
+
     @Override
     public FundingDto getFundingById(long id) {
         Funding funding = repository.findById(id).orElseThrow(IllegalArgumentException::new);
@@ -143,28 +117,19 @@ public class FundingServiceImpl implements FundingService{
                 uploadFile.transferTo(savePath);
                 String thumbnailSaveName = uploadPath + "s_" + uuid + ofname;
                 Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
-                // Thumbnails.of(new File(saveName)).scale(1)
-            //             .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(uploadPath +File.separator+uuid+"_"+"watermark.png")), 0.5f)
-            //             .toFile(new File(uploadPath + "w_" + uuid + ofname));
                 FundingFileDto fundingFileDto = FundingFileDto.builder().uuid(uuid).fname(saveName).build();
                 resultDtoList.add(fundingFileDto);
             }
-
             catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
         return resultDtoList;
     }
 
-   
     @Override
     public List<FundingFileDto> getFileByFundingId(Long id) {
-        // List<Funding> getOneFunding = repository.getOneFunding(id);
-        List<FundingFile> getFile = frepo.getFileByFundingId(id);
-        List<FundingFileDto> dto = FundingFileDto.filetoDto(getFile);
-        return dto;
+        return FundingFileDto.filetoDto(frepo.getFileByFundingId(id));
     }
 
     @Override
@@ -172,35 +137,47 @@ public class FundingServiceImpl implements FundingService{
         repository.deleteById(fundingFileId);
         return (frepo.findById(fundingFileId) != null) ? "Delete Success" : "Delete Failed";
     }
-    /**===========================about page=========================*/
-    @Override //확정 list
-    public List<FundingDto> getListAllpage(Pageable pageable) {
-        
-        return repository.getRecent(pageable).stream().map(Funding->ModelMapperUtils.getModelMapper()
-        .map(Funding, FundingDto.class)).collect(Collectors.toList());
-    }
 
-     //키워드 한방으로 제목+내용 검색
-     @Override //확정
-     public Page<FundingDto> searchTitleAndContent(Pageable pageable, String keyword) {
-         // pageable = PageRequest.of(1, 6);
-         Page<Funding> find = repository.searchIndex(keyword, keyword, pageable);
- 
-         Page<FundingDto> result = FundingDto.toDtoPage(find);
- 
-         return result;
-     }
+    @Override
+    public FundingPageDto<FundingDto, Funding> getList(PageRequestDto requestDto) {
+            Pageable pageable = requestDto.getPageable(Sort.by("fundingId").descending());
+            Page<Funding> result = repository.findAll(pageable);
+            Function<Funding, FundingDto> fn = (entity -> pageentityToDto(entity));
+        return new FundingPageDto<>(result,fn);
+    }
+   
 
 
     @Override
-    public Page<FundingDto> searchInPage(String title, String content, Pageable pageable) {
-        // TODO Auto-generated method stub
-        return null;
+    public FundingPageDto<FundingDto, Funding> getPageById(PageRequestDto requestDto, Long id) {
+        return new FundingPageDto<>(repository.getPageById(
+            requestDto.getPageable(Sort.by("fundingId").descending()), id),
+            entity  -> pageentityToDto(entity));
     }
 
+    public FundingPageDto<FundingDto, Funding> getPageByArtistId(PageRequestDto requestDto, Long id) {
+        
+        return new FundingPageDto<>(repository.getPagebyArtistId(
+            requestDto.getPageable(Sort.by("fundingId").descending()), id),
+            (entity -> pageentityToDto(entity)));
+    }
 
+    @Override
+    public FundingPageDto<FundingDto, Funding> searchTitleAndContent(PageRequestDto requestDto, String keyword) {
+        
+        return new FundingPageDto<>(repository.searchIndex(
+                requestDto.getPageable(Sort.by("fundingId").descending()), keyword, keyword),
+                entity -> pageentityToDto(entity));
+    }
 
+    @Override
+    public FundingPageDto<FundingDto, Funding> getByartistName(PageRequestDto requestDto, String name) {
+        return new FundingPageDto<>(repository.getPageByartistName(
+            requestDto.getPageable(Sort.by("fundingId").descending()), name),
+            entity -> pageentityToDto(entity));
+    }
 
    
+
 
 }

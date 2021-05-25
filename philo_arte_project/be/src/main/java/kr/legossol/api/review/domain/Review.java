@@ -42,10 +42,6 @@ public class Review {
     @Column(name = "comment")
     private String comment;
 
-    // @ManyToOne
-    // @JoinColumn(name = "funding_id")
-    // private Funding funding;
-
     @ManyToOne
     @JoinColumn(name = "artist_id")
     private Artist artist;

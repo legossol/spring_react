@@ -2,6 +2,7 @@ package kr.legossol.api.funding.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
@@ -25,9 +26,9 @@ public class FundingDto {
     private Long fundingId;
     private String title;     
     private String content;
-    private Long goalPrice;
-    private Long artistId;
-    private int viewCnt;
+    private long goalPrice;
+    private long artistId;
+    private long viewCnt;
     private String hashtag;
     
     // Entity -> Dto
@@ -41,6 +42,9 @@ public class FundingDto {
 
     public static FundingDto toDtoList(List<Funding> sendIt) {
         return  ModelMapperUtils.getModelMapper().map(sendIt, FundingDto.class);
+    }
+    public static List<FundingDto> tlist(List<Funding> sendIt) {
+        return  sendIt.stream().map(f -> ModelMapperUtils.getModelMapper().map(f, FundingDto.class)).collect(Collectors.toList());
     }
     private ArrayList<FundingFileDto> fundingFiles;
     

@@ -1,5 +1,7 @@
 package kr.legossol.api;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -18,7 +20,10 @@ import org.springframework.test.annotation.Commit;
 import javassist.runtime.Desc;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
+import kr.legossol.api.funding.domain.FundingPageDto;
+import kr.legossol.api.funding.domain.PageRequestDto;
 import kr.legossol.api.funding.repository.FundingRepository;
+import kr.legossol.api.funding.service.FundingServiceImpl;
 import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest
@@ -26,44 +31,137 @@ import lombok.extern.log4j.Log4j2;
 public class RepositoryTest {
     @Autowired
     private FundingRepository repo;
+    private FundingServiceImpl service;
+    @Test@Commit@Transactional
+    void test1(){
+        List<Funding> f = repo.getAllFundings();
+        for(Funding funding :f){
+        System.out.println(funding.getContent());
+        System.out.println(funding.getGoalPrice());
+        System.out.println(funding.getHashtag());
+        System.out.println(funding.getTitle());
+        System.out.println(funding.getFundingId());
+    }
+}
 
-    @Test
-    @Commit
-    @Transactional
-    void testFindFundingByArtist(){
-        List<Funding> result = repo.searchAllListByArtistId(55L);
-        System.out.println("result::::::::::"+result);
-        log.info("log좀 보자:::::::::::::::", result);
-    }
-   
     @Test@Commit@Transactional
-    void testSearchByTitle(){
-        List<Funding> result = repo.searchFundingsByTitle("기부");
-        System.out.println("result::::::::::"+result);
-        log.info("log좀 보자:::::::::::::::", result);
-    }
-    @Test@Commit@Transactional
-    void testSearchBycontent(){
-        List<Funding> result = repo.searchFundingByContent("안경");
-        System.out.println("result::::::::::"+result.size());
-        log.info("log좀 보자:::::::::::::::", result);
-    }
-    @Test@Commit@Transactional
-    void testSearchByhash(){
-        List<Funding> result = repo.searchFundingByHashtag("건강");
-        System.out.println("result::::::::::"+result.size());
-        log.info("log좀 보자:::::::::::::::", result);
+    void test2(){
+        List<Funding>  f = repo.getOneFunding(5L);
+        
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
     }
 
- /*======================================bined with artist========================================*/
     @Test@Commit@Transactional
-    void testFindFundingByArtistId(){
-        List<Funding> result = repo.searchFundingByArtistId(10L);
-        System.out.println("result::::::::::"+result);
-        log.info("log좀 보자:::::::::::::::", result);
+    void test3(){
+        List<Funding>  f = repo.searchFundingsByTitle("밤에");
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
     }
+    @Test@Commit@Transactional
+    void test4(){
+        List<Funding>  f = repo.searchFundingByContent("안녕");
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
+    }
+    @Test@Commit@Transactional
+    void test5(){
+        List<Funding>  f = repo.searchAllListByArtistId(5L);
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
+    }
+    @Test@Commit@Transactional
+    void test(){
+        List<Funding>  f = repo
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
+    }
+    @Test@Commit@Transactional
+    void test6(){
+        Pageable pageable = PageRequest.of(0, 5);
+        Page<Funding> f = repo.getByartistName(pageable, "수잔");
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
+    }
+    @Test@Commit@Transactional
+    void test7(){
+        Pageable pageable = PageRequest.of(0, 5);
+        Page<Funding> f = repo.getPageById(pageable, 5L);
+        for(Funding funding :f){
+            System.out.println(funding.getContent());
+            System.out.println(funding.getGoalPrice());
+            System.out.println(funding.getHashtag());
+            System.out.println(funding.getTitle());
+            System.out.println(funding.getFundingId());
+        }
+    }
+    
+    
 
-    /*======================================bined with page========================================*/
-   
+
+
+
+
+    // public void testList1(){
+    //     PageRequestDto pageRequestDto = PageRequestDto.builder().page(1).getPageSize(10).buiild();
+
+    //     FundingPageDto<FundingDto, Funding> resultDto = service.getList(pageRequestDto);
+    //     for(FundingDto fundingdto : resultDto.getDtoList()){
+    //         System.out.println(fundingdto);
+    //     }
+    // }
+    // @Test@Commit@Transactional
+    // void test3(){
+    //     Pageable pageable = PageRequestDto.
+        
+    //     repo.getRecent(pageable);
+    //     pageable = PageReques
+    // }
+    // @Test@Commit@Transactional
+    // public void testList(){
+    //     PageRequestDto pageRequestDto = PageRequestDto.builder().page(1).perPage(10).build();
+        
+    //     FundingPageDto<FundingDto, Funding> resultDto = service.getList(pageRequestDto);
+
+    //     System.out.println("PREV: " +resultDto.isPrev());
+    //     System.out.println("NEXT: " + resultDto.isNext());
+    //     System.out.println("TOTAL:" + resultDto.getTotalPage());
+    //     System.out.println("=======================-=========");
+    //     for(FundingDto fundingdto : resultDto.getDtoList()){
+    //         System.out.println(fundingdto);
+    //     }
+    //     System.out.println("=======================-=========");
+    //     resultDto.getPageList().forEach(i -> System.out.println(i));
+    // }
 }
             

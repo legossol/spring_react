@@ -26,13 +26,9 @@ const FundingList = () =>{
                 <th>writer</th>
                 <th>content</th>
                 <th>goalPrice</th>
+                <th>등록일</th>
+                <th>Hashtag</th>
                 <th>viewCnt</th>
-                <th>regDate</th>
-                <th>editDate</th>
-                <th>likeCnt</th>
-                <th>dislikeCnt</th>
-                <th>likeCheck</th>
-
             </tr>
           </thead>
           <tbody>
@@ -44,12 +40,9 @@ const FundingList = () =>{
                   <td>{funding.writer}</td>
                   <td>{funding.content}</td>
                   <td>{funding.goalPrice}</td>
+                  <td>{funding.moddate}</td>
+                  <td>{funding.hashtag}</td>
                   <td>{funding.viewCnt}</td>
-                  <td>{funding.regDate}</td>
-                  <td>{funding.editDate}</td>
-                  <td>{funding.likeCnt}</td>
-                  <td>{funding.dislikeCnt}</td>
-                  <td>{funding.likeCheck}</td>
                   <Link to={`/funding/detail`}><button onClick={()=>dispatch(getFundingDetail(funding.fundingId))}>상세보기</button></Link>
                   <button onClick={()=>dispatch(updateFunding(funding.fundingId))}>수정하기</button>
                   <button onClick={()=>dispatch(deleteFunding(funding.fundingId))}>삭제하기</button>
@@ -58,7 +51,7 @@ const FundingList = () =>{
             })}
           </tbody>
           </table>
-          <input type="text" placeholder="검색어 입력"></input>
+          <input type="text" placeholder="Philo-Arte 통합 검색"></input>
           <button>검색하기</button>
           <Link to={"/funding/register"}>
                 <button>펀딩 등록하기</button>

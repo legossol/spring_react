@@ -15,6 +15,8 @@ import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.domain.FundingFile;
 import kr.legossol.api.funding.domain.FundingFileDto;
+import kr.legossol.api.funding.domain.FundingPageDto;
+import kr.legossol.api.funding.domain.PageRequestDto;
 
 public interface FundingService {
     String save(FundingDto requestDto);
@@ -52,14 +54,30 @@ public interface FundingService {
     String deleteFile(Long fundingFileId);
 
     //============Pagingservice Below==============
-    List<FundingDto> getListAllpage(Pageable pageable);
+    FundingPageDto<FundingDto, Funding> getList(PageRequestDto requestDto);
+    FundingPageDto<FundingDto, Funding> getPageById(PageRequestDto requestDto,Long id);
+    FundingPageDto<FundingDto, Funding> getPageByArtistId(PageRequestDto requestDto,Long id);
+    FundingPageDto<FundingDto, Funding> searchTitleAndContent(PageRequestDto requestDto, String keyword);
    
-    Page<FundingDto> searchInPage(String title,String content, Pageable pageable);
-   
-    Page<FundingDto> searchTitleAndContent(Pageable pageable, String keyword);
-    
-
-
-    
-   
+    FundingPageDto<FundingDto, Funding> getByartistName(PageRequestDto requestDto, String name);
+    default Funding pagedtoToEntity(FundingDto dto){
+        Funding entity = Funding.builder()
+                .fundingId(dto.getFundingId())
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .goalPrice(dto.getGoalPrice())
+                .hashtag(dto.getHashtag())
+                .build();
+                return entity;
+    }
+    default FundingDto pageentityToDto(Funding entity){
+        FundingDto dto = FundingDto.builder()
+                    .fundingId(entity.getFundingId())
+                    .title(entity.getTitle())
+                    .content(entity.getContent())
+                    .goalPrice(entity.getGoalPrice())
+                    .hashtag(entity.getHashtag())
+                    .build();
+                    return dto;
+    }
 }
