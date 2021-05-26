@@ -2,16 +2,15 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
 
-const getList=() =>{
-    return axios.get("http://localhost:8080/funding/list?page=" + page)
-    .then(res => setPageResult(res.data))
-    
+const getList=(page) =>{
+    return axios.get("http://localhost:8080/funding/list?page=" +page)
+
 }
 const fundingRegister = (register) =>{
     axios({
-        url: "http://localhost:8080/funding/register",
+        url: "http://localhost:8080/funding/totalregister",
         method: 'POST',
-        headers:{ 'Content-Type': 'application/json', 'Authorization': 'JWT fefege..'},
+        headers:{ 'Content-Type': "multipart/form-data", 'Authorization': 'JWT fefege..'},
         data: register,
         
     })

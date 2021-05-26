@@ -1,12 +1,7 @@
-import React, { useState,useCallback } from 'react';
-import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import { saveFunding } from 'webapp/funding/reducer/funding.reducer';
-import { colors } from '@material-ui/core';
-const FundingRegister = () =>{
-
-    const dispatch = useDispatch()
-
+import React, {useCallback, useState} from 'react';
+import TextField from '@material-ui/core/TextField';
+import {Button} from "@material-ui/core";
+const TextRegister = () => {
     const [funding, setNewFunding] = useState({
         title : "",
         content : "",
@@ -42,13 +37,11 @@ const FundingRegister = () =>{
             <label>artistId</label>
             <input type="number"style={{color:'black'}} name="artistId" value={funding.artistId} onChange={handleSubmit}/>
             <hr/>
-            {/* <input type="file" onChange={handleSubmit}/> */}
+            <Button onClick={handleSubmit}>SUBMIT</Button>
         </form>
-        <Link to={'/funding/list'}><button type="submit" onClick={()=>dispatch(saveFunding(funding))}>등록</button></Link>
-        <Link to={'/funding/list'}><button>취소</button></Link>
+       
         </>
     )
 }
 
-export default FundingRegister
-
+export default TextRegister

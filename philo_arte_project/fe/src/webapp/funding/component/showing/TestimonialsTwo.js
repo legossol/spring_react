@@ -48,7 +48,7 @@ const TestimonialsTwo = ({ data, title, backfont, type }) => {
                 (type === "dark" ? "white-color" : "")
               }
             >
-              <h1 data-backfont-sm={backfont || "Clients"}>
+              <h1 data-backfont-sm={backfont || "Do Fund"}>
                 {title && parse(title)}
               </h1>
             </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import parse from "html-react-parser";
 import PortfolioItem from "webapp/resume/component/Presentation/PortfolioItem";
 import PortfolioFilter from "./PortfolioFilter";
@@ -6,7 +7,18 @@ import LoadScript from "../helpers/LoadScript";
 
 const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, classes, dash, dashColor }) => {
   LoadScript("js/portfolio/portfolio-grid.js");
-
+  const fundings = useSelector(state =>{
+    return state.fundings.pageResult.dtoList
+  })
+  const renderData = ()=>{
+    return(
+      <h1>
+      {fundings.map((funding, id)=>{
+        return <li key={id}>{funding.title}</li>
+      })}
+      </h1>
+    )
+  }
   return (
     <section id="portfolio" className={"pb-0 " + classes}>
       <div className="container">
@@ -16,7 +28,8 @@ const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, clas
               <h2 className="cardo-font default-color" data-backfont={backfont}>
                 {tagline}
               </h2>
-              <h1>{title && parse(title)}</h1>
+              
+              <h1>{renderData()}</h1>
               {dash === "show" ? <hr className={"center_line " + (dashColor === "dark" ? "dark-bg" : "default-bg")} /> : null}
             </div>
           </div>
@@ -31,12 +44,12 @@ const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, clas
             <div id="portfolio-gallery" className="cbp">
               {data
                 .filter((v, i) => i < 8)
-                .map((item, i) => (
+                .map((fundings, i) => (
                   <PortfolioItem
-                    key={item.id}
-                    title={item.title}
-                    categories={item.categories}
-                    image={item.image}
+                    key={fundings.id}
+                    title={fundings.title}
+                    categories={fundings.categories}
+                    image={fundings.image}
                   />
                 ))}
             </div>

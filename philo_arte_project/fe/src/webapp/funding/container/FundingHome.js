@@ -30,6 +30,7 @@ import PortfolioBoxedSpaceThree from "webapp/funding/component/showing/Portfolio
 import TestimonialsThree from "webapp/funding/component/showing/TestimonialsTwo";
 import ClientsGrid from "webapp/common/Carousel/ClientsCarousel";
 import BlogSection from "webapp/funding/component/showing/BlogSection";
+import FundingList from "../component/FundingList"
 
 import Loader from "webapp/common/Loader/Loader";
 
@@ -44,7 +45,7 @@ const FundingHome = () => (
       title="당신이 함께 할 수 있는 펀딩리스트"
       backfont="FUND"
       classes="no-bottom-line"
-      data={dataPortfolio}
+      data={FundingList()}
       filter={true}
       categories={[
         "도자기",
@@ -54,64 +55,11 @@ const FundingHome = () => (
         "추상화",
       ]}
     />
-    <WhatWeOfferEight
-      title="We Design Visual Experience for The Web"
-      text="Anno template provides fully flexible templates, allowing to
-    customize every page and section down to the tiniest detail in a
-    few clicks!"
-      image={imageVideo}
-      video="https://www.youtube.com/watch?v=sU3FkzUKHXU"
-    >
-      <TabsTwo data={dataTabs} />
-    </WhatWeOfferEight>
-
-    <WhatWeOfferThree data={dataServices} />
-    <PresentationOne
-      title="Superb Website Template <br /> for Startups & Small Businesses."
-      text="We Are provide web design services to startups and existing business in<br> New York and around the US helping them make an impact online."
-      textBtn="Read more"
-      pathBtn={process.env.PUBLIC_URL}
-    />
-    <AboutTwo
-      title="Agency Overview"
-      data={dataSkills}
-      text='<p class="mt-30">
-            Every site we create is designed and optimised to look and function
-            just as well on mobile phones and tablets as it does on a desktop,
-            creating a seamless experience across any device.
-          </p>
-          <p>
-            We use the latest development standards and web technologies to keep
-            things cutting edge, ensuring your new website is built on a stable
-            and future-proof foundation.
-          </p>'
-    >
-      <CounterRowOne data={dataCounters} classes="mt-50" />
-    </AboutTwo>
-    <ParallaxTwo
-      title="Let Your Email Address Speak for You"
-      tagline="Join us on social media"
-      textBtn="Read more"
-      pathBtn="!#"
-      typeBtn="btn-lg btn-color btn-circle"
-      image={imgParallax}
-    />
-    <PortfolioBoxedSpaceThree
-      title="Our Latest Works"
-      data={dataPortfolio}
-      filter={true}
-      categories={[
-        "Branding",
-        "Creative Design",
-        "Web Design",
-        "Stationery",
-        "Photography",
-      ]}
-    />
-    <TestimonialsThree data={dataTestimonials} title="Our Clients Say">
+    
+    <TestimonialsThree data={dataTestimonials} title="Our Artist Says">
       <ClientsGrid data={dataClients} classes="mt-100" />
     </TestimonialsThree>
-    <BlogSection title="Our Latest Blogs" data={dataBlog} />
+    <BlogSection title="종료 된 펀딩" data={dataBlog} />
    
     <FooterOne />
   </>

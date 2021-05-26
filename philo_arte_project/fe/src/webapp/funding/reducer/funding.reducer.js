@@ -3,9 +3,9 @@ import {FundingService} from '../index'
 
 
 export const getFundingList = createAsyncThunk(
-    "funding/list",
-    async() =>{
-        const response = await FundingService.getList()
+    "fundings/list",
+    async(page) =>{
+        const response = await FundingService.getList(page)
         return response.data
     }
 )
@@ -41,6 +41,7 @@ export const deleteFunding = createAsyncThunk(
         return ressponse.data
     }
 )
+
 const isRejectAction=action=>
      (action.type.endsWith('rejected'))
 
@@ -48,13 +49,23 @@ const fundingSlice = createSlice({
     name: "fundings",
     initialState: {
         dtoList: [],
-        msg:''
+        msg:'',
+        pageResult:{
+            dtoList:[],
+            page:1,
+            pageList:[],
+            start:1,
+            end:1,
+            prev:false,
+            next:false
+        },
+        params:{}
     },
     reducers:{},
     extraReducers: (builder)=>{
         builder
         .addCase(getFundingList.fulfilled,(state, {payload})=>{
-            state.dtoList = payload.dtoList
+            state.pageResult = payload
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{
             console.log("디테일에드 케이스" + state +"payloda :"+[...payload])
@@ -77,7 +88,8 @@ const fundingSlice = createSlice({
         .addDefaultCase((state, payload)=>{})
     },
 })
-const {reducer} = fundingSlice
+const {actions ,reducer} = fundingSlice
+export const {}=actions
 export default reducer 
 
 // const funding = state.find(funding => funding.fundingNo == payload)

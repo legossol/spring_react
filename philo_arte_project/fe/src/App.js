@@ -4,7 +4,7 @@ import ScrollIntoView from "./webapp/common/helpers/ScrollIntoView";
 import ScrollToTop from "./webapp/common/helpers/ScrollToTop";
 
 import {ResumeApp, ResumeList, ResumeModify, ResumeRead, ResumeRegister} from 'webapp/resume/index'
-import {FundingHome, FundingList, FundingUpdate, FundingRead, FundingRegister, FundingDetail} from 'webapp/funding/index'
+import {FundingHome, FundingList, FundingUpdate,FundingRegister, FundingDetail} from 'webapp/funding/index'
 import {ItemList, ItemModify, ItemRead, ItemRegister} from 'webapp/item/index'
 import {ReviewList, ReviewModify, ReviewRead, ReviewRegister} from 'webapp/review/index'
 import {WorkList, WorkModify, WorkRead, WorkRegister} from 'webapp/work/index'
