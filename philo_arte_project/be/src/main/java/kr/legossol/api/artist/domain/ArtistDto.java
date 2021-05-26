@@ -1,15 +1,23 @@
 package kr.legossol.api.artist.domain;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@Component
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ArtistDto {
     @ApiModelProperty(position = 0)
-    private long artistId;
+    private Long artistId;
     @ApiModelProperty(position = 1)
     private String username;
     @ApiModelProperty(position = 2)
@@ -27,12 +35,8 @@ public class ArtistDto {
     @ApiModelProperty(position = 8)
     private String department;
     @ApiModelProperty(position = 9)
-    private LocalDateTime regData;
-    @ApiModelProperty(position = 10)
-    private LocalDateTime modDate;
-    @ApiModelProperty(position = 11)
     private List<Role> roles;
-    @ApiModelProperty(position = 12)
+    @ApiModelProperty(position = 10)
     private String token;
 
 }

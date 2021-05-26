@@ -1,46 +1,61 @@
 package kr.legossol.api.artist.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import kr.legossol.api.common.domain.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-@EntityListeners(value = { AuditingEntityListener.class })
+@EntityListeners(value = {AuditingEntityListener.class})
 @Entity
 @Table(name = "artists")
-@Data
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Artist {
+@ToString(exclude = "roles")
+public class Artist extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "artist_id")
-    private long artistId;
-    @Column(unique = true, nullable = false)
+    @JoinColumn(name = "artist_id")
+    private Long artistId;
+
+    //, unique = true, nullable = false
+    @Column(name = "username")
     private String username;
-    @Size(min = 8, message = "Minimum Password Length: 8 characters")
+
+    //    @Size(min = 8, message = "Minimum Password Length: 8 characters")
+    //, columnDefinition="Number(10) default '12345678'"
+    @Column(name = "password")
     private String password;
-    @Column(unique = true, nullable = false)
+
+    //    @Embedded
+    @Column(name = "name")
     private String name;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "phone_number")
     private String phoneNumber;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "school")
     private String school;
+
     @Column(name = "department")
     private String department;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.LAZY)
     List<Role> roles;
+
+    public void changeRoles(List<Role> roles){
+        this.roles = roles;
+    }
 
 }

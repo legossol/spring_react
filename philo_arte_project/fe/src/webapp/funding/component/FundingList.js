@@ -6,39 +6,38 @@ import {getFundingList, deleteFunding,getFundingDetail,updateFunding} from 'weba
 const FundingList = () =>{
   const fundings = useSelector(state =>{
     console.log("state : " + JSON.stringify(state.fundings))
-    return state.fundings
+    return state.fundings.dtoList
   })
   const dispatch = useDispatch()
+
   useEffect(()=>{
-    alert("리스트를 불러 옵니다.")
     dispatch(getFundingList())
   },[])
   
+
     return ( 
         <>
         
         <div className="container">
         <h1>아 이 템 리 스 트</h1>
-        <table style={{border:30}} >
-          <thead>
+        <table style={{border:30}}>
+          <thead style={{textAlign:'center'}}>
             <tr>
                 <th>fundingId</th>
                 <th>title</th>
-                <th>writer</th>
                 <th>content</th>
                 <th>goalPrice</th>
                 <th>등록일</th>
-                <th>Hashtag</th>
+                <th>hashtag</th>
                 <th>viewCnt</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{textAlign:'center'}}>
             {fundings.map((funding, id) =>{
               return(
                 <tr key={id}>
                   <td>{funding.fundingId}</td>
                   <td>{funding.title}</td>
-                  <td>{funding.writer}</td>
                   <td>{funding.content}</td>
                   <td>{funding.goalPrice}</td>
                   <td>{funding.moddate}</td>

@@ -31,11 +31,11 @@ const App=()=> {
             <Route exact path='/resume/register' component={ResumeRegister}/>
 
             {/*Funding*/}
-            <Route exact path='/funding/funding-list' component={FundingList}/>
-            <Route exact path='/funding/funding-modify' component={FundingUpdate}/>
-            <Route exact path='/funding/funding-read' component={FundingDetail}/>
-            <Route exact path='/funding/funding-register' component={FundingRegister}/>
-            <Route exact path='/funding/funding-home' component={FundingHome}/>
+            <Route exact path='/funding/list' component={FundingList}/>
+            <Route exact path='/funding/modify' component={FundingUpdate}/>
+            <Route exact path='/funding/read' component={FundingDetail}/>
+            <Route exact path='/funding/register' component={FundingRegister}/>
+            <Route exact path='/funding/home' component={FundingHome}/>
 
             {/*Item*/}
             <Route exact path='/item/item-list' component={ItemList}/>

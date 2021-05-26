@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom'
 
 
 const getList=() =>{
-    return axios.get("http://localhost:8080/funding/list")
+    return axios.get("http://localhost:8080/funding/list?page=" + page)
+    .then(res => setPageResult(res.data))
+    
 }
 const fundingRegister = (register) =>{
     axios({

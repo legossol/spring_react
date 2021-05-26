@@ -32,7 +32,6 @@ export const updateFunding = createAsyncThunk(
     async(fundingNo)=>{
         const response = await FundingService.updateByFundingID(fundingNo)
         return response.data
-
     }
 )
 export const deleteFunding = createAsyncThunk(
@@ -47,12 +46,15 @@ const isRejectAction=action=>
 
 const fundingSlice = createSlice({
     name: "fundings",
-    initialState: [],
+    initialState: {
+        dtoList: [],
+        msg:''
+    },
     reducers:{},
     extraReducers: (builder)=>{
         builder
         .addCase(getFundingList.fulfilled,(state, {payload})=>{
-            return [...payload]
+            state.dtoList = payload.dtoList
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{
             console.log("디테일에드 케이스" + state +"payloda :"+[...payload])

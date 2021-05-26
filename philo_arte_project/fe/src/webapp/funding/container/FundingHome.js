@@ -40,18 +40,18 @@ const FundingHome = () => (
 
     <HomeMarketingSlider />
     <PortfolioOne
-      tagline="Show Your Works"
-      title="Our Portfolio"
-      backfont="Works"
+      tagline="Let's participate Funding"
+      title="당신이 함께 할 수 있는 펀딩리스트"
+      backfont="FUND"
       classes="no-bottom-line"
       data={dataPortfolio}
       filter={true}
       categories={[
-        "Branding",
-        "Creative Design",
-        "Web Design",
-        "Stationery",
-        "Photography",
+        "도자기",
+        "수채화",
+        "동양화",
+        "서양화",
+        "추상화",
       ]}
     />
     <WhatWeOfferEight

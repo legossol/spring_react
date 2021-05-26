@@ -1,4 +1,4 @@
-package kr.legossol.api.resume.domain
+package kr.legossol.api.resume.domain;
 
 import javax.persistence.*;
 

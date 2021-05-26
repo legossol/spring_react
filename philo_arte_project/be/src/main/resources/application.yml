@@ -28,7 +28,11 @@ security:
 shop:
   legossol:
     upload:
-      path: /Users/haesoljang/filestore/fileUploadTest
+      path: /Users/haesoljang/filestore/philoArte/funding
+philo:
+  arte:
+    upload:
+      path: /Users/haesoljang/filestore/philoArte/review
 UserController:
   signup: Creates user and returns its JWT token
   signin: Authenticates user and returns its JWT token
