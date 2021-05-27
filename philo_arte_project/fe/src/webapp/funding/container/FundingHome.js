@@ -45,7 +45,7 @@ const FundingHome = () => (
       title="당신이 함께 할 수 있는 펀딩리스트"
       backfont="FUND"
       classes="no-bottom-line"
-      data={FundingList()}
+      data={dataPortfolio}
       filter={true}
       categories={[
         "도자기",

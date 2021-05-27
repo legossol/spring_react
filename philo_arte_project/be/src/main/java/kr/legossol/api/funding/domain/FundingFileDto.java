@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FundingFileDto {
-    private Long pnum;
+    private Long fundingFileId;
 
     private String uuid;
 
