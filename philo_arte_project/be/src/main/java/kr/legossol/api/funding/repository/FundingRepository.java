@@ -40,10 +40,10 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     List<Funding> searchFundingByArtistId(@Param("artistId") Long i);
 
     
-  
+   @EntityGraph(attributePaths = {"artist","artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM Funding f ORDER BY f.fundingId desc")
     Page<Funding> getRecent(Pageable pageable);
-
+    
     @Query("SELECT f FROM Funding f WHERE f.fundingId = :fundingId")
     Page<Funding> getPageById(Pageable pageable,@Param("fundingId")Long id);
 

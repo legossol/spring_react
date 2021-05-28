@@ -2,6 +2,12 @@ package kr.legossol.api.funding.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.legossol.api.funding.domain.Funding;
@@ -30,12 +36,9 @@ public interface FundingService {
     String delete(FundingDto postDto);
     void deleteById(long id);
     //============fileservice below==============
-    String totalSave(FundingDto dto);
+    Long textAndPicSave(FundingDto dto);
 
-
-    List<FundingFileDto> getFileByFundingId(Long id);
-
-    default FundingFile dtoToEntityResumeFile(FundingFileDto dto) {
+    default FundingFile dtoToEntityFundingFile(FundingFileDto dto) {
 
         FundingFile fundingFile = FundingFile.builder().uuid(dto.getUuid()).fname(dto.getFname())
                 .build();
@@ -47,11 +50,17 @@ public interface FundingService {
     String deleteFile(Long fundingFileId);
 
     //============Pagingservice Below==============
-    FundingPageDto<FundingDto, Funding> getList(PageRequestDto requestDto);
+    FundingPageDto<FundingDto, Funding> getList(int page);
+    default Pageable conditionPage(int page) {
+    return PageRequest.of(page <= 0 ? 1 : page - 1, 8, Sort.Direction.DESC, "fundingId");}
+
+    default Function<Funding, FundingDto> makeDtoPage() {
+        return (en -> pageentityToDto(en));
+    }
     FundingPageDto<FundingDto, Funding> getPageById(PageRequestDto requestDto,Long id);
     FundingPageDto<FundingDto, Funding> getPageByArtistId(PageRequestDto requestDto,Long id);
     FundingPageDto<FundingDto, Funding> searchTitleAndContent(PageRequestDto requestDto, String keyword);
-   
+
     FundingPageDto<FundingDto, Funding> getByartistName(PageRequestDto requestDto, String name);
     default Funding pagedtoToEntity(FundingDto dto){
         Funding entity = Funding.builder()
@@ -64,13 +73,16 @@ public interface FundingService {
                 return entity;
     }
     default FundingDto pageentityToDto(Funding entity){
-        FundingDto dto = FundingDto.builder()
+            return FundingDto.builder()
                     .fundingId(entity.getFundingId())
                     .title(entity.getTitle())
                     .content(entity.getContent())
                     .goalPrice(entity.getGoalPrice())
                     .hashtag(entity.getHashtag())
+                    .viewCnt(entity.getViewCnt())
+                    // .artistId(entity.getArtist().getArtistId())
+                    // .name(entity.getArtist().getName())
+                    .fundingFiles(entity.getFundingFiles().stream().map(fundingFile -> FundingFileDto.of(fundingFile)).collect(Collectors.toList()))
                     .build();
-                    return dto;
     }
 }

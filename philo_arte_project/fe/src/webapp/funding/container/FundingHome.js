@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // DATA Files
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
 import dataServices from "webapp/common/data/Services/services-studio-data.json";
@@ -15,7 +15,7 @@ import imgParallax from "webapp/images/background/sampleImg.jpg";
 import imageVideo from "webapp/images/video-mockup.png";
 // Components
 import TabsTwo from "webapp/funding/component/showing/TabsTwo";
-import PortfolioOne from "webapp/common/Portfolio/PortfolioOne";
+import PortfolioOne from "webapp/funding/component/showing/PortfolioOne";
 import HeaderSocial from "webapp/common/Header/HeaderSocial";
 import HomeDigitalSlider from "webapp/common/HeroSlider/HomeDigitalSlider";
 import HomeMarketingSlider from "webapp/common/HeroSlider/HeroMarketing";
@@ -33,8 +33,20 @@ import BlogSection from "webapp/funding/component/showing/BlogSection";
 import FundingList from "../component/FundingList"
 
 import Loader from "webapp/common/Loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { getFundingList } from "../reducer/funding.reducer";
 
-const FundingHome = () => (
+const FundingHome = () => {
+  const pageResult= useSelector(state=>state.fundings.pageResult)
+  const dispatch = useDispatch()
+  const page = pageResult.page
+  useEffect((e)=>{
+    dispatch(getFundingList(page))
+  },[])
+
+  const fundings = useSelector(state => state.Fundings)
+  
+  return(
   <>
  
     <HeaderSocial data={dataNavbar} />
@@ -45,24 +57,24 @@ const FundingHome = () => (
       title="당신이 함께 할 수 있는 펀딩리스트"
       backfont="FUND"
       classes="no-bottom-line"
-      data={dataPortfolio}
+      data={pageResult.dtoList}
       filter={true}
-      categories={[
-        "도자기",
-        "수채화",
-        "동양화",
-        "서양화",
-        "추상화",
+      hashtag={[
+        "약",
+        "건강기능",
+        "운동",
+        "의류",
+        "소품",
       ]}
     />
     
     <TestimonialsThree data={dataTestimonials} title="Our Artist Says">
       <ClientsGrid data={dataClients} classes="mt-100" />
     </TestimonialsThree>
-    <BlogSection title="종료 된 펀딩" data={dataBlog} />
+    <BlogSection title="종료 된 펀딩" data={fundings} />
    
     <FooterOne />
   </>
 );
-
+    }
 export default FundingHome;

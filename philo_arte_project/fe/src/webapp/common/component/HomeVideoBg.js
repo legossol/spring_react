@@ -25,7 +25,7 @@ import WhatWeOfferEleven from "../WhatWeOffer/WhatWeOfferEleven";
 
 import WhatWeDoOne from "../WhatWeDo/WhatWeDoOne";
 
-import PortfolioOne from "../Portfolio/PortfolioOne";
+import PortfolioOne from "../../funding/component/showing/PortfolioOne";
 
 import TestimonialsOne from "../Testimonials/TestimonialsOne";
 

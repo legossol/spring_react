@@ -29,8 +29,8 @@ import lombok.extern.log4j.Log4j2;
 @SpringBootTest
 @Log4j2
 public class RepositoryTest {
-//     @Autowired
-//     private FundingRepository repo;
+    @Autowired
+    private FundingRepository repo;
 //     private FundingServiceImpl service;
 //     @Test@Commit@Transactional
 //     void test1(){
@@ -151,5 +151,37 @@ public class RepositoryTest {
 //     //     System.out.println("=======================-=========");
 //     //     resultDto.getPageList().forEach(i -> System.out.println(i));
 //     // }
+
+// @Test@Commit@Transactional
+//     void test3(){
+//         Pageable pageable = PageRequest.of(0, 1);
+//         repo.onlyList(pageable);
+        
+
+//         System.out.println("PREV: " +resultDto.isPrev());
+//         System.out.println("NEXT: " + resultDto.isNext());
+//         System.out.println("TOTAL:" + resultDto.getTotalPage());
+//         System.out.println("=======================-=========");
+//         for(FundingDto fundingdto : resultDto.getDtoList()){
+//             System.out.println(fundingdto);
+//         }
+//         System.out.println("=======================-=========");
+//         resultDto.getPageList().forEach(i -> System.out.println(i));
+//     }
+//     @Test@Commit@Transactional
+//     public void testList(){
+//         PageRequestDto pageRequestDto = PageRequestDto.builder().page(1).perPage(10).build();
+        
+//         FundingPageDto<FundingDto, Funding> resultDto = service.getList(pageRequestDto);
+
+//         System.out.println("PREV: " +resultDto.isPrev());
+//         System.out.println("NEXT: " + resultDto.isNext());
+//         System.out.println("TOTAL:" + resultDto.getTotalPage());
+//         System.out.println("=======================-=========");
+//         for(FundingDto fundingdto : resultDto.getDtoList()){
+//             System.out.println(fundingdto);
+//         }
+//         System.out.println("=======================-=========");
+//         resultDto.getPageList().forEach(i -> System.out.println(i));
+//     }
 }
-            

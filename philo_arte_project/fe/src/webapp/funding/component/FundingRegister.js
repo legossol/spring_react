@@ -1,9 +1,20 @@
-import React, { useState,useCallback } from 'react';
+import React, { useState,useCallback, useRef } from 'react';
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import { saveFunding } from 'webapp/funding/reducer/funding.reducer';
 import { colors } from '@material-ui/core';
 const FundingRegister = () =>{
+
+    const childdRef = useRef()
+    let uploadedFiles = null
+
+    const getUploadedFiles = (uplodedFilesResult) => {
+        console.log("getUploadedFiles")
+        uploadedFiles = uplodedFilesResult
+    }
+
+    //======
+
 
     const dispatch = useDispatch()
 
@@ -24,7 +35,8 @@ const FundingRegister = () =>{
     },[funding])
     return(
         <>
-        <h1>아 이 템 등 록 하 기</h1>
+        
+        <h1>전부 등록하기</h1>
         <form >
             
             <label>title</label>
@@ -42,7 +54,7 @@ const FundingRegister = () =>{
             <label>artistId</label>
             <input type="number"style={{color:'black'}} name="artistId" value={funding.artistId} onChange={handleSubmit}/>
             <hr/>
-            {/* <input type="file" onChange={handleSubmit}/> */}
+            <input type="file" onChange={handleSubmit}/>
         </form>
         <Link to={'/funding/list'}><button type="submit" onClick={()=>dispatch(saveFunding(funding))}>등록</button></Link>
         <Link to={'/funding/list'}><button>취소</button></Link>

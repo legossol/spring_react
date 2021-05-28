@@ -21,6 +21,10 @@ const FundingList = () =>{
   useEffect((e)=>{
     dispatch(getFundingList(page))
   },[page])
+
+ 
+
+
   const FundingPageList = () => {
 
     const {pageList, page, start, end, prev, next} = useSelector(state=>state.fundings.pageResult)

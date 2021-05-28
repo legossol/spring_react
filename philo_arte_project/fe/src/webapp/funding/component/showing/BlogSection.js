@@ -1,22 +1,29 @@
 import React from "react";
 import parse from "html-react-parser";
+import { useSelector } from "react-redux";
 
-const BlogSection = ({ title, data }) => (
+//종료된 펀딩
+
+const BlogSection = ({ title, data }) => {
+  const fundings = useSelector(state =>{
+    return state.fundings.pageResult.dtoList
+  })
+  return (
   <section id="blog">
     <div className="container">
       <div className="row">
         <div className="col-md-12 text-center">
-          <h2 className="mt-0 font-700">{title && parse(title)}</h2>
+          <h2 className="mt-0 font-700">{fundings.title && parse(fundings.title)}</h2>
         </div>
       </div>
       <div className="row mt-80 blog-style-01">
-        {data.filter((v,i) => i < 3).map((post) => (
+        {fundings.filter((v,i) => i < 3).map((post) => (
           <div className="col-md-4 col-sm-4 col-xs-12" key={post.id}>
             <div className="post">
               <div className="post-img">
                 <img
                   className="img-responsive"
-                  src={require("./../../../images/" + post.image)}
+                  src={ post.image}
                   alt={post.description}
                 />
                 <div className="post-metas">
@@ -40,5 +47,5 @@ const BlogSection = ({ title, data }) => (
     </div>
   </section>
 );
-
+        }
 export default BlogSection;

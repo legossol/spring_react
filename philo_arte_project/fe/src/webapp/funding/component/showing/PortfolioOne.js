@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import parse from "html-react-parser";
 import PortfolioItem from "webapp/resume/component/Presentation/PortfolioItem";
-import PortfolioFilter from "./PortfolioFilter";
-import LoadScript from "../helpers/LoadScript";
+import PortfolioFilter from "webapp/common/Portfolio/PortfolioFilter";
+import LoadScript from "../../../common/helpers/LoadScript";
+import { useDispatch, useSelector } from "react-redux";
+import fundingList from "../FundingList"
+import FundingFilter from "../popular/FundingFilter"
+import { currentFunding, getFundingList } from "webapp/funding/reducer/funding.reducer";
+import Itemhandle from "../popular/Itemhandle"
+import { FundingList } from "webapp/funding/";
 
-const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, classes, dash, dashColor }) => {
+
+
+const PortfolioOne = ({ tagline, backfont, filter, classes, dash, dashColor, hashtag,title,data}) => {
   LoadScript("js/portfolio/portfolio-grid.js");
+ 
   // const fundings = useSelector(state =>{
+  //   console.log("portfolio One 진입:" + JSON.stringify(state.fundings.pageResult.dtoList))
   //   return state.fundings.pageResult.dtoList
   // })
-  // const renderData = ()=>{
-  //   return(
-  //     <h1>
-  //     {fundings.map((funding, id)=>{
-  //       return <li key=
-  //     })}
-  //     </h1>
-  //   )
-  // }
+  // const dispatch = useDispatch()
+  // useEffect(() => {dispatch(getFundingList())},[])
+  
+ 
   return (
     <section id="portfolio" className={"pb-0 " + classes}>
       <div className="container">
@@ -33,8 +38,8 @@ const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, clas
             </div>
           </div>
         </div>
-        {filter === true && Array.isArray(categories) ? (
-          <PortfolioFilter categories={categories} classes="mb-80" />
+        {filter === true && Array.isArray(hashtag) ? (
+          <FundingFilter hashtag={hashtag} classes="mb-80" />
         ) : null}
       </div>
       <div className="container-fluid remove-padding">
@@ -42,15 +47,16 @@ const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, clas
           <div className="col-md-12">
             <div id="portfolio-gallery" className="cbp">
               {data
-                .filter((v, i) => i < 8)
-                .map((item, i) => (
-                  <PortfolioItem
-                    key={item.id}
-                    title={item.title}
-                    categories={item.categories}
-                    image={item.image}
+                .map((fundings, i) => (
+                  <Itemhandle
+                    key={fundings.fundingId}
+                    id={fundings.fundingId}
+                    title={fundings.title}
+                    image={fundings.image}
+                    hashtag={fundings.hashtag}
                   />
                 ))}
+                
             </div>
           </div>
         </div>

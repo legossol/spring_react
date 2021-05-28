@@ -1,8 +1,11 @@
 package kr.legossol.api.funding.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.springframework.data.domain.Page;
 
@@ -10,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import kr.legossol.api.artist.domain.Artist;
 import kr.legossol.api.common.domain.BaseEntity;
 import kr.legossol.api.common.util.ModelMapperUtils;
@@ -19,6 +23,7 @@ import kr.legossol.api.common.util.ModelMapperUtils;
 @AllArgsConstructor
 @Builder
 @Table(name = "fundings")
+// @ToString(exclude = {"artist","fundingFiles"})
 public class Funding extends BaseEntity {
     
     @Id
@@ -36,12 +41,7 @@ public class Funding extends BaseEntity {
     @Column(name = "hashtag")
     private String hashtag;
     
-
-    public Funding(FundingDto dto) {
-        this.title = dto.getTitle();
-    }
-
-    @ManyToOne(fetch =FetchType.LAZY,optional = false)
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
@@ -56,6 +56,9 @@ public class Funding extends BaseEntity {
     public static Page<Funding> of(Page<FundingDto> sourcePage){
         return sourcePage.map(Funding::of);
     }
+    @JsonManagedReference
+    @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<FundingFile> fundingFiles = new ArrayList<>();
 
     public void saveRequest(FundingDto requestDto) {
         this.title = requestDto.getTitle();

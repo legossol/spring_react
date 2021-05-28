@@ -59,6 +59,8 @@ const fundingSlice = createSlice({
             prev:false,
             next:false
         },
+
+        
         params:{}
     },
     reducers:{},
@@ -88,7 +90,11 @@ const fundingSlice = createSlice({
         .addDefaultCase((state, payload)=>{})
     },
 })
+
+
+
 const {actions ,reducer} = fundingSlice
+export const currentFunding = state => state.fundings.pageResult
 export const {}=actions
 export default reducer 
 

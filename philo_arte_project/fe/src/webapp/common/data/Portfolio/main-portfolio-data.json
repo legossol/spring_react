@@ -3,13 +3,13 @@
     "id": 1,
     "image": "grid/1.jpg",
     "title": "Creative design",
-    "categories": ["Branding"]
+    "categories": ["도자기"]
   },
   {
     "id": 2,
     "image": "grid/2.jpg",
     "title": "Cup design",
-    "categories": ["Creative Design"]
+    "categories": ["수채화"]
   },
   {
     "id": 3,

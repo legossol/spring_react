@@ -37,7 +37,7 @@ const totalregister = () =>{
             <PerformanceInput sendTextForm = {sendTextForm}></PerformanceInput>
 
             <UploadInput cref={childRef} getUploadedFiles = {getUploadedFiles}></UploadInput>
-
+            
         </div>
     );
 };

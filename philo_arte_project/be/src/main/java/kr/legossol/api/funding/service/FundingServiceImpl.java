@@ -35,22 +35,6 @@ public class FundingServiceImpl implements FundingService{
     private final FundingRepository repository;
     private final FundingFileRepository frepo;
 
-    @Transactional
-    @Override
-    public String totalSave(FundingDto dto) {
-        Funding totalPost = Funding.of(dto);
-        totalPost.saveRequest(dto);
-        ArrayList<FundingFileDto> files =  dto.getFundingFiles();
-        if(!files.isEmpty()){
-            files.forEach(fundingFiledtos -> {
-                FundingFile f = dtoToEntityResumeFile(fundingFiledtos);
-                f.confirmFunding(totalPost);
-                frepo.save(f);
-             });
-        }
-        return (repository.save(totalPost)!= null) ? "success" : "Fail";
-    }
-
 
     @Override
     public String delete(FundingDto postDto) {
@@ -69,10 +53,10 @@ public class FundingServiceImpl implements FundingService{
     public String save(FundingDto requestDto) {
         Funding toEntityRequest = Funding.of(requestDto);
         toEntityRequest.saveRequest(requestDto);
-        ArrayList<FundingFileDto> files =  requestDto.getFundingFiles();
+        List<FundingFileDto> files =  requestDto.getFundingFiles();
         if(!files.isEmpty()){
             files.forEach(fundingFiledtos -> {
-                FundingFile f = dtoToEntityResumeFile(fundingFiledtos);
+                FundingFile f = dtoToEntityFundingFile(fundingFiledtos);
                 frepo.save(f);
              });
         }
@@ -98,6 +82,7 @@ public class FundingServiceImpl implements FundingService{
     @Transactional
     @Override
     public ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles) {
+
         ArrayList<FundingFileDto> resultDtoList = new ArrayList<>();
         for (MultipartFile uploadFile : uploadFiles) {
 
@@ -128,23 +113,11 @@ public class FundingServiceImpl implements FundingService{
     }
 
     @Override
-    public List<FundingFileDto> getFileByFundingId(Long id) {
-        return FundingFileDto.filetoDto(frepo.getFileByFundingId(id));
-    }
-
-    @Override
     public String deleteFile(Long fundingFileId) {
         repository.deleteById(fundingFileId);
         return (frepo.findById(fundingFileId) != null) ? "Delete Success" : "Delete Failed";
     }
 
-    @Override
-    public FundingPageDto<FundingDto, Funding> getList(PageRequestDto requestDto) {
-            Pageable pageable = requestDto.getPageable(Sort.by("fundingId").descending());
-            Page<Funding> result = repository.findAll(pageable);
-            Function<Funding, FundingDto> fn = (entity -> pageentityToDto(entity));
-        return new FundingPageDto<>(result,fn);
-    }
     @Override
     public FundingPageDto<FundingDto, Funding> getPageById(PageRequestDto requestDto, Long id) {
         return new FundingPageDto<>(repository.getPageById(
@@ -172,6 +145,28 @@ public class FundingServiceImpl implements FundingService{
         return new FundingPageDto<>(repository.getPageByartistName(
             requestDto.getPageable(Sort.by("fundingId").descending()), name),
             entity -> pageentityToDto(entity));
+    }
+
+
+    @Override
+    public Long textAndPicSave(FundingDto dto) {
+        Funding totalPost = Funding.of(dto);
+        totalPost.saveRequest(dto);
+
+        List<FundingFileDto> files =  dto.getFundingFiles();
+        if(!files.isEmpty()){
+            files.forEach(fundingFiledtos -> {
+                FundingFile f = dtoToEntityFundingFile(fundingFiledtos);
+                f.confirmFunding(totalPost);
+                frepo.save(f);
+             });
+        }
+        return totalPost.getFundingId();
+    }
+    @Transactional
+    @Override
+    public FundingPageDto<FundingDto, Funding> getList(int page) {
+       return new FundingPageDto<>(repository.getRecent(conditionPage(page)),makeDtoPage());
     }
 
    

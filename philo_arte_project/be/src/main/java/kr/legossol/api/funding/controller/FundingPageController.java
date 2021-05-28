@@ -1,5 +1,6 @@
 package kr.legossol.api.funding.controller;
 
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,10 @@ public class FundingPageController {
     private final FundingServiceImpl service;
 
     @GetMapping("/list")
-    public ResponseEntity<FundingPageDto<FundingDto, Funding>> list(PageRequestDto requestDto){
-        return ResponseEntity.ok(service.getList(requestDto));
+    public ResponseEntity<FundingPageDto<FundingDto, Funding>> list(int page){
+        System.out.println(page);
+
+        return ResponseEntity.ok(service.getList(page));
     }
     @GetMapping("/list/{fundingId}")
     public ResponseEntity<FundingPageDto<FundingDto, Funding>>  getByFundingId(PageRequestDto requestDto,
@@ -47,7 +50,6 @@ public class FundingPageController {
                                         @RequestParam("artistName") String artistName){
         return ResponseEntity.ok(service.getByartistName(requestDto, artistName));
     }
-
 
 
 

@@ -30,16 +30,11 @@ public class FundingController {
     public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
         return ResponseEntity.ok(service.getFundingById(fundingId));
     }
-
     @PostMapping("/register")
     public ResponseEntity<String> save(@RequestBody FundingDto dto){
         return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
     }
 
-    @PostMapping("/totalregister")
-    public ResponseEntity<String> totalsave(@RequestBody FundingDto dto){
-        return ResponseEntity.ok("등록을 성공했습니다."+service.totalSave(dto));
-    }
     @PutMapping("/edit/{fundingId}")
     public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto){
     if(service.getFundingById(fundingId) == null){
@@ -53,5 +48,6 @@ public class FundingController {
         service.deleteById(fundingId);
         return ResponseEntity.ok("식제 성공");
     }
+    
 }
 

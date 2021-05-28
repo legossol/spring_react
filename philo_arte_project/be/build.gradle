@@ -65,6 +65,9 @@ dependencies {
 	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
 	testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
 	testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+
+	
 }
 
 test {

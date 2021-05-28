@@ -1,6 +1,26 @@
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+// const uploadAjax = files =>{
+//     axios({
+//         url: "http://localhost:8080/uploadAjax" +files,
+//         method: 'POST',
+//         headers: { "Content-Type": "multipart/form-data"},
+//         data: files
+//         }).then(res =>{
+//         res.data
+            
+//         });
+//         alert("사진이 등록되었습니다.")
+
+//         // useHistory.push('/list')
+//         window.location.reload()
+//         }).catch(err =>{
+//         alert(err)
+//     })
+// }
+// }
 
 const getList=(page) =>{
     return axios.get("http://localhost:8080/funding/list?page=" +page)

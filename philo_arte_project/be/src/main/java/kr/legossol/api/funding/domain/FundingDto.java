@@ -23,10 +23,12 @@ public class FundingDto {
     private String title;     
     private String content;
     private long goalPrice;
-    private long artistId;
     private long viewCnt;
     private String hashtag;
+    private long artistId;
+    private String name;
     
+
     // Entity -> Dto
     public static FundingDto toDto(Funding funding){
         return ModelMapperUtils.getModelMapper().map(funding, FundingDto.class);
@@ -42,6 +44,6 @@ public class FundingDto {
     public static List<FundingDto> tlist(List<Funding> sendIt) {
         return  sendIt.stream().map(f -> ModelMapperUtils.getModelMapper().map(f, FundingDto.class)).collect(Collectors.toList());
     }
-    private ArrayList<FundingFileDto> fundingFiles;
+    private List<FundingFileDto> fundingFiles;
     
 }
