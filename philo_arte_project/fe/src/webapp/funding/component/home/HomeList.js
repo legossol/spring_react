@@ -6,7 +6,7 @@ import { currentFunding } from "webapp/funding/reducer/funding.reducer";
 import { useSelector } from "react-redux";
 
 
-const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor }) => {
+const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor, id }) => {
 
   LoadScript("js/portfolio/portfolio-grid.js");
     

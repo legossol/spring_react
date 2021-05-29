@@ -80,7 +80,7 @@ const FundingList = () =>{
               <td>{funding.moddate}</td>
               <td>{funding.hashtag}</td>
               <td>{funding.viewCnt}</td>
-              <td onClick={()=>selectContent(funding.fundingId)}>상세 보기</td>
+              <button onClick={()=>selectContent(funding.fundingId)}><Link to={`/funding/read/${funding.fundingId}`}>상세 보기</Link></button>
               <button onClick={()=>dispatch(updateFunding(funding.fundingId))}>수정하기</button>
               <button onClick={()=>dispatch(deleteFunding(funding.fundingId))}>삭제하기</button>
             </tr>

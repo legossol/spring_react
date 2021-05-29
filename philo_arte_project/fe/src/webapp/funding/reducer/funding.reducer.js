@@ -71,8 +71,8 @@ const fundingSlice = createSlice({
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{
             console.log("디테일에드 케이스" + state +"payloda :"+[...payload])
-            // state.currentFunding = payload
-            return  map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
+            state.params = payload
+            // return  map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
             
         })
         .addCase(updateFunding.fulfilled,(state,{payload})=>{
@@ -95,7 +95,7 @@ const fundingSlice = createSlice({
 
 
 const {actions ,reducer} = fundingSlice
-export const currentFunding = state => state.fundings
+export const currentFunding = state => state.fundings.pageResult
 export const {}=actions
 export default reducer 
 
