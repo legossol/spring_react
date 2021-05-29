@@ -53,7 +53,7 @@ const PortfolioOne = ({ tagline, backfont, filter, classes, dash, dashColor, has
                     id={fundings.fundingId}
                     title={fundings.title}
                     image={fundings.image}
-                    hashtag={fundings.hashtag}
+                    hashtag={hashtag}
                   />
                 ))}
                 

@@ -170,7 +170,7 @@ const HeroMarketing = () => (
                 borderWidth: "0px",
               }}
             >
-              젊은 예술가들에게 기회를 주세요.
+              젊은 예술가들
             </div>
 
             <div

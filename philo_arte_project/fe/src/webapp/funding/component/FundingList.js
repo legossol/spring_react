@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {deleteFunding, getFundingDetail,getFundingList,updateFunding} from 'webapp/funding/reducer/funding.reducer'
+import HeaderSocial from 'webapp/common/Header/HeaderSocial';
+import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
+
 const FundingList = () =>{
   const pageResult= useSelector(state=>state.fundings.pageResult)
 
@@ -49,6 +52,8 @@ const FundingList = () =>{
   
   return (
     <>
+{/* 
+  <HeaderSocial data={dataNavbar} />   */}
         <h1>{msg}</h1>
     <div className="container">
     <h1>아 이 템 리 스 트</h1>

@@ -1,24 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import {React,useState} from "react";
+import { useSelector , useDispatch} from "react-redux";
 import {Link} from 'react-router-dom'
+import { updateFunding } from "webapp/funding/reducer/funding.reducer";
 
 const Itemhandle = ({ id, image, title, hashtag }) => {
 
   console.log("hashtag", hashtag)
+  const dispatch = useDispatch()
+  const [open, setOpen] = useState(false);
 
-    const fundings = useSelector(state =>{
-        console.log("portfolio One 진입:" + JSON.stringify(state.fundings.pageResult.dtoList))
-        return state.fundings.dtoList
-      })
+  const handleClose = () => setOpen(false)
+  const handleOpen = async() =>{
+    dispatch(updateFunding(id))
+    setOpen(true)
+    console.log(id)
+  }
+
     return(
-  <div
-    className={
-      "cbp-item col-md-3 col-sm-6 " +hashtag
-      // hashtag.join(',').replace(/\s+/g, "-").replace(/,/g, ' ').toLowerCase().split()
-    }
-  >
-    <div className="portfolio-item">
-      <Link to={`/funding/${id}`}>
+      <div className="col-md-3 mfp-iframe-holder ">
+      
+      <div className="portfolio-item"  onClick={handleOpen} >
         <img src='https://www.radiokorea.com/data/file/c_talk_pet/644496679_nXjx54Sc_4nnLaHCzm3n.jpg' />
         <div className="portfolio-info white-bg">
           <div className="centrize">
@@ -28,9 +29,12 @@ const Itemhandle = ({ id, image, title, hashtag }) => {
             </div>
           </div>
         </div>
-      </Link>
+        </div>
+      <updateFunding 
+      open ={open} handleClose={() => handleClose() } 
+      ></updateFunding>
     </div>
-  </div>
-);
+  );
 }
+
 export default Itemhandle;

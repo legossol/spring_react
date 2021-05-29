@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {getFundingDetail,deleteFunding} from 'webapp/funding/reducer/funding.reducer'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
+import HeaderSocial from 'webapp/common/Header/HeaderSocial'
+import HomeMarketingSlider from "webapp/common/HeroSlider/HeroMarketing";
+import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
+
 const FundingDetail = () =>{
+
+  const {read} = useParams();
+  console.log(read)
     const fundings = useSelector(state =>{
         console.log("funding detail state : " + JSON.stringify(state.fundings))
-        return state.fundings
+        return state.fundings.dtoList
       })
       const dispatch = useDispatch()
       useEffect(()=>{
@@ -13,6 +20,10 @@ const FundingDetail = () =>{
       },[])
         return ( 
             <>
+            <div>
+             <HeaderSocial data={dataNavbar} />
+             <HomeMarketingSlider/>
+
             <div className="container">
             <h1>펀 딩 아 이 템 디 테 일 페 이 지</h1>
         
@@ -61,9 +72,10 @@ const FundingDetail = () =>{
             
                
               </div>
+              </div>
      
             
             </>
         )
-}
+};
 export default FundingDetail

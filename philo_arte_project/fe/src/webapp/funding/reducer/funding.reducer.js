@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {FundingService} from '../index'
 
-
 export const getFundingList = createAsyncThunk(
     "fundings/list",
     async(page) =>{
@@ -20,11 +19,12 @@ export const saveFunding = createAsyncThunk(
 )
 export const getFundingDetail = createAsyncThunk(
     "funding/Detail",
-    async(fundingNo)=>{
-        const response = await FundingService.showDetail(fundingNo)
-        console.log("export const 의 fundingNo :"+ fundingNo)
+    async(fundingId)=>{
+        const response = await FundingService.showDetail(fundingId)
+        console.log("export const 의 fundingNo :"+ fundingId)
         console.log("export const 의 response"+ response)   
         return response.data 
+        // return {...state, selected: state.boards.find(post => post.id === action.postId)}
     }
 )
 export const updateFunding = createAsyncThunk(
@@ -71,12 +71,13 @@ const fundingSlice = createSlice({
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{
             console.log("디테일에드 케이스" + state +"payloda :"+[...payload])
-            return state.find(funding => funding.id === payload.id)
+            // state.currentFunding = payload
+            return  map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
             
         })
         .addCase(updateFunding.fulfilled,(state,{payload})=>{
             return state.find(funding => funding.id == payload)
-            // map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
+            //
             
         })
         .addCase(saveFunding.fulfilled,(state,{payload})=>{
@@ -94,7 +95,7 @@ const fundingSlice = createSlice({
 
 
 const {actions ,reducer} = fundingSlice
-export const currentFunding = state => state.fundings.pageResult
+export const currentFunding = state => state.fundings
 export const {}=actions
 export default reducer 
 
