@@ -1,6 +1,8 @@
 package kr.legossol.api.funding.repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,19 +18,27 @@ import kr.legossol.api.funding.domain.Funding;
 public interface FundingRepository extends JpaRepository<Funding,Long>{
     @Query("SELECT f FROM Funding f ORDER BY f.fundingId asc")
     List<Funding> getAllFundings();
+    @EntityGraph(attributePaths = {"artist", "artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM Funding f WHERE f.fundingId = :fundingId")
-    List<Funding> getOneFunding(Long id);
+    ArrayList<Funding> getOneFunding(@Param("fundingId")Long id);
     
     @Query("SELECT f FROM Funding f WHERE f.title LIKE %:title%")
     List<Funding> searchFundingsByTitle(@Param("title") String titleWord);
     
     @Query("SELECT f FROM Funding f WHERE f.content LIKE %:index%")
     List<Funding> searchFundingByContent(@Param("index") String contentWord);
-    
+
+    @EntityGraph(attributePaths = {"artist", "artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM Funding f WHERE f.hashtag LIKE %:hashtag%")
     List<Funding> searchFundingByHashtag(@Param("hashtag") String hashtagName);
- 
    
+    
+    @Query("SELECT f.fundingFiles FROM Funding f WHERE f.fundingId =:fundingId")
+    ArrayList<Funding> colFiles(@Param("fundingId") Long id);
+
+    @EntityGraph(attributePaths = {"artist", "artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
+    // @Query("SELECT f.fundingId, f.title, f.content, f.goalPrice, f.viewCnt, f.hashtag FROM Funding f WHERE f.fundingId = :fundingId")
+    Optional<Funding> findById(@Param("fundingId") Long fundingId);
 
     
     @EntityGraph(attributePaths = {"artist"}, type = EntityGraph.EntityGraphType.FETCH)
@@ -40,10 +50,11 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     List<Funding> searchFundingByArtistId(@Param("artistId") Long i);
 
     
-   @EntityGraph(attributePaths = {"artist","artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
+    @EntityGraph(attributePaths = {"artist","artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM Funding f ORDER BY f.fundingId desc")
     Page<Funding> getRecent(Pageable pageable);
-    
+
+    @EntityGraph(attributePaths = {"artist","artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM Funding f WHERE f.fundingId = :fundingId")
     Page<Funding> getPageById(Pageable pageable,@Param("fundingId")Long id);
 

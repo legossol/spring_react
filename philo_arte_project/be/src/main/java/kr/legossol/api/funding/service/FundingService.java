@@ -2,12 +2,14 @@ package kr.legossol.api.funding.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.legossol.api.funding.domain.Funding;
@@ -32,9 +34,10 @@ public interface FundingService {
     }
 
     FundingDto getFundingById(long id);
-
+    
     String delete(FundingDto postDto);
     void deleteById(long id);
+    List<FundingDto> getListByHashtag(FundingDto dto, String hashtag);
     //============fileservice below==============
     Long textAndPicSave(FundingDto dto);
 
@@ -44,7 +47,7 @@ public interface FundingService {
                 .build();
         return fundingFile;
     }
-
+    // List<FundingDto> fileBoxByFunding(Long id);
     ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles);
 
     String deleteFile(Long fundingFileId);
@@ -80,8 +83,8 @@ public interface FundingService {
                     .goalPrice(entity.getGoalPrice())
                     .hashtag(entity.getHashtag())
                     .viewCnt(entity.getViewCnt())
-                    // .artistId(entity.getArtist().getArtistId())
-                    // .name(entity.getArtist().getName())
+                    .artistId(entity.getArtist().getArtistId())
+                    .name(entity.getArtist().getName())
                     .fundingFiles(entity.getFundingFiles().stream().map(fundingFile -> FundingFileDto.of(fundingFile)).collect(Collectors.toList()))
                     .build();
     }

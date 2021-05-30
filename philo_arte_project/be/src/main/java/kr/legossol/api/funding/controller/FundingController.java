@@ -9,6 +9,8 @@ import kr.legossol.api.funding.service.FundingServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class FundingController {
     private final FundingServiceImpl service;
 
+    
     @GetMapping("/{fundingId}")
     public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
         return ResponseEntity.ok(service.getFundingById(fundingId));
@@ -47,6 +50,10 @@ public class FundingController {
     public ResponseEntity<String> deleteFunding(@PathVariable("fundingId")Long fundingId, @RequestBody FundingDto fundingdto){
         service.deleteById(fundingId);
         return ResponseEntity.ok("식제 성공");
+    }
+    @GetMapping("/search/{hashtag}")
+    public ResponseEntity<List<FundingDto>> geetFundingByHash(@RequestBody FundingDto dto, @PathVariable("hashtag")String hashtag){
+        return ResponseEntity.ok(service.getListByHashtag(dto, hashtag));
     }
     
 }

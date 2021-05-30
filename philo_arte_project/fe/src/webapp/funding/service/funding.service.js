@@ -38,7 +38,7 @@ const fundingRegister = (register) =>{
 
 const showDetail =(fundingId)=>{
     console.log(`디테일보기 서비스 아이템 넘버 : ${fundingId}`)
-    return axios.get(`http://localhost:8080/funding/${fundingId}`)
+    return axios.get(`http://localhost:8080/funding/list/${fundingId}`)
 }
 
 const fundingUpdate = id =>{
@@ -80,5 +80,5 @@ const deleteFunding = (id) =>{
 const searchSomething = (index)=>{
     return axios.get("http://localhost:8080/funding/list/search")
 }
-
+// const getFiles = ()
 export default {getList, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething}

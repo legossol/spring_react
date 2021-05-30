@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Value;
@@ -70,11 +71,18 @@ public class FundingServiceImpl implements FundingService{
     }
 
     @Override
+    @Transactional
     public FundingDto getFundingById(long id) {
         Funding funding = repository.findById(id).orElseThrow(IllegalArgumentException::new);
-        FundingDto dto = FundingDto.toDto(funding);
-        return dto;
+        
+        return pageentityToDto(funding);
     }
+    // @Override
+    // public FundingDto getFundingById(long id) {
+    //     List<Funding> funding = repository.getOneFunding(id);
+    //     List<FundingDto> dto = FundingDto.tlist(funding);
+    //     return (FundingDto) dto;
+    // }
 
     @Value("${shop.legossol.upload.path}")
     private String uploadPath;
@@ -117,7 +125,7 @@ public class FundingServiceImpl implements FundingService{
         repository.deleteById(fundingFileId);
         return (frepo.findById(fundingFileId) != null) ? "Delete Success" : "Delete Failed";
     }
-
+    @Transactional
     @Override
     public FundingPageDto<FundingDto, Funding> getPageById(PageRequestDto requestDto, Long id) {
         return new FundingPageDto<>(repository.getPageById(
@@ -168,6 +176,16 @@ public class FundingServiceImpl implements FundingService{
     public FundingPageDto<FundingDto, Funding> getList(int page) {
        return new FundingPageDto<>(repository.getRecent(conditionPage(page)),makeDtoPage());
     }
+    @Transactional
+    @Override
+    public List<FundingDto> getListByHashtag(FundingDto dto, String hashtag) {
+        List<Funding> getHashtagList = repository.searchFundingByHashtag(hashtag);
+        List<FundingDto> postHashtagList = FundingDto.tlist(getHashtagList);
+        return postHashtagList;
+    }
+
+    
+
 
    
 

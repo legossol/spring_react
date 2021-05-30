@@ -33,6 +33,7 @@ const FundingHome = () => {
     <HeaderSocial data={dataNavbar} />
 
     <HomeMarketingSlider/>
+    {/* <button onClick={onCategoryClick()}>클릭</button> */}
     <HomeList
       tagline="Let's participate Funding"
       title="당신이 함께 할 수 있는 펀딩리스트"

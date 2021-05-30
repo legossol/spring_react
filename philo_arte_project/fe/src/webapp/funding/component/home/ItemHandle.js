@@ -7,21 +7,21 @@ const ItemHandle = ({  id,data, title, hashtag, fundingId }) => {
     const dispatch = useDispatch();
     console.log("id는 무엇이냐? : " + data )
     const postIdToDetail = useSelector(state =>{
-        return state.fundings.dtoList
+        return state.fundings.pageResult
     })
-    const fId = postIdToDetail.fundigId
-    const moveDetail = (fId)=>{
-        dispatch(getFundingDetail(fId))
+    // const fId = data.fundigId
+    const moveDetail = (fundingId)=>{
+        dispatch(getFundingDetail(fundingId))
         console.log("data =========="+data)
-        console.log("fId =======" + fId)
+        console.log("fId =======" + fundingId)
     }
     return(
     
-
+   
       <div className="col-md-3 mfp-iframe-holder " >
-          <Link to ={`/funding/read/${fId}`}>
+           <Link to ={`/funding/read/${fundingId}`}>
         
-      <div className="portfolio-item"onChange={moveDetail(fId)}>
+      <div className="portfolio-item"onClick={moveDetail(fundingId)}>
           
         <img src='https://www.radiokorea.com/data/file/c_talk_pet/644496679_nXjx54Sc_4nnLaHCzm3n.jpg' />
         <div className="portfolio-info white-bg">
@@ -35,6 +35,7 @@ const ItemHandle = ({  id,data, title, hashtag, fundingId }) => {
         </div>
         </Link>
     </div>
+   
   );
 }
 

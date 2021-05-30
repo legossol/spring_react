@@ -2,7 +2,9 @@ package kr.legossol.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -20,8 +22,10 @@ import org.springframework.test.annotation.Commit;
 import javassist.runtime.Desc;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
+import kr.legossol.api.funding.domain.FundingFile;
 import kr.legossol.api.funding.domain.FundingPageDto;
 import kr.legossol.api.funding.domain.PageRequestDto;
+import kr.legossol.api.funding.repository.FundingFileRepository;
 import kr.legossol.api.funding.repository.FundingRepository;
 import kr.legossol.api.funding.service.FundingServiceImpl;
 import lombok.extern.log4j.Log4j2;
@@ -31,6 +35,7 @@ import lombok.extern.log4j.Log4j2;
 public class RepositoryTest {
     @Autowired
     private FundingRepository repo;
+    private FundingFileRepository frepo;
 //     private FundingServiceImpl service;
 //     @Test@Commit@Transactional
 //     void test1(){
@@ -101,19 +106,32 @@ public class RepositoryTest {
 //     //         System.out.println(funding.getFundingId());
 //     //     }
 //     // }
-//     @Test@Commit@Transactional
-//     void test7(){
-//         Pageable pageable = PageRequest.of(0, 5);
-//         Page<Funding> f = repo.getPageById(pageable, 5L);
-//         for(Funding funding :f){
-//             System.out.println(funding.getContent());
-//             System.out.println(funding.getGoalPrice());
-//             System.out.println(funding.getHashtag());
-//             System.out.println(funding.getTitle());
-//             System.out.println(funding.getFundingId());
-//         }
+    // @Test@Commit@Transactional
+    // void test7(){
+    //     Pageable pageable = PageRequest.of(0, 5);
+    //     Page<Funding> f = repo.getPageById(pageable, 5L);
+    //     for(Funding funding :f){
+    //         System.out.println(funding.getContent());
+    //         System.out.println(funding.getGoalPrice());
+    //         System.out.println(funding.getHashtag());
+    //         System.out.println(funding.getTitle());
+    //         System.out.println(funding.getFundingId());
+    //     }
 //     }
-    
+@Test@Commit@Transactional
+void test7(){
+ List<Funding> f = repo.searchFundingByHashtag("약");
+ for(Funding funding : f){
+     System.out.println("fundingFiles======================"+funding);
+ }   
+}
+@Test@Commit@Transactional
+void test8(){
+ Optional<Funding> f = repo.findById(134L);
+//  for(Funding funding : f){
+     System.out.println("fundingFiles======================"+f);
+//  }   
+}
     
 
 

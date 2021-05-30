@@ -23,7 +23,7 @@ import kr.legossol.api.common.util.ModelMapperUtils;
 @AllArgsConstructor
 @Builder
 @Table(name = "fundings")
-// @ToString(exclude = {"artist","fundingFiles"})
+@ToString(exclude = {"artist","fundingFiles"})
 public class Funding extends BaseEntity {
     
     @Id
@@ -41,11 +41,14 @@ public class Funding extends BaseEntity {
     @Column(name = "hashtag")
     private String hashtag;
     
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne(fetch =FetchType.EAGER)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
-
+    @JsonManagedReference
+    @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<FundingFile> fundingFiles = new ArrayList<>();
+    
     public static Funding of(FundingDto fundingDto){
         return ModelMapperUtils.getModelMapper().map(fundingDto, Funding.class);
     }
@@ -56,9 +59,7 @@ public class Funding extends BaseEntity {
     public static Page<Funding> of(Page<FundingDto> sourcePage){
         return sourcePage.map(Funding::of);
     }
-    @JsonManagedReference
-    @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    List<FundingFile> fundingFiles = new ArrayList<>();
+    
 
     public void saveRequest(FundingDto requestDto) {
         this.title = requestDto.getTitle();

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import kr.legossol.api.common.util.ModelMapperUtils;
-@ToString(exclude = "funding")
+@ToString(exclude = {"funding"})
 @Entity
 @Getter
 @Builder
@@ -26,7 +26,7 @@ public class FundingFile {
     private String fname;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch =FetchType.EAGER)
     @JoinColumn(name = "funding_id")
     private Funding funding;
 

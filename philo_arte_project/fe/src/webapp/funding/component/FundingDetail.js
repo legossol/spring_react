@@ -1,81 +1,44 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {getFundingDetail,deleteFunding} from 'webapp/funding/reducer/funding.reducer'
+import {getFundingDetail,deleteFunding, currentFunding} from 'webapp/funding/reducer/funding.reducer'
 import {Link, useParams} from 'react-router-dom'
 import HeaderSocial from 'webapp/common/Header/HeaderSocial'
-import HomeMarketingSlider from "webapp/common/HeroSlider/HeroMarketing";
+import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
+import FooterOne from "webapp/common/Footer/FooterOne";
+import FundingList from './FundingList'
+import FundingDetailForm from './FundingDetailForm'
 
 const FundingDetail = () =>{
-
-  const {read} = useParams();
-  console.log(read)
-    const fundings = useSelector(state =>{
-        console.log("funding detail state : " + JSON.stringify(state.fundings))
-        return state.fundings.dtoList
-      })
-      const dispatch = useDispatch()
-      useEffect(()=>{
-        dispatch(getFundingDetail())
-      },[])
+    //  const datas = useSelector(currentFunding)
+     const datas = useSelector(state => state.fundings.pageResult.dtoList)
+     console.log(JSON.stringify("json datas====="+JSON.stringify(datas)))
+     const {read} = useParams();
+     
+     const postData = () =>datas.map(data=>{
+      console.log("key ======"+ data.id)
+      console.log("title ======"+ data.title)
+       return <FundingDetailForm
+                key={data.id}
+                title = {data.title}/>
+     })
+     console.log("postData ====="+ postData(read))
+     const dispatch = useDispatch()
+     useEffect((e)=>{
+       dispatch(getFundingDetail(read))
+     })
         return ( 
             <>
-            <div>
              <HeaderSocial data={dataNavbar} />
-             <HomeMarketingSlider/>
+              <HomeMarketingSlider/>
+              <div>
+                {postData()}
+              </div>
+              {/* <FundingDetailForm */}
 
-            <div className="container">
-            <h1>펀 딩 아 이 템 디 테 일 페 이 지</h1>
-        
-            <table style={{border:30}} >
-              <thead>
-                <tr>
-                    <th>fundingId</th>
-                    <th>title</th>
-                    <th>writer</th>
-                    <th>content</th>
-                    <th>goalPrice</th>
-                    <th>viewCnt</th>
-                    <th>regDate</th>
-                    <th>editDate</th>
-                    <th>likeCnt</th>
-                    <th>dislikeCnt</th>
-                    <th>likeCheck</th>
-    
-                </tr>
-              </thead>
-              <tbody>
-                {fundings.map((funding, id) =>{
-                  return(
-                    <tr key={id}>
-                      <td>{funding.fundingId}</td>
-                      <td>{funding.title}</td>
-                      <td>{funding.writer}</td>
-                      <td>{funding.content}</td>
-                      <td>{funding.goalPrice}</td>
-                      <td>{funding.viewCnt}</td>
-                      <td>{funding.regDate}</td>
-                      <td>{funding.editDate}</td>
-                      <td>{funding.likeCnt}</td>
-                      <td>{funding.dislikeCnt}</td>
-                      <td>{funding.likeCheck}</td>
-                      
-                    </tr>
-                  )
-                })}
-              </tbody>
-            
-                
-              </table>
-              <Link to ={"/funding/update"}><button>수정하기 페이지로 가기</button></Link>
-                      <button onClick={()=>dispatch(deleteFunding(fundings.fundingId))}>삭제하기</button>
-            
-               
-              </div>
-              </div>
-     
-            
+              <FooterOne />
             </>
+            
         )
 };
 export default FundingDetail

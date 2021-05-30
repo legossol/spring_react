@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import kr.legossol.api.funding.domain.FundingFile;
 
 @Repository
+@Transactional
 public interface FundingFileRepository extends JpaRepository<FundingFile, Long>{
     @EntityGraph(attributePaths = {"funding"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM FundingFile f WHERE f.funding.fundingId = :fundingId")
@@ -23,4 +24,5 @@ public interface FundingFileRepository extends JpaRepository<FundingFile, Long>{
     @Modifying
     @Query("DELETE FROM FundingFile f where f.fundingFileId = :fundingFileId")
     void fileDelete(@Param("fundingFileId") Long fundingFileId);
+    
 }
