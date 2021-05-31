@@ -16,11 +16,10 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
         }
 
     }));
-    const handleFileInput = useCallback(e =>{
-        
-    })
+
     const uploadAjax = useCallback( e => {
 
+        console.dir(e.target.files);
 
         const formData = new FormData()
         const files = e.target.files
@@ -34,14 +33,16 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
         axios.post("http://localhost:8080/uploadAjax",formData,
             {headers: { "Content-Type": "multipart/form-data"}}
         ).then(res => {
+            console.log(res)
 
             res.data.forEach(uploadFileInfo =>  uploadResult.push(uploadFileInfo))
 
+            console.log(uploadResult)
 
             setUploadResult(uploadResult.slice(0))
         })
-    })
 
+    })
 
     return (
         <div>
@@ -69,4 +70,5 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
         </div>
     );
 };
+
 export default FileRegister

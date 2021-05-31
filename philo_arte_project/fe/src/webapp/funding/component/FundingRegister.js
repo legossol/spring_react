@@ -2,62 +2,39 @@ import React, { useState,useCallback, useRef } from 'react';
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import { saveFunding } from 'webapp/funding/reducer/funding.reducer';
-import { colors } from '@material-ui/core';
+import { Button, colors } from '@material-ui/core';
+import FileRegister from './register/FileRegister';
+import TextRegister from './register/TextRegister';
+import axios from 'axios'
 const FundingRegister = () =>{
 
-    const childdRef = useRef()
+    const childRef = useRef()
     let uploadedFiles = null
+
+    const sendTextForm = (title, content) => {
+        childRef.current.send()
+        console.log(uploadedFiles)
+
+
+        const data = {title:title, content:content, pictures:uploadedFiles}
+
+        axios.post("http://localhost:8080/funding/register", data)
+
+    }
 
     const getUploadedFiles = (uplodedFilesResult) => {
         console.log("getUploadedFiles")
         uploadedFiles = uplodedFilesResult
     }
-
-    //======
-
-
-    const dispatch = useDispatch()
-
-    const [funding, setNewFunding] = useState({
-        title : "",
-        content : "",
-        goalPrice : "",
-        viewCnt:"",
-        hashtag : "",
-        artistId:""
-    })
-    const handleSubmit = useCallback(e =>{
-        const {name, value} = e.target
-        setNewFunding({
-            ...funding,
-            [name]: value
-        })
-    },[funding])
     return(
         <>
+        <div>
+            <TextRegister sendTextForm = {sendTextForm}></TextRegister>
+            <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles}></FileRegister>
         
-        <h1>전부 등록하기</h1>
-        <form >
-            
-            <label>title</label>
-            <input type='text' style={{color:'black'}} name='title' value={funding.title} onChange={handleSubmit}/>
-            <hr/>
-            <label>content</label>
-            <input type="text"style={{color:'black'}} name="content" value={funding.content} onChange={handleSubmit}/>
-            <hr/>
-            <label>목표금액</label>
-            <input type="number"style={{color:'black'}} name="goalPrice" value={funding.goalPrice} onChange={handleSubmit}/>
-            <label>해쉬태그</label>
-            <input type="text" style={{color:'black'}}name="hashtag" value={funding.hashtag} onChange={handleSubmit}/>
-            <label>viewCnt</label>
-            <input type="number"style={{color:'black'}} name="viewCnt" value={funding.viewCnt} onChange={handleSubmit}/>
-            <label>artistId</label>
-            <input type="number"style={{color:'black'}} name="artistId" value={funding.artistId} onChange={handleSubmit}/>
-            <hr/>
-            <input type="file" onChange={handleSubmit}/>
-        </form>
-        <Link to={'/funding/list'}><button type="submit" onClick={()=>dispatch(saveFunding(funding))}>등록</button></Link>
-        <Link to={'/funding/list'}><button>취소</button></Link>
+        </div>
+        {/* <Link to={'/funding/list'}><button type="submit" onClick={()=>dispatch(saveFunding(funding))}>등록</button></Link>
+        <Link to={'/funding/list'}><button>취소</button></Link> */}
         </>
     )
 }

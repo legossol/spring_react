@@ -48,6 +48,7 @@ const isRejectAction=action=>
 const fundingSlice = createSlice({
     name: "fundings",
     initialState: {
+        param:{},
         pageResult:{
             dtoList:[],
             page:1,
@@ -56,8 +57,8 @@ const fundingSlice = createSlice({
             end:1,
             prev:false,
             next:false
-        },
-        params:{}
+        }
+        
     },
     reducers:{},
     extraReducers: (builder)=>{
@@ -67,9 +68,11 @@ const fundingSlice = createSlice({
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{
             // console.log("디테일에드 케이스" + state +"payloda :"+[...payload])
-            state.params = payload
+            // state.params = payload
             // return  state.map((post)=>post.id === payload.id ? {...post,editing:!post.editing}:post)
             // return [...payload]
+            console.log("extra ==============="+ JSON.stringify(payload))
+            state.current = payload
         })
         .addCase(updateFunding.fulfilled,(state,{payload})=>{
             return state.find(funding => funding.id == payload)
@@ -91,8 +94,8 @@ const fundingSlice = createSlice({
 
 
 const {actions ,reducer} = fundingSlice
-export const currentFunding = state => state.fundings.pageResult.dtoList
-export const dududududududu = state => state.fundings.params
+export const currentFunding = state => state.fundings.current
+export const dududududududu = state => state.fundings.pageResult.dtoList
 
 export const {}=actions
 export default reducer 

@@ -1,75 +1,75 @@
 
-// import React, {useCallback, useImperativeHandle, useState} from 'react';
-// import {Button, Typography} from "@material-ui/core";
-// import axios from "axios";
+import React, {useCallback, useImperativeHandle, useState} from 'react';
+import {Button, Typography} from "@material-ui/core";
+import axios from "axios";
 
-// const UploadInput = ({cref, getUploadedFiles, fileParam=[]}) => {
+const UploadInput = ({cref, getUploadedFiles, fileParam=[]}) => {
 
-//     const [files, setFiles] = useState([])
-//     const [uploadResult, setUploadResult] = useState(fileParam)
+    const [files, setFiles] = useState([])
+    const [uploadResult, setUploadResult] = useState(fileParam)
 
-//     useImperativeHandle(cref, () => ({
+    useImperativeHandle(cref, () => ({
 
-//         send() {
-//             getUploadedFiles(uploadResult)
-//             setFiles([])
-//             setUploadResult([])
-//         }
+        send() {
+            getUploadedFiles(uploadResult)
+            setFiles([])
+            setUploadResult([])
+        }
 
-//     }));
+    }));
 
-//     const uploadAjax = useCallback( e => {
+    const uploadAjax = useCallback( e => {
 
-//         console.dir(e.target.files);
+        console.dir(e.target.files);
 
-//         const formData = new FormData()
-//         const files = e.target.files
+        const formData = new FormData()
+        const files = e.target.files
 
-//         for(let i = 0; i < files.length ; i++){
-//             formData.append("uploadFiles", files[i])
-//         }
+        for(let i = 0; i < files.length ; i++){
+            formData.append("uploadFiles", files[i])
+        }
 
-//         console.log(formData)
+        console.log(formData)
 
-//         axios.post("http://localhost:8080/uploadAjax",formData,
-//             {headers: { "Content-Type": "multipart/form-data"}}
-//         ).then(res => {
-//             console.log(res)
+        axios.post("http://localhost:8080/uploadAjax",formData,
+            {headers: { "Content-Type": "multipart/form-data"}}
+        ).then(res => {
+            console.log(res)
 
-//             res.data.forEach(uploadFileInfo =>  uploadResult.push(uploadFileInfo))
+            res.data.forEach(uploadFileInfo =>  uploadResult.push(uploadFileInfo))
 
-//             console.log(uploadResult)
+            console.log(uploadResult)
 
-//             setUploadResult(uploadResult.slice(0))
-//         })
+            setUploadResult(uploadResult.slice(0))
+        })
 
-//     })
+    })
 
-//     return (
-//         <div>
-//             <Button
-//                 variant="contained"
-//                 component="label">
-//                 <Typography>{"Upload"}</Typography>
+    return (
+        <div>
+            <Button
+                variant="contained"
+                component="label">
+                <Typography>{"Upload"}</Typography>
 
-//                 <input id={"file-input"} style={{ display: 'none' }} type="file" name="imageFile"
-//                        onChange={uploadAjax}  multiple={true}/>
-//             </Button>
-//             <div>
-//                 <ul>
-//                     {uploadResult.map(uploadFile => {
-//                         return (
-//                             <div key={uploadFile.uuid}>
-//                                 <img src={"http://localhost:8080/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
-//                                 {uploadFile.fname}
-//                             </div>
-//                         )
-//                     })
-//                     }
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// };
+                <input id={"file-input"} style={{ display: 'none' }} type="file" name="imageFile"
+                       onChange={uploadAjax}  multiple={true}/>
+            </Button>
+            <div>
+                <ul>
+                    {uploadResult.map(uploadFile => {
+                        return (
+                            <div key={uploadFile.uuid}>
+                                <img src={"http://localhost:8080/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
+                                {uploadFile.fname}
+                            </div>
+                        )
+                    })
+                    }
+                </ul>
+            </div>
+        </div>
+    );
+};
 
-// export default UploadInput;
+export default UploadInput;

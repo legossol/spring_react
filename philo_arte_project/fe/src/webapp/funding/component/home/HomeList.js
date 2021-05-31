@@ -10,21 +10,11 @@ const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor, id }
 
   LoadScript("js/portfolio/portfolio-grid.js");
     
-//   const {hash , setHash} = useState(hashtags)
-
-//   const filterButton = hashtags.map((hashtag, i) => {
-//     return (<>
-//       <div className="lay-button">
-//         <button key={i} onClick={(e)=> setHash(e.target.value)}>{hashtag}</button>
-//       </div>
-//     </>)
-//   })
-    
   const totalList = data.map( (funding, i) => {
-      console.log("totlaList 진입 : ")
+      console.log("totalList 의 fundingId" +funding.fundingId)
     return (
       <ItemHandle 
-        key={i}
+        key={funding.fundingId}
         fundingId={funding.fundingId}
         title={funding.title}
         hashtag={funding.hashtag}

@@ -8,8 +8,6 @@ const totalregister = () =>{
     let uploadedFiles = null
 
     const sendTextForm = (title, content) => {
-        console.log("title: " + title)
-        console.log("content: " + content)
         childRef.current.send()
         console.log(uploadedFiles)
 

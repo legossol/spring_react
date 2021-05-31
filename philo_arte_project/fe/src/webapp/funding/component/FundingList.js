@@ -19,6 +19,7 @@ const FundingList = () =>{
     return state.fundings.msg
   })
   const selectContent = fundingId =>{
+    console.log("SElect이동!!!!!(!#*(!#*(!#*(!#*(!&*#("+ fundingId)
     dispatch(getFundingDetail(fundingId))
   }
   useEffect((e)=>{

@@ -14,7 +14,7 @@ import FundingList from "../component/FundingList"
 
 import Loader from "webapp/common/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import { getFundingList } from "../reducer/funding.reducer";
+import { currentFunding, getFundingList } from "../reducer/funding.reducer";
 import HomeList from "../component/home/HomeList";
 
 const FundingHome = () => {
@@ -26,7 +26,7 @@ const FundingHome = () => {
   },[])
 
   const fundings = useSelector(state => state.Fundings)
-  
+
   return(
   <>
  

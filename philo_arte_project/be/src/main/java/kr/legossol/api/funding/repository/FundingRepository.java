@@ -37,7 +37,7 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     ArrayList<Funding> colFiles(@Param("fundingId") Long id);
 
     @EntityGraph(attributePaths = {"artist", "artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
-    // @Query("SELECT f.fundingId, f.title, f.content, f.goalPrice, f.viewCnt, f.hashtag FROM Funding f WHERE f.fundingId = :fundingId")
+    // @Query("SELECT f.fundingId, f.title, f.content, f.goalPrice, f.viewCnt, f.hashtag,f.fundingFiles FROM Funding f WHERE f.fundingId = :fundingId")
     Optional<Funding> findById(@Param("fundingId") Long fundingId);
 
     

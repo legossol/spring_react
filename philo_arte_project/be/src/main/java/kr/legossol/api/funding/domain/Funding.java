@@ -41,12 +41,12 @@ public class Funding extends BaseEntity {
     @Column(name = "hashtag")
     private String hashtag;
     
-    @ManyToOne(fetch =FetchType.EAGER)
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "funding", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<FundingFile> fundingFiles = new ArrayList<>();
     
     public static Funding of(FundingDto fundingDto){

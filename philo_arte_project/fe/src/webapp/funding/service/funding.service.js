@@ -38,7 +38,7 @@ const fundingRegister = (register) =>{
 
 const showDetail =(fundingId)=>{
     console.log(`디테일보기 서비스 아이템 넘버 : ${fundingId}`)
-    return axios.get(`http://localhost:8080/funding/list/${fundingId}`)
+    return axios.get(`http://localhost:8080/funding/${fundingId}`)
 }
 
 const fundingUpdate = id =>{
