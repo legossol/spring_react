@@ -1,6 +1,7 @@
 package kr.legossol.api.funding.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -34,7 +35,7 @@ public class FundingController {
         return ResponseEntity.ok(service.getFundingById(fundingId));
     }
     @PostMapping("/register")
-    public ResponseEntity<String> save(@RequestBody FundingDto dto){
+    public ResponseEntity<String> save(@RequestParam(required = false) FundingDto dto){
         return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
     }
 

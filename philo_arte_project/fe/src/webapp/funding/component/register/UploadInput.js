@@ -2,7 +2,7 @@ import React, {useCallback, useImperativeHandle, useState} from 'react';
 import {Button, Typography} from "@material-ui/core";
 import axios from "axios";
 
-const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
+const UploadInput = ({cref, getUploadedFiles, fileParam=[]}) => {
 
     const [files, setFiles] = useState([])
     const [uploadResult, setUploadResult] = useState(fileParam)
@@ -29,23 +29,21 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
         }
 
         console.log(formData)
-        setUploadResult(uploadResult.slice(0))
-        axios.post("http://localhost:8080/funding/register",formData,
+
+        axios.post("http://localhost:8080/funding_file/upload_file",formData,
             {headers: { "Content-Type": "multipart/form-data"}}
         ).then(res => {
             console.log(res)
 
-            res.data.forEach(uploadFileInfo =>  uploadResult.push(uploadFileInfo))
+            res.data.forEach(uploadFileInfo =>  uploadResult?.push(uploadFileInfo))
 
             console.log(uploadResult)
 
-            setUploadResult(uploadResult.slice(0))
+            setUploadResult(uploadResult?.slice(0))
         })
 
     })
-    
 
-    
     return (
         <div>
             <Button
@@ -58,10 +56,10 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
             </Button>
             <div>
                 <ul>
-                    {uploadResult.map(uploadFile => {
+                    {uploadResult?.map(uploadFile => {
                         return (
                             <div key={uploadFile.uuid}>
-                                <img src={"http://localhost:8080/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
+                                <img src={"http://localhost:8080/funding_file/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
                                 {uploadFile.fname}
                             </div>
                         )
@@ -73,4 +71,4 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
     );
 };
 
-export default FileRegister
+export default UploadInput;

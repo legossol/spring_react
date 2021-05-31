@@ -1,24 +1,29 @@
-import React, { useState,useCallback, useRef } from 'react';
-import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import { saveFunding } from 'webapp/funding/reducer/funding.reducer';
-import { Button, colors } from '@material-ui/core';
-import FileRegister from './register/FileRegister';
-import TextRegister from './register/TextRegister';
-import axios from 'axios'
-const FundingRegister = () =>{
+import React, {useRef} from 'react';
+import {Button} from "@material-ui/core";
+import axios from "axios";
+import PerformanceInput from './register/PerformanceInput';
+import UploadInput from './register/UploadInput';
+
+const FundingRegister = ({requestRefresh}) => {
+
 
     const childRef = useRef()
     let uploadedFiles = null
 
-    const sendTextForm = (title, content) => {
+    const sendTextForm = (title, content, goalPrice, hashtag) => {
+        console.log("title: " + title)
+        console.log("content: " + content)
         childRef.current.send()
         console.log(uploadedFiles)
 
 
-        const data = {title:title, content:content, pictures:uploadedFiles}
+        const data = {title:title, content:content, goalPrice:goalPrice, hashtag:hashtag, pictures:uploadedFiles}
 
         axios.post("http://localhost:8080/funding/register", data)
+        .then(res => {
+            console.log(res.data)
+            requestRefresh()
+        })
 
     }
 
@@ -26,18 +31,19 @@ const FundingRegister = () =>{
         console.log("getUploadedFiles")
         uploadedFiles = uplodedFilesResult
     }
-    return(
-        <>
+
+
+    return (
         <div>
-            <TextRegister sendTextForm = {sendTextForm}></TextRegister>
-            <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles}></FileRegister>
-        
+            <h2>Board Register</h2>
+
+            <PerformanceInput sendTextForm = {sendTextForm}></PerformanceInput>
+
+            <UploadInput cref={childRef} getUploadedFiles = {getUploadedFiles}></UploadInput>
+
         </div>
-        {/* <Link to={'/funding/list'}><button type="submit" onClick={()=>dispatch(saveFunding(funding))}>등록</button></Link>
-        <Link to={'/funding/list'}><button>취소</button></Link> */}
-        </>
-    )
-}
+    );
+};
 
 export default FundingRegister
 

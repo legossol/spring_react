@@ -2,37 +2,15 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-// const uploadAjax = files =>{
-//     axios({
-//         url: "http://localhost:8080/uploadAjax" +files,
-//         method: 'POST',
-//         headers: { "Content-Type": "multipart/form-data"},
-//         data: files
-//         }).then(res =>{
-//         res.data
-            
-//         });
-//         alert("사진이 등록되었습니다.")
-
-//         // useHistory.push('/list')
-//         window.location.reload()
-//         }).catch(err =>{
-//         alert(err)
-//     })
-// }
-// }
-
 const getList=(page) =>{
     return axios.get("http://localhost:8080/funding/list?page=" +page)
-
 }
-const fundingRegister = (register) =>{
+const fundingRegister = (files) =>{
     axios({
-        url: "http://localhost:8080/funding/totalregister",
+        url: ("http://localhost:8080/funding/totalregister"+FormData),
         method: 'POST',
         headers:{ 'Content-Type': "multipart/form-data", 'Authorization': 'JWT fefege..'},
-        data: register,
-        
+        data: files,
     })
 }
 
@@ -70,9 +48,9 @@ const deleteFunding = (id) =>{
         // 'Bearer '+localStorage.getFunding("token")
     }).then(res =>{
         alert("삭제 완료")
-        localStorage.removeFunding("deleeted Funding")
+        localStorage.removeFunding("deleted Funding")
         // localStorage.removeFunding("token")
-        useHistory.push('/list')
+        useHistory.push('funding/list')
     }).catch(err =>{
         alert("삭제과정에서 에러 발생" +err)
     })}

@@ -34,7 +34,6 @@ public interface FundingService {
     }
 
     FundingDto getFundingById(long id);
-    
     String delete(FundingDto postDto);
     void deleteById(long id);
     List<FundingDto> getListByHashtag(FundingDto dto, String hashtag);
@@ -48,7 +47,7 @@ public interface FundingService {
         return fundingFile;
     }
     // List<FundingDto> fileBoxByFunding(Long id);
-    ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles);
+    List<FundingFileDto> registerFile(MultipartFile[] uploadFiles);
 
     String deleteFile(Long fundingFileId);
 

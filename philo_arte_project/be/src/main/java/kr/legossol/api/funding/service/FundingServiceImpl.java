@@ -27,6 +27,7 @@ import kr.legossol.api.funding.repository.FundingFileRepository;
 import kr.legossol.api.funding.repository.FundingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
 import net.coobird.thumbnailator.Thumbnails;
 @Service
 @Log4j2
@@ -46,6 +47,8 @@ public class FundingServiceImpl implements FundingService{
 
     @Override
     public void deleteById(long id) {
+        List<FundingFile> files = frepo.getFileByFundingId(id);
+        frepo.deleteAll(files);
         repository.deleteById(id);
     }
 
@@ -89,35 +92,48 @@ public class FundingServiceImpl implements FundingService{
 
     @Transactional
     @Override
-    public ArrayList<FundingFileDto> registerFile(List<MultipartFile> uploadFiles) {
+    public List<FundingFileDto> registerFile(MultipartFile[] uploadFiles) {
 
-        ArrayList<FundingFileDto> resultDtoList = new ArrayList<>();
+        List<FundingFileDto> resultDtoList = new ArrayList<>();
         for (MultipartFile uploadFile : uploadFiles) {
 
             String ofname = uploadFile.getOriginalFilename();
+            String fileName = ofname.substring(ofname.lastIndexOf("\\") + 1);
 
-            int idx = ofname.lastIndexOf(".");
-            String ofheader = ofname.substring(0, idx);
-            String ext = ofname.substring(idx);
+            // int idx = ofname.lastIndexOf(".");
+            // String ofheader = ofname.substring(0, idx);
+            // String ext = ofname.substring(idx);
+
             String uuid = UUID.randomUUID().toString();
-            StringBuilder sb = new StringBuilder();
+            // StringBuilder sb = new StringBuilder();
 
-            sb.append(uploadPath).append(File.separator).append(uuid).append("_").append(ofheader).append(ext);
-            String saveName = sb.toString();
+            // sb.append(uploadPath).append(File.separator).append(uuid).append("_").append(ofheader).append(ext);
+
+            String saveName = uploadPath + File.separator + uuid + "_" + fileName;
             log.info("file upload name : " + saveName);
             Path savePath = Paths.get(saveName);
+
             try {
                 uploadFile.transferTo(savePath);
-                String thumbnailSaveName = uploadPath + "s_" + uuid + ofname;
-                Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
-                FundingFileDto fundingFileDto = FundingFileDto.builder().uuid(uuid).fname(saveName).build();
+                String thumbnailSaveName = uploadPath + File.separator + "s_" + uuid + "_" + fileName;
+
+                // Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
+                File thumbnailFile = new File(thumbnailSaveName);
+                //섬네일 생성
+                Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile, 100, 100);
+
+                // FundingFileDto fundingFileDto = FundingFileDto.builder().uuid(uuid).fname(saveName).build();
+                FundingFileDto fundingFileDto = FundingFileDto.builder()
+                        .fname(fileName)
+                        .uuid(uuid)
+                        .build();
                 resultDtoList.add(fundingFileDto);
             }
             catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return resultDtoList;
+        return (ArrayList<FundingFileDto>) resultDtoList;
     }
 
     @Override
@@ -184,6 +200,7 @@ public class FundingServiceImpl implements FundingService{
         return postHashtagList;
     }
 
+    
     
 
 
