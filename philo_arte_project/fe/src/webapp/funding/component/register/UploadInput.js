@@ -45,7 +45,7 @@ const UploadInput = ({cref, getUploadedFiles, fileParam=[]}) => {
     })
 
     return (
-        <div>
+        <div style={{marginLeft:60}}>
             <Button
                 variant="contained"
                 component="label">

@@ -3,6 +3,9 @@ import {Button} from "@material-ui/core";
 import axios from "axios";
 import PerformanceInput from './register/PerformanceInput';
 import UploadInput from './register/UploadInput';
+import HeaderSocial from 'webapp/common/Header/HeaderSocial'
+import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
+import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
 
 const FundingRegister = ({requestRefresh}) => {
 
@@ -35,10 +38,15 @@ const FundingRegister = ({requestRefresh}) => {
 
     return (
         <div>
-            <h2>Board Register</h2>
+            <HeaderSocial data={dataNavbar} />
+              <HomeMarketingSlider/>
+            <div style={{marginLeft:100}}>
+                <h2>펀딩 등록</h2>
+            </div>
+            <hr/>
 
             <PerformanceInput sendTextForm = {sendTextForm}></PerformanceInput>
-
+            <hr/>
             <UploadInput cref={childRef} getUploadedFiles = {getUploadedFiles}></UploadInput>
 
         </div>

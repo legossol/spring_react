@@ -20,6 +20,63 @@ const TextRegister = () => {
     
     return(
         <>
+         <Form>
+      <Grid
+        container
+        direction="row"
+        justify="flex-start"
+        alignItems="flex-start"
+        spacing={1}
+      >
+        Form
+        <Grid container xs="12" spacing="1">
+          <Grid item>
+            <TextField name="Field1" value="Field1" />
+          </Grid>
+          <Grid item>
+            <TextField name="Field2" value="Field2" />
+          </Grid>
+        </Grid>
+        <Grid container xs={12}>
+          <Grid item xs={4} sm={4}>
+            <TextField
+              fullWidth
+              multilineß
+              value="Field1"
+              label="Multiline"
+              rows="6"
+              defaultValue="Default Value"
+            />
+          </Grid>
+          <Grid item xs={8} sm={8}>
+            <Grid container>
+              <Grid item>
+                <TextField name="Popup_A1" fullWidth select />
+              </Grid>
+              <Grid item>
+                <TextField name="Popup_A2" fullWidth select />
+              </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item>
+                <TextField name="Popup_A1" fullWidth select />
+              </Grid>
+              <Grid item>
+                <TextField name="Popup_A2" fullWidth select />
+              </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item>
+                <TextField name="Popup_A1" fullWidth select />
+              </Grid>
+              <Grid item>
+                <TextField name="Popup_A2" fullWidth select />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Form>
         <h1>아 이 템 등 록 하 기</h1>
         <form >
             
