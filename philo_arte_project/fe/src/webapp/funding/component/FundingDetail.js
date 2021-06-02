@@ -14,21 +14,10 @@ const FundingDetail = () =>{
   const dispatch = useDispatch()
   const {read} = useParams()
   const param = useSelector(currentFunding)
-console.log("param은 이것입니다::::::::::" + JSON.stringify(param))
+  
   useEffect(()=>{
     dispatch(getFundingDetail(read))
   },[])
-console.log("param은느느느느느"+JSON.stringify(param))
-console.log("param.fundingId ==" + param?.fundingId)
-
-
-
-
-
-
-
-
-
 
   const useStyles = makeStyles((theme)=> ({
     root: {

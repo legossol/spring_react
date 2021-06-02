@@ -1,93 +1,122 @@
-import React, { useState, useCallback } from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState, useCallback, useEffect } from 'react'
+import HeaderSocial from 'webapp/common/Header/HeaderSocial'
+import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
+import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
+import FooterOne from "webapp/common/Footer/FooterOne";
+import {Link, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {updateFunding, deleteFunding,showFundingDetail} from 'webapp/funding/reducer/funding.reducer'
-const FundingUpdate = () =>{
+import {getFundingDetail, currentFunding, dtoPath,updateFunding} from 'webapp/funding/reducer/funding.reducer'
+import { Button, Grid, MenuItem, TextField } from '@material-ui/core';
+const FundingUpdate = ({fundingId,title,content,hashtag, image,goalPrice}) =>{
+    const dispatch = useDispatch()
+console.log("0-0093939393939"+title)
+    const param = useSelector(currentFunding)
+    const dto = useSelector(dtoPath)
+    const {update} = useParams()
+    // useEffect(()=>{
+    //     dispatch(getFundingDetail(update))
+    // })
     const showDetailFunding = useSelector(state =>{
         console.log("state : " + JSON.stringify(state.showDetailFunding))
         return state.showDetailFunding
       })
-    const dispatch = useDispatch()
+    
     const [fundings, setUpdate] = useState({
-        fundingId :"",
-        title: "",
-        writer: "",
-        content: "",
-        goalPrice: "",
-        viewCnt: "",
-        regDate: "",
-        editDate: "",
-        likeCnt:"",
-        dislikeCnt:"",
+        title: param?.title,
+        content: param?.content,
+        goalPrice: param?.goalPrice,
+        hashtag : param?.hashtag
     })
 
 
-const handleChange = useCallback(e=>{
-    const{wnatChange, value} =e.target;
-    setUpdate({...fundings,
-        [wnatChange] : value})
-},[fundings])
+const handleChange = e=>{
+    setUpdate({
+        [e.target.name]: [e.target.value]
+    })
+    dispatch(updateFunding(param?.fundingId,fundings))
+}
+const fileChange = useCallback(e=>{
+    e.preventDefatult()
+    const formData = new FormData()
+    const update = {
+        
+    }
+})
+const hashtags = [
+    {
+        value:'약',
+        label:'약'
+    },
+    {
+        value:'건강기능',
+        label:'건강기능'
+    },
+    {
+        value:'여행',
+        label:'여행'
+    }
+
+]
     return(
         <>
+        <HeaderSocial data={dataNavbar} />
+              <HomeMarketingSlider/>
+        <form>
         <h1> 펀 딩 업 데 이 트</h1>
-        <form onSubmit={handleChange}>
-            <table>
-                <thead>
-                    <tr>
-                        <th>fundingId</th>
-                        <td><input name='fundingId' value={fundings.fundingId}readOnly></input></td>
-                    </tr>
-                    <tr>
-                        <th>Title</th>
-                        <td><input type='text'name='title' placeholder="수정하려는 타이틀을 입력하세요"value={fundings.title} onChange={handleChange}/></td>
-                    </tr>
-                    <tr>
-                        <th>Writer</th>
-                        <td><input name='writer' value={fundings.writer}readOnly></input></td>
-                    </tr>
-                    <tr>
-                        <th>Content</th>
-                        <td><input type='text' placeholder='컨텐츠의 내용을 수정하세요' name='content' value={fundings.content} onChange={handleChange}/></td>
-                    </tr>
-                    <tr>
-                        <th>GoalPrice</th>
-                        <td><input type='number'name='goalPrice' placeholder='목표금액 재 설정' value={fundings.GoalPrice} onChange={handleChange}/></td>
-                    </tr>
-                    <tr>
-                        <th>ViewCnt</th>
-                        <td><input name='viewCnt' value={fundings.viewCnt}readOnly></input></td>
-                    </tr>
-                    <tr>
-                        <th>등록일</th>
-                        <td><input name='regdate' value={fundings.regDate}readOnly></input></td>
-                    </tr>
-                    <tr>
-                        <th>마지막 수정일</th>
-                        <td><input name='editDate' value={fundings.editDate}readOnly></input></td>
-                    </tr>
-                    <tr>
-                        <th>좋아요 수</th>
-                        <td><input name='likeCnt' value={fundings.likeCnt}readOnly></input></td>
-                    </tr>
-                    <tr>
-                        <th>싫어요 수</th>
-                        <td><input name='dislikeCnt' value={fundings.dislikeCnt}readOnly></input></td>
-                    </tr>
-                    
-                    
-                    <td>
-                        <Link to={"/funding/list"}><button type="submit" onClick={()=>dispatch(updateFunding(fundings.fundingId))}>수정 완료</button></Link>
-                    </td>
-                    <td>
-                        <button type="submit" onClick={()=>dispatch(deleteFunding(fundings.fundingId))}>글 삭제</button>
-                    </td>
-                </thead>    
-                
-            </table>
-            <div>
-                <Link to={"/funding/list"}><button>나가기</button></Link>
+        <div className="container">
+        
+        <div className="card col-md-8 offset-md-3">
+            
+          <div> 
+          <label className="form-label"> * NO </label>
+          <textarea className="form-control" placeholder={fundingId} rows="1" style={{color:"black"}}value={fundings.fundingId} name="fundingId" readOnly></textarea> 
+          </div>
+          <div> 
+          <label className="form-label"> * 제목 </label>
+          <textarea className="form-control" placeholder={title} rows="1" style={{color:"black"}}value={fundings.title} name="title"></textarea> 
+          </div>
+          <div> 
+          <label className="form-label"> * 내용 </label>
+          <textarea className="form-control" placeholder={content} rows="3" style={{color:"black"}}value={fundings.content} name="content"></textarea> 
+          </div>
+          <div> 
+          <label className="form-label"> * 목표금액 </label>
+          <textarea className="form-control" placeholder={goalPrice} rows="1" style={{color:"black"}}value={fundings.goalPrice} name="goalPrice"></textarea> 
+          </div>
+          <div> 
+          <Grid item sm ={3}>
+                <TextField
+                select
+                label="Select Hashtag"
+                value={fundings.hashtag}
+                placeholder={param?.hashtag}
+                name="hashtag"
+                helperText="Please select your Funding Hashtag"
+                variant="filled"
+                >
+                {hashtags.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                    </MenuItem>
+                ))}
+            </TextField>
+            </Grid>
+            {/* <div>
+            
+          {param?.map((image,i)=>(
+                <div key={i}>
+                    <img src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+                </div>
+                )
+            )}
+            </div> */}
             </div>
+          </div>
+          </div>
+         
         </form>
+        <Link to={"/funding/list"}> <Button onClick={handleChange}>SUBMIT</Button></Link>
+        <FooterOne />
         </>
     )
 }

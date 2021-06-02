@@ -8,6 +8,9 @@ import FooterOne from "webapp/common/Footer/FooterOne";
 import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import FundingListForm from './FundingListForm';
+import BlogCarousel from './showing/BlogCarousel';
+import { dataBlog } from 'webapp/common/data/Blog/blog-data.json';
+import { FundingService } from '..';
 
 const FundingList = () =>{
   const pageResult= useSelector(state=>state.fundings.pageResult)
@@ -31,8 +34,12 @@ const FundingList = () =>{
   },[page])
 
  
+  const search = keyword =>{
+    dispatch(FundingService.searchSomething(keyword))
+  }
+  const [keyword, setKeyword] = useState('')
 
-
+  
   const FundingPageList = () => {
 
     const {pageList, page, start, end, prev, next} = useSelector(state=>state.fundings.pageResult)
@@ -72,44 +79,19 @@ const FundingList = () =>{
     <div>
     <HeaderSocial data={dataNavbar} />
     <HomeMarketingSlider/>
+    {/* <BlogCarousel
+      tagline="Most Recent Articles"
+      title="Our Latest Blogs"
+      data={dataBlog}
+    /> */}
+     <textarea type="text" placeholder="Philo-Arte 통합 검색" name="keyword" onChange={keyword} style={{color:"black"}}/>
+      <button onClick={search}>검색하기</button>
     {totalList}
     
         <h1>{msg}</h1>
     <div className="container">
     <h1>아 이 템 리 스 트</h1>
-    {/* <table style={{border:30}}>
-      <thead style={{textAlign:'center'}}>
-        <tr>
-            <th>fundingId</th>
-            <th>title</th>
-            <th>content</th>
-            <th>goalPrice</th>
-            <th>등록일</th>
-            <th>hashtag</th>
-            <th>viewCnt</th>
-        </tr>
-      </thead>
-      <tbody style={{textAlign:'center'}}>
-        {fundings.map((funding, id) =>{
-          return(
-            <tr key={id}>
-              <td>{funding.fundingId}</td>
-              <td>{funding.title}</td>
-              <td>{funding.content}</td>
-              <td>{funding.goalPrice}</td>
-              <td>{funding.moddate}</td>
-              <td>{funding.hashtag}</td>
-              <td>{funding.viewCnt}</td>
-              <button onClick={()=>selectContent(funding.fundingId)}><Link to={`/funding/read/${funding.fundingId}`}>상세 보기</Link></button>
-              <button onClick={()=>dispatch(updateFunding(funding.fundingId))}>수정하기</button>
-              <button onClick={()=>dispatch(deleteFunding(funding.fundingId))}>삭제하기</button>
-            </tr>
-          )
-        })}
-      </tbody>
-      </table> */}
-      <input type="text" placeholder="Philo-Arte 통합 검색"></input>
-      <button>검색하기</button>
+     
       <Link to={"/funding/register"}>
             <button>펀딩 등록하기</button>
       </Link>

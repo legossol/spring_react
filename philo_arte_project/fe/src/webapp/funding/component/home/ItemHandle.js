@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { useSelector , useDispatch} from "react-redux";
 import {Link, useHistory} from 'react-router-dom'
-import { getFundingDetail, updateFunding ,getFundingList, currentFunding, dududududududu} from "webapp/funding/reducer/funding.reducer";
+import { getFundingDetail, currentFunding, dtoPath} from "webapp/funding/reducer/funding.reducer";
 import readFunding from "webapp/funding/component/FundingDetail"
 import { FundingDetail } from "webapp/funding";
 const ItemHandle = ({ title, hashtag, fundingId }) => {
     const param = useSelector(currentFunding)
-    const param2= useSelector(dududududududu)
+    const param2= useSelector(dtoPath)
     const dispatch = useDispatch()
     const [list , setList] =useState({});
     

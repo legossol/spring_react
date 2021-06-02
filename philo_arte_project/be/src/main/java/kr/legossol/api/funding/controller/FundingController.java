@@ -44,14 +44,14 @@ public class FundingController {
         // return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // @PutMapping("/edit/{fundingId}")
-    // public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto,@RequestBody MultipartFile[] files){
-    // if(service.getFundingById(fundingId) == null){
-    //     log.info("해당 글이 조회되지 않습니다.");
-    //     ResponseEntity.badRequest().build();
-    // }
-    // return ResponseEntity.ok(service.save(fundingdto, files));
-    // }   
+    @PutMapping("/edit/{fundingId}")
+    public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto){
+    if(service.getFundingById(fundingId) == null){
+        log.info("해당 글이 조회되지 않습니다.");
+        ResponseEntity.badRequest().build();
+    }
+    return ResponseEntity.ok(service.save(fundingdto));
+    }   
     @DeleteMapping("/{fundingId}")
     public ResponseEntity<String> deleteFunding(@PathVariable("fundingId")Long id){
         service.deleteById(id);

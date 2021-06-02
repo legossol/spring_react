@@ -4,14 +4,6 @@ import { useHistory } from 'react-router-dom'
 const getList=(page) =>{
     return axios.get("http://localhost:8080/funding/list?page=" +page)
 }
-// const fundingRegister = (files) =>{
-//     axios({
-//         url: ("http://localhost:8080/funding/totalregister"+files),
-//         method: 'POST',
-//         headers:{ 'Content-Type': "multipart/form-data"},
-//         data: files,
-//     })
-// }
 const fundingRegister = (data) =>{
     return axios.post("http://localhost:8080/funding/register", data)
 }
@@ -21,23 +13,24 @@ const showDetail =(fundingId)=>{
     return axios.get(`http://localhost:8080/funding/${fundingId}`)
 }
 
-const fundingUpdate = id =>{
+const fundingUpdate = (id,data) =>{
+    return axios.put(`http://localhost:8080/funding/${id}`,data)
     // e.preventDefault()
-    const  up = window.confirm("정보를 수정하시겠습니까?")
-    if(up){
-        axios({
-            url: `http://localhost:8080/funding/${id}`,
-            method: 'put',
-            // headers
-            data:{}
-        }).then(res =>{
-            alert("수정되었습니다")
-            useHistory.push('/list')
-            window.location.reload()
-        }).catch(err =>{
-            alert(err)
-        })
-    }
+    // const  up = window.confirm("정보를 수정하시겠습니까?")
+    // if(up){
+    //     axios({
+    //         url: `http://localhost:8080/funding/${id}`,
+    //         method: 'put',
+    //         // headers
+    //         data:
+    //     }).then(res =>{
+    //         alert("수정되었습니다")
+    //         useHistory.push('/list')
+    //         window.location.reload()
+    //     }).catch(err =>{
+    //         alert(err)
+    //     })
+    // }
 }
 const deleteFunding = (funding) =>{
     // e.preventDefault()
@@ -56,7 +49,7 @@ const fileUpload = (formData) => axios.post(`http://localhost:8080/funding_file/
     {headers:{ "Content-Type": "multipart/form-data"}})
 
 const searchSomething = (index)=>{
-    return axios.get("http://localhost:8080/funding/list/search")
+    return axios.get("http://localhost:8080/funding/list/search",index)
 }
 // const getFiles = ()
 export default {getList, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething,fileUpload}

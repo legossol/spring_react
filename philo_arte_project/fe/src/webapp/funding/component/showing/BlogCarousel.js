@@ -59,7 +59,7 @@ const BlogCarousel = ({ tagline, title, backfont, data }) => {
                   <div className="post-img border-radius-5">
                     <img
                       className="img-responsive"
-                      src={require("../../assets/images/" + post.image)}
+                      src={require("" + post.image)}
                       alt=""
                     />
                     <div className="post-metas">

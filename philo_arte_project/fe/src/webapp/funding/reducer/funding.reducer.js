@@ -98,7 +98,7 @@ const fundingSlice = createSlice({
 
 const {actions ,reducer} = fundingSlice
 export const currentFunding = state => state.fundings.current
-export const dududududududu = state => state.fundings.pageResult.dtoList
+export const dtoPath = state => state.fundings.pageResult.dtoList
 
 export const {addFileList}=actions
 export default reducer 

@@ -13,18 +13,23 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useDispatch, useSelector } from 'react-redux';
-import { currentFunding, dududududududu, getFundingList } from '../reducer/funding.reducer';
+import { currentFunding, dududududududu, getFundingList,getFundingDetail } from '../reducer/funding.reducer';
 import { keys } from '@material-ui/core/styles/createBreakpoints';
 import { Input } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => {
     const param = useSelector(currentFunding)
     const dispatch = useDispatch()
     console.log("image느느느느느느느========="+JSON.stringify(image))
+    // const selectContent = fundingId =>{
+    //     console.log("SElect이동!!!!!(!#*(!#*(!#*(!#*(!&*#("+ fundingId)
+    //     dispatch(getFundingDetail(fundingId))
+    //   }
 
-    
   return (
       <>
+      
       <Grid
             container
             style={{display:"flex",justifyContent:"center"}}
@@ -61,14 +66,25 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
               
               </Typography>
               <Typography variant="body2" color="textSecondary" noWrap>
+              
                 <Button
                   variant="outlined"
                   size="small"
                   color="primary"
+                  onClick={()=>dispatch(getFundingDetail(fundingId))}
                 >
                     {hashtag}
                 </Button>
-
+                <Link to ={`/funding/modify/${fundingId}`} >
+                <Button
+                  variant="outlined"
+                  size="small"
+                  color="primary"
+                  onClick={()=>dispatch(getFundingDetail(fundingId))}
+                >
+                    수정하기
+                </Button>
+                </Link>
                 <Typography color="initial" align="right">
                   목표 금액 :  <Input defaultValue={goalPrice} error inputProps={{ 'aria-label': 'description' }} />
                 </Typography>
