@@ -5,15 +5,13 @@ import { getFundingDetail, currentFunding, dtoPath} from "webapp/funding/reducer
 import readFunding from "webapp/funding/component/FundingDetail"
 import { FundingDetail } from "webapp/funding";
 const ItemHandle = ({ title, hashtag, fundingId }) => {
-    const param = useSelector(currentFunding)
-    const param2= useSelector(dtoPath)
+  
     const dispatch = useDispatch()
     const [list , setList] =useState({});
     
     const selectContent = fundingId =>{
         dispatch(getFundingDetail(fundingId))
       }
-      console.log("itemhandle 의 파람!!!!!!!!!!!!!!!!!!!!!우니루야ㅏ진루ㅏ"+ JSON.stringify(list))
     
     return(
       <div className="col-md-3 mfp-iframe-holder " >

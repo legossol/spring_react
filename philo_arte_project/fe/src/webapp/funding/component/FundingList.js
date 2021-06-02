@@ -34,11 +34,12 @@ const FundingList = () =>{
   },[page])
 
  
+  
+  const [keyword, setKeyword] = useState('keyword')
   const search = keyword =>{
     dispatch(FundingService.searchSomething(keyword))
+    
   }
-  const [keyword, setKeyword] = useState('')
-
   
   const FundingPageList = () => {
 
@@ -84,7 +85,7 @@ const FundingList = () =>{
       title="Our Latest Blogs"
       data={dataBlog}
     /> */}
-     <textarea type="text" placeholder="Philo-Arte 통합 검색" name="keyword" onChange={keyword} style={{color:"black"}}/>
+     <textarea type="text" placeholder="Philo-Arte 통합 검색" name="keyword" onChange={(e)=>setKeyword(e)} style={{color:"black"}}/>
       <button onClick={search}>검색하기</button>
     {totalList}
     

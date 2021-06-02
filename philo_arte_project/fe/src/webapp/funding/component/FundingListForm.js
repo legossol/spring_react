@@ -71,7 +71,6 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
                   variant="outlined"
                   size="small"
                   color="primary"
-                  onClick={()=>dispatch(getFundingDetail(fundingId))}
                 >
                     {hashtag}
                 </Button>

@@ -17,6 +17,13 @@ export const saveFunding = createAsyncThunk(
         return response.data
     }
 )
+export const searchSomething = createAsyncThunk(
+    "funding/search",
+    async(page,keyword)=>{
+        const response = await FundingService.searchSomething(page,keyword)
+        return response.data
+    }
+)
 export const getFundingDetail = createAsyncThunk(
     "funding/Detail",
     async(fundingId)=>{
@@ -65,10 +72,14 @@ const fundingSlice = createSlice({
         addFileList:(state,{payload})=>{
             state.fileList.push(payload)
         }
+        
     },
     extraReducers: (builder)=>{
         builder
         .addCase(getFundingList.fulfilled,(state, {payload})=>{
+            state.pageResult = payload
+        })
+        .addCase(searchSomething.fulfilled,(state,{payload})=>{
             state.pageResult = payload
         })
         .addCase(getFundingDetail.fulfilled,(state,{payload})=>{

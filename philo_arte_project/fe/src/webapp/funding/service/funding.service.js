@@ -48,8 +48,8 @@ const deleteFunding = (funding) =>{
 const fileUpload = (formData) => axios.post(`http://localhost:8080/funding_file/upload_file`,formData,
     {headers:{ "Content-Type": "multipart/form-data"}})
 
-const searchSomething = (index)=>{
-    return axios.get("http://localhost:8080/funding/list/search",index)
+const searchSomething = (data,index)=>{
+    return axios.get("http://localhost:8080/funding/list/search",data,index)
 }
 // const getFiles = ()
 export default {getList, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething,fileUpload}
