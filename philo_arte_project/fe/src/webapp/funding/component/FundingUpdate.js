@@ -27,6 +27,15 @@ const FundingUpdate = ({fundingId,title,content,hashtag, image,goalPrice}) =>{
     })
     const [files, setFiles] =useState([])
     const [uploadResult, setUploadResult] = useState([])
+     useImperativeHandle(cref, () => ({
+
+        send() {
+            getUploadedFiles(uploadResult)
+            setFiles([])
+            setUploadResult([])
+        }
+
+    }));
 
 const handleChange = e=>{
     setUpdate({

@@ -79,7 +79,7 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
                   variant="outlined"
                   size="small"
                   color="primary"
-                  onClick={()=>dispatch(getFundingDetail(fundingId))}
+                  onClick={async()=>dispatch(getFundingDetail(fundingId))}
                 >
                     수정하기
                 </Button>
