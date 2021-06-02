@@ -20,9 +20,14 @@ public interface FundingFileRepository extends JpaRepository<FundingFile, Long>{
     @Query("SELECT f FROM FundingFile f WHERE f.funding.fundingId = :fundingId")
     List<FundingFile> getFileByFundingId(@Param("fundingId") Long id);
 
+
     @Transactional
     @Modifying
     @Query("DELETE FROM FundingFile f where f.fundingFileId = :fundingFileId")
     void fileDelete(@Param("fundingFileId") Long fundingFileId);
     
+    
+    @Modifying
+    @Query("DELETE FROM FundingFile f where f.funding.fundingId = :fundingId")
+    void deleteByFundingId(@Param("fundingId") Long fundingId);
 }

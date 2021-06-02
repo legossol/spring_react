@@ -2,7 +2,9 @@ package kr.legossol.api.funding.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import io.swagger.annotations.Api;
 import kr.legossol.api.funding.domain.FundingDto;
@@ -12,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequiredArgsConstructor
 @Api(tags = "funding")
 @RequestMapping("/funding")
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FundingController {
     private final FundingServiceImpl service;
 
@@ -34,22 +37,24 @@ public class FundingController {
     public ResponseEntity<FundingDto> getOneFundingById(@PathVariable("fundingId") Long fundingId){
         return ResponseEntity.ok(service.getFundingById(fundingId));
     }
-    @PostMapping("/register")
-    public ResponseEntity<String> save(@RequestParam(required = false) FundingDto dto){
-        return ResponseEntity.ok("등록을 성공했습니다."+service.save(dto));
+    @PostMapping(value = "/register")
+    public ResponseEntity<String> save(@RequestBody FundingDto fundingDto){
+        return ResponseEntity.ok("등록을 성공했습니다."+service.save(fundingDto));
+        // log.info(fundingDto);
+        // return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{fundingId}")
-    public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto){
-    if(service.getFundingById(fundingId) == null){
-        log.info("해당 글이 조회되지 않습니다.");
-        ResponseEntity.badRequest().build();
-    }
-    return ResponseEntity.ok(service.save(fundingdto));
-    }   
+    // @PutMapping("/edit/{fundingId}")
+    // public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto,@RequestBody MultipartFile[] files){
+    // if(service.getFundingById(fundingId) == null){
+    //     log.info("해당 글이 조회되지 않습니다.");
+    //     ResponseEntity.badRequest().build();
+    // }
+    // return ResponseEntity.ok(service.save(fundingdto, files));
+    // }   
     @DeleteMapping("/{fundingId}")
-    public ResponseEntity<String> deleteFunding(@PathVariable("fundingId")Long fundingId, @RequestBody FundingDto fundingdto){
-        service.deleteById(fundingId);
+    public ResponseEntity<String> deleteFunding(@PathVariable("fundingId")Long id){
+        service.deleteById(id);
         return ResponseEntity.ok("식제 성공");
     }
     @GetMapping("/search/{hashtag}")
@@ -58,4 +63,3 @@ public class FundingController {
     }
     
 }
-

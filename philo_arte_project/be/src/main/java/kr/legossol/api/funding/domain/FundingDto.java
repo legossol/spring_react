@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @Component
@@ -27,6 +28,8 @@ public class FundingDto {
     private String hashtag;
     private long artistId;
     private String name;
+
+    private List<FundingFileDto> fundingFiles;
     
 
     // Entity -> Dto
@@ -44,6 +47,6 @@ public class FundingDto {
     public static List<FundingDto> tlist(List<Funding> sendIt) {
         return  sendIt.stream().map(f -> ModelMapperUtils.getModelMapper().map(f, FundingDto.class)).collect(Collectors.toList());
     }
-    private List<FundingFileDto> fundingFiles;
+    
     
 }

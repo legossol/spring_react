@@ -37,30 +37,33 @@ public class FundingServiceImpl implements FundingService{
     private final FundingRepository repository;
     private final FundingFileRepository frepo;
 
-
+    @Transactional
     @Override
     public String delete(FundingDto postDto) {
-        repository.delete(Funding.of(postDto));
+        Funding funding = Funding.builder().fundingId(postDto.getFundingId()).build();
+        repository.delete(funding);
+        frepo.deleteByFundingId(funding.getFundingId());
+        
         return (repository.findById(Funding.of(postDto).getFundingId()) == null)
                  ? "Delete Success" : "Delete Failed";
     }
-
+    @Transactional
     @Override
     public void deleteById(long id) {
-        List<FundingFile> files = frepo.getFileByFundingId(id);
-        frepo.deleteAll(files);
+        frepo.deleteByFundingId(id);
         repository.deleteById(id);
     }
 
     @Override
     @Transactional
     public String save(FundingDto requestDto) {
-        Funding toEntityRequest = Funding.of(requestDto);
-        toEntityRequest.saveRequest(requestDto);
-        List<FundingFileDto> files =  requestDto.getFundingFiles();
-        if(!files.isEmpty()){
-            files.forEach(fundingFiledtos -> {
+        Funding toEntityRequest = pagedtoToEntity(requestDto);
+        repository.save(toEntityRequest);
+        List<FundingFileDto> fundingFiles =  requestDto.getFundingFiles();
+        if(!fundingFiles.isEmpty()){
+            fundingFiles.forEach(fundingFiledtos -> {
                 FundingFile f = dtoToEntityFundingFile(fundingFiledtos);
+                f.confirmFunding(toEntityRequest);
                 frepo.save(f);
              });
         }
@@ -99,15 +102,8 @@ public class FundingServiceImpl implements FundingService{
 
             String ofname = uploadFile.getOriginalFilename();
             String fileName = ofname.substring(ofname.lastIndexOf("\\") + 1);
-
-            // int idx = ofname.lastIndexOf(".");
-            // String ofheader = ofname.substring(0, idx);
-            // String ext = ofname.substring(idx);
-
+            
             String uuid = UUID.randomUUID().toString();
-            // StringBuilder sb = new StringBuilder();
-
-            // sb.append(uploadPath).append(File.separator).append(uuid).append("_").append(ofheader).append(ext);
 
             String saveName = uploadPath + File.separator + uuid + "_" + fileName;
             log.info("file upload name : " + saveName);
@@ -117,13 +113,12 @@ public class FundingServiceImpl implements FundingService{
                 uploadFile.transferTo(savePath);
                 String thumbnailSaveName = uploadPath + File.separator + "s_" + uuid + "_" + fileName;
 
-                // Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
                 File thumbnailFile = new File(thumbnailSaveName);
                 //섬네일 생성
                 Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile, 100, 100);
 
-                // FundingFileDto fundingFileDto = FundingFileDto.builder().uuid(uuid).fname(saveName).build();
                 FundingFileDto fundingFileDto = FundingFileDto.builder()
+                    
                         .fname(fileName)
                         .uuid(uuid)
                         .build();
@@ -163,7 +158,7 @@ public class FundingServiceImpl implements FundingService{
                 requestDto.getPageable(Sort.by("fundingId").descending()), keyword, keyword),
                 entity -> pageentityToDto(entity));
     }
-
+    @Transactional
     @Override
     public FundingPageDto<FundingDto, Funding> getByartistName(PageRequestDto requestDto, String name) {
         return new FundingPageDto<>(repository.getPageByartistName(
@@ -172,21 +167,6 @@ public class FundingServiceImpl implements FundingService{
     }
 
 
-    @Override
-    public Long textAndPicSave(FundingDto dto) {
-        Funding totalPost = Funding.of(dto);
-        totalPost.saveRequest(dto);
-
-        List<FundingFileDto> files =  dto.getFundingFiles();
-        if(!files.isEmpty()){
-            files.forEach(fundingFiledtos -> {
-                FundingFile f = dtoToEntityFundingFile(fundingFiledtos);
-                f.confirmFunding(totalPost);
-                frepo.save(f);
-             });
-        }
-        return totalPost.getFundingId();
-    }
     @Transactional
     @Override
     public FundingPageDto<FundingDto, Funding> getList(int page) {

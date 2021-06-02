@@ -24,7 +24,6 @@ public class FundingFile {
     private String uuid;
     @Column(name = "fname")
     private String fname;
-
     @JsonBackReference
     @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "funding_id")

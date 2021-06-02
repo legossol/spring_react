@@ -62,9 +62,26 @@ public class Funding extends BaseEntity {
     
 
     public void saveRequest(FundingDto requestDto) {
+        this.fundingId = requestDto.getFundingId();
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.goalPrice = requestDto.getGoalPrice();
         this.hashtag = requestDto.getHashtag();
+        // this.artist = Artist.builder().artistId(requestDto.getFundingId()).build();
+
     }
+    public Funding saveRequest(Funding toEntityRequest) {
+        Funding funding = Funding.builder()
+                .fundingId(toEntityRequest.getFundingId())
+                .content(toEntityRequest.getContent())
+                .goalPrice(toEntityRequest.getGoalPrice())
+                .hashtag(toEntityRequest.getHashtag())
+                .build();
+        return funding;
+
+    }
+	public Funding save(Funding toEntityRequest) {
+        
+		return null;
+	}
 }

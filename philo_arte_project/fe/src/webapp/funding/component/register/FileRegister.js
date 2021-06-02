@@ -1,10 +1,16 @@
 import React, {useCallback, useImperativeHandle, useState} from 'react';
 import {Button, Typography} from "@material-ui/core";
 import axios from "axios";
-
+import {fileUpload,addFileList} from 'webapp/funding/reducer/funding.reducer'
+import { FundingService } from 'webapp/funding';
+import { useDispatch, useSelector } from 'react-redux';
+import fundingService from 'webapp/funding/service/funding.service';
 const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
+    const dispatch = useDispatch()
+    const fileList = useSelector(state => state.fundings.fileList)
 
     const [files, setFiles] = useState([])
+
     const [uploadResult, setUploadResult] = useState(fileParam)
 
     useImperativeHandle(cref, () => ({
@@ -17,51 +23,43 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
 
     }));
 
-    const uploadAjax = useCallback( e => {
-
-        console.dir(e.target.files);
-
+    const windowFile = async(e) => {
+        e.preventDefault()
         const formData = new FormData()
         const files = e.target.files
 
         for(let i = 0; i < files.length ; i++){
             formData.append("uploadFiles", files[i])
         }
+        FundingService.fileUpload(formData)
+        .then(res => {
+            console.log("res = " +  JSON.stringify(res))
 
-        console.log(formData)
-        setUploadResult(uploadResult.slice(0))
-        axios.post("http://localhost:8080/funding/register",formData,
-            {headers: { "Content-Type": "multipart/form-data"}}
-        ).then(res => {
-            console.log(res)
+            res.data.forEach(uploadFileInfo =>  {uploadResult.push(uploadFileInfo)
+            dispatch(addFileList({uuid: uploadFileInfo.uuid, file: uploadFileInfo}))})
 
-            res.data.forEach(uploadFileInfo =>  uploadResult.push(uploadFileInfo))
-
-            console.log(uploadResult)
+            console.log("upload Result = " + JSON.stringify(uploadResult))
 
             setUploadResult(uploadResult.slice(0))
         })
-
-    })
-    
-
+    }
     
     return (
-        <div>
+        <div style={{marginLeft:60}}>
             <Button
                 variant="contained"
                 component="label">
                 <Typography>{"Upload"}</Typography>
 
-                <input id={"file-input"} style={{ display: 'none' }} type="file" name="imageFile"
-                       onChange={uploadAjax}  multiple={true}/>
+                <input style={{ display: 'none' }} type="file" name="imageFile"
+                       onChange={(e)=>windowFile(e)}  multiple={true}/>
             </Button>
             <div>
                 <ul>
                     {uploadResult.map(uploadFile => {
                         return (
                             <div key={uploadFile.uuid}>
-                                <img src={"http://localhost:8080/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
+                                <img src={"http://localhost:8080/funding_file/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
                                 {uploadFile.fname}
                             </div>
                         )
@@ -73,4 +71,4 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
     );
 };
 
-export default FileRegister
+export default FileRegister;

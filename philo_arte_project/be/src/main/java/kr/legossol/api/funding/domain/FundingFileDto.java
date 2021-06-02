@@ -16,16 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FundingFileDto {
+    
     private Long fundingFileId;
 
     private String uuid;
 
     private String fname;
     
-    private String path;
-    private Funding funding;
-
-
     // public static List<FundingFileDto> filetoDto(List<FundingFile> fundingFile){
         
     //     return  fundingFile.stream()

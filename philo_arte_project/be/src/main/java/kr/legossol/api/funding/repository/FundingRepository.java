@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import kr.legossol.api.funding.domain.Funding;
 
 @Repository
+@Transactional
 public interface FundingRepository extends JpaRepository<Funding,Long>{
     @Query("SELECT f FROM Funding f ORDER BY f.fundingId asc")
     List<Funding> getAllFundings();

@@ -64,7 +64,7 @@ console.log("param.fundingId ==" + param?.fundingId)
             {param?.fundingFiles.map((funding,i)=>{
               return (
                 <div>
-                  <img src={`http://localhost:8080/funding_file/display/da12b70b-6a65-423a-a396-91abe1b3cf57_testGit.png`}/>
+                  <img src={`http://localhost:8080/funding_file/display?da12b70b-6a65-423a-a396-91abe1b3cf57_testGit.png`}/>
                   {funding.fname}
                 </div>
               )

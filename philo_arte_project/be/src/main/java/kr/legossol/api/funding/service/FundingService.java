@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.legossol.api.artist.domain.Artist;
 import kr.legossol.api.funding.domain.Funding;
 import kr.legossol.api.funding.domain.FundingDto;
 import kr.legossol.api.funding.domain.FundingFile;
@@ -38,12 +39,12 @@ public interface FundingService {
     void deleteById(long id);
     List<FundingDto> getListByHashtag(FundingDto dto, String hashtag);
     //============fileservice below==============
-    Long textAndPicSave(FundingDto dto);
-
     default FundingFile dtoToEntityFundingFile(FundingFileDto dto) {
 
-        FundingFile fundingFile = FundingFile.builder().uuid(dto.getUuid()).fname(dto.getFname())
-                .build();
+        FundingFile fundingFile = FundingFile.builder()
+                            .fundingFileId(dto.getFundingFileId())
+                            .uuid(dto.getUuid()).fname(dto.getFname())
+                            .build();
         return fundingFile;
     }
     // List<FundingDto> fileBoxByFunding(Long id);
@@ -71,6 +72,7 @@ public interface FundingService {
                 .content(dto.getContent())
                 .goalPrice(dto.getGoalPrice())
                 .hashtag(dto.getHashtag())
+                // .artist(Artist.builder().artistId(dto.getFundingId()).build())
                 .build();
                 return entity;
     }
