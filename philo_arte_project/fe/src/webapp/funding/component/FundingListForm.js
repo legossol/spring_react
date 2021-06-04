@@ -21,7 +21,6 @@ import { Link } from 'react-router-dom';
 const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => {
     const param = useSelector(currentFunding)
     const dispatch = useDispatch()
-    console.log("image느느느느느느느========="+JSON.stringify(image))
     // const selectContent = fundingId =>{
     //     console.log("SElect이동!!!!!(!#*(!#*(!#*(!#*(!&*#("+ fundingId)
     //     dispatch(getFundingDetail(fundingId))
@@ -79,7 +78,7 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
                   variant="outlined"
                   size="small"
                   color="primary"
-                  onClick={async()=>dispatch(getFundingDetail(fundingId))}
+                  onClick={()=>dispatch(getFundingDetail(fundingId))}
                 >
                     수정하기
                 </Button>

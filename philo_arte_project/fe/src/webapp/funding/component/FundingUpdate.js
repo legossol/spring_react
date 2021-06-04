@@ -1,72 +1,92 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useRef, useImperativeHandle } from 'react'
 import HeaderSocial from 'webapp/common/Header/HeaderSocial'
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
 import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
 import FooterOne from "webapp/common/Footer/FooterOne";
 import {Link, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {getFundingDetail, currentFunding, dtoPath,updateFunding, addFileList} from 'webapp/funding/reducer/funding.reducer'
+import {updateFunding, deleteFile} from 'webapp/funding/reducer/funding.reducer'
 import { Button, Grid, MenuItem, TextField, Typography } from '@material-ui/core';
-import { FundingService } from '..';
-const FundingUpdate = ({fundingId,title,content,hashtag, image,goalPrice}) =>{
+import fundingService from 'webapp/funding/service/funding.service';
+import FileRegister from './register/FileRegister';
+import { current } from '@reduxjs/toolkit';
+import axios from 'axios';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
+const FundingUpdate = () =>{
     const dispatch = useDispatch()
+    const param = useSelector(state => state.fundings.current)
+    const {update}=useParams()
+    const childRef = useRef()
 
-    const param = useSelector(currentFunding)
-    const dto = useSelector(dtoPath)
-    const {update} = useParams()
+    let uploadedFiles = null
+    const [files, setFiles]=useState([])
 
-    const showDetailFunding = useSelector(state =>{
-        console.log("state : " + JSON.stringify(state.showDetailFunding))
-        return state.showDetailFunding
-      })
-    const [fundings, setUpdate] = useState({
-        title: '',
-        content: '',
-        goalPrice: '',
-        hashtag : ''
+    const [data, setUpdate] = useState({
+        title:param.title,
+        content: param.content,
+        goalPrice: param.goalPrice,
+        hashtag : param.hashtag,
+        fundingFiles: param.fundingFiles
+        
     })
-    const [files, setFiles] =useState([])
-    const [uploadResult, setUploadResult] = useState([])
-     useImperativeHandle(cref, () => ({
 
-        send() {
-            getUploadedFiles(uploadResult)
-            setFiles([])
-            setUploadResult([])
-        }
 
-    }));
+    const {title,content,goalPrice,hashtag,fundingFiles}=data
 
-const handleChange = e=>{
-    setUpdate({
-        ...fundings,
-        [e.target.name]: [e.target.value]
-    })
-    dispatch(updateFunding(param?.fundingId,fundings))
-}
-const fileChange = async(e)=>{
-    e.preventDefault()
-    const formData = new FormData()
-    const files = e.target.files
+    const handleChange =useCallback((e)=>{
+        setUpdate({
+            ...data,
+            [e.target.name]: [e.target.value]
+        },[data])
+        console.log(JSON.stringify(data))
+    });
 
-    for(let i = 0; i < files.length ; i++){
-        formData.append("uploadFiles", files[i])
+    const getUploadedFiles = (uplodedFilesResult) => {
+        setFiles(uplodedFilesResult)
+        console.log(uploadedFiles)
     }
-    FundingService.fileUpload(formData)
-    .then(res => {
-        console.log("res = " +  JSON.stringify(res))
+    
+//     const getPrevData = () =>{
+//         return new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 resolve(data)
+//             });
+//         },2000);
+//     }
 
-        res.data.forEach(uploadFileInfo =>  {uploadResult.push(uploadFileInfo)
-        dispatch(addFileList({uuid: uploadFileInfo.uuid, file: uploadFileInfo}))})
-
-        console.log("upload Result = " + JSON.stringify(uploadResult))
-
-        setUploadResult(uploadResult.slice(0))
-    })
+    
+//    useEffect(()=>{
+//        console.log("========useEffect========")
+//         const fetchPrevData = async()=>{
+//             const fundingData = await getPrevData();
+//             setUpdate(fundingData)
+//         }
+//         fetchPrevData();
+//    },[])
+useEffect(()=>{
+    const fetchData = async() =>{
+        const result = await axios(`http://localhost:8080/funding/${update}`);
+        setUpdate(result.data)
 }
+fetchData();
+},[])
 
-    
-    
+
+
+
+
+
+
+
+   const fundingId = param.fundingId
+   const subMit = (e) =>{
+       e.preventDefault()
+       e.stopPropagation()
+       childRef.current.send()
+
+       dispatch(updateFunding({fundingId, data}))
+   }
 const hashtags = [
     {
         value:'약',
@@ -79,6 +99,10 @@ const hashtags = [
     {
         value:'여행',
         label:'여행'
+    },
+    {
+        value:'화장품',
+        label:'화장품'
     }
 
 ]
@@ -90,31 +114,31 @@ const hashtags = [
         <h1> 펀 딩 업 데 이 트</h1>
         <div className="container">
         
-        <div className="card col-md-8 offset-md-3">
+        <div className="card col-md-8 offset-md-3" >
             
           <div> 
           <label className="form-label"> * NO </label>
-          <textarea className="form-control" placeholder={param?.fundingId} rows="1" style={{color:"black"}}value={fundings.fundingId} name="fundingId" readOnly></textarea> 
+         
+          <textarea className="form-control"  rows="1" style={{color:"black"}}value={data.fundingId} name="fundingId" readOnly></textarea> 
           </div>
           <div> 
           <label className="form-label"> * 제목 </label>
-          <textarea className="form-control" placeholder={param?.title} rows="1" style={{color:"black"}}value={fundings.title} name="title" onChange={handleChange} ></textarea> 
+          <textarea className="form-control"  rows="1" style={{color:"black"}}value={title} name="title"  onChange={handleChange} ></textarea> 
           </div>
           <div> 
           <label className="form-label"> * 내용 </label>
-          <textarea className="form-control" placeholder={param?.content} rows="3" style={{color:"black"}}value={fundings.content} name="content" onChange={handleChange} ></textarea> 
+          <textarea className="form-control"  rows="3" style={{color:"black"}}value={content} name="content" onChange={handleChange} ></textarea> 
           </div>
           <div> 
           <label className="form-label"> * 목표금액 </label>
-          <textarea className="form-control" placeholder={param?.goalprice} rows="1" style={{color:"black"}}value={fundings.goalPrice} name="goalPrice" onChange={handleChange} ></textarea> 
+          <textarea className="form-control"  rows="1" style={{color:"black"}}value={goalPrice} name="goalPrice" onChange={handleChange} ></textarea> 
           </div>
           <div> 
           <Grid item sm ={3}>
                 <TextField
                 select
                 label="Select Hashtag"
-                value={fundings.hashtag}
-                placeholder={param?.hashtag}
+                value={data.hashtag}
                 onChange={handleChange} 
                 name="hashtag"
                 helperText="Please select your Funding Hashtag"
@@ -127,46 +151,29 @@ const hashtags = [
                 ))}
             </TextField>
             </Grid>
-
-            <div style={{marginLeft:60}}>
-            <Button
-                variant="contained"
-                component="label">
-                <Typography>{"Upload"}</Typography>
-
-                <input style={{ display: 'none' }} type="file" name="imageFile"
-                       onChange={(e)=>fileChange(e)}  multiple={true}/>
-            </Button>
-            <div>
-                <ul>
-                    {uploadResult.map(uploadFile => {
-                        return (
-                            <div key={uploadFile.uuid}>
-                                <img src={"http://localhost:8080/funding_file/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
-                                {uploadFile.fname}
-                            </div>
-                        )
-                    })
-                    }
-                </ul>
-            </div>
-        </div>
-            {/* <div>
-            
-          {param?.map((image,i)=>(
+            <hr/>
+            {param.fundingFiles?.map((image,i)=>(
                 <div key={i}>
+                    기존 사진
                     <img src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+                    <hr/>
+
+                    <DeleteForeverIcon><Button onclick={(id)=>deleteFile(id)}></Button></DeleteForeverIcon>
                 </div>
                 )
             )}
-            </div> */}
+            <hr/>
+            <div>추가될 사진</div>
+            <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles} onChange={data.fundingFiles}></FileRegister>
+            
             </div>
+
           </div>
           </div>
-         
-        </form>
-        <Link to={"/funding/list"}> <Button onClick={handleChange}>SUBMIT</Button></Link>
-        <FooterOne />
+          <Button onClick={(e)=>subMit(e)}>SUBMIT</Button>
+      <Link to={"/funding/list"}>링크입니다 </Link>
+    </form>
+<FooterOne />
         </>
     )
 }

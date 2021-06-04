@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {deleteFunding, getFundingDetail,getFundingList,updateFunding} from 'webapp/funding/reducer/funding.reducer'
+import {currentFunding, deleteFunding, getFundingDetail,getFundingList,searchSomething,updateFunding} from 'webapp/funding/reducer/funding.reducer'
 import HeaderSocial from 'webapp/common/Header/HeaderSocial';
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
 import FooterOne from "webapp/common/Footer/FooterOne";
@@ -17,6 +17,7 @@ const FundingList = () =>{
 
   const page = pageResult.page
   
+  const keywordRef = useRef()
   const dispatch = useDispatch()
 
   const fundings = useSelector(state =>{
@@ -25,21 +26,22 @@ const FundingList = () =>{
   const msg = useSelector(state =>{
     return state.fundings.msg
   })
-  const selectContent = fundingId =>{
-    console.log("SElect이동!!!!!(!#*(!#*(!#*(!#*(!&*#("+ fundingId)
-    dispatch(getFundingDetail(fundingId))
-  }
+
   useEffect((e)=>{
     dispatch(getFundingList(page))
   },[page])
 
  
   
-  const [keyword, setKeyword] = useState('keyword')
-  const search = keyword =>{
-    dispatch(FundingService.searchSomething(keyword))
-    
-  }
+  const [keyword, setKeyword] = useState('')
+  const handleChange =async()=>{
+    const keywordStr = keywordRef.current.value;
+   
+    const keyword = {keyword:keywordStr}
+    console.log(keyword)
+    await dispatch(getFundingList(page))
+    dispatch(searchSomething(page,keyword))
+};
   
   const FundingPageList = () => {
 
@@ -63,7 +65,6 @@ const FundingList = () =>{
   }
 
   const totalList = fundings.map( (funding, i) => {
-    console.log("totalList 의 fundingId" +funding.fundingId)
   return (
     <FundingListForm 
       key={funding.fundingId}
@@ -85,8 +86,8 @@ const FundingList = () =>{
       title="Our Latest Blogs"
       data={dataBlog}
     /> */}
-     <textarea type="text" placeholder="Philo-Arte 통합 검색" name="keyword" onChange={(e)=>setKeyword(e)} style={{color:"black"}}/>
-      <button onClick={search}>검색하기</button>
+     <textarea type="text" placeholder="Philo-Arte 통합 검색" name="keyword" ref={keywordRef} style={{color:"black"}}/>
+      <button onClick={handleChange}>검색하기</button>
     {totalList}
     
         <h1>{msg}</h1>

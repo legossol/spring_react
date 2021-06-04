@@ -61,6 +61,7 @@ public interface FundingRepository extends JpaRepository<Funding,Long>{
     @Query("SELECT f FROM Funding f WHERE f.fundingId = :fundingId")
     Page<Funding> getPageById(Pageable pageable,@Param("fundingId")Long id);
 
+    @EntityGraph(attributePaths = {"artist","artist.roles"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query(value = "SELECT f FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content% ORDER BY f.fundingId desc",
            countQuery =  "SELECT COUNT(f.fundingId) FROM Funding f WHERE f.title LIKE %:title% OR f.content LIKE %:content%")
     Page<Funding> searchIndex(Pageable pageable, @Param("title")String title,@Param("content") String content);

@@ -150,7 +150,7 @@ public class FundingServiceImpl implements FundingService{
             requestDto.getPageable(Sort.by("fundingId").descending()), id),
             (entity -> pageentityToDto(entity)));
     }
-
+    @Transactional
     @Override
     public FundingPageDto<FundingDto, Funding> searchTitleAndContent(PageRequestDto requestDto, String keyword) {
         

@@ -5,6 +5,7 @@ const getList=(page) =>{
     return axios.get("http://localhost:8080/funding/list?page=" +page)
 }
 const fundingRegister = (data) =>{
+    console.log("WLWLWlwkwkwlwlwlwlwlwlwlwlwlwlwlw"+JSON.stringify(data))
     return axios.post("http://localhost:8080/funding/register", data)
 }
 
@@ -13,8 +14,13 @@ const showDetail =(fundingId)=>{
     return axios.get(`http://localhost:8080/funding/${fundingId}`)
 }
 
-const fundingUpdate = (id,data) =>{
-    return axios.put(`http://localhost:8080/funding/${id}`,data)
+const fundingUpdate = (fundingId,data) =>{
+    console.log("fundingId :::::"+ fundingId)
+    console.log("[SERVICE data :::::", data)
+    return axios.put(`http://localhost:8080/funding/edit/${fundingId}`,data)
+    .then(res =>{
+        return res.data
+    })
     // e.preventDefault()
     // const  up = window.confirm("정보를 수정하시겠습니까?")
     // if(up){
@@ -48,8 +54,10 @@ const deleteFunding = (funding) =>{
 const fileUpload = (formData) => axios.post(`http://localhost:8080/funding_file/upload_file`,formData,
     {headers:{ "Content-Type": "multipart/form-data"}})
 
-const searchSomething = (data,index)=>{
-    return axios.get("http://localhost:8080/funding/list/search",data,index)
+const deleteFile = (id) => axios.delete(`http://localhost:8080/delete_file/${id}`)
+
+const searchSomething = (page,keyword)=>{
+    console.log(JSON.stringify(keyword) + "service search " + JSON.stringify(page))
+    return axios.get("http://localhost:8080/funding/list/search",page,keyword)
 }
-// const getFiles = ()
-export default {getList, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething,fileUpload}
+export default {getList, fundingRegister,showDetail,deleteFunding,fundingUpdate,searchSomething,fileUpload,deleteFile}
