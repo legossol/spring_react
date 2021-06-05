@@ -15,7 +15,7 @@ const ItemHandle = ({ title, hashtag, fundingId }) => {
     
     return(
       <div className="col-md-3 mfp-iframe-holder " >
-             <Link to ={`/funding/read/${fundingId}`} onClick={()=>selectContent(fundingId)}>
+             <Link to ={`/funding/read/${fundingId}`} onClick={async()=>selectContent(fundingId)}>
       <div className="portfolio-item">
           
         <img src='https://www.radiokorea.com/data/file/c_talk_pet/644496679_nXjx54Sc_4nnLaHCzm3n.jpg' />

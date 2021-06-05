@@ -1,17 +1,21 @@
-import React, { useState, useCallback, useEffect, useRef, useImperativeHandle } from 'react'
+import React, { useState, useCallback, useEffect, useRef, useImperativeHandle, Fragment } from 'react'
 import HeaderSocial from 'webapp/common/Header/HeaderSocial'
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
 import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
 import FooterOne from "webapp/common/Footer/FooterOne";
 import {Link, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {updateFunding, deleteFile} from 'webapp/funding/reducer/funding.reducer'
-import { Button, Grid, MenuItem, TextField, Typography } from '@material-ui/core';
+import {updateFunding, deleteFile, getFundingDetail} from 'webapp/funding/reducer/funding.reducer'
+import { Button, Checkbox, Grid, IconButton, ListItem, MenuItem, TextField, Typography } from '@material-ui/core';
 import fundingService from 'webapp/funding/service/funding.service';
 import FileRegister from './register/FileRegister';
 import { current } from '@reduxjs/toolkit';
 import axios from 'axios';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+
+import { Delete, Edit } from "@material-ui/icons";
+import ImagesUploader from './image/ImageUploader';
 
 const FundingUpdate = () =>{
     const dispatch = useDispatch()
@@ -23,47 +27,33 @@ const FundingUpdate = () =>{
     const [files, setFiles]=useState([])
 
     const [data, setUpdate] = useState({
+        fundingId: param.fundingId,
         title:param.title,
         content: param.content,
         goalPrice: param.goalPrice,
         hashtag : param.hashtag,
-        fundingFiles: param.fundingFiles
-        
+        fundingFiles: uploadedFiles
     })
 
-
-    const {title,content,goalPrice,hashtag,fundingFiles}=data
+console.log("data.content ===============",data.content)
+console.log("content ===============",param.content)
 
     const handleChange =useCallback((e)=>{
+      const {name, value} = e.target;
         setUpdate({
-            ...data,
-            [e.target.name]: [e.target.value]
-        },[data])
+          ...data,
+          [name]:value
+        })
         console.log(JSON.stringify(data))
     });
 
     const getUploadedFiles = (uplodedFilesResult) => {
-        setFiles(uplodedFilesResult)
-        console.log(uploadedFiles)
+        
+        uploadedFiles = uplodedFilesResult
+        setUpdate(uplodedFilesResult)
+        console.log("uploadedFiles ============+",uploadedFiles)//제대로 출력
     }
-    
-//     const getPrevData = () =>{
-//         return new Promise((resolve,reject)=>{
-//             setTimeout(()=>{
-//                 resolve(data)
-//             });
-//         },2000);
-//     }
 
-    
-//    useEffect(()=>{
-//        console.log("========useEffect========")
-//         const fetchPrevData = async()=>{
-//             const fundingData = await getPrevData();
-//             setUpdate(fundingData)
-//         }
-//         fetchPrevData();
-//    },[])
 useEffect(()=>{
     const fetchData = async() =>{
         const result = await axios(`http://localhost:8080/funding/${update}`);
@@ -72,11 +62,11 @@ useEffect(()=>{
 fetchData();
 },[])
 
-
-
-
-
-
+console.log("data.title=================",data.title)
+console.log("data.content=================",data.contetnt)
+console.log("data.goalPrice=================",data.goalPrice)
+console.log("data.hashtag=================",data.title)
+console.log("data.files=================",data.title)
 
 
    const fundingId = param.fundingId
@@ -84,8 +74,12 @@ fetchData();
        e.preventDefault()
        e.stopPropagation()
        childRef.current.send()
-
+       console.log("파일은이것_+______________________",data.fundingFiles)//여기서 안먹힘
+       console.log("files+______________________",files)
+       console.log("+______________________",)
+      // const obj ={title:data.title, content:data.content,goalPrice:data.goalPrice,hashtag:data.hashtag,fundingFiles:uploadedFiles}
        dispatch(updateFunding({fundingId, data}))
+
    }
 const hashtags = [
     {
@@ -106,6 +100,11 @@ const hashtags = [
     }
 
 ]
+const [checked, setChecked] = useState(true)
+const handleCheck = e =>{
+    setChecked(e.target.checked)
+}
+
     return(
         <>
         <HeaderSocial data={dataNavbar} />
@@ -123,15 +122,15 @@ const hashtags = [
           </div>
           <div> 
           <label className="form-label"> * 제목 </label>
-          <textarea className="form-control"  rows="1" style={{color:"black"}}value={title} name="title"  onChange={handleChange} ></textarea> 
+          <textarea className="form-control"  rows="1" style={{color:"black"}}value={data.title} name="title"  onChange={handleChange} ></textarea> 
           </div>
           <div> 
           <label className="form-label"> * 내용 </label>
-          <textarea className="form-control"  rows="3" style={{color:"black"}}value={content} name="content" onChange={handleChange} ></textarea> 
+          <textarea className="form-control"  rows="3" style={{color:"black"}}value={data.content} name="content" onChange={handleChange} ></textarea> 
           </div>
           <div> 
           <label className="form-label"> * 목표금액 </label>
-          <textarea className="form-control"  rows="1" style={{color:"black"}}value={goalPrice} name="goalPrice" onChange={handleChange} ></textarea> 
+          <textarea className="form-control"  rows="1" style={{color:"black"}}value={data.goalPrice} name="goalPrice" onChange={handleChange} ></textarea> 
           </div>
           <div> 
           <Grid item sm ={3}>
@@ -151,20 +150,20 @@ const hashtags = [
                 ))}
             </TextField>
             </Grid>
+            {/* <ImagesUploader></ImagesUploader> */}
             <hr/>
+            
             {param.fundingFiles?.map((image,i)=>(
-                <div key={i}>
-                    기존 사진
-                    <img src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
-                    <hr/>
-
-                    <DeleteForeverIcon><Button onclick={(id)=>deleteFile(id)}></Button></DeleteForeverIcon>
-                </div>
+                <Grid item xs={12} >
+                  <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}  style={{rotate:15}}/>
+                    <img src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`} style={{height:"20%", width:"20%"}} />
+                    <button type="button" onClick={()=>dispatch(deleteFile(image.fundingFileId))}>사진 삭제</button>
+                </Grid>
                 )
             )}
             <hr/>
             <div>추가될 사진</div>
-            <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles} onChange={data.fundingFiles}></FileRegister>
+            <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles}></FileRegister>
             
             </div>
 

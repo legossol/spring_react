@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import HeaderSocial from 'webapp/common/Header/HeaderSocial'
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
 import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
@@ -7,10 +7,12 @@ import { saveFunding } from '../reducer/funding.reducer';
 import { useDispatch } from 'react-redux';
 import FileRegister from './register/FileRegister';
 import TextRegister from './register/TextRegister';
+import ImagesUploader from './image/ImageUploader';
+import { Checkbox } from '@material-ui/core';
 
 const FundingRegister = ({requestRefresh}) => {
     const dispatch = useDispatch()
-
+    
     const childRef = useRef()
     let uploadedFiles = null
     const sendTextForm = (title, content, goalPrice, hashtag) => {
@@ -34,7 +36,6 @@ const FundingRegister = ({requestRefresh}) => {
         uploadedFiles = uplodedFilesResult
     }
 
-
     return (
         <div>
             <HeaderSocial data={dataNavbar} />
@@ -45,6 +46,8 @@ const FundingRegister = ({requestRefresh}) => {
             <hr/>
 
             <TextRegister sendTextForm = {sendTextForm} ></TextRegister>
+            <hr/>
+            {/* <ImagesUploader cref={childRef} getUploadedFiles = {getUploadedFiles}></ImagesUploader> */}
             <hr/>
             <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles} ></FileRegister>
             <FooterOne />

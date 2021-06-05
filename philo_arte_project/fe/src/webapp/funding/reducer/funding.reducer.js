@@ -12,7 +12,7 @@ export const saveFunding = createAsyncThunk(
     "funding/register",
     async (newFunding) =>{
         const response = await FundingService.fundingRegister(newFunding)
-        console.log("saveFunding action  ===" +newFunding)
+        console.log("saveFunding action  ===" ,newFunding)
         return response.data
     }
 )

@@ -57,7 +57,7 @@ public class FundingController {
         ResponseEntity.badRequest().build();
         System.out.println("뭘 저장할거냐?!?!?" + fundingdto);
     }
-    return ResponseEntity.ok(service.save(fundingdto));
+    return ResponseEntity.ok("수정 성공"+service.save(fundingdto));
     }   
 
 

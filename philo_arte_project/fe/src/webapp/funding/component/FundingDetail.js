@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, PropTypes } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {getFundingDetail,deleteFunding, currentFunding, dududududududu} from 'webapp/funding/reducer/funding.reducer'
 import {Link, useParams} from 'react-router-dom'
@@ -26,6 +26,13 @@ const FundingDetail = () =>{
     dispatch(getFundingDetail(read))
   },[])
 
+//   useEffect(()=>{
+//     const fetchData = async() =>{
+//         const result = getFundingDetail(read);
+//         setUpdate(result.data)
+// }
+// fetchData();
+// },[])
 
 
   const useStyles = makeStyles(theme => ({
@@ -238,6 +245,29 @@ const FundingDetail = () =>{
   const handleClick =() =>{
     setOpen(!open)
   }
+  // {param.fundingFiles?.map((image,i)=>(
+  //   <CardMedia>
+  //   <img key={i} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+  //   </CardMedia>
+  //     )
+  // )}
+  const mainImg = param.fundingFiles?.map(image=>{
+  
+
+    const imgArr=[]
+    return(
+      image.map ?
+      <img key={param.fundingId} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+      :<></>
+      
+    )
+  })
+  // const realMain = param.fundingFiles[0]
+  console.log("main은",mainImg)
+  // console.log("arr은",imgArr)
+  // console.log("realmain은",realMain)
+
+    
         return ( 
             <>
              <HeaderSocial data={dataNavbar} />
@@ -296,18 +326,14 @@ const FundingDetail = () =>{
               
               <Grid item xs={12} sm={4}>
           <Card className={classes.card}>
-            <CardMedia
-              Shadow={3}
-              className={classes.media}
-              image={param.fundingFiles?.map((image,i)=>(
-                <div key={i}>
-                    <img src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
-                    <hr/>
-                </div>
-                )
-            )}
-              title="The West Point History of Warfare, Part I"
-            />
+
+          {param.fundingFiles?.map((image,i)=>(
+             <CardMedia>
+             <img key={i} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+             </CardMedia>
+               )
+           )}
+
             <CardContent className={classes.content}>
               <Typography
                 className={classes.subtitle1}
@@ -415,6 +441,12 @@ const FundingDetail = () =>{
               {param.content}
               </h3>
             </Typography>
+            {param.fundingFiles?.map((image,i)=>(
+             <CardMedia>
+             <img key={i} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+             </CardMedia>
+               )
+           )}
           </Box>
           <Divider className={classes.dividerFullWidth} />
         </Grid>

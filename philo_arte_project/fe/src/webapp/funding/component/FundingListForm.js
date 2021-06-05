@@ -25,7 +25,26 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
     //     console.log("SElect이동!!!!!(!#*(!#*(!#*(!#*(!&*#("+ fundingId)
     //     dispatch(getFundingDetail(fundingId))
     //   }
-
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        flexGrow: 1,
+      },
+      paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      },
+    }));
+    const classes = useStyles();
+    const imageBox =image.map(image=>{
+      return(
+      image.map ?
+          <img  key={image.fundingId} src={`http://localhost:8080/funding_file/display?fileName=
+          ${image.uuid+"_"+image.fname}`}/> :<></>
+      )})
+console.log("index of image",image)
+console.log("index of Fist Image",image[0])
+console.log("imageBox ====", imageBox)
   return (
       <>
       
@@ -33,25 +52,33 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
             container
             style={{display:"flex",justifyContent:"center"}}
             direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
+            // justify="space-between"
+            // alignItems="center"
             spacing={3}
             
             >
-      <Grid item xs={6} sm={4} lg={8}   >
-        <Card>
+              
+      <Grid container item xs={6}  sm={3} lg={4}   >
+        <Card direction="row" >
           <CardActionArea>
-            <CardMedia
+            {/* <CardMedia
               component="img"
               height="140"
-              src=""
               title={title}
-            />
-           
+            /> */}
+             <Typography
+              gutterBottom
+              style={{display:"flex",justifyContent:"center"}}
+              variant="h5"
+              component="h2"
+              noWrap
+              >{title}</Typography>
             {image.map((image,i)=>(
-                <div key={i}>
-                    <img src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
-                </div>
+             
+              <CardMedia>
+              <img key={i} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+                
+              </CardMedia>
                 )
             )}
              {content}
@@ -78,6 +105,7 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
                   variant="outlined"
                   size="small"
                   color="primary"
+                  key={param.fundingId}
                   onClick={()=>dispatch(getFundingDetail(fundingId))}
                 >
                     수정하기
@@ -98,8 +126,10 @@ const FundingListForm = ({fundingId,title,content,hashtag, image,goalPrice}) => 
         </Card>
       </Grid>
       
+      
       </Grid>
     <hr/>
+    
     </>
   );
 }

@@ -21,22 +21,6 @@ const fundingUpdate = (fundingId,data) =>{
     .then(res =>{
         return res.data
     })
-    // e.preventDefault()
-    // const  up = window.confirm("정보를 수정하시겠습니까?")
-    // if(up){
-    //     axios({
-    //         url: `http://localhost:8080/funding/${id}`,
-    //         method: 'put',
-    //         // headers
-    //         data:
-    //     }).then(res =>{
-    //         alert("수정되었습니다")
-    //         useHistory.push('/list')
-    //         window.location.reload()
-    //     }).catch(err =>{
-    //         alert(err)
-    //     })
-    // }
 }
 const deleteFunding = (funding) =>{
     // e.preventDefault()
@@ -54,7 +38,7 @@ const deleteFunding = (funding) =>{
 const fileUpload = (formData) => axios.post(`http://localhost:8080/funding_file/upload_file`,formData,
     {headers:{ "Content-Type": "multipart/form-data"}})
 
-const deleteFile = (id) => axios.delete(`http://localhost:8080/delete_file/${id}`)
+const deleteFile = (id) => axios.delete(`http://localhost:8080/funding_file/delete_file/${id}`)
 
 const searchSomething = (page,keyword)=>{
     console.log(JSON.stringify(keyword) + "service search " + JSON.stringify(page))

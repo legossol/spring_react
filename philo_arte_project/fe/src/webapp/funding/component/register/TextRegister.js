@@ -38,7 +38,10 @@ const TextRegister = ({pno, title ='', content ='',goalPrice='',hashtag='', regD
     const changeHashtag = useCallback(e => {
         setHashtagState(e.target.value)
     });
-
+    console.log("title=================",titleState)
+    console.log("content=================",contentState)
+    console.log("goalPrice=================",goalPriceState)
+    console.log("hashtag=================",hashtagState)
     const sendForm = useCallback(e => {
         sendTextForm(titleState, contentState,goalPriceState,hashtagState)
         setTitleState('')

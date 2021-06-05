@@ -1,5 +1,5 @@
 import React, {useCallback, useImperativeHandle, useState} from 'react';
-import {Button, Typography} from "@material-ui/core";
+import {Button, Checkbox, Typography} from "@material-ui/core";
 import axios from "axios";
 import {fileUpload,addFileList} from 'webapp/funding/reducer/funding.reducer'
 import { FundingService } from 'webapp/funding';
@@ -44,6 +44,10 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
         })
     }
     
+    const [checked, setChecked] = useState(true)
+    const handleChange = e =>{
+        setChecked(e.target.checked)
+    }
     return (
         <div style={{marginLeft:60}}>
             <Button
@@ -56,9 +60,11 @@ const FileRegister = ({cref, getUploadedFiles, fileParam=[]}) => {
             </Button>
             <div>
                 <ul>
+                    
                     {uploadResult.map(uploadFile => {
                         return (
                             <div key={uploadFile.uuid}>
+                            <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}  style={{rotate:180}}/>
                                 <img src={"http://localhost:8080/funding_file/display?fileName=s_" + uploadFile.uuid+"_"+ uploadFile.fname }/>
                                 {uploadFile.fname}
                             </div>

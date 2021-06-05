@@ -133,7 +133,7 @@ public class FundingServiceImpl implements FundingService{
 
     @Override
     public String deleteFile(Long fundingFileId) {
-        repository.deleteById(fundingFileId);
+        frepo.deleteById(fundingFileId);
         return (frepo.findById(fundingFileId) != null) ? "Delete Success" : "Delete Failed";
     }
     @Transactional
