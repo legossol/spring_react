@@ -25,7 +25,7 @@ const FundingDetail = () =>{
   useEffect(()=>{
     dispatch(getFundingDetail(read))
   },[])
-
+console.log("param.fundingFilees=======",param.fundingFiles)
 //   useEffect(()=>{
 //     const fetchData = async() =>{
 //         const result = getFundingDetail(read);
@@ -299,7 +299,7 @@ const FundingDetail = () =>{
               color="textSecondary"
               component="p"
             >
-              {param.hashtag}
+              {param.name}
             </Typography>
             <div className={classes.spacer} />
             <Typography
@@ -325,19 +325,20 @@ const FundingDetail = () =>{
               
               <Grid item xs={12} sm={4}>
           <Card className={classes.card}>
-
-          {/* {param.fundingFiles?.map((image,i)=>(
-             <CardMedia>
-             <img key={i}  
-             src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
-             </CardMedia>
-               )
-           )} */}
+          <CardMedia
+            Shadow={3}
+            className={classes.media}
+            image={param.fundingFiles?.map(img =>(`http://localhost:8080/funding_file/display?fileName=${img.uuid}_${img.fname}`))[0]}
+            
+            // title={title}
+            />
+          
+          
 
             <CardContent className={classes.content}>
               <Typography
                 className={classes.subtitle1}
-                variant="subtitle1"
+                variant="subtitle1" 
                 color="textSecondary"
                 component="p"
                 align="center"
@@ -349,7 +350,6 @@ const FundingDetail = () =>{
                 >
                   &nbsp;
                 </span>
-                펀딩 대표 사진
               </Typography>
             </CardContent>
           </Card>
@@ -363,16 +363,19 @@ const FundingDetail = () =>{
             component="h5"
             className={classes.h5}
           >
-            펀딩 목표
           </Typography>
-
-          <CardMedia
-            component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image="src/images/icon_analtyic@2x.png"
-            title="Contemplative Reptile"
-          />
+          <Link to ={"/funding/list"}>
+          <Button
+            variant="outlined"
+            size="small"
+            color="primary"
+            key={param.fundingId}
+          >
+            {param.hashtag}
+          </Button>
+          
+          </Link>
+           
           <div className={classes.spacer} />
           <div className={classes.spacer} />
           <div className={classes.spacer} />
@@ -414,7 +417,7 @@ const FundingDetail = () =>{
             </Grid>
             <Grid item xs={6} sm={6}>
               <Button size="large" color="primary">
-                <ShareIcon className={classes.shareIcon} />
+                <ShareIcon rotate={-90} className={classes.shareIcon} />
                 &nbsp;&nbsp;공유하기
               </Button>
             </Grid>

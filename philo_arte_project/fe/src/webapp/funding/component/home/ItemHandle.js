@@ -13,15 +13,11 @@ const ItemHandle = ({ title, hashtag, fundingId ,image}) => {
         dispatch(getFundingDetail(fundingId))
       }
 
-      console.log("image[0] =" ,image[0])
-      console.log("param =" ,param)
-      console.log("one pic of map" , image.map(img=>(`http://localhost:8080/funding_file/display?fileName=${img.uuid}_${img.fname}`))[0])
+
     return(
       <div className="col-md-3 mfp-iframe-holder " >
              <Link to ={`/funding/read/${fundingId}`} onClick={async()=>selectContent(fundingId)}>
-      <div className="portfolio-item">
-          {/* {mainImg} */}
-          {/* {image[0].id} */}
+          <div className="portfolio-item">
           <img src={image.map(img =>(`http://localhost:8080/funding_file/display?fileName=${img.uuid}_${img.fname}`))[0]} style={{height:"80%", width:"80%"}}/>
         <div className="portfolio-info white-bg">
           <div className="centrize">

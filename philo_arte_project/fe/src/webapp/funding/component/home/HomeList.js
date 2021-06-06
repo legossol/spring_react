@@ -11,8 +11,6 @@ const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor, id }
   LoadScript("js/portfolio/portfolio-grid.js");
     
   const totalList = data.map( (funding, i) => {
-      console.log("totalList 의 fundingId" +funding.fundingId)
-      console.log("totlaList의 image =",funding.fundingFiles)
     return (
       <ItemHandle 
         key={funding.fundingId}

@@ -11,6 +11,7 @@ import FundingListForm from './FundingListForm';
 import BlogCarousel from './showing/BlogCarousel';
 import { dataBlog } from 'webapp/common/data/Blog/blog-data.json';
 import { FundingService } from '..';
+import { Grid } from '@material-ui/core';
 
 const FundingList = () =>{
   const pageResult= useSelector(state=>state.fundings.pageResult)
@@ -66,16 +67,22 @@ const FundingList = () =>{
 
   const totalList = fundings.map( (funding, i) => {
   return (
-    <FundingListForm 
-      key={funding.fundingId}
-      fundingId={funding.fundingId}
-      title={funding.title}
-      content={funding.content}
-      hashtag={funding.hashtag}
-      image={funding.fundingFiles}
-      goalPrice={funding.goalPrice}
-    />
-  )});
+    <Grid item container>
+      <Grid item xs={false} sm={2} direction="column"/>
+        <Grid item xs={12} sm={5} >
+          <FundingListForm 
+            key={funding.fundingId}
+            fundingId={funding.fundingId}
+            title={funding.title}
+            content={funding.content}
+            hashtag={funding.hashtag}
+            image={funding.fundingFiles}
+            goalPrice={funding.goalPrice}
+          />
+          </Grid>
+      <Grid item xs={false} sm={2} />
+    </Grid>
+        )});
   return (
     <>
     <div>
@@ -88,21 +95,23 @@ const FundingList = () =>{
     /> */}
      <textarea type="text" placeholder="Philo-Arte 통합 검색" name="keyword" ref={keywordRef} style={{color:"black"}}/>
       <button onClick={handleChange}>검색하기</button>
-    {totalList}
+      
+       
+            {totalList}
+        
     
-        <h1>{msg}</h1>
-    <div className="container">
-    <h1>아 이 템 리 스 트</h1>
-     
-      <Link to={"/funding/register"}>
+    <Link to={"/funding/register"}>
             <button>펀딩 등록하기</button>
       </Link>
-      </div>
       <div style={{display:"flex",justifyContent:"center"}}>
       {FundingPageList()}
       </div>
-      <FooterOne />
+  
+      
       </div>
+     
+      <FooterOne />
+    
     </>
   );
 };
