@@ -252,17 +252,16 @@ const FundingDetail = () =>{
   //     )
   // )}
   const mainImg = param.fundingFiles?.map(image=>{
-  
-
-    const imgArr=[]
+    
     return(
-      image.map ?
+      image.map?
       <img key={param.fundingId} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
       :<></>
       
     )
   })
-  // const realMain = param.fundingFiles[0]
+  
+  // const realMain = Array.mainImg.find(element => element ==0);
   console.log("main은",mainImg)
   // console.log("arr은",imgArr)
   // console.log("realmain은",realMain)
@@ -327,12 +326,13 @@ const FundingDetail = () =>{
               <Grid item xs={12} sm={4}>
           <Card className={classes.card}>
 
-          {param.fundingFiles?.map((image,i)=>(
+          {/* {param.fundingFiles?.map((image,i)=>(
              <CardMedia>
-             <img key={i} src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
+             <img key={i}  
+             src={`http://localhost:8080/funding_file/display?fileName=${image.uuid}_${image.fname}`}/>
              </CardMedia>
                )
-           )}
+           )} */}
 
             <CardContent className={classes.content}>
               <Typography

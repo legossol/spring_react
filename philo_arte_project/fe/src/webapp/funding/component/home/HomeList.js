@@ -12,12 +12,14 @@ const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor, id }
     
   const totalList = data.map( (funding, i) => {
       console.log("totalList 의 fundingId" +funding.fundingId)
+      console.log("totlaList의 image =",funding.fundingFiles)
     return (
       <ItemHandle 
         key={funding.fundingId}
         fundingId={funding.fundingId}
         title={funding.title}
         hashtag={funding.hashtag}
+        image={funding.fundingFiles}
       />
     )});
 
