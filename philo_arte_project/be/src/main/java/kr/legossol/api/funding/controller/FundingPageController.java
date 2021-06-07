@@ -26,7 +26,6 @@ public class FundingPageController {
 
     @GetMapping("/list")
     public ResponseEntity<FundingPageDto<FundingDto, Funding>> list(int page){
-        System.out.println(page);
 
         return ResponseEntity.ok(service.getList(page));
     }
