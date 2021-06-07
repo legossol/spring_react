@@ -52,6 +52,7 @@ console.log("content ===============",param.content)
         uploadedFiles = uplodedFilesResult
         setUpdate(uplodedFilesResult)
         console.log("uploadedFiles ============+",uploadedFiles)//제대로 출력
+        data.fundingFiles = uploadedFiles
     }
 
 useEffect(()=>{

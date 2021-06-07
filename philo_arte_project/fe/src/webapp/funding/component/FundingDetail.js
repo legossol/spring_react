@@ -452,6 +452,24 @@ console.log("param.fundingFilees=======",param.fundingFiles)
            )}
           </Box>
           <Divider className={classes.dividerFullWidth} />
+          <Link to={"/funding/list"}>
+                <Button variant="outlined" size="large" color="primary">
+                    리스트로 돌아가기
+                </Button>
+          </Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <Link to={"/funding/home"}>
+                <Button variant="outlined" size="large" color="primary">
+                    홈으로 돌아가기
+                </Button>
+          </Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Link to={`/funding/modify/${param.fundingId}`}>
+                <Button variant="outlined" size="large" color="primary"
+                   key={param.fundingId} onClick={()=>dispatch(getFundingDetail(param.fundingId))}>
+                    수정하기
+                </Button>
+          </Link>
         </Grid>
 
               
