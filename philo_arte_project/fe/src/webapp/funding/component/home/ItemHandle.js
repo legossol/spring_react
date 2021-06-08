@@ -17,7 +17,7 @@ const ItemHandle = ({ title, hashtag, fundingId ,image}) => {
     return(
       <div className="col-md-3 mfp-iframe-holder " >
              <Link to ={`/funding/read/${fundingId}`} onClick={async()=>selectContent(fundingId)}>
-          <div className="portfolio-item">
+          <div className="portfolio-item"style={{ overflow:"hidden",display:"flex", width:300,height:350}}>
           <img src={image.map(img =>(`http://localhost:8080/funding_file/display?fileName=${img.uuid}_${img.fname}`))[0]} style={{height:"80%", width:"80%"}}/>
         <div className="portfolio-info white-bg">
           <div className="centrize">
