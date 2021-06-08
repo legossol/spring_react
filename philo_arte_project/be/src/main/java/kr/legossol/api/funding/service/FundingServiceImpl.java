@@ -106,7 +106,6 @@ public class FundingServiceImpl implements FundingService{
             String uuid = UUID.randomUUID().toString();
 
             String saveName = uploadPath + File.separator + uuid + "_" + fileName;
-            log.info("file upload name : " + saveName);
             Path savePath = Paths.get(saveName);
 
             try {

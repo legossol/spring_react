@@ -24,7 +24,6 @@ const FundingUpdate = () =>{
     const childRef = useRef()
 
     let uploadedFiles = null
-    const [files, setFiles]=useState([])
 
     const [data, setUpdate] = useState({
         fundingId: param.fundingId,
@@ -34,9 +33,6 @@ const FundingUpdate = () =>{
         hashtag : param.hashtag,
         fundingFiles: uploadedFiles
     })
-
-console.log("data.content ===============",data.content)
-console.log("content ===============",param.content)
 
     const handleChange =useCallback((e)=>{
       const {name, value} = e.target;
@@ -51,7 +47,7 @@ console.log("content ===============",param.content)
         
         uploadedFiles = uplodedFilesResult
         setUpdate(uplodedFilesResult)
-        console.log("uploadedFiles ============+",uploadedFiles)//제대로 출력
+        data.fundingFiles = uploadedFiles
     }
 
 useEffect(()=>{
@@ -62,22 +58,12 @@ useEffect(()=>{
 fetchData();
 },[])
 
-console.log("data.title=================",data.title)
-console.log("data.content=================",data.contetnt)
-console.log("data.goalPrice=================",data.goalPrice)
-console.log("data.hashtag=================",data.title)
-console.log("data.files=================",data.title)
-
-
    const fundingId = param.fundingId
+
    const subMit = (e) =>{
        e.preventDefault()
        e.stopPropagation()
        childRef.current.send()
-       console.log("파일은이것_+______________________",data.fundingFiles)//여기서 안먹힘
-       console.log("files+______________________",files)
-       console.log("+______________________",)
-      // const obj ={title:data.title, content:data.content,goalPrice:data.goalPrice,hashtag:data.hashtag,fundingFiles:uploadedFiles}
        dispatch(updateFunding({fundingId, data}))
 
    }
@@ -166,11 +152,21 @@ const handleCheck = e =>{
             <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles}></FileRegister>
             
             </div>
-
+            <hr/>
+            <Link to={"/funding/list"}>
+          <Button variant="outlined"
+                  size="large"
+                  color="primary" onClick={(e)=>subMit(e)}>SUBMIT</Button>
+          </Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <Link to={"/funding/list"}>
+          <Button variant="outlined"
+                  size="large"
+                  color="primary" onClick={(e)=>subMit(e)}>리스트로 되돌아가기</Button>
+          </Link>
           </div>
           </div>
-          <Button onClick={(e)=>subMit(e)}>SUBMIT</Button>
-      <Link to={"/funding/list"}>링크입니다 </Link>
+          
     </form>
 <FooterOne />
         </>

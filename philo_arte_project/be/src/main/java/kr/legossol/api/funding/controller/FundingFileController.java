@@ -56,9 +56,7 @@ public class FundingFileController {
         ResponseEntity<byte[]> result = null;
         try {
             String srcFileName = URLDecoder.decode(fileName, "UTF-8");
-            log.info("fiilName: " + srcFileName);
             File file = new File(uploadPath + File.separator + srcFileName);
-            log.info("file: " + file);
             HttpHeaders header = new HttpHeaders();
             header.add("Content-Type", Files.probeContentType(file.toPath()));
             result = ResponseEntity.ok(FileCopyUtils.copyToByteArray(file));

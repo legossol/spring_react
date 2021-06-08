@@ -40,22 +40,13 @@ public class FundingController {
     @PostMapping(value = "/register")
     public ResponseEntity<String> save(@RequestBody FundingDto fundingDto){
         return ResponseEntity.ok("등록을 성공했습니다."+service.save(fundingDto));
-        // log.info(fundingDto);
-        // return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // @PutMapping("/edit/{fundingId}")
-    // public ResponseEntity<String> updateFunding(){
-    //     log.info("message");
-    // return ResponseEntity.ok("success");
-    // }   
 
     @PutMapping("/edit/{fundingId}")
     public ResponseEntity<String> updateFunding(@PathVariable("fundingId") Long fundingId, @RequestBody FundingDto fundingdto){
     if(service.getFundingById(fundingId) == null){
-        log.info("해당 글이 조회되지 않습니다.");
         ResponseEntity.badRequest().build();
-        System.out.println("뭘 저장할거냐?!?!?" + fundingdto);
     }
     return ResponseEntity.ok("수정 성공"+service.save(fundingdto));
     }   

@@ -12,6 +12,7 @@ import BlogCarousel from './showing/BlogCarousel';
 import { dataBlog } from 'webapp/common/data/Blog/blog-data.json';
 import { FundingService } from '..';
 import { Grid } from '@material-ui/core';
+import Button from "@material-ui/core/Button";
 
 const FundingList = () =>{
   const pageResult= useSelector(state=>state.fundings.pageResult)
@@ -81,7 +82,10 @@ const FundingList = () =>{
           />
           </Grid>
       <Grid item xs={false} sm={2} />
+      
     </Grid>
+     
+ 
         )});
   return (
     <>
@@ -99,10 +103,18 @@ const FundingList = () =>{
        
             {totalList}
         
-    
-    <Link to={"/funding/register"}>
-            <button>펀딩 등록하기</button>
+    <Grid style={{display:"flex",marginLeft:"30"}}>
+        <Link to={"/funding/register"}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                >
+                    새로운 펀딩 등록하기
+                </Button>
+            {/* <button>펀딩 등록하기</button> */}
       </Link>
+      </Grid>
       <div style={{display:"flex",justifyContent:"center"}}>
       {FundingPageList()}
       </div>
