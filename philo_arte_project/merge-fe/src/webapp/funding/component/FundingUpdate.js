@@ -55,8 +55,12 @@ fetchData();
        e.preventDefault()
        e.stopPropagation()
        childRef.current.send()
-       dispatch(updateFunding({fundingId, data}))
-       window.location.href=`/funding/list`
+       const del = window.confirm("수정을 완료하시겠습니까?")
+       if(del){
+            dispatch(updateFunding({fundingId, data}))
+       }
+       
+    //    window.location.href=`/funding/list`
    }
 const ondelete=async(id)=>{
     dispatch(deleteFile(id))
