@@ -1,5 +1,5 @@
 import React from "react";
-import CounterRowOne from "./CounterRowOne";
+import CounterRowOne from "../../../common/Counters/CounterRowOne";
 
 const CountersOne = ({ data, type, classes }) => (
   <section className={(type === "dark" ? "dark-bg" : "") + " xs-pt-80 xs-pb-80 " + classes}>

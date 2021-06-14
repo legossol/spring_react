@@ -17,12 +17,8 @@ import kr.legossol.api.common.Crawling.Crawlers.cralSomething;
 import kr.legossol.api.common.domain.Crawler;
 
 public class CrawlMain {
-    // public static final String WEB_DRIVER_ID = "webdriver.chrome.driver"; //드라이버 ID
-    // public static final String WEB_DRIVER_PATH = "/Users/haesoljang/filestore/chromedriver.exe"; //드라이버 경로
     public static void main(String[] args) throws IOException {
-//        String url = "http://www.yes24.com/24/Category/Display/001001003022";
-//        String cssQuery = ".clearfix";
-        String filePath = "/Users/haesoljang/filestore/dummyFundingItem.csv";
+        String filePath = "/Users/haesoljang/filestore/dumdum.csv";
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/haesoljang/filestore/chromedriver");
         } catch (Exception e) {
@@ -31,8 +27,6 @@ public class CrawlMain {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         WebDriver driver = new ChromeDriver(options);
-        // String url = "https://www.wadiz.kr/web/campaign/detail/110574";
-        // String url = "https://www.ycrowdy.com/r/powerman";
         String url = "https://www.ycrowdy.com/r/deukki";
         driver.get(url);
         try {
@@ -44,23 +38,13 @@ public class CrawlMain {
         } catch (InterruptedException e) {
         }
         Crawler crawler = new Crawler();
-        // Service service = new Service();
         List<cralSomething> list = new ArrayList<>();
-        // List<WebElement> el3 = driver.findElements(By.cssSelector(".page-container"));
         List<WebElement> t = driver.findElements(By.cssSelector("#reward-detail > div > div:nth-child(1) > div > div > div.col-sm-8 > div"));
-        
-        // List<WebElement> c = driver.findElements(By.cssSelector("#reward-detail > div > div.mt40.xs-mt20.mb100 > div > div > div.mce-content-body > div > p:nth-child(22)"));
-        List<WebElement> c = driver.findElements(By.cssSelector("#reward-detail > div > div.mt40.xs-mt20.mb100 > div > div > div.mce-content-body > div > p:nth-child(3)"));
-        
+        List<WebElement> c = driver.findElements(By.cssSelector("#reward-detail > div > div.mt40.xs-mt20.mb100 > div > div > div.mce-content-body > div > p:nth-child(4)"));
         List<WebElement> g = driver.findElements(By.cssSelector("#reward-detail > div > div:nth-child(1) > div > div > div:nth-child(2) > div.col-sm-4.mb30.xs-mt25.xs-mb20.pl45.pr15.xs-pl15.xs-pr15 > div.reward-info-box > div.reward-info-amount"));
-        
-        
-        List<WebElement> v = driver.findElements(By.cssSelector("#list_category > div > div > a:nth-child(3) > span > em"));
-        List<WebElement> h = driver.findElements(By.cssSelector("#list_category > div > div > a:nth-child(3) > span > em"));
-        // List<WebElement> like = driver.findElements(By.cssSelector("dd div button span"));
-        // List<WebElement> dislike = driver.findElements(By.cssSelector("dd div button span"));
+        List<WebElement> v = driver.findElements(By.cssSelector("#reward-detail > div > div:nth-child(1) > div > div > div:nth-child(2) > div.col-sm-4.mb30.xs-mt25.xs-mb20.pl45.pr15.xs-pl15.xs-pr15 > div.reward-info-box > div:nth-child(5) > span.reward-info-now"));
+        List<WebElement> h = driver.findElements(By.cssSelector("#reward-detail > div > div:nth-child(1) > div > div > div:nth-child(2) > div.col-sm-4.mb30.xs-mt25.xs-mb20.pl45.pr15.xs-pl15.xs-pr15 > div.reward-info-box > div.reward-info-name"));
         try{
-            // BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath),"UTF-8"));
             DataOutputStream fw = new DataOutputStream(new FileOutputStream(filePath,true));
             for (int i = 0; i < t.size(); i++) {
                 cralSomething thing = new cralSomething();
@@ -70,12 +54,7 @@ public class CrawlMain {
                 thing.setViewCnt(v.get(i).getText());
                 thing.setHashtag(h.get(i).getText());
 
-                // thing.setDislikeCnt(dislike.get(i).getText());
-                
-
                 System.out.println(thing.getTitle());
-                // System.out.println(thing.getGoalPrice());
-                // System.out.println(thing.getWriter());
                 System.out.println(thing.getContent());
                 System.out.println(thing.getGoalPrice());
                 System.out.println(thing.getHashtag());

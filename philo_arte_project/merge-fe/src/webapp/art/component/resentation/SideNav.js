@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoSide from "webapp/images/logo-white-sidemenu.png";
+import logoSide from "webapp/art/component/Presentation/logo-white-sidemenu.png";
 import Icofont from "react-icofont";
 
 const SideNav = ({ data, side, hideSideMenu }) => (

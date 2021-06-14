@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import parse from 'html-react-parser';
 import 'webapp/resume/css/ResumeCss.css';
-import LoadScript from 'webapp/common/helpers/LoadScript';
+import LoadScript from 'webapp/resume/component/presentation/LoadScript';
 import { ResumeItem, ResumeRead } from 'webapp/resume/index';
 import { readResume, countResume } from 'webapp/resume/reducer/resume.reducer';
 

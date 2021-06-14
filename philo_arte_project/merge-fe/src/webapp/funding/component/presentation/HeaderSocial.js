@@ -1,10 +1,10 @@
 import React from 'react';
-import HandleFixedNavbar from 'webapp/common/helpers/HandleFixedNavbar';
-import SideNav from './SideNav';
-import SearchOverlay from './SearchOverlay';
-import Navbar from './Navbar';
-import NavbarHeader from './NavbarHeader/NavbarHeader';
-import AttrNavSocial from './Elements/AttrNavSocial';
+import HandleFixedNavbar from 'webapp/art/component/Presentation/HandleFixedNavbar';
+import SideNav from '../../../art/component/Presentation/SideNav';
+import SearchOverlay from '../../../art/component/Presentation/SearchOverlay';
+import Navbar from '../../../art/component/Presentation/Navbar';
+import NavbarHeader from '../../../art/component/Presentation/NavbarHeader';
+import AttrNavSocial from '../../../common/Header/Elements/AttrNavSocial';
 
 const HeaderSocial = ({ type, data }) => {
     const { fixed } = HandleFixedNavbar();

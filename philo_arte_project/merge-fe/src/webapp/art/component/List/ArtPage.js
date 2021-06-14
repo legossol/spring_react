@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // DATA Files
 import dataNavbar from 'webapp/common/data/Navbar/main-navbar-data.json';
-import dataClients from 'webapp/common/data/Clients/clients-data.json';
+import dataClients from 'webapp/art/component/Presentation/clients-data.json';
 // Images
 // Components
-import FooterOne from 'webapp/common/Footer/FooterOne';
-import HeaderOne from 'webapp/common/Header/HeaderOne';
-import ClientsCarousel from 'webapp/common/Carousel/ClientsCarousel';
+import FooterOne from 'webapp/art/component/Presentation/FooterOne';
+import HeaderOne from 'webapp/art/component/Presentation/HeaderOne';
+import ClientsCarousel from 'webapp/art/component/Presentation/ClientsCarousel';
 import { PageTitle, ArtList, SearchBar } from 'webapp/art';
 
 import { getArtList, getArtSearch } from 'webapp/art/reducer/art.reducer';

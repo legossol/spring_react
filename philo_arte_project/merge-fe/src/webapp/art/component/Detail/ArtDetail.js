@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 // DATA Files
 import dataNavbar from 'webapp/common/data/Navbar/main-navbar-data.json';
 // Components
-import HeaderOne from 'webapp/common/Header/HeaderOne';
+import HeaderOne from 'webapp/art/component/Presentation/HeaderOne';
 import { PageTitleArt, ArtContent } from 'webapp/art';
-import FooterOne from 'webapp/common/Footer/FooterOne';
+import FooterOne from 'webapp/art/component/Presentation/FooterOne';
 
 import { getArtRead } from 'webapp/art/reducer/art.reducer';
 

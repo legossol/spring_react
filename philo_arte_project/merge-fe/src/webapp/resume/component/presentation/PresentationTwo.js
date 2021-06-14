@@ -1,6 +1,6 @@
 import React from 'react';
 import parse from 'html-react-parser';
-import img from 'webapp/images/resume/portfolio_first.jpeg';
+import img from 'webapp/resume/component/presentation/portfolio_first.jpeg';
 import { Link } from 'react-router-dom';
 
 const PresentationTwo = ({ title, text, textBtn, textBtn2, backfont }) => (

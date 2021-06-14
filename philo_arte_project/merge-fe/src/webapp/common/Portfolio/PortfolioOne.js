@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 
 import PortfolioFilter from "./PortfolioFilter";
-import LoadScript from "../helpers/LoadScript";
+import LoadScript from "../../art/component/Presentation/LoadScript";
 import PortfolioItem from "./PortfolioItem";
 
 const PortfolioOne = ({ title, tagline, backfont, data, filter, categories, classes, dash, dashColor }) => {

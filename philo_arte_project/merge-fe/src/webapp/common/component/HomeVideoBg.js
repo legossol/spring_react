@@ -18,8 +18,8 @@ import WhatWeOfferEleven from '../WhatWeOffer/WhatWeOfferEleven';
 import WhatWeDoOne from '../WhatWeDo/WhatWeDoOne';
 import TestimonialsOne from '../Testimonials/TestimonialsOne';
 import TeamOne from '../Team/TeamOne';
-import FooterOne from '../Footer/FooterOne';
-import CountersOne from '../Counters/CountersOne';
+import FooterOne from '../../art/component/Presentation/FooterOne';
+import CountersOne from '../../resume/component/presentation/CountersOne';
 import Loader from '../Loader/Loader';
 import { getLocalArtist } from 'webapp/artist/reducer/artist.reducer';
 

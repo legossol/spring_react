@@ -1,14 +1,14 @@
 import React from "react";
-import HandleSearchOverlay from "webapp/common/helpers/HandleSearchOverlay";
-import HandleSideMenu from "webapp/common/helpers/HandleSideMenu";
-import HandleFixedNavbar from "webapp/common/helpers/HandleFixedNavbar";
+import HandleSearchOverlay from "./HandleSearchOverlay";
+import HandleSideMenu from "./HandleSideMenu";
+import HandleFixedNavbar from "./HandleFixedNavbar";
 import AttrNav from "./AttrNav";
 import SideNav from "./SideNav";
 import SearchOverlay from "./SearchOverlay";
 import Navbar from "./Navbar";
-import NavbarHeaderTwo from "./NavbarHeader/NavbarHeaderTwo";
+import NavbarHeader from "./NavbarHeader";
 
-const HeaderTwo = ({ type, data }) => {
+const HeaderOne = ({ type, data, border }) => {
   const { show, showSearchForm, hideSearchForm } = HandleSearchOverlay();
   const { side, showSideMenu, hideSideMenu } = HandleSideMenu();
   const { fixed } = HandleFixedNavbar();
@@ -16,14 +16,18 @@ const HeaderTwo = ({ type, data }) => {
   return (
     <nav
       className={
-        "navbar navbar-default navbar-fixed white bootsnav on no-full menu-center no-border" +
-        (fixed ? "" : " navbar-transparent")
+        "navbar navbar-default navbar-fixed white bootsnav on no-full menu-center " +
+        (border ? "" : "no-border") + (fixed ? "" : " navbar-transparent")
       }
     >
       <SearchOverlay show={show} onClick={hideSearchForm} />
       <div className={"container" + (type === "wide" ? "-fluid" : "")}>
-        <AttrNav showSearchForm={showSearchForm} showSideMenu={showSideMenu} />
-        <NavbarHeaderTwo />
+        <AttrNav
+          border={border}
+          showSearchForm={showSearchForm}
+          showSideMenu={showSideMenu}
+        />
+        <NavbarHeader />
         <Navbar data={data} />
       </div>
       <SideNav data={data} side={side} hideSideMenu={hideSideMenu} />
@@ -31,4 +35,4 @@ const HeaderTwo = ({ type, data }) => {
   );
 };
 
-export default HeaderTwo;
+export default HeaderOne;

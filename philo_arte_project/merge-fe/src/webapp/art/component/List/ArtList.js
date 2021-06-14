@@ -2,7 +2,7 @@ import React from 'react';
 import parse from 'html-react-parser';
 
 import { ArtItem, PortfolioFilter, PageList } from 'webapp/art';
-import LoadScript from 'webapp/common/helpers/LoadScript';
+import LoadScript from 'webapp/art/component/Presentation/LoadScript';
 
 const ArtList = ({ title, tagline, backfont, data, filter, categories, classes, dash, dashColor }) => {
     LoadScript('js/portfolio/portfolio-grid.js');

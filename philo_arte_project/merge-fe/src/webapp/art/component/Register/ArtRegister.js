@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 // DATA Files
 import dataNavbar from 'webapp/common/data/Navbar/main-navbar-data.json';
 // Components
-import HeaderOne from 'webapp/common/Header/HeaderOne';
-import FooterOne from 'webapp/common/Footer/FooterOne';
+import HeaderOne from 'webapp/art/component/Presentation/HeaderOne';
+import FooterOne from 'webapp/art/component/Presentation/FooterOne';
 import { PageTitleArt, ArtUpload } from 'webapp/art';
 
 import { getArtRegister, getCategoryList } from 'webapp/art/reducer/art.reducer';

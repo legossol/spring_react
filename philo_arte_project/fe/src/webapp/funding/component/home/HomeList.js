@@ -4,6 +4,8 @@ import LoadScript from "webapp/common/helpers/LoadScript";
 import ItemHandle from "./ItemHandle";
 import { currentFunding } from "webapp/funding/reducer/funding.reducer";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 
 const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor, id }) => {
@@ -44,7 +46,17 @@ const HomeList = ({ title, tagline, backfont,data, hashtag,dash, dashColor, id }
             </div>
           </div>
         </div>
-
+        <div  style={{display:"flex",justifyContent:"center"}}>
+            <Link to={"/funding/list"}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                >
+                    모든 펀딩 보기
+                </Button>
+          </Link>
+      </div>
     </section>
   );
 };

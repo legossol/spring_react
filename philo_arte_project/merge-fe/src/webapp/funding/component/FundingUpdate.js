@@ -1,8 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef} from 'react'
-import HeaderSocial from 'webapp/common/Header/HeaderSocial'
-import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
-import HomeMarketingSlider from "webapp/funding/component/showing/HeroMarketing";
-import FooterOne from "webapp/common/Footer/FooterOne";
+import HomeMarketingSlider from "webapp/funding/component/presentation/HeroMarketing";
+import FooterOne from "webapp/funding/component/Presentation/FooterOne";
 import {Link, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {updateFunding, deleteFile, getFundingDetail} from 'webapp/funding/reducer/funding.reducer'
@@ -58,9 +56,10 @@ fetchData();
        const del = window.confirm("수정을 완료하시겠습니까?")
        if(del){
             dispatch(updateFunding({fundingId, data}))
+            
        }
        
-    //    window.location.href=`/funding/list`
+       window.location.href=`/funding/list`
    }
 const ondelete=async(id)=>{
     dispatch(deleteFile(id))
@@ -90,9 +89,6 @@ const hashtags = [
     }
 
 ] 
-
-const numberWithComma = (number) =>(number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-let num = (param.goalPrice)
     return(
         <>
         <HeaderOneMain />
@@ -138,7 +134,6 @@ let num = (param.goalPrice)
                 ))}
             </TextField>
             </Grid>
-            {/* <ImagesUploader></ImagesUploader> */}
             <hr/>
             <div>
             {data.fundingFiles?.map((image,i)=>(
@@ -149,7 +144,6 @@ let num = (param.goalPrice)
                 )
             )}
             </div>
-            {/* ()=>dispatch(deleteFile(image.fundingFileId)) */}
             <hr/>
             <div>추가될 사진</div>
             <FileRegister cref={childRef} getUploadedFiles = {getUploadedFiles}></FileRegister>

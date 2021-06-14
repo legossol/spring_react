@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoadScript from "webapp/common/helpers/LoadScript";
-import dataGallery from "../data/Gallery/footer-gallery.json";
-import logo from "webapp/images/logo-footer.png";
-import FooterGallery from "../Gallery/FooterGallery";
+import LoadScript from "webapp/art/component/Presentation/LoadScript";
+import dataGallery from "webapp/art/component/Presentation/footer-gallery.json";
+import logo from "webapp/art/component/Presentation/logo-footer.png";
+import FooterGallery from "./FooterGallery";
 import Icofont from "react-icofont";
 
 const Footer = ({ bg }) => {

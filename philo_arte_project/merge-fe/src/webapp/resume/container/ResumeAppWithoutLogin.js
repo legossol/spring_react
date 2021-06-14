@@ -1,23 +1,15 @@
 import React from "react";
 // DATA Files
 import dataNavbar from "webapp/common/data/Navbar/main-navbar-data.json";
-import dataServices from "webapp/common/data/Services/services-studio-data.json";
-import dataSkills from "webapp/common/data/Skills/skills-data.json";
-import dataPortfolio from "webapp/common/data/Portfolio/masonry-portfolio-data.json";
-import dataCounters from "webapp/common/data/Counters/counters-data.json";
-import dataTeam from "webapp/common/data/Team/team-data.json";
-// Images
-import imgFooter from "webapp/images/background/stars_bg.png";
+import dataPortfolio from "webapp/resume/component/presentation/masonry-portfolio-data.json";
+import dataCounters from "webapp/resume/component/presentation/counters-data.json";
+import dataTeam from "webapp/resume/component/presentation/team-data.json";
 //
-import HeaderTwo from "webapp/common/Header/HeaderTwo";
-import FooterOne from "webapp/common/Footer/FooterOne";
-import HeroCreativeAgency from "webapp/common/HeroSlider/HeroCreativeAgency";
-import WhatWeOfferSix from "webapp/common/WhatWeOffer/WhatWeOfferSix";
-import ProcessFour from "webapp/common/Process/ProcessFour";
+import HeaderTwo from "webapp/resume/component/presentation/HeaderTwo";
+import FooterOne from "webapp/resume/component/presentation/FooterOne";
 import PortfolioWideMasonry from "webapp/resume/component/list/ResumeList";
-import TeamOne from "webapp/common/Team/TeamOne";
-import CountersOne from "webapp/common/Counters/CountersOne";
-import Loader from "webapp/common/Loader/Loader";
+import TeamOne from "webapp/resume/component/presentation/TeamOne";
+import CountersOne from "webapp/resume/component/presentation/CountersOne";
 import PresentationTwo from "webapp/resume/component/presentation/PresentationTwo";
 
 

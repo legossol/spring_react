@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 // DATA Files
 import dataServices from "webapp/resume/data/services-studio-data.json";
-import dataSkills from "webapp/common/data/Skills/skills-data.json";
-import dataCounters from "webapp/common/data/Counters/counters-data.json";
-import dataTeam from "webapp/common/data/Team/team-data.json";
+import dataSkills from "webapp/resume/component/presentation/skills-data.json";
+import dataCounters from "webapp/resume/component/presentation/counters-data.json";
+import dataTeam from "webapp/resume/component/presentation/team-data.json";
 
-import FooterOne from "webapp/common/Footer/FooterOne";
+import FooterOne from "webapp/resume/component/Presentation/FooterOne";
 import { ResumeList, Paging, SearchBar, AboutFive,CounterRowOne, PresentationTwo, TeamOne, WhatWeOfferSix} from "webapp/resume/index"
 import { useDispatch, useSelector } from "react-redux";
 import { listResume, searchResume } from "webapp/resume/reducer/resume.reducer";
