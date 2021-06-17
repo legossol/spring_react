@@ -1,7 +1,0 @@
-// export {default as FileHome} from './component/FileHome'
-// export {default as FileRegister} from './component/FileRegister'
-// export {default as FileService} from './service/file.service'
-export {default as UploadInput} from './component/UploadInput'
-export {default as PerformanceInput} from './component/PerformanceInput'
-export {default as BoardRegister}  from './component/BoardRegister'
-export {default as BoardPage} from './component/BoardPage'
