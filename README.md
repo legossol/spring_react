@@ -22,6 +22,6 @@
 ![프로젝트 전체 시연 영상](https://user-images.githubusercontent.com/75829369/121810419-c9a59000-cc9b-11eb-91b0-8874e9b4c7a9.gif)
 
 * 현재 AWS에 올리는 작업을 계속 진행중*
-EC2,
+EC2: EC2는 현재 윈도에서의 작업은 성공하였으나 MAC에서의 연결이 되질 않고있습니다.,
 S3 :http://kr.legossol.api.s3-website.ap-northeast-2.amazonaws.com/ , 
 cloudFront:https://d2pjf3k701q4ai.cloudfront.net/
